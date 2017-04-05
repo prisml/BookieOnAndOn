@@ -53,7 +53,7 @@ public class BookingDAO {
 		return list;
 	}
 	
-	public int getTotalContent(String id) throws SQLException {
+	public int getTotalBookingContent(String id) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;

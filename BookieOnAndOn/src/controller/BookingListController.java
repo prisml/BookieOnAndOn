@@ -15,7 +15,7 @@ public class BookingListController implements Controller {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String id=request.getParameter("id");
-		int totalContents = BookingDAO.getInstance().getTotalContent(id);
+		int totalContents = BookingDAO.getInstance().getTotalBookingContent(id);
 		String nowPage = request.getParameter("pageNo");
 		System.out.println(nowPage);
 		PagingBean pagingBean = null;
