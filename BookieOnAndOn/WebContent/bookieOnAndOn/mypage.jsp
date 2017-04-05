@@ -3,7 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>Verti by HTML5 UP</title>
+<title>mypage</title>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -16,8 +16,6 @@
 		<div id="features-wrapper">
 			<div class="container">
 			<!-- Section은 여기서 작업하도록! -->
-			  
-			  
 			  
 			</div>
 		</div>
