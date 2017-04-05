@@ -1,5 +1,3 @@
-insert into bookmember(id,password,name,tel) values('fall','1234','강정호','01000000002');
-
 --도서 테이블
 drop table book;
 
@@ -73,22 +71,6 @@ create table booking(
    constraint bk_id3 foreign key(senderid) references bookmember(id),
    constraint bk_id4 foreign key(receiverid) references bookmember(id)
 )
-
-
-
-
-
-
-
-
-
-
-
-select *from BOOK;
-
-
-
-
 
 
 
