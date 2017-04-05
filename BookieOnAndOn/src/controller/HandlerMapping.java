@@ -10,7 +10,7 @@ public class HandlerMapping {
 		Controller c=null;
 		if(command.equals("main")){
 			c = new MainController();
-		}
+	}
 		return c;
 	}
 }
