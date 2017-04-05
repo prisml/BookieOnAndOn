@@ -16,16 +16,11 @@
 		<div id="features-wrapper">
 			<div class="container">
 			<!-- Section은 여기서 작업하도록! -->
-			  
+			   
 			</div>
 		</div>
 		<jsp:include page="/template/footer.jsp"></jsp:include>
 	</div>
-
-
-
-
-
 
 	<!-- Scripts -->
 	<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
