@@ -11,7 +11,9 @@ public class HandlerMapping {
 		System.out.println("command: "+command);
 		if(command.equals("")) {
 			c = new BookingListController();
-		}
+		}else if(command.equals("main")){
+			c = new MainController();
+	}
 		return c;
 	}
 }
