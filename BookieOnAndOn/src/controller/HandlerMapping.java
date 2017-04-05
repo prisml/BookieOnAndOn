@@ -8,6 +8,9 @@ public class HandlerMapping {
 	}
 	public Controller create(String command){
 		Controller c=null;
+		if(command.equals("main")){
+			c = new MainController();
+		}
 		return c;
 	}
 }
