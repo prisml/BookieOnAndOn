@@ -8,6 +8,10 @@ public class HandlerMapping {
 	}
 	public Controller create(String command){
 		Controller c=null;
+		System.out.println("command: "+command);
+		if(command.equals("")) {
+			c = new BookingListController();
+		}
 		return c;
 	}
 }
