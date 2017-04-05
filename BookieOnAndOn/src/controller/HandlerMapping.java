@@ -7,8 +7,14 @@ public class HandlerMapping {
 		return instance;
 	}
 	public Controller create(String command){
+
 		Controller c=null;
-	
+		System.out.println("command: "+command);
+		if(command.equals("")) {
+			c = new BookingListController();
+		}else if(command.equals("main")){
+			c = new MainController();
+	}
 		return c;
 	}
 }
