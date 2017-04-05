@@ -6,24 +6,19 @@
 
 						<!-- Logo -->
 							<div id="logo">
-								<h1><a href="index.jsp">Bookie<br>on&on</a></h1>
-							
+								<h1><a href="index.jsp">Bookie<br>on&on</a></h1>							
 							</div>
-
 						<!-- Nav -->
 							<nav id="nav">
 								<ul>
-									<li class="current"><a href="index.jsp">welcome</a></li>
-								
-									<li><a href="left-sidebar.html">Login</a></li>
+									<li class="current"><a href="index.jsp">welcome</a></li>								
+									<li><a href="${pageContext.request.contextPath}/bookieOnAndOn/login.jsp">Login</a></li>
 									<li><a href="right-sidebar.html">Register</a></li>
-									<li><a href="no-sidebar.html">No Sidebar</a></li>
+									<li><a href="no-sidebar.html">Find ID/PW</a></li>
 								</ul>
 							</nav>
-
 					</header>
-				</div>
-				
+				</div>				
 				<!-- Banner -->
 				<div id="banner-wrapper">
 					<div id="banner" class="box container">
