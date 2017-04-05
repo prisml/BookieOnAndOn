@@ -10,14 +10,14 @@ public class BookVO {
 	private String pubdate;
 	private String genre;
 	private String summary;
-	private int rate;
+	private double rate;
 	private Blob bookcover;
 	public BookVO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public BookVO(String bookno, String title, String author, String pub, String pubdate, String genre, String summary,
-			int rate, Blob bookcover) {
+			double rate, Blob bookcover) {
 		super();
 		this.bookno = bookno;
 		this.title = title;
@@ -71,10 +71,10 @@ public class BookVO {
 	public void setSummary(String summary) {
 		this.summary = summary;
 	}
-	public int getRate() {
+	public double getRate() {
 		return rate;
 	}
-	public void setRate(int rate) {
+	public void setRate(double rate) {
 		this.rate = rate;
 	}
 	public Blob getBookcover() {

@@ -17,6 +17,8 @@
 			<div class="container">
 			<!-- Section은 여기서 작업하도록! -->
 			  
+			  
+			  
 			</div>
 		</div>
 		<jsp:include page="/template/footer.jsp"></jsp:include>
