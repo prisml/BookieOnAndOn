@@ -2,7 +2,7 @@ package model;
 
 import java.sql.Blob;
 
-public class BookVO {
+public class BookVO implements VO{
 	private String bookno;
 	private String title;
 	private String author;

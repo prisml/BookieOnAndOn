@@ -1,6 +1,6 @@
 package model;
 
-public class SawWishVO {
+public class SawWishVO implements VO{
 	private String bookno; 
 	private String id;
 	public SawWishVO() {
