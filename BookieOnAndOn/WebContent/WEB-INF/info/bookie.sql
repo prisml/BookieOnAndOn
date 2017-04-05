@@ -1,6 +1,6 @@
 --도서 테이블
 drop table book;
-
+select * from book;
 create table book(
     bookno number primary key,
       title varchar2(100) not null,
@@ -71,3 +71,4 @@ create table booking(
    constraint bk_id3 foreign key(senderid) references bookmember(id),
    constraint bk_id4 foreign key(receiverid) references bookmember(id)
 )
+
