@@ -1,6 +1,6 @@
 package model;
 
-public class ReviewVO {
+public class ReviewVO implements VO{
 	private String bookno;
 	private String id;
 	private int star;
