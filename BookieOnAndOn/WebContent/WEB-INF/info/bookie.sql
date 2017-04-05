@@ -1,6 +1,7 @@
 --도서 테이블
 drop table book;
 
+
 create table book(
     bookno number primary key,
       title varchar2(100) not null,
@@ -71,3 +72,18 @@ create table booking(
    constraint bk_id3 foreign key(senderid) references bookmember(id),
    constraint bk_id4 foreign key(receiverid) references bookmember(id)
 )
+
+
+-- 아래꺼부터 드롭
+drop table book;
+drop sequence bookno_seq;
+drop table bookmember;
+drop table review;
+drop table saw;
+drop table wish;
+drop table booking;
+
+
+-- insert BOOK 
+
+
