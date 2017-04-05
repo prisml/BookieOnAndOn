@@ -21,14 +21,28 @@
 					</div>
 					<div class="9u 12u(medium)">
 						<ul id="bookInfo">
-						<li>책 제목</li>
-						<li>저자</li>
-						<li>출판사</li>
-						<li>출판일</li>
-						<li>출거리</li>
+							<li>책 제목</li>
+							<li>저자</li>
+							<li>출판사</li>
+							<li>출판일</li>
+							<li>출거리</li>
 						</ul>
 					</div>
 				</div>
+			</div>
+		</div>
+		<br>
+		<br>
+		<div>
+			<div class="box container">
+				<div class="row">댓글 작성 부분</div>
+			</div>
+		</div>
+		<br>
+		<br>
+		<div>
+			<div class="box container">
+				<div class="row">댓글리스트 부분</div>
 			</div>
 		</div>
 		<jsp:include page="/template/footer.jsp"></jsp:include>
