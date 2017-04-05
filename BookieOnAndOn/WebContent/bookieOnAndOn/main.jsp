@@ -10,10 +10,15 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css" />
 <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 </head>
-<body class="homepage">
+<body class="homepage"> 
 	<div id="page-wrapper">
 		<jsp:include page="/template/header.jsp"></jsp:include>
-		<jsp:include page="/template/section.jsp"></jsp:include>
+		<div id="features-wrapper">
+			<div class="container">
+			<!-- Section은 여기서 작업하도록! -->
+			  
+			</div>
+		</div>
 		<jsp:include page="/template/footer.jsp"></jsp:include>
 	</div>
 
