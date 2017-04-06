@@ -25,7 +25,10 @@ create table bookmember(
    name varchar2(100) not null,
    tel varchar2(100) not null
 )
-
+insert into bookmember(id,password,name,tel) values('java','abcd','정우성','01011112222');
+insert into bookmember(id,password,name,tel) values('jquery','dcba','전지현','01033334444');
+insert into bookmember(id,password,name,tel) values('jdbc','aaaa','아이유','01055556666');
+select * from bookmember;
 --리뷰 테이블
 drop table review;
 
@@ -72,8 +75,13 @@ create table booking(
    constraint bk_id3 foreign key(senderid) references bookmember(id),
    constraint bk_id4 foreign key(receiverid) references bookmember(id)
 )
+insert into booking(senderid,receiverid) values('java','jquery');
+insert into booking(senderid,receiverid) values('jquery','java');
+insert into booking(senderid,receiverid) values('java','jdbc');
 
-
+select receiverid from booking where senderid='java';
+select count(*) from booking where senderid='java';
+select receiverid from booking where senderid='jquery';
 -- 아래꺼부터 드롭
 drop table book;
 drop sequence bookno_seq;

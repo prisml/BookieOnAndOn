@@ -30,30 +30,31 @@ public class BookingDAO {
 		if(con!=null)
 			con.close();
 	}
-	public ArrayList<BookingVO> getBookingList(String id, PagingBean pagingBean) throws SQLException{
+	public ArrayList<String> getBookingList(String id) throws SQLException{
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
-		ArrayList<BookingVO> list = new ArrayList<BookingVO>();
-		ListVO lvo = new ListVO();
+		ArrayList<String> list = new ArrayList<String>();
+		//ListVO lvo = new ListVO();
 		try{
 			con=dataSource.getConnection();
-			String sql="";
+			String sql="select receiverid from booking where senderid=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, id);
 			rs=pstmt.executeQuery();
 			while(rs.next()){
-				BookingVO vo = new BookingVO();
-				vo.setReceiverid(rs.getString(1));
-				list.add(vo);
+				//BookingVO vo = new BookingVO();
+				//vo.setReceiverid(rs.getString(1));
+				list.add(rs.getString(1));
 			}
 		}finally{
 			closeAll(rs, pstmt,con);
 		}
+		System.out.println("DAO: "+list);
 		return list;
 	}
 	
-	public int getTotalBookingContent(String id) throws SQLException {
+	/*public int getTotalBookingContent(String id) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -70,5 +71,5 @@ public class BookingDAO {
 			closeAll(rs, pstmt, con);
 		}
 		return totalCount;
-	}
+	}*/
 }

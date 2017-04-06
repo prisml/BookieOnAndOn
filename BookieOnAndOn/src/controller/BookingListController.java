@@ -15,7 +15,8 @@ public class BookingListController implements Controller {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String id=request.getParameter("id");
-		int totalContents = BookingDAO.getInstance().getTotalBookingContent(id);
+		System.out.println("jsp Parameter: "+id);
+		/*int totalContents = BookingDAO.getInstance().getTotalBookingContent(id);
 		String nowPage = request.getParameter("pageNo");
 		System.out.println(nowPage);
 		PagingBean pagingBean = null;
@@ -23,11 +24,12 @@ public class BookingListController implements Controller {
 			pagingBean = new PagingBean(totalContents);
 		} else {
 			pagingBean = new PagingBean(totalContents, Integer.parseInt(nowPage));
-		}
-		ArrayList<BookingVO> list = BookingDAO.getInstance().getBookingList(id, pagingBean);
-		ListVO listVO = new ListVO(list, pagingBean);
-		request.setAttribute("lvo", listVO);
-		return "redirect:booking_list.jsp";
+		}*/
+		ArrayList<String> list = BookingDAO.getInstance().getBookingList(id);
+		System.out.println("DAO에서 넘어 온 list: "+list);
+		//ListVO listVO = new ListVO(list, pagingBean);
+		request.setAttribute("list", list);
+		return "redirect:bookieOnAndOn/booking_list.jsp";
 	}
 
 }
