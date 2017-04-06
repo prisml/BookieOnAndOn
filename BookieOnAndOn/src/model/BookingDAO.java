@@ -30,41 +30,37 @@ public class BookingDAO {
 		if(con!=null)
 			con.close();
 	}
-	public ArrayList<BookingVO> getBookingList(String id) throws SQLException{
+	public ArrayList<VO> getBookingList(String id, PagingBean pagingBean) throws SQLException{
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
-		BookingVO vo = new BookingVO();
-		ArrayList<BookingVO> list = new ArrayList<BookingVO>();
-		int count = 0;
+		ArrayList<VO> list = new ArrayList<VO>();
 		//ListVO lvo = new ListVO();
 		try{
 			con=dataSource.getConnection();
-			String sql="select receiverid from booking where senderid=?";
-			pstmt=con.prepareStatement(sql);
+			StringBuilder sql=new StringBuilder();
+	         sql.append("select findReceiveridList.* from(");
+	         sql.append("select row_number() over(order by receiverid) rnum, receiverid ");
+	         sql.append("from booking where senderid=?"); 
+	         sql.append(") findReceiveridList where rnum between ? and ? ");
+			pstmt=con.prepareStatement(sql.toString());
 			pstmt.setString(1, id);
+			pstmt.setInt(2, pagingBean.getStartRowNumber());
+			pstmt.setInt(3, pagingBean.getEndRowNumber());
 			rs=pstmt.executeQuery();
 			while(rs.next()){
-				vo.setReceiverid(rs.getString(1));
+				BookingVO vo = new BookingVO();
+				vo.setReceiverid(rs.getString("receiverid"));
 				list.add(vo);
-			}
-			pstmt.close();
-			String sql2="select count(*) from booking where senderid=?";
-			pstmt=con.prepareStatement(sql2);
-			pstmt.setString(1, vo.getReceiverid());
-			rs=pstmt.executeQuery();
-			if(rs.next()) {
-				count = rs.getInt(1);
 			}
 		}finally{
 			closeAll(rs, pstmt,con);
 		}
-		System.out.println("부킹한 멤버별 부킹 수: "+count);
 		System.out.println("DAO: "+list);
 		return list;
 	}
 	
-	/*public int getTotalBookingContent(String id) throws SQLException {
+	public int getTotalBookingCount(String id) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -80,6 +76,7 @@ public class BookingDAO {
 		} finally {
 			closeAll(rs, pstmt, con);
 		}
+		System.out.println("부킹한 멤버 수: "+totalCount);
 		return totalCount;
-	}*/
+	}
 }
