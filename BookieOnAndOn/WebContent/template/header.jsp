@@ -1,5 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script>
+	function bookSearch(){
+		$("#bookSearchForm").submit();
+	}
+</script>
+
 <!-- Header -->
 <div id="header-wrapper">
 	<header id="header" class="container">
@@ -34,19 +43,20 @@
 				<li><a href="no-sidebar.html">No Sidebar</a></li>
 			</ul>
 		</nav>
-
 	</header>
 </div>
 
-<!-- Banner -->
+<!-- Banner : 도서 검색-->
 <div id="banner-wrapper">
 	<div id="banner" class="box container">
-		<div class="row">
-			<div class="7u 12u(medium)">
-					<div class="form-group col-lg-*">
-					<input type="text" class="form-control" />
-					</div>
+		<form action="DispatcherServlet" id = "bookSearchForm">
+			<div class="input-group input-group-lg">
+				<input type="hidden" name="command" value="bookSearch"> 
+				<input type="text" class="form-control" name="title"> 
+				<span class="input-group-addon"> 
+				<i class="fa fa-search" onclick = "bookSearch()"></i>
+				</span>
 			</div>
-		</div>
+		</form>
 	</div>
 </div>

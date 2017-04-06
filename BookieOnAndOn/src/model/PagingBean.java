@@ -17,7 +17,7 @@ public class PagingBean {
 	/**
 	 * 페이지당 게시물수
 	 */
-	private int contentNumberPerPage = 5;
+	private int contentNumberPerPage = 12;
 	/**
 	 * 페이지 그룹당 페이지수
 	 */
@@ -37,6 +37,13 @@ public class PagingBean {
 	public PagingBean(int totalContents, int nowPage) {
 		this.totalContents = totalContents;
 		this.nowPage = nowPage;
+	}
+	
+	public PagingBean(int nowPage, int contentNumberPerPage, int pageNumberPerPageGroup, int totalContents) {
+		this.nowPage = nowPage;
+		this.contentNumberPerPage = contentNumberPerPage;
+		this.pageNumberPerPageGroup = pageNumberPerPageGroup;
+		this.totalContents = totalContents;
 	}
 
 	public int getNowPage() {

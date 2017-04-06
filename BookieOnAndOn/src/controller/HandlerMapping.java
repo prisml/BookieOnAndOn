@@ -10,7 +10,10 @@ public class HandlerMapping {
 		Controller c=null;
 		if(command.equals("main")){
 			c = new MainController();
-	}
+		}
+		else if(command.equals("bookSearch")){
+			c = new BookSearchController();
+		}
 		return c;
 	}
 }
