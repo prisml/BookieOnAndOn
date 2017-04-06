@@ -1,6 +1,6 @@
 package model;
 
-public class BookingVO {
+public class BookingVO implements VO{
 	private String senderid;
 	private String receiverid;
 	public BookingVO() {
