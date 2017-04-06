@@ -1,5 +1,6 @@
 package controller;
 
+
 public class HandlerMapping {
 	private static HandlerMapping instance=new HandlerMapping();
 	private HandlerMapping(){}
@@ -10,7 +11,10 @@ public class HandlerMapping {
 		Controller c=null;
 		if(command.equals("main")){
 			c = new MainController();
-	}
+		}else if(command.equals("sawBookList")){
+			System.out.println("sawBookList~~~~~~~~~~");
+			c= new SawBookListController();
+		}
 		return c;
 	}
 }

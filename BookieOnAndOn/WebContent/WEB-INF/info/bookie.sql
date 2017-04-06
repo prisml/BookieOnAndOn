@@ -3,8 +3,8 @@ drop table book;
 
 
 create table book(
-    bookno number primary key,
-      title varchar2(100) not null,
+   bookno number primary key,
+   title varchar2(100) not null,
    bookphoto blob not null,
    rate number default 0,
    author varchar2(100) not null,
@@ -83,7 +83,9 @@ drop table saw;
 drop table wish;
 drop table booking;
 
-
+insert into saw(id,bookno) values('java',3);
+select *from saw where id='java';
+select*from saw where id='java';
 -- insert BOOK 
 
 
