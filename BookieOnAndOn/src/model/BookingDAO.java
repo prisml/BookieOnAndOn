@@ -59,24 +59,25 @@ public class BookingDAO {
 		System.out.println("DAO: "+list);
 		return list;
 	}
-	
+		
 	public int getTotalBookingCount(String id) throws SQLException {
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		int totalCount = 0;
-		try {
-			con = dataSource.getConnection();
-			String sql = "select count(*) from booking where senderid=?";
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, id);
-			rs = pstmt.executeQuery();
-			if(rs.next())
-				totalCount = rs.getInt(1);
-		} finally {
-			closeAll(rs, pstmt, con);
-		}
-		System.out.println("부킹한 멤버 수: "+totalCount);
-		return totalCount;
-	}
+	      Connection con = null;
+	      PreparedStatement pstmt = null;
+	      ResultSet rs = null;
+	      int totalCount = 0;
+	      try {
+	         con = dataSource.getConnection();
+	         String sql = "select count(*) from booking where senderid=?";
+	         pstmt = con.prepareStatement(sql);
+	         pstmt.setString(1, id);
+	         rs = pstmt.executeQuery();
+	         if(rs.next())
+	            totalCount = rs.getInt(1);
+	      } finally {
+	         closeAll(rs, pstmt, con);
+	      }
+	      System.out.println("부킹한 멤버 수: "+totalCount);
+	      return totalCount;
+	   }
+
 }

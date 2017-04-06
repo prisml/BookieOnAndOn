@@ -4,7 +4,6 @@
 <html>
 <head>
 <title>mypage</title>
-<meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css" />
@@ -26,6 +25,9 @@
 					ID: <input type="text" name="id"> 
 					<input type="submit" value="검색"> 
 					<input type="hidden" name="command" value="bookingList">
+					
+					<hr>
+					&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/DispatcherServlet?command=sawBookList">mypage</a>
 				</form>
 			</div>
 		</div>
