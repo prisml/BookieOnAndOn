@@ -3,8 +3,8 @@ drop table book;
 
 
 create table book(
-    bookno number primary key,
-      title varchar2(100) not null,
+   bookno number primary key,
+   title varchar2(100) not null,
    bookphoto blob,
    rate number default 0,
    author varchar2(100) not null,

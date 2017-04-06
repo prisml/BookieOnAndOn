@@ -15,6 +15,8 @@ public class HandlerMapping {
 		System.out.println(command+command.length());
 		if (command.equals("main")) {
 			c = new MainController();
+		} else if(command.equals("sawBookList")){
+			c= new SawBookListController();
 		} else if (command.equals("genre")) {
 			c = new GenreListController();
 		} else if (command.equals("detail")) {
