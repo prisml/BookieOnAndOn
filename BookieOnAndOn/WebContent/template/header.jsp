@@ -60,7 +60,7 @@
 <!-- Banner : 도서 검색-->
 <div id="banner-wrapper">
 	<div id="banner" class="box container">
-		<form action="DispatcherServlet" id="bookSearchForm">
+		<form action="${pageContext.request.contextPath}/DispatcherServlet" id="bookSearchForm">
 			<div class="input-group input-group-lg">
 				<input type="hidden" name="command" value="bookSearch"> <input
 					type="text" class="form-control" name="title"> <span
