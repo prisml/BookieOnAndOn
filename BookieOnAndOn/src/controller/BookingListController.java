@@ -25,11 +25,13 @@ public class BookingListController implements Controller {
 		} else {
 			pagingBean = new PagingBean(totalContents, Integer.parseInt(nowPage));
 		}*/
-		ArrayList<String> list = BookingDAO.getInstance().getBookingList(id);
+		ArrayList<BookingVO> list = BookingDAO.getInstance().getBookingList(id);
 		System.out.println("DAO에서 넘어 온 list: "+list);
+		System.out.println("list 수: "+list.size());
 		//ListVO listVO = new ListVO(list, pagingBean);
 		request.setAttribute("list", list);
-		return "redirect:bookieOnAndOn/booking_list.jsp";
+		request.setAttribute("listSize", list.size());
+		return "bookieOnAndOn/booking_list.jsp";
 	}
 
 }
