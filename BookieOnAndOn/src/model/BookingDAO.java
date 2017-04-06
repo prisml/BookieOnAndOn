@@ -38,7 +38,7 @@ public class BookingDAO {
 		ListVO lvo = new ListVO();
 		try{
 			con=dataSource.getConnection();
-			String sql="select receiverid from booking where senderid=?";
+			String sql="";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, id);
 			rs=pstmt.executeQuery();
