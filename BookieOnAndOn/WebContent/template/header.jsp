@@ -1,13 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-	<!-- Scripts -->
-	<script src="//code.jquery.com/jquery.min.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/js/jquery.dropotron.min.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/js/skel.min.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/js/util.js"></script>
-	<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-	<script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
 <!-- Header -->
 				<div id="header-wrapper">
 					<header id="header" class="container">

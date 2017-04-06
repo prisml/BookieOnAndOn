@@ -4,14 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-
-<script src="//code.jquery.com/jquery.min.js"></script>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/main.css" />
-<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+<jsp:include page="/template/script.jsp"></jsp:include>
 <title>(책이름) 정보</title>
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -36,7 +29,7 @@
 					$("#reviewPaging").append("<li id=prePage><<</li>");
 				}
 				for(var i=pb.startPageOfPageGroup;i<=pb.endPageOfPageGroup;i++){
-					$("#reviewPaging").append("<li class=movePage>"+i+"</li>");
+					$("#reviewPaging").append("<li><a class=movePage href=#>"+i+"</a></li>");
 				}
 				if(pb.nextPageGroup ==true){
 					$("#reviewPaging").append("<li id=nextPage>>></li>");
@@ -63,7 +56,15 @@
 				}
 			});
 		});
-	});
+		$("#reviewPaging").on("click","a",function() {
+			event.preventDefault();
+			$.ajax({
+				type:"get",
+				url:"DispatcherServlet",
+				data:"command=detail&bookno=${vo.bookno}&page="+$(this).text()
+			});
+		});
+	}); 
 </script>
 </head>
 <body class="homepage">

@@ -50,14 +50,7 @@
 				}//success
 			});//ajax			
 	 });// .nav-justified li click
-	 $(document).ready(function(){
-		 $(".col-lg-12 li").click(function(){
-			 $(".active").removeClass('active');
-			 $(this).addClass("active");
-			 
-	 });// 
-		 <li><a href="#">&laquo;</a></li>
- });//ready
+ });
  </script>
 </head>
 <body class="homepage"> 
@@ -85,8 +78,8 @@
 	<!-- 페이징 -->
 	<div class="row text-center">
 			<div class="col-lg-12">
-				<ul class="pagination">
 					<div id="pre"></div>
+				<ul class="pagination">
 					<li class="active"><a href="#"></a></li>
 					<li><a href="#"></a></li>
 					<li><a href="#"></a></li>
