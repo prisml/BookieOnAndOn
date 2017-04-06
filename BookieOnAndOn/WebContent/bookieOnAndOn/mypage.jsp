@@ -26,34 +26,32 @@ $(document).ready(function(){
 			var info="";	
 			for(var i=0;i<data.list.length;i++){
 				info+="<div class='col-sm-3'>";
-				info+="<img src='http://placehold.it/260x390'><p>";
+				info+="<img src='http://placehold.it/260x390'>";
 				info+=data.list[i].title+"<br>";
 				info+=data.list[i].rate;
-				info+="</p></div>";
+				info+="</div>";
 			}
 			
 			var paging="";
 			
 			 for(var i=data.pagingBean.startPageOfPageGroup;i<=data.pagingBean.endPageOfPageGroup;i++){
 				 if(data.pagingBean.nowPage!=i){
-							 	paging+="<a href='#'>";
+							 	paging+="<a href='${pageContext.request.contextPath}/DispatcherServlet?command=sawBookList&nowPage="+i+"'>";
 								paging+=i;
 								paging+="</a>";
 				 }else{
-					 paging+=i;
+								paging+=i;
 				 }
 	 
-			 }
-							
-			 
-			 
+			 }//paging for문
+			
 			 
 			$("#mypageInfo").html(info+paging); 
 			
 				
-						}
-					}); 
-	});
+						}//success
+					}); //ajax
+	});//click
 	$("#wishBook").click(function(){
 		//alert("보고싶은책을 보여줍니다");
 	});
