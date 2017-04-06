@@ -89,6 +89,16 @@ select *from saw where id='java';
 select*from saw where id='java';
 -- insert BOOK 
 
+select A.* 
+from (SELECT row_number() as rnum, 
+	bookno,id,star,rvcontent,rvdate 
+	from review where bookno='1' ) A 
+where rnum between 1 and 5
+
+select title from book where bookno='1'
+
+SELECT row_number() over(order by rvdate desc) as rnum, bookno,id,star,rvcontent,rvdate from review where bookno='1'
+
 Insert into SCOTT.BOOK (BOOKNO,TITLE,RATE,AUTHOR,PUB,PUBDATE,GENRE) values (1,'부의 미래',0,'앨빈 토플러','청림출판',to_date('06/08/20','RR/MM/DD'),'경영/경제');
 Insert into SCOTT.BOOK (BOOKNO,TITLE,RATE,AUTHOR,PUB,PUBDATE,GENRE) values (2,'클라우스 슈밥의 제4차 산업혁명',0,'클라우스 슈밥','새로운현재',to_date('16/04/20','RR/MM/DD'),'경영/경제');
 Insert into SCOTT.BOOK (BOOKNO,TITLE,RATE,AUTHOR,PUB,PUBDATE,GENRE) values (3,'삶의 정도',0,'윤석철','위즈덤하우스',to_date('11/01/10','RR/MM/DD'),'경영/경제');
@@ -167,6 +177,7 @@ Insert into SCOTT.BOOK (BOOKNO,TITLE,RATE,AUTHOR,PUB,PUBDATE,GENRE) values (75,'
 Insert into SCOTT.BOOK (BOOKNO,TITLE,RATE,AUTHOR,PUB,PUBDATE,GENRE) values (76,'떨지 않고 말 잘하는 법',0,'이진희 외 1명','심플라이프',to_date('16/08/10','RR/MM/DD'),'자기계발');
 Insert into SCOTT.BOOK (BOOKNO,TITLE,RATE,AUTHOR,PUB,PUBDATE,GENRE) values (77,'카피책',0,'정철','허밍버드',to_date('16/01/25','RR/MM/DD'),'자기계발');
 Insert into SCOTT.BOOK (BOOKNO,TITLE,RATE,AUTHOR,PUB,PUBDATE,GENRE) values (78,'기획의 신',0,'임영균','스몰빅라이프',to_date('17/03/20','RR/MM/DD'),'자기계발');
+
 
 
 select A.* from(
