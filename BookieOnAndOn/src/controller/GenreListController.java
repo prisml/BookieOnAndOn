@@ -17,6 +17,7 @@ public class GenreListController implements Controller {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		response.setContentType("text/html;charset=utf-8");
 		String genre=request.getParameter("genre");
 		String page = request.getParameter("pageNo");
 		PrintWriter out=response.getWriter();

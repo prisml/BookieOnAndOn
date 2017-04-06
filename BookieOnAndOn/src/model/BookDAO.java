@@ -133,6 +133,7 @@ public class BookDAO {
 		}finally{
 			closeAll(rs, pstmt,con);
 		}
+		System.out.println(list);
 		return list;
 	}
 	/**
