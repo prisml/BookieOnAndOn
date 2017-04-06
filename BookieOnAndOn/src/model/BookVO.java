@@ -29,6 +29,18 @@ public class BookVO implements VO{
 		this.rate = rate;
 		this.bookcover = bookcover;
 	}
+	public BookVO(String bookno, String title, String author, String pub, String pubdate, String genre, String summary,
+			double rate) {
+		super();
+		this.bookno = bookno;
+		this.title = title;
+		this.author = author;
+		this.pub = pub;
+		this.pubdate = pubdate;
+		this.genre = genre;
+		this.summary = summary;
+		this.rate = rate;
+	}
 	public String getBookno() {
 		return bookno;
 	}

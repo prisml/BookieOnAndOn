@@ -86,4 +86,14 @@ drop table booking;
 
 -- insert BOOK 
 
+select A.* 
+from (SELECT row_number() as rnum, 
+	bookno,id,star,rvcontent,rvdate 
+	from review where bookno='1' ) A 
+where rnum between 1 and 5
+
+select title from book where bookno='1'
+
+SELECT row_number() over(order by rvdate desc) as rnum, bookno,id,star,rvcontent,rvdate from review where bookno='1'
+
 
