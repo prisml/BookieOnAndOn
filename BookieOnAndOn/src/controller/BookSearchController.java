@@ -4,6 +4,9 @@ import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.json.JSONObject;
+
 import model.BookDAO;
 import model.BookVO;
 import model.ListVO;
@@ -18,7 +21,6 @@ public class BookSearchController implements Controller {
 		
 		String title = request.getParameter("title");
 		int totalFindBookListCount = BookDAO.getInstance().getTotalFindBookListCount(title);
-		System.out.println("아나 시발" + totalFindBookListCount);
 		PagingBean pagingBean = null;
 
 		if(pageNo == null){
@@ -31,8 +33,9 @@ public class BookSearchController implements Controller {
 		ArrayList<VO> findBookList =BookDAO.getInstance().findBookByTitle(title, pagingBean);
 		
 		ListVO lvo = new ListVO(findBookList, pagingBean);
-		
+		 
 		request.setAttribute("lvo", lvo);
+		request.setAttribute("title", title);
 		return "bookieOnAndOn/bookSearch.jsp";
 	}
 
