@@ -13,6 +13,7 @@ public class HandlerMapping {
 
 	public Controller create(String command) {
 		Controller c = null;
+		System.out.println(command+command.length());
 		if (command.equals("main")) {
 			c = new MainController();
 		} else if(command.equals("sawBookList")){

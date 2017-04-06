@@ -26,10 +26,33 @@
 				dataType:"json",
 				data:"command=genre&genre="+$(this).text(),
 				success:function(data){
-					
+					 var info="";
+					 for(var i=0;i<3;i++){
+						 info+="<div class='row'>";
+						 for(var j=0;j<4;j++){
+							 info+="<div class='col-md-3 portfolio-item'>";
+							 info+="<a href='#'>";
+							 info+="<img class='img-responsive' src='http://placehold.it/260x390' alt=''>";
+							 //info+="<img class='img-responsive' src="+data.list[i*4+j].bookcover+" alt=''>"
+							 info+="</a></div>";
+						 }
+						 info+="</div>";
+					 }
+					 
+					 var paging="";
+					 
+					 
+					 $("#showBookList").html(info+paging);
 				}//success
-			});//ajax 
-	 });//click
+			});//ajax			
+	 });// .nav-justified li click
+	 $(document).ready(function(){
+		 $(".col-lg-12 li").click(function(){
+			 $(".active").removeClass('active');
+			 $(this).addClass("active");
+			 
+	 });// 
+		 <li><a href="#">&laquo;</a></li>
  });//ready
  </script>
 </head>
@@ -53,68 +76,19 @@
   	</ul>
   	<br><br>
   	<!-- 책 리스트  --> 
-  	<!-- Projects Row -->
-				<div class="row">
-					<div class="col-md-3 portfolio-item">
-						<a href="#"> <img class="img-responsive" src="http://placehold.it/260x390" alt=""></a>
-					</div>
-					<div class="col-md-3 portfolio-item">
-						<a href="#"> <img class="img-responsive" src="http://placehold.it/260x390" alt=""></a>
-					</div>
-					<div class="col-md-3 portfolio-item">
-						<a href="#"> <img class="img-responsive" src="http://placehold.it/260x390" alt=""></a>
-					</div>
-					<div class="col-md-3 portfolio-item">
-						<a href="#"> <img class="img-responsive" src="http://placehold.it/260x390" alt=""></a>
-					</div>
-				</div>
-				<!-- /.row -->
-				<!-- Projects Row -->
-				<div class="row">
-					<div class="col-md-3 portfolio-item">
-						<a href="#"> <img class="img-responsive" src="http://placehold.it/260x390" alt=""></a>
-					</div>
-					<div class="col-md-3 portfolio-item">
-						<a href="#"> <img class="img-responsive" src="http://placehold.it/260x390" alt=""></a>
-					</div>
-					<div class="col-md-3 portfolio-item">
-						<a href="#"> <img class="img-responsive" src="http://placehold.it/260x390" alt=""></a>
-					</div>
-					<div class="col-md-3 portfolio-item">
-						<a href="#"> <img class="img-responsive" src="http://placehold.it/260x390" alt=""></a>
-					</div>
-				</div>
-				<!-- /.row -->
-				<!-- Projects Row -->
-				<div class="row">
-					<div class="col-md-3 portfolio-item">
-						<a href="#"> <img class="img-responsive" src="http://placehold.it/260x390" alt=""></a>
-					</div>
-					<div class="col-md-3 portfolio-item">
-						<a href="#"> <img class="img-responsive" src="http://placehold.it/260x390" alt=""></a>
-					</div>
-					<div class="col-md-3 portfolio-item">
-						<a href="#"> <img class="img-responsive" src="http://placehold.it/260x390" alt=""></a>
-					</div>
-					<div class="col-md-3 portfolio-item">
-						<a href="#"> <img class="img-responsive" src="http://placehold.it/260x390" alt=""></a>
-					</div>
-				</div>
-				<!-- /.row -->
-  	
-  	
+  	<div id="showBookList"></div>			
   	
 	<hr>
 	<!-- 페이징 -->
 	<div class="row text-center">
 			<div class="col-lg-12">
 				<ul class="pagination">
-					<li><a href="#">&laquo;</a></li>
-					<li class="active"><a href="#">1</a></li>
-					<li><a href="#">2</a></li>
-					<li><a href="#">3</a></li>
-					<li><a href="#">4</a></li>
-					<li><a href="#">5</a></li>
+					<div id="pre"></div>
+					<li class="active"><a href="#"></a></li>
+					<li><a href="#"></a></li>
+					<li><a href="#"></a></li>
+					<li><a href="#"></a></li>
+					<li><a href="#"></a></li>
 					<li><a href="#">&raquo;</a></li>
 				</ul>
 			</div><!-- col-lg-12 -->  	

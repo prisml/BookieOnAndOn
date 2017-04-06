@@ -187,3 +187,6 @@ select A.* from(
 )	A where rnum between 1 and 12;
 	
 select genre from BOOK;
+
+
+
