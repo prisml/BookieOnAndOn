@@ -25,39 +25,31 @@ $(document).ready(function(){
 			success:function(data){
 			var info="";	
 			for(var i=0;i<data.list.length;i++){
-				//<div class='container-fluid bg-3 text-center'> <div class='row'> </div></div>
-				info+=" <div class='col-sm-3'>";
+				info+="<div class='col-sm-3'>";
 				info+="<img src='http://placehold.it/260x390'><p>";
 				info+=data.list[i].title+"<br>";
 				info+=data.list[i].rate;
 				info+="</p></div>";
 			}
 			
+			var paging="";
 			
-	/* 		
-			<p class="paging">
-			<c:if test="${requestScope.listVO.pagingBean.previousPageGroup}">
-		<a href="${pageContext.request.contextPath}/DispatcherServlet?command=list&nowPage=${requestScope.listVO.pagingBean.startPageOfPageGroup-1}"> ◀</a>
-			</c:if>
-				<c:forEach var="num"
-					begin="${requestScope.listVO.pagingBean.startPageOfPageGroup}"
-					end="${requestScope.listVO.pagingBean.endPageOfPageGroup}">
-					<c:choose>
-						<c:when test="${num!=requestScope.listVO.pagingBean.nowPage }">
-							<a href="${pageContext.request.contextPath}/DispatcherServlet?command=list&nowPage=${num}">${num }</a>
-						</c:when>
-						<c:otherwise>
-								${num }
-						</c:otherwise>
-					</c:choose>
-				</c:forEach>
-				
-					<c:if test="${requestScope.listVO.pagingBean.nextPageGroup}">
-		<a href="${pageContext.request.contextPath}/DispatcherServlet?command=list&nowPage=${requestScope.listVO.pagingBean.endPageOfPageGroup+1}">  ▶</a>
-			</c:if>
-
-			</p> */
-			$("#mypageInfo").html(info);
+			 for(var i=data.pagingBean.startPageOfPageGroup;i<=data.pagingBean.endPageOfPageGroup;i++){
+				 if(data.pagingBean.nowPage!=i){
+							 	paging+="<a href='#'>";
+								paging+=i;
+								paging+="</a>";
+				 }else{
+					 paging+=i;
+				 }
+	 
+			 }
+							
+			 
+			 
+			 
+			$("#mypageInfo").html(info+paging); 
+			
 				
 						}
 					}); 
