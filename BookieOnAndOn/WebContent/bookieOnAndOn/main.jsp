@@ -4,7 +4,6 @@
 <html>
 <head>
 <title>Verti by HTML5 UP</title>
-<meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css" />
@@ -135,6 +134,6 @@
 	<script src="${pageContext.request.contextPath}/assets/js/util.js"></script>
 	<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 	<script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
-	
+
 </body>
 </html>

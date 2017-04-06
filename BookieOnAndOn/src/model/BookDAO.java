@@ -11,24 +11,52 @@ import javax.sql.DataSource;
 public class BookDAO {
 	private static BookDAO instance = new BookDAO();
 	private DataSource dataSource;
-	private BookDAO(){
-		dataSource=DataSourceManager.getInstance().getDataSource();
+
+	private BookDAO() {
+		dataSource = DataSourceManager.getInstance().getDataSource();
 	}
-	public static BookDAO getInstance(){
+
+	public static BookDAO getInstance() {
 		return instance;
 	}
-	public void closeAll(PreparedStatement pstmt,
-			Connection con) throws SQLException{
-		closeAll(null,pstmt,con);
+
+	public void closeAll(PreparedStatement pstmt, Connection con) throws SQLException {
+		closeAll(null, pstmt, con);
 	}
-	public void closeAll(ResultSet rs,PreparedStatement pstmt,
-			Connection con) throws SQLException{
-		if(rs!=null)
+
+	public void closeAll(ResultSet rs, PreparedStatement pstmt, Connection con) throws SQLException {
+		if (rs != null)
 			rs.close();
-		if(pstmt!=null)
+		if (pstmt != null)
 			pstmt.close();
-		if(con!=null)
+		if (con != null)
 			con.close();
+	}
+
+	/**
+	 * 도서 상세 정보 가져오기 - 영덕
+	 * @param no
+	 * @return
+	 * @throws SQLException
+	 */
+	public BookVO getBookInfoByNo(String no) throws SQLException{
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		BookVO result = null;
+		try{
+			con=dataSource.getConnection();
+			String sql="select title,author,pub,pubdate,genre,summary,rate from book where bookno=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, no);
+			rs=pstmt.executeQuery();
+			if(rs.next()){
+				result = new BookVO(no,rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getDouble(7));
+			}
+		}finally{
+			closeAll(rs, pstmt,con);
+		}
+		return result;
 	}
 	
 	/**
@@ -130,6 +158,12 @@ public class BookDAO {
 		}
 		return contents;
 	}
+	/**
+	 * 장르 별 도서 수 -서경
+	 * @param genre
+	 * @return
+	 * @throws SQLException
+	 */
 	public int getGenreBookCount(String genre) throws SQLException{
 		Connection con=null;
 		PreparedStatement pstmt=null;
