@@ -14,9 +14,11 @@ public class HandlerMapping {
 		Controller c = null;
 		if (command.equals("main")) {
 			c = new MainController();
-		} else if(command.equals("detail")) {
+		} else if (command.equals("genre")) {
+			c = new GenreListController();
+		} else if (command.equals("detail")) {
 			c = new BookDetailController();
-		} else if(command.equals("getReviewList")) {
+		} else if (command.equals("getReviewList")) {
 			c = new GetReviewListController();
 		} else if(command.equals("saw")) {
 			c = new SawController();
