@@ -31,7 +31,7 @@ public class WishBookListController implements Controller {
 		System.out.println(listvo.getList());
 		request.setAttribute("listVO", listvo);
 		
-		return "bookieOnAndOn/mypage2.jsp";
+		return "bookieOnAndOn/wishBookList.jsp";
 	}
 
 }

@@ -42,7 +42,7 @@ public class SawBookListController implements Controller {
 		//out.close();
 		
 		//return "AjaxView";
-		return "bookieOnAndOn/mypage1.jsp";
+		return "bookieOnAndOn/sawBookList.jsp";
 	}
 
 }
