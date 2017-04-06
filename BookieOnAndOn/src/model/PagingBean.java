@@ -21,7 +21,7 @@ public class PagingBean {
 	/**
 	 * 페이지 그룹당 페이지수
 	 */
-	private int pageNumberPerPageGroup = 5;
+	private int pageNumberPerPageGroup = 4;
 	/**
 	 * database에 저장된 총게시물수
 	 */
