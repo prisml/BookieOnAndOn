@@ -3,13 +3,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<title>메인</title>  
 <title>Verti by HTML5 UP</title>
-<meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css" />
-<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -21,11 +18,42 @@
 	 $(".nav-justified li").click(function(){
 		 $(".active").removeClass('active');
 		 $(this).addClass("active");
-	 });//click
+  		 $.ajax({
+				type:"get",
+				url:"DispatcherServlet",
+				dataType:"json",
+				data:"command=genre&genre="+$(this).text(),
+				success:function(data){
+					 var info="";
+					 for(var i=0;i<3;i++){
+						 info+="<div class='row'>";
+						 for(var j=0;j<4;j++){
+							 info+="<div class='col-md-3 portfolio-item'>";
+							 info+="<a href='#'>";
+							 info+="<img class='img-responsive' src='http://placehold.it/260x390' alt=''>";
+							 //info+="<img class='img-responsive' src="+data.list[i*4+j].bookcover+" alt=''>"
+							 info+="</a></div>";
+						 }
+						 info+="</div>";
+					 }
+					 
+					 var paging="";
+					 
+					 
+					 $("#showBookList").html(info+paging);
+				}//success
+			});//ajax			
+	 });// .nav-justified li click
+	 $(document).ready(function(){
+		 $(".col-lg-12 li").click(function(){
+			 $(".active").removeClass('active');
+			 $(this).addClass("active");
+			 
+	 });// 
  });//ready
-
  </script>
 </head>
+
 <body class="homepage"> 
 	<div id="page-wrapper">
 		<jsp:include page="/template/header.jsp"></jsp:include>
@@ -33,26 +61,44 @@
 			<div class="container">
 			
 			<!-- Section은 여기서 작업하도록! -->
-	<!-- 장르 선택 탭 -->			
-	<ul class="nav nav-tabs nav-justified">	
-    <li class="active"><a href="#">전체</a></li>
+<ul class="nav nav-tabs nav-justified">	
+    <li class="active"><a href="${pageContext.request.contextPath}/index.jsp">전체</a></li>
     <li><a href="#">인문</a></li>
     <li><a href="#">소설</a></li>
     <li><a href="#">자기계발</a></li>
     <li><a href="#">경영/경제</a></li>
     <li><a href="#">IT</a></li>
     <li><a href="#">만화</a></li>
-  	</ul> 
+  	</ul>
+  	<br><br> 
+  	<!-- 책 리스트  --> 
+  	<div id="showBookList"></div>			
+  	
+	<hr>
+	<!-- 페이징 -->
+	<div class="row text-center">
+			<div class="col-lg-12">
+				<ul class="pagination">
+					<li class="active"><a href="#"></a></li>
+					<li><a href="#"></a></li>
+					<li><a href="#"></a></li>
+					<li><a href="#"></a></li>
+					<li><a href="#"></a></li>
+					<li><a href="#">&raquo;</a></li>
+				</ul>
+			</div><!-- col-lg-12 -->  	
+		</div><!-- row text-center -->
 			</div>
 		</div>
-	<jsp:include page="/template/footer.jsp"></jsp:include>
+		<jsp:include page="/template/footer.jsp"></jsp:include>
 	</div>
 
 
+	
+	
 
-
-
-
+	
+	
 	<!-- Scripts -->
 	
 	<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
@@ -61,6 +107,6 @@
 	<script src="${pageContext.request.contextPath}/assets/js/util.js"></script>
 	<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 	<script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
-	
+
 </body>
 </html>
