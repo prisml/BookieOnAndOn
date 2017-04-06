@@ -13,7 +13,7 @@
 	<div id="page-wrapper">
 		<jsp:include page="/template/header.jsp"></jsp:include>
 		<div id="features-wrapper">
-			<div class="container">
+			<div class="container"> 
 				<div class="container-fluid bg-3 text-center">
 					<div class="row">
 						<c:forEach var="lvo" items="${requestScope.lvo.list}">

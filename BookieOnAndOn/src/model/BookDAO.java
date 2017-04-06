@@ -39,7 +39,7 @@ public class BookDAO {
 			StringBuilder sql=new StringBuilder();
 			sql.append("select findBookList.* from(");
 			sql.append("select row_number() over(order by bookno) rnum, bookno, title, author, pub, rate ");
-			sql.append("from book where title like '");
+			sql.append("from book where title like '"); 
 			sql.append(title.charAt(0) + "%' order by bookno");
 			sql.append(") findBookList where rnum between ? and ? ");
 			pstmt = con.prepareStatement(sql.toString());

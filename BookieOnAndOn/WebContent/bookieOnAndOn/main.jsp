@@ -48,7 +48,7 @@
     <li><a href="#">IT</a></li>
     <li><a href="#">만화</a></li>
   	</ul>
-  	<br><br>
+  	<br><br> 
   	<!-- 책 리스트  --> 
   	<!-- Projects Row -->
 				<div class="row">
