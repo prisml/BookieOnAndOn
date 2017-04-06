@@ -33,6 +33,13 @@ public class ReviewDAO {
 			con.close();
 	}
 
+	/**
+	 * 도서에 해당하는 리뷰 목록 - 영덕
+	 * @param no
+	 * @param pb
+	 * @return
+	 * @throws SQLException
+	 */
 	public ArrayList<VO> getReviewList(String no, PagingBean pb) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -64,6 +71,12 @@ public class ReviewDAO {
 		return list;
 	}
 
+	/**
+	 * 도서에 해당하는 리뷰의 수 - 영덕
+	 * @param no
+	 * @return
+	 * @throws SQLException
+	 */
 	public int totalReviewCount(String no) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
