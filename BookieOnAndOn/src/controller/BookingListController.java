@@ -1,14 +1,37 @@
 package controller;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import model.BookingDAO;
+import model.BookingVO;
+import model.ListVO;
+import model.PagingBean;
 
 public class BookingListController implements Controller {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		// TODO Auto-generated method stub
-		return "redirect:booking_list.jsp";
+		String id=request.getParameter("id");
+		System.out.println("jsp Parameter: "+id);
+		/*int totalContents = BookingDAO.getInstance().getTotalBookingContent(id);
+		String nowPage = request.getParameter("pageNo");
+		System.out.println(nowPage);
+		PagingBean pagingBean = null;
+		if (nowPage == null){
+			pagingBean = new PagingBean(totalContents);
+		} else {
+			pagingBean = new PagingBean(totalContents, Integer.parseInt(nowPage));
+		}*/
+		ArrayList<BookingVO> list = BookingDAO.getInstance().getBookingList(id);
+		System.out.println("DAO에서 넘어 온 list: "+list);
+		System.out.println("list 수: "+list.size());
+		//ListVO listVO = new ListVO(list, pagingBean);
+		request.setAttribute("list", list);
+		request.setAttribute("listSize", list.size());
+		return "bookieOnAndOn/booking_list.jsp";
 	}
 
 }
