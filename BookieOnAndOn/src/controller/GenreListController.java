@@ -31,8 +31,6 @@ public class GenreListController implements Controller {
 		JSONObject json=new JSONObject(listVo);
 		out.print(json.toString());
 		out.close();
-		System.out.println("리스트컨트롤러에서장르리스트"+list);
 		return "AjaxView";
 	}
-
 }

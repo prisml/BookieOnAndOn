@@ -3,15 +3,16 @@ drop table book;
 
 
 create table book(
-    bookno number primary key,
-      title varchar2(100) not null,
+
+   bookno number primary key,
+   title varchar2(100) not null,
    bookphoto blob,
    rate number default 0,
    author varchar2(100) not null,
    pub varchar2(100) not null,
    pubdate date not null,
    genre varchar2(100) not null,
-   summary clob
+   summary clob null
 )
 drop sequence bookno_seq;
 create sequence bookno_seq nocache;
@@ -25,7 +26,10 @@ create table bookmember(
    name varchar2(100) not null,
    tel varchar2(100) not null
 )
-
+insert into bookmember(id,password,name,tel) values('java','abcd','정우성','01011112222');
+insert into bookmember(id,password,name,tel) values('jquery','dcba','전지현','01033334444');
+insert into bookmember(id,password,name,tel) values('jdbc','aaaa','아이유','01055556666');
+select * from bookmember;
 --리뷰 테이블
 drop table review;
 
@@ -72,8 +76,22 @@ create table booking(
    constraint bk_id3 foreign key(senderid) references bookmember(id),
    constraint bk_id4 foreign key(receiverid) references bookmember(id)
 )
+insert into booking(senderid,receiverid) values('java','jquery');
+insert into booking(senderid,receiverid) values('java','jdbc');
+insert into booking(senderid,receiverid) values('jquery','java');
 
+select receiverid from booking where senderid='java';
+select count(*) from booking where senderid='java';
+select receiverid from booking where senderid='jquery';
+select count(*) from booking where senderid='jquery';
+select receiberid from booking where senderid='jdbc';
+select count(*) from booking where senderid='jdbc';
+-- 정우성이 부킹한 아이디와 부킹한 수
+select receiverid, count(*) from booking where senderid='java';
+select receiverid, count(*) from booking where senderid='java' group by receiverid;
+select receiverid, count(*) from booking where senderid='jquery' group by receiverid;
 
+select receiberid, count(*) from booking where senderid='jdbc' group by receiverid;
 -- 아래꺼부터 드롭
 drop table book;
 drop sequence bookno_seq;
@@ -83,19 +101,7 @@ drop table saw;
 drop table wish;
 drop table booking;
 
-
 -- insert BOOK 
-
-select A.* 
-from (SELECT row_number() as rnum, 
-	bookno,id,star,rvcontent,rvdate 
-	from review where bookno='1' ) A 
-where rnum between 1 and 5
-
-select title from book where bookno='1'
-
-SELECT row_number() over(order by rvdate desc) as rnum, bookno,id,star,rvcontent,rvdate from review where bookno='1'
-
 Insert into SCOTT.BOOK (BOOKNO,TITLE,RATE,AUTHOR,PUB,PUBDATE,GENRE) values (1,'부의 미래',0,'앨빈 토플러','청림출판',to_date('06/08/20','RR/MM/DD'),'경영/경제');
 Insert into SCOTT.BOOK (BOOKNO,TITLE,RATE,AUTHOR,PUB,PUBDATE,GENRE) values (2,'클라우스 슈밥의 제4차 산업혁명',0,'클라우스 슈밥','새로운현재',to_date('16/04/20','RR/MM/DD'),'경영/경제');
 Insert into SCOTT.BOOK (BOOKNO,TITLE,RATE,AUTHOR,PUB,PUBDATE,GENRE) values (3,'삶의 정도',0,'윤석철','위즈덤하우스',to_date('11/01/10','RR/MM/DD'),'경영/경제');
@@ -127,7 +133,7 @@ Insert into SCOTT.BOOK (BOOKNO,TITLE,RATE,AUTHOR,PUB,PUBDATE,GENRE) values (28,'
 Insert into SCOTT.BOOK (BOOKNO,TITLE,RATE,AUTHOR,PUB,PUBDATE,GENRE) values (29,'블리치',0,'쿠보','서울문화사',to_date('17/02/24','RR/MM/DD'),'만화');
 Insert into SCOTT.BOOK (BOOKNO,TITLE,RATE,AUTHOR,PUB,PUBDATE,GENRE) values (30,'데스노트',0,'오바타 타케시','대원씨아이',to_date('14/10/08','RR/MM/DD'),'만화');
 Insert into SCOTT.BOOK (BOOKNO,TITLE,RATE,AUTHOR,PUB,PUBDATE,GENRE) values (31,'강철의 연금술사',0,'히루미 아라카와','학산문화사',to_date('15/10/15','RR/MM/DD'),'만화');
-Insert into SCOTT.BOOK (BOOKNO,TITLE,RATE,AUTHOR,PUB,PUBDATE,GENRE) values (32,'포켓몬스터',0,'쿠사카 히데노리','대원',to_date('99/08/31','RR/MM/DD'),'만화');
+Insert into SCOTT.BOOK (BOOKNO,TITLE,RATE,AUTHOR,PUB,PUBDATE,GENRE) values (32,'포켓몬스터',0,'쿠사카 히데노리','대원',to_date('99/08/31','RR/MM/DD'),'만화'); 
 Insert into SCOTT.BOOK (BOOKNO,TITLE,RATE,AUTHOR,PUB,PUBDATE,GENRE) values (33,'너의 이름은',0,'신카이 마코토','대원씨아이',to_date('16/12/30','RR/MM/DD'),'만화');
 Insert into SCOTT.BOOK (BOOKNO,TITLE,RATE,AUTHOR,PUB,PUBDATE,GENRE) values (34,'언어의 정원',0,'신카이 마코토','대원씨아이',to_date('17/01/06','RR/MM/DD'),'만화');
 Insert into SCOTT.BOOK (BOOKNO,TITLE,RATE,AUTHOR,PUB,PUBDATE,GENRE) values (35,'시간을 달리는 소녀',0,'츠츠이 야스타카','북스토리',to_date('14/10/15','RR/MM/DD'),'만화');
@@ -175,15 +181,25 @@ Insert into SCOTT.BOOK (BOOKNO,TITLE,RATE,AUTHOR,PUB,PUBDATE,GENRE) values (76,'
 Insert into SCOTT.BOOK (BOOKNO,TITLE,RATE,AUTHOR,PUB,PUBDATE,GENRE) values (77,'카피책',0,'정철','허밍버드',to_date('16/01/25','RR/MM/DD'),'자기계발');
 Insert into SCOTT.BOOK (BOOKNO,TITLE,RATE,AUTHOR,PUB,PUBDATE,GENRE) values (78,'기획의 신',0,'임영균','스몰빅라이프',to_date('17/03/20','RR/MM/DD'),'자기계발');
 
+Insert into SCOTT.BOOK (BOOKNO,TITLE,RATE,AUTHOR,PUB,PUBDATE,GENRE) values (79,'원피스1',0,'오다 에이치로','대원',to_date('16/11/25','RR/MM/DD'),'만화');
+Insert into SCOTT.BOOK (BOOKNO,TITLE,RATE,AUTHOR,PUB,PUBDATE,GENRE) values (80,'원피스1',0,'오다 에이치로','대원',to_date('16/11/25','RR/MM/DD'),'만화');
+Insert into SCOTT.BOOK (BOOKNO,TITLE,RATE,AUTHOR,PUB,PUBDATE,GENRE) values (81,'원피스1',0,'오다 에이치로','대원',to_date('16/11/25','RR/MM/DD'),'만화');
+Insert into SCOTT.BOOK (BOOKNO,TITLE,RATE,AUTHOR,PUB,PUBDATE,GENRE) values (82,'원피스1',0,'오다 에이치로','대원',to_date('16/11/25','RR/MM/DD'),'만화');
+Insert into SCOTT.BOOK (BOOKNO,TITLE,RATE,AUTHOR,PUB,PUBDATE,GENRE) values (83,'원피스1',0,'오다 에이치로','대원',to_date('16/11/25','RR/MM/DD'),'만화');
+Insert into SCOTT.BOOK (BOOKNO,TITLE,RATE,AUTHOR,PUB,PUBDATE,GENRE) values (84,'원피스1',0,'오다 에이치로','대원',to_date('16/11/25','RR/MM/DD'),'만화');
+Insert into SCOTT.BOOK (BOOKNO,TITLE,RATE,AUTHOR,PUB,PUBDATE,GENRE) values (85,'원피스1',0,'오다 에이치로','대원',to_date('16/11/25','RR/MM/DD'),'만화');
+Insert into SCOTT.BOOK (BOOKNO,TITLE,RATE,AUTHOR,PUB,PUBDATE,GENRE) values (86,'원피스1',0,'오다 에이치로','대원',to_date('16/11/25','RR/MM/DD'),'만화');
+Insert into SCOTT.BOOK (BOOKNO,TITLE,RATE,AUTHOR,PUB,PUBDATE,GENRE) values (87,'원피스1',0,'오다 에이치로','대원',to_date('16/11/25','RR/MM/DD'),'만화');
+Insert into SCOTT.BOOK (BOOKNO,TITLE,RATE,AUTHOR,PUB,PUBDATE,GENRE) values (88,'원피스1',0,'오다 에이치로','대원',to_date('16/11/25','RR/MM/DD'),'만화');
+Insert into SCOTT.BOOK (BOOKNO,TITLE,RATE,AUTHOR,PUB,PUBDATE,GENRE) values (89,'원피스1',0,'오다 에이치로','대원',to_date('16/11/25','RR/MM/DD'),'만화');
+Insert into SCOTT.BOOK (BOOKNO,TITLE,RATE,AUTHOR,PUB,PUBDATE,GENRE) values (90,'원피스1',0,'오다 에이치로','대원',to_date('16/11/25','RR/MM/DD'),'만화');
+Insert into SCOTT.BOOK (BOOKNO,TITLE,RATE,AUTHOR,PUB,PUBDATE,GENRE) values (91,'원피스1',0,'오다 에이치로','대원',to_date('16/11/25','RR/MM/DD'),'만화');
+Insert into SCOTT.BOOK (BOOKNO,TITLE,RATE,AUTHOR,PUB,PUBDATE,GENRE) values (92,'원피스1',0,'오다 에이치로','대원',to_date('16/11/25','RR/MM/DD'),'만화');
+Insert into SCOTT.BOOK (BOOKNO,TITLE,RATE,AUTHOR,PUB,PUBDATE,GENRE) values (93,'원피스1',0,'오다 에이치로','대원',to_date('16/11/25','RR/MM/DD'),'만화');
+Insert into SCOTT.BOOK (BOOKNO,TITLE,RATE,AUTHOR,PUB,PUBDATE,GENRE) values (94,'원피스1',0,'오다 에이치로','대원',to_date('16/11/25','RR/MM/DD'),'만화');
+Insert into SCOTT.BOOK (BOOKNO,TITLE,RATE,AUTHOR,PUB,PUBDATE,GENRE) values (95,'원피스1',0,'오다 에이치로','대원',to_date('16/11/25','RR/MM/DD'),'만화');
 
 
-select A.* from(
-	SELECT row_number() over(order by rate desc) as rnum,
-	bookno,title,author,pub,pubdate,rate,bookphoto 
-	from book where genre='소설'
-)	A where rnum between 1 and 12;
-	
-select genre from BOOK;
 
 
 

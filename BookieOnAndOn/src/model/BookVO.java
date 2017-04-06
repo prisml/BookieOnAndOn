@@ -16,6 +16,15 @@ public class BookVO implements VO{
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	public BookVO(String bookno, String title, String author, String pub, double rate){
+		this.bookno = bookno;
+		this.title = title;
+		this.author = author;
+		this.pub = pub;
+		this.rate = rate;
+	}
+	
 	public BookVO(String bookno, String title, String author, String pub, String pubdate, String genre, String summary,
 			double rate, Blob bookcover) {
 		super();
@@ -95,17 +104,11 @@ public class BookVO implements VO{
 	public void setBookcover(Blob bookcover) {
 		this.bookcover = bookcover;
 	}
+	
 	@Override
 	public String toString() {
 		return "BookVO [bookno=" + bookno + ", title=" + title + ", author=" + author + ", pub=" + pub + ", pubdate="
 				+ pubdate + ", genre=" + genre + ", summary=" + summary + ", rate=" + rate + ", bookcover=" + bookcover
 				+ "]";
 	}
-	
-	
-	
-	
-	
-	
-
 }

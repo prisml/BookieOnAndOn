@@ -3,6 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<title>메인</title>  
 <title>Verti by HTML5 UP</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css" />
@@ -30,7 +31,7 @@
 							 info+="<div class='col-md-3 portfolio-item'>";
 							 info+="<a href='#'>";
 							 info+="<img class='img-responsive' src='http://placehold.it/260x390' alt=''>";
-							 //info+="<img class='img-responsive' src="+data.list[page*12+i*4+j].bookcover+" alt=''>"
+							 //info+="<img class='img-responsive' src="+data.list[i*4+j].bookcover+" alt=''>"
 							 info+=data.list[i*4+j].title;
 							 info+="</a></div>";
 						 }
@@ -86,8 +87,7 @@
 			<div class="container">
 			
 			<!-- Section은 여기서 작업하도록! -->
-	<!-- 장르 선택 탭 -->			
-	<ul class="nav nav-tabs nav-justified">	
+<ul class="nav nav-tabs nav-justified">	
     <li class="active"><a href="${pageContext.request.contextPath}/index.jsp">전체</a></li>
     <li><a href="#">인문</a></li>
     <li><a href="#">소설</a></li>
@@ -96,7 +96,7 @@
     <li><a href="#">IT</a></li>
     <li><a href="#">만화</a></li>
   	</ul>
-  	<br><br>
+  	<br><br> 
   	<!-- 책 리스트  --> 
   	<div id="showBookList">
   	
@@ -106,16 +106,13 @@
 	<div class="row text-center">
 			<div class="col-lg-12">
 				<ul class="pagination">
-									
 				</ul>
 			</div><!-- col-lg-12 -->  	
 		</div><!-- row text-center -->
-	</div><!-- container -->
-</div><!-- features-wrapper -->
-<jsp:include page="/template/footer.jsp"></jsp:include>
-</div><!-- page-wrapper -->
-	
-	
+			</div>
+		</div>
+		<jsp:include page="/template/footer.jsp"></jsp:include>
+	</div>
 	
 	<!-- Scripts -->
 	
