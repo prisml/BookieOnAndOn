@@ -3,10 +3,10 @@ drop table book;
 
 
 create table book(
-    bookno number primary key,
-      title varchar2(100) not null,
-   bookphoto blob null,
-   bookphoto blob, 
+
+   bookno number primary key,
+   title varchar2(100) not null,
+   bookphoto blob,
    rate number default 0,
    author varchar2(100) not null,
    pub varchar2(100) not null,
@@ -183,7 +183,6 @@ Insert into SCOTT.BOOK (BOOKNO,TITLE,RATE,AUTHOR,PUB,PUBDATE,GENRE) values (94,'
 Insert into SCOTT.BOOK (BOOKNO,TITLE,RATE,AUTHOR,PUB,PUBDATE,GENRE) values (95,'원피스1',0,'오다 에이치로','대원',to_date('16/11/25','RR/MM/DD'),'만화');
 
 
-select bookno from book where title like '원%';
 
 
 
