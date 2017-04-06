@@ -18,6 +18,10 @@ public class HandlerMapping {
 			c = new BookDetailController();
 		} else if(command.equals("getReviewList")) {
 			c = new GetReviewListController();
+		} else if(command.equals("saw")) {
+			c = new SawController();
+		} else if(command.equals("wish")) {
+			c = new WishController();
 		}
 		return c;
 	}

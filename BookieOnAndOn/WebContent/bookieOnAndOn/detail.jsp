@@ -31,7 +31,37 @@
 					$("#reviewList").append("</li>");
 				}
 				$("#reviewList").append("</ul>");
+				var pb = data.pagingBean;
+				if(pb.previousPageGroup ==true){
+					$("#reviewPaging").append("<li id=prePage><<</li>");
+				}
+				for(var i=pb.startPageOfPageGroup;i<=pb.endPageOfPageGroup;i++){
+					$("#reviewPaging").append("<li class=movePage>"+i+"</li>");
+				}
+				if(pb.nextPageGroup ==true){
+					$("#reviewPaging").append("<li id=nextPage>>></li>");
+				}
 			}
+		});
+		$("#sawLi").click(function(){
+			$.ajax({
+				type:"get",
+				url:"DispatcherServlet",
+				data:"command=saw&bookno=${vo.bookno}&id=java",
+				success:function(data){
+					alert(data);
+				}
+			});
+		});
+		$("#wishLi").click(function(){
+			$.ajax({
+				type:"get",
+				url:"DispatcherServlet",
+				data:"command=wish&bookno=${vo.bookno}&id=java",
+				success:function(data){
+					alert(data);
+				}
+			});
 		});
 	});
 </script>
@@ -56,8 +86,8 @@
 					</div>
 					<div class="1u 12(medium)">
 						<ul>
-							<li>봤어요</li>
-							<li>보고싶어요</li>
+							<li id="sawLi">봤어요</li>
+							<li id="wishLi">보고싶어요</li>
 						</ul>
 					</div>
 				</div>
@@ -73,7 +103,17 @@
 		<div>
 			<div class="box container">
 				<div class="row 200%">
-					<div id="reviewList" class="12u 12u(medium) important(medium)">
+					<div class="2u 12u(medium)">
+					</div>
+					<div id="reviewList" class="8u 12u(medium) important(medium)">
+					</div>
+					<div class="2u 12u(medium)">
+					</div>
+				</div>
+				<div class="row text-center">
+					<div class="col-lg-12">
+						<ul class="pagination" id="reviewPaging">
+		                </ul>
 					</div>
 				</div>
 			</div>

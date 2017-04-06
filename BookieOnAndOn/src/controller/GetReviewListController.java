@@ -27,8 +27,6 @@ public class GetReviewListController implements Controller {
 				
 		ListVO listVO = new ListVO(list, pb);
 		JSONObject json = new JSONObject(listVO);
-		System.out.println(list);
-		System.out.println(json);
 		out.print(json);
 		return "AjaxView";
 	}
