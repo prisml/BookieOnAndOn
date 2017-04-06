@@ -116,7 +116,7 @@ Insert into SCOTT.BOOK (BOOKNO,TITLE,RATE,AUTHOR,PUB,PUBDATE,GENRE) values (28,'
 Insert into SCOTT.BOOK (BOOKNO,TITLE,RATE,AUTHOR,PUB,PUBDATE,GENRE) values (29,'블리치',0,'쿠보','서울문화사',to_date('17/02/24','RR/MM/DD'),'만화');
 Insert into SCOTT.BOOK (BOOKNO,TITLE,RATE,AUTHOR,PUB,PUBDATE,GENRE) values (30,'데스노트',0,'오바타 타케시','대원씨아이',to_date('14/10/08','RR/MM/DD'),'만화');
 Insert into SCOTT.BOOK (BOOKNO,TITLE,RATE,AUTHOR,PUB,PUBDATE,GENRE) values (31,'강철의 연금술사',0,'히루미 아라카와','학산문화사',to_date('15/10/15','RR/MM/DD'),'만화');
-Insert into SCOTT.BOOK (BOOKNO,TITLE,RATE,AUTHOR,PUB,PUBDATE,GENRE) values (32,'포켓몬스터',0,'쿠사카 히데노리','대원',to_date('99/08/31','RR/MM/DD'),'만화');
+Insert into SCOTT.BOOK (BOOKNO,TITLE,RATE,AUTHOR,PUB,PUBDATE,GENRE) values (32,'포켓몬스터',0,'쿠사카 히데노리','대원',to_date('99/08/31','RR/MM/DD'),'만화'); 
 Insert into SCOTT.BOOK (BOOKNO,TITLE,RATE,AUTHOR,PUB,PUBDATE,GENRE) values (33,'너의 이름은',0,'신카이 마코토','대원씨아이',to_date('16/12/30','RR/MM/DD'),'만화');
 Insert into SCOTT.BOOK (BOOKNO,TITLE,RATE,AUTHOR,PUB,PUBDATE,GENRE) values (34,'언어의 정원',0,'신카이 마코토','대원씨아이',to_date('17/01/06','RR/MM/DD'),'만화');
 Insert into SCOTT.BOOK (BOOKNO,TITLE,RATE,AUTHOR,PUB,PUBDATE,GENRE) values (35,'시간을 달리는 소녀',0,'츠츠이 야스타카','북스토리',to_date('14/10/15','RR/MM/DD'),'만화');
