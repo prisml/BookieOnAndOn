@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -22,7 +22,7 @@
 				type:"get",
 				url:"DispatcherServlet",
 				dataType:"json",
-				data:"command=genre&genre="+$(this).text(),
+				data:"command=genre&pageNo=1&genre="+$(this).text(),
 				success:function(data){
 					 var info="";
 					 for(var i=0;i<3;i++){
@@ -32,24 +32,50 @@
 							 info+="<a href='#'>";
 							 info+="<img class='img-responsive' src='http://placehold.it/260x390' alt=''>";
 							 //info+="<img class='img-responsive' src="+data.list[i*4+j].bookcover+" alt=''>"
+							 info+=data.list[i*4+j].title;
 							 info+="</a></div>";
 						 }
 						 info+="</div>";
-					 }
-					 
+					 }			
 					 var paging="";
-					 
-					 
-					 $("#showBookList").html(info+paging);
+					 for(var k=data.pagingBean.startPageOfPageGroup;k<=data.pagingBean.endPageOfPageGroup;k++){
+						 paging+="<li><a href='#'>"+k+"</a></li>";
+					 }
+					 $(".pagination").html(paging);					 
+					 $("#showBookList").html(info);					
 				}//success
 			});//ajax			
 	 });// .nav-justified li click
-	 $(document).ready(function(){
-		 $(".col-lg-12 li").click(function(){
-			 $(".active").removeClass('active');
-			 $(this).addClass("active");
-			 
-	 });// 
+	 $(".pagination").on("click", "li", function(){
+		 event.preventDefault();
+		 //alert($(".nav-justified li").text());
+		 $(".pagination .active").removeClass('active');
+		 $(this).addClass("active");
+		 $.ajax({
+			type:"get",
+			url:"DispatcherServlet",
+			dataType:"json",
+			data:"command=genre&pageNo="+$(this).text()+"&genre="+$(".nav-justified .active").text(),
+			success:function(data){
+	 			var info="";
+				for(var i=0;i<3;i++){
+					info+="<div class='row'>";
+					for(var j=0;j<4;j++){
+						if(i*4+j+1>data.list.length)
+							break;
+						info+="<div class='col-md-3 portfolio-item'>";
+						info+="<a href='#'>";
+						info+="<img class='img-responsive' src='http://placehold.it/260x390' alt=''>";
+						//info+="<img class='img-responsive' src="+data.list[page*12+i*4+j].bookcover+" alt=''>";
+						info+=data.list[i*4+j].title;
+						info+="</a></div>";
+					}//j
+					info+="</div>";
+				}//i 
+				$("#showBookList").html(info); 
+			}//success
+		  })//ajax
+		});//on
  });//ready
  </script>
 </head>
@@ -72,19 +98,14 @@
   	</ul>
   	<br><br> 
   	<!-- 책 리스트  --> 
-  	<div id="showBookList"></div>			
+  	<div id="showBookList">
   	
+  	</div>			
 	<hr>
 	<!-- 페이징 -->
 	<div class="row text-center">
 			<div class="col-lg-12">
 				<ul class="pagination">
-					<li class="active"><a href="#"></a></li>
-					<li><a href="#"></a></li>
-					<li><a href="#"></a></li>
-					<li><a href="#"></a></li>
-					<li><a href="#"></a></li>
-					<li><a href="#">&raquo;</a></li>
 				</ul>
 			</div><!-- col-lg-12 -->  	
 		</div><!-- row text-center -->
@@ -92,12 +113,6 @@
 		</div>
 		<jsp:include page="/template/footer.jsp"></jsp:include>
 	</div>
-
-
-	
-	
-
-	
 	
 	<!-- Scripts -->
 	
