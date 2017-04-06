@@ -37,11 +37,10 @@ public class SawBookListController implements Controller {
 		JSONObject json=new JSONObject(listvo);
 		out.print(json.toString());
 		System.out.print(json.toString());
-		request.setAttribute("listVO", listvo);
 		out.close();
 		
 		
-		return "bookieOnAndOn/mypage.jsp";
+		return "AjaxView";
 	}
 
 }

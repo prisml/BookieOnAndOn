@@ -13,7 +13,8 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <script type="text/javascript">
-
+var nextpage="";
+var prepage="";
 $(document).ready(function(){
 	$("#sawBook").click(function(){
 		//alert("본책을 보여줍니다");
@@ -23,37 +24,185 @@ $(document).ready(function(){
 			dataType:"json",
 			data:"command=sawBookList&id=java",
 			success:function(data){
-			var info="";	
-			for(var i=0;i<data.list.length;i++){
-				info+="<div class='col-sm-3'>";
-				info+="<img src='http://placehold.it/260x390'>";
-				info+=data.list[i].title+"<br>";
-				info+=data.list[i].rate;
-				info+="</div>";
-			}
-			
+				var info="";	
+				for(var i=0;i<data.list.length;i++){
+					info+="<div class='col-sm-3'>";
+					info+="<img src='http://placehold.it/260x390'>";
+					info+=data.list[i].title+"<br>";
+					info+=data.list[i].rate;
+					info+="</div>";
+				}
+				
 			var paging="";
-			
-			 for(var i=data.pagingBean.startPageOfPageGroup;i<=data.pagingBean.endPageOfPageGroup;i++){
-				 if(data.pagingBean.nowPage!=i){
-							 	paging+="<a href='${pageContext.request.contextPath}/DispatcherServlet?command=sawBookList&nowPage="+i+"'>";
-								paging+=i;
-								paging+="</a>";
-				 }else{
-								paging+=i;
-				 }
-	 
-			 }//paging for문
-			
-			 
-			$("#mypageInfo").html(info+paging); 
+		 	if(data.pagingBean.previousPageGroup){
+				paging+="<li class='previous'><span id='pre'>Previous</span></li>";
+				prepage=data.pagingBean.startPageOfPageGroup;
+			}  
+		    for(var i=data.pagingBean.startPageOfPageGroup;i<=data.pagingBean.endPageOfPageGroup;i++){
+			 if(data.pagingBean.nowPage!=i){
+				paging+="<li><a id='pagelink'>";
+				paging+=i;
+				paging+="</a></li>";
+					 }else{
+				paging+="<li class='active'><a>"+i+"</a></li>";
+					 }
+				 }//paging for문
+			if(data.pagingBean.nextPageGroup){
+				paging+="<li class='next'><span id='next'>Next</span></li>";
+				nextpage=data.pagingBean.endPageOfPageGroup;
+			}  
+
+			$("#mypageInfo").html(info+"<br><div class='container col-sm-12'><ul class='pager pagination'>"+paging+"</ul></div>"); 
 			
 				
 						}//success
 					}); //ajax
-	});//click
+				});//click
+	$("#mypageInfo").on("click","a",function(){
+		var pagingnumber=$(this).text();
+		 $.ajax({
+				type:"get",
+				url:"${pageContext.request.contextPath}/DispatcherServlet",
+				dataType:"json",
+				data:"command=sawBookList&id=java&nowPage="+pagingnumber,
+				success:function(data){
+					var info="";	
+					for(var i=0;i<data.list.length;i++){
+						info+="<div class='col-sm-3'>";
+						info+="<img src='http://placehold.it/260x390'>";
+						info+=data.list[i].title+"<br>";
+						info+=data.list[i].rate;
+						info+="</div>";
+					}
+					
+				var paging="";
+				if(data.pagingBean.previousPageGroup){
+					paging+="<li class='previous'><span id='pre'>Previous</span></li>";
+					prepage=data.pagingBean.startPageOfPageGroup;
+				}  
+			    for(var i=data.pagingBean.startPageOfPageGroup;i<=data.pagingBean.endPageOfPageGroup;i++){
+				 if(data.pagingBean.nowPage!=i){
+					 paging+="<li><a id='pagelink'>";
+						paging+=i;
+						paging+="</a></li>";
+							 }else{
+						paging+="<li class='active'><a>"+i+"</a></li>";
+							 }
+			 
+					 }//paging for문
+			    if(data.pagingBean.nextPageGroup){
+			    	paging+="<li class='next'><span id='next'>Next</span></li>";
+			    	nextpage=data.pagingBean.endPageOfPageGroup;
+					
+				}  
+					 
+				
+		
+			    $("#mypageInfo").empty();
+				$("#mypageInfo").html(info+"<br><div class='container col-sm-12'><ul class='pager pagination'>"+paging+"</ul></div>"); 
+				
+					
+							}//success
+						}); //ajax
+		
+				});//paging 누르면 바뀌는 화면 재구성
+				$("#mypageInfo").on("click","span#next",function(){
+					 $.ajax({
+							type:"get",
+							url:"${pageContext.request.contextPath}/DispatcherServlet",
+							dataType:"json",
+							data:"command=sawBookList&id=java&nowPage="+(nextpage+1),
+							success:function(data){
+								var info="";	
+								for(var i=0;i<data.list.length;i++){
+									info+="<div class='col-sm-3'>";
+									info+="<img src='http://placehold.it/260x390'>";
+									info+=data.list[i].title+"<br>";
+									info+=data.list[i].rate;
+									info+="</div>";
+								}
+								
+							var paging="";
+							if(data.pagingBean.previousPageGroup){
+								paging+="<li class='previous'><span id='pre'>Previous</span></li>";
+								prepage=data.pagingBean.startPageOfPageGroup;
+							}  
+						    for(var i=data.pagingBean.startPageOfPageGroup;i<=data.pagingBean.endPageOfPageGroup;i++){
+							 if(data.pagingBean.nowPage!=i){
+								 paging+="<li><a id='pagelink'>";
+									paging+=i;
+									paging+="</a></li>";
+										 }else{
+									paging+="<li class='active'><a>"+i+"</a></li>";
+										 }
+						 
+								 }//paging for문
+						    if(data.pagingBean.nextPageGroup){
+								paging+="<li class='next'><span id='next'>Next</span></li>";
+								nextpage=data.pagingBean.endPageOfPageGroup;
+							}  
+								 
+							
+					
+						    $("#mypageInfo").empty();
+							$("#mypageInfo").html(info+"<br><div class='container col-sm-12'><ul class='pager pagination'>"+paging+"</ul></div>"); 
+							
+								
+										}//success
+									}); //ajax
+					
+							});//다음페이지로 가기
+							$("#mypageInfo").on("click","span#pre",function(){
+								 $.ajax({
+										type:"get",
+										url:"${pageContext.request.contextPath}/DispatcherServlet",
+										dataType:"json",
+										data:"command=sawBookList&id=java&nowPage="+(prepage-1),
+										success:function(data){
+											var info="";	
+											for(var i=0;i<data.list.length;i++){
+												info+="<div class='col-sm-3'>";
+												info+="<img src='http://placehold.it/260x390'>";
+												info+=data.list[i].title+"<br>";
+												info+=data.list[i].rate;
+												info+="</div>";
+											}
+											
+										var paging="";
+										if(data.pagingBean.previousPageGroup){
+											paging+="<li class='previous'><span id='pre'>Previous</span></li>";
+											prepage=data.pagingBean.startPageOfPageGroup;
+										}  
+									    for(var i=data.pagingBean.startPageOfPageGroup;i<=data.pagingBean.endPageOfPageGroup;i++){
+										 if(data.pagingBean.nowPage!=i){
+											 paging+="<li><a id='pagelink'>";
+												paging+=i;
+												paging+="</a></li>";
+													 }else{
+												paging+="<li class='active'><a>"+i+"</a></li>";
+													 }
+									 
+											 }//paging for문
+									    if(data.pagingBean.nextPageGroup){
+											paging+="<li class='next'><span id='next'>Next</span></li>";
+											nextpage=data.pagingBean.endPageOfPageGroup;
+										}  
+											 
+										
+								
+									    $("#mypageInfo").empty();
+										$("#mypageInfo").html(info+"<br><div class='container col-sm-12'><ul class='pager pagination'>"+paging+"</ul></div>"); 
+										
+											
+													}//success
+												}); //ajax
+								
+										});//이전페이지로 가기
+	
+	
+	
 	$("#wishBook").click(function(){
-		//alert("보고싶은책을 보여줍니다");
+		alert("보고싶은책을 보여줍니다");
 	});
 });//ready
 
