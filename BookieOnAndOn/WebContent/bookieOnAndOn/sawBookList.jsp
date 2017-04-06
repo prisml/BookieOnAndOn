@@ -26,7 +26,7 @@
 			<div class="container">
 		
 <ul class="nav nav-tabs">
-  
+  <li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=mypage" >mypage </a></li>
   <li class="active"><a href="${pageContext.request.contextPath}/DispatcherServlet?command=sawBookList" >본책 </a></li>
   <li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=wishBookList" id="wishBook" >보고싶은책</a></li>
 </ul>
