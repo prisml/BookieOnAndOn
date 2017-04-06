@@ -11,6 +11,9 @@ public class HandlerMapping {
 		if(command.equals("main")){
 			c = new MainController();
 	}
+		if(command.equals("genre")){
+			c = new GenreListController();
+	}
 		return c;
 	}
 }

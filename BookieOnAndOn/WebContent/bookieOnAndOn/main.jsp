@@ -4,7 +4,7 @@
 <html>
 <head>
 <title>Verti by HTML5 UP</title>
-<meta charset="utf-8"/>
+<meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css" />
@@ -21,11 +21,20 @@
 	 $(".nav-justified li").click(function(){
 		 $(".active").removeClass('active');
 		 $(this).addClass("active");
+  		 $.ajax({
+				type:"get",
+				url:"DispatcherServlet",
+				dataType:"json",
+				data:"command=genre&genre="+$(this).text(),
+				success:function(data){
+					
+				}//success
+			});//ajax 
 	 });//click
  });//ready
-
  </script>
 </head>
+
 <body class="homepage"> 
 	<div id="page-wrapper">
 		<jsp:include page="/template/header.jsp"></jsp:include>
@@ -35,24 +44,89 @@
 			<!-- Section은 여기서 작업하도록! -->
 	<!-- 장르 선택 탭 -->			
 	<ul class="nav nav-tabs nav-justified">	
-    <li class="active"><a href="#">전체</a></li>
+    <li class="active"><a href="${pageContext.request.contextPath}/index.jsp">전체</a></li>
     <li><a href="#">인문</a></li>
     <li><a href="#">소설</a></li>
     <li><a href="#">자기계발</a></li>
     <li><a href="#">경영/경제</a></li>
     <li><a href="#">IT</a></li>
     <li><a href="#">만화</a></li>
-  	</ul> 
-			</div>
-		</div>
-	<jsp:include page="/template/footer.jsp"></jsp:include>
-	</div>
-
-
-
-
-
-
+  	</ul>
+  	<br><br>
+  	<!-- 책 리스트  --> 
+  	<!-- Projects Row -->
+				<div class="row">
+					<div class="col-md-3 portfolio-item">
+						<a href="#"> <img class="img-responsive" src="http://placehold.it/260x390" alt=""></a>
+					</div>
+					<div class="col-md-3 portfolio-item">
+						<a href="#"> <img class="img-responsive" src="http://placehold.it/260x390" alt=""></a>
+					</div>
+					<div class="col-md-3 portfolio-item">
+						<a href="#"> <img class="img-responsive" src="http://placehold.it/260x390" alt=""></a>
+					</div>
+					<div class="col-md-3 portfolio-item">
+						<a href="#"> <img class="img-responsive" src="http://placehold.it/260x390" alt=""></a>
+					</div>
+				</div>
+				<!-- /.row -->
+				<!-- Projects Row -->
+				<div class="row">
+					<div class="col-md-3 portfolio-item">
+						<a href="#"> <img class="img-responsive" src="http://placehold.it/260x390" alt=""></a>
+					</div>
+					<div class="col-md-3 portfolio-item">
+						<a href="#"> <img class="img-responsive" src="http://placehold.it/260x390" alt=""></a>
+					</div>
+					<div class="col-md-3 portfolio-item">
+						<a href="#"> <img class="img-responsive" src="http://placehold.it/260x390" alt=""></a>
+					</div>
+					<div class="col-md-3 portfolio-item">
+						<a href="#"> <img class="img-responsive" src="http://placehold.it/260x390" alt=""></a>
+					</div>
+				</div>
+				<!-- /.row -->
+				<!-- Projects Row -->
+				<div class="row">
+					<div class="col-md-3 portfolio-item">
+						<a href="#"> <img class="img-responsive" src="http://placehold.it/260x390" alt=""></a>
+					</div>
+					<div class="col-md-3 portfolio-item">
+						<a href="#"> <img class="img-responsive" src="http://placehold.it/260x390" alt=""></a>
+					</div>
+					<div class="col-md-3 portfolio-item">
+						<a href="#"> <img class="img-responsive" src="http://placehold.it/260x390" alt=""></a>
+					</div>
+					<div class="col-md-3 portfolio-item">
+						<a href="#"> <img class="img-responsive" src="http://placehold.it/260x390" alt=""></a>
+					</div>
+				</div>
+				<!-- /.row -->
+  	
+  	
+  	
+	<hr>
+	<!-- 페이징 -->
+	<div class="row text-center">
+			<div class="col-lg-12">
+				<ul class="pagination">
+					<li><a href="#">&laquo;</a></li>
+					<li class="active"><a href="#">1</a></li>
+					<li><a href="#">2</a></li>
+					<li><a href="#">3</a></li>
+					<li><a href="#">4</a></li>
+					<li><a href="#">5</a></li>
+					<li><a href="#">&raquo;</a></li>
+				</ul>
+			</div><!-- col-lg-12 -->  	
+		</div><!-- row text-center -->
+	</div><!-- container -->
+</div><!-- features-wrapper -->
+<jsp:include page="/template/footer.jsp"></jsp:include>
+</div><!-- page-wrapper -->
+	
+	
+	
 	<!-- Scripts -->
 	
 	<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
