@@ -20,6 +20,8 @@ public class HandlerMapping {
 			c = new BookSearchController();
 		} else if(command.equals("sawBookList")){
 			c= new SawBookListController();
+		} else if(command.equals("wishBookList")){
+			c= new WishBookListController();
 		} else if (command.equals("genre")) {
 			c = new GenreListController();
 		} else if (command.equals("detail")) {
