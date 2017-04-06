@@ -52,7 +52,7 @@ $(document).ready(function(){
 				nextpage=data.pagingBean.endPageOfPageGroup;
 			}  
 
-			$("#mypageInfo").html(info+"<br><div class='container col-sm-12'><ul class='pager pagination'>"+paging+"</ul></div>"); 
+			$("#mypageInfo").html(info+"<br><div class='row text-center'><div class='container col-sm-12'><ul class='pagination'>"+paging+"</ul></div></div>"); 
 			
 				
 						}//success
@@ -99,7 +99,7 @@ $(document).ready(function(){
 				
 		
 			    $("#mypageInfo").empty();
-				$("#mypageInfo").html(info+"<br><div class='container col-sm-12'><ul class='pager pagination'>"+paging+"</ul></div>"); 
+			    $("#mypageInfo").html(info+"<br><div class='row text-center'><div class='container col-sm-12'><ul class='pagination'>"+paging+"</ul></div></div>");  
 				
 					
 							}//success
@@ -145,7 +145,7 @@ $(document).ready(function(){
 							
 					
 						    $("#mypageInfo").empty();
-							$("#mypageInfo").html(info+"<br><div class='container col-sm-12'><ul class='pager pagination'>"+paging+"</ul></div>"); 
+						    $("#mypageInfo").html(info+"<br><div class='row text-center'><div class='container col-sm-12'><ul class='pagination'>"+paging+"</ul></div></div>"); 
 							
 								
 										}//success
@@ -191,7 +191,7 @@ $(document).ready(function(){
 										
 								
 									    $("#mypageInfo").empty();
-										$("#mypageInfo").html(info+"<br><div class='container col-sm-12'><ul class='pager pagination'>"+paging+"</ul></div>"); 
+									    $("#mypageInfo").html(info+"<br><div class='row text-center'><div class='container col-sm-12'><ul class='pagination'>"+paging+"</ul></div></div>"); 
 										
 											
 													}//success
