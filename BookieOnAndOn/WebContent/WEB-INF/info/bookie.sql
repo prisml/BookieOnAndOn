@@ -6,7 +6,7 @@ create table book(
     bookno number primary key,
       title varchar2(100) not null,
    bookphoto blob null,
-   bookphoto blob,
+   bookphoto blob, 
    rate number default 0,
    author varchar2(100) not null,
    pub varchar2(100) not null,
