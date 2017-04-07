@@ -5,7 +5,6 @@
 <html>
 <head>
 <title>mypage</title>
-
 <jsp:include page="/template/script.jsp"></jsp:include>
 </head>
 
