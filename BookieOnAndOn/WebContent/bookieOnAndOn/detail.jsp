@@ -116,7 +116,9 @@
 					</p>
 					</div>
 					<div class="9u">
+					<form class="w3-container">
 					<input class="w3-input w3-border-0" type="text">
+					</form>
 					</div>
 				</div>
 			</div>
