@@ -15,9 +15,7 @@
 <jsp:include page="/template/script.jsp"></jsp:include>
 
 <!-- script ajax -->
-<script type="text/javascript"> 
- // 선택한 탭 active
->>>>>>> branch 'master' of https://github.com/prisml/BookieOnAndOn.git
+<script type="text/javascript">
  $(document).ready(function(){
 	 $(".nav-justified li").click(function(){
 		 // 클릭한 탭 active
