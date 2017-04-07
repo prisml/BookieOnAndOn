@@ -13,10 +13,13 @@ public class MyPageController implements Controller {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
+		
 		response.setContentType("text/html;charset=utf-8");
-		String url = "";
-		int bookingcount = 0;
-		String id = request.getParameter("id");
+		String id=request.getParameter("id");
+		String url="";
+		int bookingcount=0;
+		bookingcount=BookingDAO.getInstance().getTotalBookingCount(id);
+		request.setAttribute("bookingcount", bookingcount);
 		
 		HttpSession session = request.getSession();
 		MemberVO vo = (MemberVO) session.getAttribute("mvo");
@@ -41,7 +44,6 @@ public class MyPageController implements Controller {
 			}
 
 		}
-
 		return url;
 	}
 

@@ -41,7 +41,7 @@ public class BookingDAO {
 			con=dataSource.getConnection();
 			StringBuilder sql=new StringBuilder();
 	         sql.append("select findReceiveridList.* from(");
-	         sql.append("select row_number() over(order by receiverid) rnum, receiverid ");
+	         sql.append("select row_number() over(order by receiverid desc) rnum, receiverid ");
 	         sql.append("from booking where senderid=?"); 
 	         sql.append(") findReceiveridList where rnum between ? and ? ");
 			pstmt=con.prepareStatement(sql.toString());
@@ -52,13 +52,13 @@ public class BookingDAO {
 			while(rs.next()){
 				vo = new BookingVO();
 				vo.setReceiverid(rs.getString("receiverid"));
+				vo.setReceiveridcount(getTotalBookingCount(vo.getReceiverid()));
 				list.add(vo);
 			}
 		}finally{
 			closeAll(rs, pstmt,con);
 		}
 		System.out.println("receiverid: "+list);
-		System.out.println("receiveridcount: "+list);
 		return list;
 	}
 		
