@@ -9,9 +9,14 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("#table td").click(function(){
-			alert($(this).text());
-		});
-	});
+			//alert($(this).text());
+			$.ajax({
+				type:"post",
+				url:"DispatcherServlet",
+				data:"command=mypage&id="+$(this).val()
+			});//ajax
+		});//click
+	});//ready
 </script>
 </head>
 <body class="homepage">

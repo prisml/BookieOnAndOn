@@ -10,10 +10,10 @@ public class MyPageController implements Controller {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		response.setContentType("text/html;charset=utf-8");
-		//String id=request.getParameter("id");
-		String java="java";
+		String id=request.getParameter("id");
+		//String java="java";
 		int bookingcount=0;
-		bookingcount=BookingDAO.getInstance().getTotalBookingCount(java);
+		bookingcount=BookingDAO.getInstance().getTotalBookingCount(id);
 		request.setAttribute("bookingcount", bookingcount);
 		
 		
