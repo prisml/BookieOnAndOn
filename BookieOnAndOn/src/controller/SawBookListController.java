@@ -21,7 +21,6 @@ public class SawBookListController implements Controller {
 		String id=null;
 		String url = "";
 		id=request.getParameter("id");
-		System.out.println("송희가 넘기는 아이디이이이이이ㅣ이이이이이이이ㅣ"+id);
 		HttpSession session = request.getSession();
 		MemberVO vo = (MemberVO) session.getAttribute("mvo");
 		if (vo == null) {
