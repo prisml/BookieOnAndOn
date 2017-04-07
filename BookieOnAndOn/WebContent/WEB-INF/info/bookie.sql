@@ -108,6 +108,9 @@ insert into booking(senderid,receiverid) values('java','java10');
 insert into booking(senderid,receiverid) values('java','java11');
 
 insert into booking(senderid,receiverid) values('jquery','java');
+insert into booking(senderid,receiverid) values('jquery','java1');
+insert into booking(senderid,receiverid) values('jquery','java2');
+insert into booking(senderid,receiverid) values('jquery','java3');
 
 select receiverid from booking where senderid='java';
 select count(*) from booking where senderid='java';
