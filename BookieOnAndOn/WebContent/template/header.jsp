@@ -21,8 +21,8 @@
 				<!-- Logo -->
 				<div id="logo">
 					<a href="${pageContext.request.contextPath}/bookieOnAndOn/main.jsp"><img
-						src="${pageContext.request.contextPath}/images/logo.png"
-						style="width: 150px; padding: 15px;"></a>
+						src="${pageContext.request.contextPath}/images/bookie.png"
+						style="width: 250px;"></a>
 				</div>
 				<!-- Nav -->
 				<nav id="nav">
