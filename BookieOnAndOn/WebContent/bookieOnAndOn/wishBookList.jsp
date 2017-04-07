@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </head>
 
 
@@ -23,25 +24,55 @@
 		
 <!-- 여기서부터 본문입니다~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 			<div class="container">
-
+		
 <ul class="nav nav-tabs">
-  <li class="active"><a href="${pageContext.request.contextPath}/bookieOnAndOn/mypage.jsp" >mypage </a></li>
+  <li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=mypage" >mypage </a></li>
   <li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=sawBookList" >본책 </a></li>
-  <li ><a href="${pageContext.request.contextPath}/DispatcherServlet?command=wishBookList">보고싶은책</a></li>
+  <li class="active"><a href="${pageContext.request.contextPath}/DispatcherServlet?command=wishBookList">보고싶은책</a></li>
 </ul>
 <br><br><br>
-
 <div id="mypageInfo">
- 	<h3>mypage 입니다</h3>
- 	booking : <a>${bookingcount}</a>
-
+	<c:forEach var="bvo" items="${requestScope.listVO.list}">
+					<div class='col-sm-3'>
+						<img src='http://placehold.it/260x390'>
+							${bvo.title }<br>
+							${bvo.rate }<br>
+						</div>
+   	</c:forEach>
+<div class='row text-center'>
+   	<div class='container col-sm-12'>
+   	<ul class='pagination'>
+   	<c:if test="${requestScope.listVO.pagingBean.previousPageGroup}">
+<li class='previous'><a href="${pageContext.request.contextPath}/DispatcherServlet?command=wishBookList&nowPage=${requestScope.listVO.pagingBean.startPageOfPageGroup-1}">Previous</a></li>
+	</c:if>
+   	<c:forEach var="num" begin="${requestScope.listVO.pagingBean.startPageOfPageGroup}" end="${requestScope.listVO.pagingBean.endPageOfPageGroup}">
+			<c:choose>
+				<c:when test="${num!=requestScope.listVO.pagingBean.nowPage }">
+				<li><a id='pagelink' href="${pageContext.request.contextPath}/DispatcherServlet?command=wishBookList&nowPage=${num}">${num }</a></li>
+				
+				</c:when>
+				<c:otherwise>
+					<li class='active'><a>${num }</a></li>
+				</c:otherwise>
+			</c:choose>
+	</c:forEach>
+	<c:if test="${requestScope.listVO.pagingBean.nextPageGroup}">
+<li class='next'><a href="${pageContext.request.contextPath}/DispatcherServlet?command=wishBookList&nowPage=${requestScope.listVO.pagingBean.endPageOfPageGroup+1}">Next </a></li>
+	</c:if>
+			</ul>
+		</div>
+	</div>
 </div>
+
+  
+  										
+</div>						
 
 <!-- 여기까지 본문입니다 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
 			  
 
-			</div>
+			
 		</div>
 		<jsp:include page="/template/footer.jsp"></jsp:include>
 	</div>

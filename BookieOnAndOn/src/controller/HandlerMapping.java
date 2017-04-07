@@ -12,11 +12,16 @@ public class HandlerMapping {
 
 	public Controller create(String command) {
 		Controller c = null;
-		System.out.println(command+command.length());
 		if (command.equals("main")) {
 			c = new MainController();
+		} else if (command.equals("bookingList")){
+			c = new BookingListController();
+		} else if(command.equals("bookSearch")){
+			c = new BookSearchController();
 		} else if(command.equals("sawBookList")){
-			c= new SawBookListController();
+			c = new SawBookListController();
+		} else if(command.equals("wishBookList")){
+			c = new WishBookListController();
 		} else if (command.equals("genre")) {
 			c = new GenreListController();
 		} else if (command.equals("detail")) {
@@ -27,6 +32,8 @@ public class HandlerMapping {
 			c = new SawController();
 		} else if(command.equals("wish")) {
 			c = new WishController();
+		} else if(command.equals("mypage")){
+			c = new MyPageController();
 		}
 		return c;
 	}

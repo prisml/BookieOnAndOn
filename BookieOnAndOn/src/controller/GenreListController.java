@@ -17,6 +17,7 @@ public class GenreListController implements Controller {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		response.setContentType("text/html;charset=utf-8");
 		String genre=request.getParameter("genre");
 		String page = request.getParameter("pageNo");
 		PrintWriter out=response.getWriter();
@@ -30,8 +31,6 @@ public class GenreListController implements Controller {
 		JSONObject json=new JSONObject(listVo);
 		out.print(json.toString());
 		out.close();
-		System.out.println("리스트컨트롤러에서장르리스트"+list);
 		return "AjaxView";
 	}
-
 }

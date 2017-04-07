@@ -30,23 +30,54 @@ public class BookingDAO {
 		if(con!=null)
 			con.close();
 	}
-	public ArrayList<String> getBookingList(String id) throws SQLException{
+	public ArrayList<VO> getBookingList(String id, PagingBean pagingBean) throws SQLException{
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
-		ArrayList<String> list = new ArrayList<String>();
+		ArrayList<VO> list = new ArrayList<VO>();
+		//ListVO lvo = new ListVO();
 		try{
 			con=dataSource.getConnection();
-			String sql="select receiverid from booking where senderid=?";
-			pstmt=con.prepareStatement(sql);
+			StringBuilder sql=new StringBuilder();
+	         sql.append("select findReceiveridList.* from(");
+	         sql.append("select row_number() over(order by receiverid) rnum, receiverid ");
+	         sql.append("from booking where senderid=?"); 
+	         sql.append(") findReceiveridList where rnum between ? and ? ");
+			pstmt=con.prepareStatement(sql.toString());
 			pstmt.setString(1, id);
+			pstmt.setInt(2, pagingBean.getStartRowNumber());
+			pstmt.setInt(3, pagingBean.getEndRowNumber());
 			rs=pstmt.executeQuery();
 			while(rs.next()){
-				list.add(rs.getString(1));
+				BookingVO vo = new BookingVO();
+				vo.setReceiverid(rs.getString("receiverid"));
+				list.add(vo);
 			}
 		}finally{
 			closeAll(rs, pstmt,con);
 		}
+		System.out.println("DAO: "+list);
 		return list;
 	}
+		
+	public int getTotalBookingCount(String id) throws SQLException {
+	      Connection con = null;
+	      PreparedStatement pstmt = null;
+	      ResultSet rs = null;
+	      int totalCount = 0;
+	      try {
+	         con = dataSource.getConnection();
+	         String sql = "select count(*) from booking where senderid=?";
+	         pstmt = con.prepareStatement(sql);
+	         pstmt.setString(1, id);
+	         rs = pstmt.executeQuery();
+	         if(rs.next())
+	            totalCount = rs.getInt(1);
+	      } finally {
+	         closeAll(rs, pstmt, con);
+	      }
+	      System.out.println("부킹한 멤버 수: "+totalCount);
+	      return totalCount;
+	   }
+
 }
