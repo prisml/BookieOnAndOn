@@ -107,7 +107,7 @@ public class MemberDAO {
 		}
 			return flag;
 	}
-<<<<<<< HEAD
+
 	public void updateMember(MemberVO vo) throws SQLException{
 		Connection con=null;
 		PreparedStatement pstmt=null;
@@ -124,9 +124,8 @@ public class MemberDAO {
 		}finally{
 			closeAll(pstmt,con);
 		}
-=======
-	
-	
+	}
+
 	public MemberVO getMemberById(String id) throws SQLException{
 		Connection con=null;
 		PreparedStatement pstmt=null;
@@ -147,7 +146,7 @@ public class MemberDAO {
 			closeAll(rs,pstmt,con);
 		}
 			return vo;
->>>>>>> branch 'master' of https://github.com/prisml/BookieOnAndOn.git
+
 	}
 
 
