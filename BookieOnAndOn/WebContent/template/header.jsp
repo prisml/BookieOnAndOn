@@ -39,21 +39,25 @@
 				<li><a href="no-sidebar.html">No Sidebar</a></li>
 			</ul>
 		</nav>
-	</header>
-</div>
 
-<!-- Banner : 도서 검색-->
-<div id="banner-wrapper">
-	<div id="banner" class="box container">
-		<form action="${pageContext.request.contextPath}/DispatcherServlet" id="bookSearchForm">
-			<div class="input-group input-group-lg">
-				<input type="hidden" name="command" value="bookSearch"> <input
-					type="text" class="form-control" name="title"> <span
-					class="input-group-addon"> <i class="fa fa-search"
-					onclick="bookSearch()"></i>
-				</span>
+		<div class="container">
+			<div class="row">
+				<div class="2u"></div>
+				<div class="8u">
+					<form action="${pageContext.request.contextPath}/DispatcherServlet"
+						id="bookSearchForm">
+						<div class="input-group input-group-lg">
+							<input type="hidden" name="command" value="bookSearch"> <input
+								type="text" class="form-control" name="title"> <span
+								class="input-group-addon"> <i class="fa fa-search"
+								onclick="bookSearch()"></i>
+							</span>
+						</div>
+					</form>
+				</div>
+				<div class="2u"></div>
 			</div>
-		</form>
-	</div>
+		</div>
+	</header>
 </div>
 

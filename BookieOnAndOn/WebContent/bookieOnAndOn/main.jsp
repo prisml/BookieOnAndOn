@@ -5,6 +5,8 @@
 <head>
 <title>메인</title>  
 <title>Verti by HTML5 UP</title>
+
+<jsp:include page="/template/script.jsp"></jsp:include>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css" />

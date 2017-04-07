@@ -85,6 +85,11 @@
 		width: 1400px;
 	}
 
+	#bookSearchForm {
+		margin-top: 10px;
+		padding-top: 10px;
+	}
+
 	@media screen and (max-width: 1680px) {
 
 		.container.\31 25\25 {
