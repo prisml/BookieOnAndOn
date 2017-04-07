@@ -42,11 +42,11 @@
  	<c:choose>
  		<c:when test="${!empty fvo }">
  			${fvo.name } 님의 page입니다<br>
- 			booking : <a href="${pageContext.request.contextPath}/DispatcherServlet?command=bookingList">${fbookingcount}</a>
+ 			booking : <a href="${pageContext.request.contextPath}/DispatcherServlet?command=bookingList&id=${fvo.id}">${fbookingcount}</a>
  		</c:when>
  	<c:otherwise>
  			<h3>mypage</h3>
- 			booking : <a href="${pageContext.request.contextPath}/DispatcherServlet?command=bookingList&id=java">${bookingcount}</a>
+ 			booking : <a href="${pageContext.request.contextPath}/DispatcherServlet?command=bookingList">${bookingcount}</a>
  	
  	</c:otherwise>   
  	</c:choose>
