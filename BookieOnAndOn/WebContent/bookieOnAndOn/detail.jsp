@@ -5,6 +5,8 @@
 <html>
 <head>
 <jsp:include page="/template/script.jsp"></jsp:include>
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/main.css" />
 <title>(책이름) 정보</title>
 <script type="text/javascript">
 	$(document).ready(function() {

@@ -7,8 +7,6 @@
 <title>Verti by HTML5 UP</title>
 
 <jsp:include page="/template/script.jsp"></jsp:include>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 <!-- script ajax -->
 <script type="text/javascript"> 
