@@ -58,7 +58,6 @@ public class BookingDAO {
 		}finally{
 			closeAll(rs, pstmt,con);
 		}
-		System.out.println("receiverid: "+list);
 		return list;
 	}
 		
@@ -78,7 +77,6 @@ public class BookingDAO {
 	      } finally {
 	         closeAll(rs, pstmt, con);
 	      }
-	      System.out.println("부킹한 멤버 수: "+totalCount);
 	      return totalCount;
 	   }
 
