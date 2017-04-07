@@ -10,8 +10,41 @@
 <html>
 <head>
 <title>메인</title>
-<title>Verti by HTML5 UP</title>
+<style type="text/css">
+.w3-one {
+   position: relative;
+   display: block;
+}
 
+.w3-one:hover .overlay {
+   opacity: 0.5;
+}
+
+.w3-one:hover img {
+   opacity: 1;
+}
+
+.overlay {
+   dispaly: block;
+   position: absolute;
+   top: 65%;
+   bottom: 0;
+   left: 0;
+   right: 0;
+   background-color: black;
+   opacity: 0.0;
+   transition: .5s ease;
+}
+
+.overlaytext {
+   color: white;
+   position: absolute;
+   font-size: 15px;
+   top: 10%;
+   left: 10%;
+}
+
+</style>
 <jsp:include page="/template/script.jsp"></jsp:include>
 
 <!-- script ajax -->
@@ -37,8 +70,11 @@
 							 info+="<div class='col-md-3 portfolio-item'>";
 							 info+="<a href='http://localhost:8888/BookieOnAndOn/DispatcherServlet?command=detail&bookno=";
 							 info+=data.list[i*4+j].bookno;
-							 info+="'><img class='img-responsive' src='http://placehold.it/260x390' alt=''>";
+							 info+="'><div class='w3-one'><img class='img-responsive' src='http://placehold.it/260x390' alt=''>";
 							 //info+="<img class='img-responsive' src="+data.list[i*4+j].bookcover+" alt=''>"
+							 info+= "<div class='overlay'><div class='overlaytext'>";
+							 info+="저자&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+data.list[i*4+j].author+"<br>출판사&nbsp;&nbsp;&nbsp;"+data.list[i*4+j].pub;
+							 info+="</div></div></div>";
 							 info+=data.list[i*4+j].title;
 							 info+="</a></div>";
 						 }
@@ -123,7 +159,7 @@
 			<div class="col-md-3 portfolio-item">
 				<a href="${pageContext.request.contextPath}/DispatcherServlet?command=detail&bookno=<%=((BookVO)list.get(i*4+j)).getBookno()%>">
 				<img class="img-responsive" src="http://placehold.it/260x390" alt="">
-				<%=((BookVO)list.get(i*4+j)).getTitle()%></a>
+				 <%=((BookVO)list.get(i*4+j)).getTitle()%></a>
 			</div>
 		<%}%>
 		</div>
