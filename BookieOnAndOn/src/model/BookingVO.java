@@ -28,7 +28,4 @@ public class BookingVO implements VO{
 	public String toString() {
 		return "BookingVO [senderid=" + senderid + ", receiverid=" + receiverid + "]";
 	}
-	
-	
-
 }

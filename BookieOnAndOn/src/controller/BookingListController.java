@@ -6,7 +6,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.BookingDAO;
-import model.BookingVO;
 import model.ListVO;
 import model.PagingBean;
 import model.VO;

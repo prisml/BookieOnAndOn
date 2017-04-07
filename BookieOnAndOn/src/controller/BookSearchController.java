@@ -1,14 +1,11 @@
 package controller;
 
-import java.util.ArrayList; 
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.json.JSONObject;
-
 import model.BookDAO;
-import model.BookVO;
 import model.ListVO;
 import model.PagingBean;
 import model.VO;

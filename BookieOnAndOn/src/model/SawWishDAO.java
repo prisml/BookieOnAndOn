@@ -17,8 +17,6 @@ public class SawWishDAO {
 	public static SawWishDAO getInstance(){
 		return instance;
 	}
-	
-	
 	public void closeAll(PreparedStatement pstmt,
 			Connection con) throws SQLException{
 		closeAll(null,pstmt,con);
@@ -31,6 +29,93 @@ public class SawWishDAO {
 			pstmt.close();
 		if(con!=null)
 			con.close();
+	}
+	/**
+	 * 봤어요 - 영덕
+	 * @param no
+	 * @param id
+	 * @return
+	 * @throws SQLException
+	 */
+	public String saw(String no, String id)  throws SQLException{
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		String result = "";
+		try{
+			con=dataSource.getConnection();
+			String sql="select id,bookno from saw where id=? and bookno=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setString(2, no);
+			rs=pstmt.executeQuery();
+			if(rs.next()){
+				pstmt.close();
+				sql = "delete from saw where id=? and bookno=?";
+				pstmt=con.prepareStatement(sql);
+				pstmt.setString(1, id);
+				pstmt.setString(2, no);
+				pstmt.executeUpdate();
+				result="안봤어요";
+				System.out.println("delete");
+			}else{
+				pstmt.close();
+				sql = "insert into saw(id,bookno) values(?,?)";
+				pstmt=con.prepareStatement(sql);
+				pstmt.setString(1, id);
+				pstmt.setString(2, no);
+				pstmt.executeUpdate();
+				result="봤어요";
+				System.out.println("insert");
+			}
+		}finally{
+			closeAll(rs, pstmt,con);
+		}
+		return result;
+	}
+	
+	/**
+	 * 보고싶어요 - 영덕
+	 * @param no
+	 * @param id
+	 * @return
+	 * @throws SQLException
+	 */
+	public String wish(String no, String id) throws SQLException{
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		String result = "";
+		try{
+			con=dataSource.getConnection();
+			String sql="select id,bookno from wish where id=? and bookno=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setString(2, no);
+			rs=pstmt.executeQuery();
+			if(rs.next()){
+				pstmt.close();
+				sql = "delete from wish where id=? and bookno=?";
+				pstmt=con.prepareStatement(sql);
+				pstmt.setString(1, id);
+				pstmt.setString(2, no);
+				pstmt.executeUpdate();
+				result="보고싶어요 취소했어요";
+				System.out.println("delete");
+			}else{
+				pstmt.close();
+				sql = "insert into wish(id,bookno) values(?,?)";
+				pstmt=con.prepareStatement(sql);
+				pstmt.setString(1, id);
+				pstmt.setString(2, no);
+				pstmt.executeUpdate();
+				result="보고싶어요 눌렀어요";
+				System.out.println("insert");
+			}
+		}finally{
+			closeAll(rs, pstmt,con);
+		}
+		return result;
 	}
 	//송희송희송희송희송희  Saw 메서드
 	public ArrayList<VO> getSawBookList(String id,PagingBean pagingBean) throws SQLException{
@@ -61,7 +146,13 @@ public class SawWishDAO {
 		}
 		return list;
 	}
-	//송희송희송희송희송희  Saw Count 메서드
+	
+	/**
+	 * 송희송희송희송희송희
+	 * @param id
+	 * @return
+	 * @throws SQLException
+	 */
 	public int getSawTotalContent(String id) throws SQLException{
 		Connection con=null;
 		PreparedStatement pstmt=null;
@@ -132,6 +223,4 @@ public class SawWishDAO {
 		}
 		return totalContent;
 	}
-	
-
 }

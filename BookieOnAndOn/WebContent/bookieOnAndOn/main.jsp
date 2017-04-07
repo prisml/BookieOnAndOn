@@ -5,11 +5,15 @@
 <head>
 <title>메인</title>  
 <title>Verti by HTML5 UP</title>
+
+<jsp:include page="/template/script.jsp"></jsp:include>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css" />
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 
 <!-- script ajax -->
  <script type="text/javascript"> 
@@ -45,6 +49,7 @@
 					 $("#showBookList").html(info);					
 				}//success
 			});//ajax			
+
 	 });// .nav-justified li click
 	 $(".pagination").on("click", "li", function(){
 		 event.preventDefault();
@@ -79,7 +84,6 @@
  });//ready
  </script>
 </head>
-
 <body class="homepage"> 
 	<div id="page-wrapper">
 		<jsp:include page="/template/header.jsp"></jsp:include>
@@ -105,6 +109,7 @@
 	<!-- 페이징 -->
 	<div class="row text-center">
 			<div class="col-lg-12">
+
 				<ul class="pagination">
 				</ul>
 			</div><!-- col-lg-12 -->  	
