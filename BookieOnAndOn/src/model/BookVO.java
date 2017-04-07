@@ -17,6 +17,10 @@ public class BookVO implements VO{
 		// TODO Auto-generated constructor stub
 	}
 	
+	public BookVO(String title) {
+		this.title = title;
+	}
+
 	public BookVO(String bookno, String title, String author, String pub, double rate){
 		this.bookno = bookno;
 		this.title = title;

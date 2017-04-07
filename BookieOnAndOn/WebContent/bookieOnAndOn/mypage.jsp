@@ -45,8 +45,8 @@
  			booking : <a href="${pageContext.request.contextPath}/DispatcherServlet?command=bookingList&id=${fvo.id}">${fbookingcount}</a>
  		</c:when>
  	<c:otherwise>
- 			<h3>mypage</h3>
- 			booking : <a href="${pageContext.request.contextPath}/DispatcherServlet?command=bookingList">${bookingcount}</a>
+ 			<h3>${mvo.name} 님의 page입니다</h3>
+ 			booking : <a href="${pageContext.request.contextPath}/DispatcherServlet?command=bookingList&id=${mvo.id}">${bookingcount}</a>
  	
  	</c:otherwise>   
  	</c:choose>
