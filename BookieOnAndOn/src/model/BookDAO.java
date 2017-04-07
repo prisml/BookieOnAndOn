@@ -48,7 +48,6 @@ public class BookDAO {
 			rs = pstmt.executeQuery();
 			 
 			while(rs.next()){
-				System.out.println(rs.getString("bookno"));
 				findBookList.add(new BookVO(rs.getString("bookno"), rs.getString("title"), rs.getString("author"), rs.getString("pub"), rs.getDouble("rate")));
 			}
 		}
