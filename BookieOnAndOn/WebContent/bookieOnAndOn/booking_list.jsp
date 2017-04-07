@@ -4,15 +4,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<jsp:include page="/template/script.jsp"></jsp:include>
 <title>booking_list</title>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css" />
-<link href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath}/assets/css/4-col-portfolio.css" rel="stylesheet">
-<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-<script src="//code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("#table td").click(function(){
@@ -84,20 +77,5 @@
 		</div>
 		<jsp:include page="/template/footer.jsp"></jsp:include>
 	</div>
-
-
-
-
-
-
-	<!-- Scripts -->
-	<script
-		src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/assets/js/jquery.dropotron.min.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/js/skel.min.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/js/util.js"></script>
-	<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-	<script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
 </body>
 </html>
