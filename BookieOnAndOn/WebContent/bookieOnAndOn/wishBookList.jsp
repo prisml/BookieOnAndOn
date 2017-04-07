@@ -28,7 +28,7 @@
 </ul>
 <br><br><br>
 <div id="mypageInfo">
-	<c:forEach var="bvo" items="${requestScope.listVO.list}">
+	<c:forEach var="bvo" items="${sessionScope.listVO.list}">
 					<div class='col-sm-3'>
 					<a href="${pageContext.request.contextPath}/DispatcherServlet?command=detail&bookno=${bvo.bookno}">
 					<img src='http://placehold.it/260x390'></a>
@@ -39,12 +39,12 @@
 <div class='row text-center'>
    	<div class='container col-sm-12'>
    	<ul class='pagination'>
-   	<c:if test="${requestScope.listVO.pagingBean.previousPageGroup}">
-<li class='previous'><a href="${pageContext.request.contextPath}/DispatcherServlet?command=wishBookList&nowPage=${requestScope.listVO.pagingBean.startPageOfPageGroup-1}">Previous</a></li>
+   	<c:if test="${sessionScope.listVO.pagingBean.previousPageGroup}">
+<li class='previous'><a href="${pageContext.request.contextPath}/DispatcherServlet?command=wishBookList&nowPage=${sessionScope.listVO.pagingBean.startPageOfPageGroup-1}">Previous</a></li>
 	</c:if>
-   	<c:forEach var="num" begin="${requestScope.listVO.pagingBean.startPageOfPageGroup}" end="${requestScope.listVO.pagingBean.endPageOfPageGroup}">
+   	<c:forEach var="num" begin="${sessionScope.listVO.pagingBean.startPageOfPageGroup}" end="${sessionScope.listVO.pagingBean.endPageOfPageGroup}">
 			<c:choose>
-				<c:when test="${num!=requestScope.listVO.pagingBean.nowPage }">
+				<c:when test="${num!=sessionScope.listVO.pagingBean.nowPage }">
 				<li><a id='pagelink' href="${pageContext.request.contextPath}/DispatcherServlet?command=wishBookList&nowPage=${num}">${num }</a></li>
 				
 				</c:when>
@@ -53,8 +53,8 @@
 				</c:otherwise>
 			</c:choose>
 	</c:forEach>
-	<c:if test="${requestScope.listVO.pagingBean.nextPageGroup}">
-<li class='next'><a href="${pageContext.request.contextPath}/DispatcherServlet?command=wishBookList&nowPage=${requestScope.listVO.pagingBean.endPageOfPageGroup+1}">Next </a></li>
+	<c:if test="${sessionScope.listVO.pagingBean.nextPageGroup}">
+<li class='next'><a href="${pageContext.request.contextPath}/DispatcherServlet?command=wishBookList&nowPage=${sessionScope.listVO.pagingBean.endPageOfPageGroup+1}">Next </a></li>
 	</c:if>
 			</ul>
 		</div>
