@@ -16,7 +16,7 @@
 
   <article class="container">
         <div class="center-block" align="middle"><br>
-          <h1><a href="${pageContext.request.contextPath}/bookieOnAndOn/main.jsp"><img src="${pageContext.request.contextPath}/images/Logo.png"> </a></h1>
+          <h1><a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath}/images/Logo.png"> </a></h1>
         </div>
         <br>
         <div class="center-block" style="width: 300px;padding:15px;">
@@ -31,8 +31,7 @@
               <input name="password" type="password" class="form-control" id="password" placeholder="비밀번호">
             </div>
             <div class="form-group text-center">
-             <h3> <button type="submit" class="btn btn-info btn-lg">로그인<i class="fa fa-check spaceLeft" ></i></button></h3>
-             
+             <h3> <button class="btn btn-info btn-lg">로그인<i class="fa fa-check spaceLeft" ></i></button></h3>            
              <a href="findIdPw.jsp">아이디/비밀번호 찾기</a><br>
              <a href="register.jsp">회원가입</a>
             </div>

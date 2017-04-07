@@ -2,7 +2,6 @@
 drop table book;
 select * from book;
 create table book(
-
    bookno number primary key,
    title varchar2(100) not null,
    bookphoto blob,
@@ -30,7 +29,8 @@ insert into bookmember(id,password,name,tel) values ('java','1234','김래현','
 insert into bookmember(id,password,name,tel) values ('jquery','1111','문성준','012');
 select * from bookmember;
 select name,tel from bookmember where id='jquery' and password='1111';
-
+update bookmember set password='12346',name='jqueryw',tel='5432r' where id='java';
+select * from bookmember where id='java';
 insert into bookmember(id,password,name,tel) values('java','abcd','정우성','01011112222');
 insert into bookmember(id,password,name,tel) values('jquery','dcba','전지현','01033334444');
 insert into bookmember(id,password,name,tel) values('jdbc','aaaa','아이유','01055556666');
@@ -109,6 +109,9 @@ insert into booking(senderid,receiverid) values('java','java10');
 insert into booking(senderid,receiverid) values('java','java11');
 
 insert into booking(senderid,receiverid) values('jquery','java');
+insert into booking(senderid,receiverid) values('jquery','java1');
+insert into booking(senderid,receiverid) values('jquery','java2');
+insert into booking(senderid,receiverid) values('jquery','java3');
 
 select receiverid from booking where senderid='java';
 select count(*) from booking where senderid='java';
@@ -118,10 +121,6 @@ select receiberid from booking where senderid='jdbc';
 select count(*) from booking where senderid='jdbc';
 -- 정우성이 부킹한 아이디와 부킹한 수
 select receiverid, count(*) from booking where senderid='java';
-select receiverid, count(*) from booking where senderid='java' group by receiverid;
-select receiverid, count(*) from booking where senderid='jquery' group by receiverid;
-
-select receiberid, count(*) from booking where senderid='jdbc' group by receiverid;
 -- 아래꺼부터 드롭
 drop table book;
 drop sequence bookno_seq;

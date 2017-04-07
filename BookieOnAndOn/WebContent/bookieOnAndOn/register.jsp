@@ -22,7 +22,7 @@
 	function cancel() {
 		var f = confirm("가입을 취소하시겠습니까?");
 		if (f)
-			location.href = "${pageContext.request.contextPath}/DispatcherServlet?command=main";
+			location.href = "${pageContext.request.contextPath}/index.jsp";
 	}
 	
 	$(document).ready(function(){		
@@ -79,9 +79,9 @@
 	<article class="container">
 	<div class="center-block" align="middle">
 		<h1>
-			<a href="${pageContext.request.contextPath}/bookieOnAndOn/main.jsp">
+			<a href="${pageContext.request.contextPath}/index.jsp">
 			<img src="${pageContext.request.contextPath}/images/Logo.png"> </a>
-		</h1>
+		</h1>	
 	</div>
 
 	<div class="center-block" style="width: 300px; padding: 15px;">
@@ -122,7 +122,7 @@
 				<button class="btn btn-danger" type="submit"  onclick = "cancel()">
 					가입취소<i class="fa fa-times spaceLeft"></i>
 				</button>
-				<br> <a href="findIdPw.jsp">아이디/비밀번호 찾기</a><br> 
+				<br> <a href="${pageContext.request.contextPath}/findIdPw.jsp">아이디/비밀번호 찾기</a><br> 
 			
 			</div>
 		</form>

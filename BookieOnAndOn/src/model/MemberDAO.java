@@ -107,7 +107,47 @@ public class MemberDAO {
 		}
 			return flag;
 	}
-	
+
+	public void updateMember(MemberVO vo) throws SQLException{
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		try{
+			con=dataSource.getConnection();
+			String sql=
+				"update bookmember set password=?,name=?,tel=? where id=?";
+			pstmt=con.prepareStatement(sql);			
+			pstmt.setString(1,vo.getPassword());
+			pstmt.setString(2,vo.getName());
+			pstmt.setString(3,vo.getTel());
+			pstmt.setString(4,vo.getId());
+			pstmt.executeUpdate();			
+		}finally{
+			closeAll(pstmt,con);
+		}
+	}
+
+	public MemberVO getMemberById(String id) throws SQLException{
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		MemberVO vo=null;
+		try{
+			con=dataSource.getConnection();
+			String sql="select * from bookmember where id=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1,id);
+			rs=pstmt.executeQuery();
+			if(rs.next()){
+				vo=new MemberVO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4));
+			
+				}
+			
+		}finally{
+			closeAll(rs,pstmt,con);
+		}
+			return vo;
+
+	}
 
 
 }
