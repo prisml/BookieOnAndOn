@@ -13,7 +13,7 @@
 			$.ajax({
 				type:"post",
 				url:"DispatcherServlet",
-				data:"command=mypage&id="+$(this).val()
+				data:"command=mypage&id="+$(this).text(),
 			});//ajax
 		});//click
 	});//ready
@@ -28,15 +28,15 @@
 				<table id="table" class="table table-hover">
 					<thead>
 						<tr>
-							<th>내가 부킹한 북멤버: ${requestScope.receiverIdCount }명</th>
-							<th>Booking_Count</th>
+							<th><h1>내가 부킹한 북멤버: ${requestScope.receiverIdCount }명</h1></th>
+							<th><h1>Booking_Count</h1></th>
 						</tr>
 					</thead>
 					<tbody>
 						<c:forEach var="mvo" items="${requestScope.receiverIdList.list }">
 							<tr>
-								<td>${mvo.receiverid }</td>
-								<td>${mvo.receiveridcount }</td>
+								<td align="center">${mvo.receiverid }</td>
+								<td align="center">${mvo.receiveridcount }</td>
 							</tr>
 						</c:forEach>
 					</tbody>
