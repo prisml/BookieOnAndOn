@@ -6,7 +6,6 @@ public class BookingVO implements VO{
 	private int receiveridcount;
 	public BookingVO() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public BookingVO(int receiveridcount) {
 		this.receiveridcount = receiveridcount;

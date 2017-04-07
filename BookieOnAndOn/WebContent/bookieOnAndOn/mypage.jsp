@@ -33,8 +33,13 @@
  	${fvo.name } 님의 page입니다
  	
  	</c:if>
+<<<<<<< HEAD
  	<h3>mypage 입니다</h3>
  	booking : <a href="${pageContext.request.contextPath}/DispatcherServlet?command=bookingList">${bookingcount}</a>
+=======
+ 	<h3>mypage</h3>
+ 	booking : <a href="${pageContext.request.contextPath}/DispatcherServlet?command=bookingList&id=java">${bookingcount}</a>
+>>>>>>> branch 'master' of https://github.com/prisml/BookieOnAndOn.git
 
 </div>
 
