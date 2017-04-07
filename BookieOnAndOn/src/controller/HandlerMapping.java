@@ -28,8 +28,7 @@ public class HandlerMapping {
 			c = new BookSearchController();
 		} else if(command.equals("bookAutoComplete")){
 			c = new BookAutoCompleteController();
-		}
-		else if(command.equals("sawBookList")){
+		} else if(command.equals("sawBookList")){
 			c = new SawBookListController();
 		} else if(command.equals("wishBookList")){
 			c = new WishBookListController();
@@ -45,6 +44,12 @@ public class HandlerMapping {
 			c = new WishController();
 		} else if(command.equals("mypage")){
 			c = new MyPageController();
+		} else if(command.equals("reviewRegist")){
+			c = new ReviewRegistController();
+		} else if(command.equals("reviewUpdate")){
+			c = new ReviewUpdateController();
+		} else if(command.equals("reviewDelete")){
+			c = new ReviewDeleteController();
 		} else if(command.equals("update")){
 			c = new UpdateController();
 		}
