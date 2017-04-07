@@ -53,10 +53,9 @@
 					<ul>
 						<li class="current"><a
 							href="${pageContext.request.contextPath}/bookieOnAndOn/main.jsp">welcome</a></li>
-						<li>${sessionScope.mvo.name}님<a href="javascript:logout()">Logout</a></li>
-						<li><a href="${pageContext.request.contextPath}/bookieOnAndOn/mypage.jsp">마이페이지</a></li>
 						<li><a href="${pageContext.request.contextPath}/bookieOnAndOn/mypage.jsp">마이페이지</a></li>
 						<li><a href="${pageContext.request.contextPath}/bookieOnAndOn/update.jsp">회원정보수정</a></li>
+						<li>${sessionScope.mvo.name}님<a href="javascript:logout()">Logout</a></li>
 					</ul>
 				</nav>
 			<div class="container">

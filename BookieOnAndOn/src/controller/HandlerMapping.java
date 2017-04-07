@@ -42,6 +42,8 @@ public class HandlerMapping {
 			c = new WishController();
 		} else if(command.equals("mypage")){
 			c = new MyPageController();
+		} else if(command.equals("update")){
+			c = new UpdateController();
 		}
 		return c;
 	}

@@ -107,7 +107,23 @@ public class MemberDAO {
 		}
 			return flag;
 	}
-	
+	public void updateMember(MemberVO vo) throws SQLException{
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		try{
+			con=dataSource.getConnection();
+			String sql=
+				"update bookmember set password=?,name=?,tel=? where id=?";
+			pstmt=con.prepareStatement(sql);			
+			pstmt.setString(1,vo.getPassword());
+			pstmt.setString(2,vo.getName());
+			pstmt.setString(3,vo.getTel());
+			pstmt.setString(4,vo.getId());
+			pstmt.executeUpdate();			
+		}finally{
+			closeAll(pstmt,con);
+		}
+	}
 
 
 }

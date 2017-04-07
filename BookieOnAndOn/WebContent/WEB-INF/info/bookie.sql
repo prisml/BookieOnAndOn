@@ -30,7 +30,8 @@ insert into bookmember(id,password,name,tel) values ('java','1234','김래현','
 insert into bookmember(id,password,name,tel) values ('jquery','1111','문성준','012');
 select * from bookmember;
 select name,tel from bookmember where id='jquery' and password='1111';
-
+update bookmember set password='12346',name='jqueryw',tel='5432r' where id='java';
+select * from bookmember where id='java';
 insert into bookmember(id,password,name,tel) values('java','abcd','정우성','01011112222');
 insert into bookmember(id,password,name,tel) values('jquery','dcba','전지현','01033334444');
 insert into bookmember(id,password,name,tel) values('jdbc','aaaa','아이유','01055556666');

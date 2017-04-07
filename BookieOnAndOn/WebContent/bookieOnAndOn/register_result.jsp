@@ -24,14 +24,14 @@
 	location.href = "${pageContext.request.contextPath}/DispatcherServlet?command=login";
 }
 	function home(){
-		location.href = "${pageContext.request.contextPath}/DispatcherServlet?command=main";
+		location.href = "${pageContext.request.contextPath}/index.jsp";
 	}
 </script>
 </head>
 <body>
 <br><br><br>
 <div class="center-block" align="middle">
-<img src="${pageContext.request.contextPath}/images/logo.png" align="middle">
+<img src="${pageContext.request.contextPath}/images/Logo.png" align="middle">
 </div>
 
 <div class="center-block" style="width: 230px;padding:15px;">
