@@ -21,21 +21,34 @@
 			<div class="container">
 
 <ul class="nav nav-tabs">
-  <li class="active"><a href="${pageContext.request.contextPath}/bookieOnAndOn/mypage.jsp" >mypage </a></li>
-  <li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=sawBookList" >본책 </a></li>
-  <li ><a href="${pageContext.request.contextPath}/DispatcherServlet?command=wishBookList">보고싶은책</a></li>
+	
+	<c:choose>
+ 		<c:when test="${!empty fvo }">
+ 			<li class="active"><a href="${pageContext.request.contextPath}/bookieOnAndOn/mypage.jsp" >${fvo.name }님의 page </a></li>
+ 		</c:when>
+ 		<c:otherwise>
+ 			<li class="active"><a href="${pageContext.request.contextPath}/bookieOnAndOn/mypage.jsp" >mypage </a></li>
+ 		</c:otherwise>   
+ 	</c:choose>
+   			<li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=sawBookList" >본책 </a></li>
+		    <li ><a href="${pageContext.request.contextPath}/DispatcherServlet?command=wishBookList">보고싶은책</a></li>
 </ul>
 <br><br><br>
 
 <div id="mypageInfo">
+ 	<c:choose>
+ 		<c:when test="${!empty fvo }">
+ 			${fvo.name } 님의 page입니다<br>
+ 			booking : <a href="${pageContext.request.contextPath}/DispatcherServlet?command=bookingList">${fbookingcount}</a>
+ 		</c:when>
+ 	<c:otherwise>
+ 			<h3>mypage</h3>
+ 			booking : <a href="${pageContext.request.contextPath}/DispatcherServlet?command=bookingList">${bookingcount}</a>
  	
- 	<c:if test="${!empty fvo }">
- 	${fvo.name } 님의 page입니다
+ 	</c:otherwise>   
+ 	</c:choose>
  	
- 	</c:if>
- 	<h3>mypage</h3>
- 	booking : <a href="${pageContext.request.contextPath}/DispatcherServlet?command=bookingList&id=java">${bookingcount}</a>
-
+ 	
 </div>
 
 <!-- 여기까지 본문입니다 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->

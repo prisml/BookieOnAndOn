@@ -15,7 +15,8 @@ public class MyPageController implements Controller {
 
 		
 		response.setContentType("text/html;charset=utf-8");
-		String id=request.getParameter("id");
+		String id=null;
+		id=request.getParameter("id");
 		String url="";
 		int bookingcount=0;
 		bookingcount=BookingDAO.getInstance().getTotalBookingCount(id);
@@ -28,18 +29,19 @@ public class MyPageController implements Controller {
 			url = "index.jsp";
 
 		} else {
-
+			MemberVO fvo=(MemberVO) session.getAttribute("fvo");
+			
 			if (id == null) {
 				bookingcount = BookingDAO.getInstance().getTotalBookingCount(vo.getId());
 				session.setAttribute("bookingcount", bookingcount);
 				url = "redirect:bookieOnAndOn/mypage.jsp";
 
 			} else {
-				MemberVO fvo = MemberDAO.getInstance().getMemberById(id);
-				session.setAttribute("fvo", fvo);
+				fvo = MemberDAO.getInstance().getMemberById(id);
+				request.setAttribute("fvo", fvo);
 				bookingcount = BookingDAO.getInstance().getTotalBookingCount(fvo.getId());
-				session.setAttribute("bookingcount", bookingcount);
-				url = "redirect:bookieOnAndOn/mypage.jsp";
+				request.setAttribute("fbookingcount", bookingcount);
+				url = "bookieOnAndOn/mypage.jsp";
 
 			}
 
