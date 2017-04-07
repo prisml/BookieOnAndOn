@@ -1,30 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <script>
-	$(document).ready(function() {
-		var array = [ "김밥", "김치", "김치찌개", "김치김밥", "김밥천국", "참치김밥", "김밥나라" ];
-
-		/**
-		 * source - 검색될 배열
-		 */
-		$("#search").autocomplete({
-			source : array
-		});
-	});
-
 	function bookSearch() {
 		$("#bookSearchForm").submit();
 	}
 </script>
-
-<!-- Scripts -->
-<script src="//code.jquery.com/jquery.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
-<script
-	src="${pageContext.request.contextPath}/assets/js/jquery.dropotron.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/skel.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/util.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
 <!-- Header -->
 <div id="header-wrapper">
 	<header id="header" class="container">
@@ -59,25 +39,24 @@
 				<li><a href="no-sidebar.html">No Sidebar</a></li>
 			</ul>
 		</nav>
+
+		<div class="container">
+			<div class="row">
+				<div class="2u"></div>
+				<div class="8u">
+					<form action="${pageContext.request.contextPath}/DispatcherServlet"
+						id="bookSearchForm">
+						<div class="input-group input-group-lg">
+							<input type="hidden" name="command" value="bookSearch"> <input
+								type="text" class="form-control" name="title"> <span
+								class="input-group-addon"> <i class="fa fa-search"
+								onclick="bookSearch()"></i>
+							</span>
+						</div>
+					</form>
+				</div>
+				<div class="2u"></div>
+			</div>
+		</div>
 	</header>
 </div>
-
-<!-- Banner : 도서 검색-->
-<div id="banner-wrapper">
-	<div id="banner" class="box container">
-		<form action="${pageContext.request.contextPath}/DispatcherServlet"
-			id="bookSearchForm">
-			<div class="ui-widget">
-				<label for="search">Search: </label> <input id="search">
-			</div>
-			<div class="input-group input-group-lg">
-				<input type="hidden" name="command" value="bookSearch"> <input
-					type="text" class="form-control" name="title"> <span
-					class="input-group-addon"> <i class="fa fa-search"
-					onclick="bookSearch()"></i>
-				</span>
-			</div>
-		</form>
-	</div>
-</div>
-
