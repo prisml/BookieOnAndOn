@@ -5,9 +5,7 @@ public class MemberVO implements VO{
 	private String password;
 	private String name;
 	private String tel;
-	public MemberVO() {
-		super();
-	}
+
 	public MemberVO(String id, String password, String name, String tel) {
 		super();
 		this.id = id;
@@ -43,7 +41,9 @@ public class MemberVO implements VO{
 	public String toString() {
 		return "MemberVO [id=" + id + ", password=" + password + ", name=" + name + ", tel=" + tel + "]";
 	}
+}
 	
 	
 
-}
+
+

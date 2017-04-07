@@ -10,10 +10,18 @@ public class HandlerMapping {
 		return instance;
 	}
 
-	public Controller create(String command) {
-		Controller c = null;
-		if (command.equals("main")) {
+	public Controller create(String command){
+		Controller c=null;
+		if(command.equals("main")){
 			c = new MainController();
+		}else if(command.equals("login")){
+			c = new LoginController();
+		}else if(command.equals("register")){
+			c = new RegisterController();
+		}else if(command.equals("logout")){
+			c = new LogOutController();
+		}else if(command.equals("idCheck")){
+			c = new IdCheckController();
 		} else if (command.equals("bookingList")){
 			c = new BookingListController();
 		} else if(command.equals("bookSearch")){

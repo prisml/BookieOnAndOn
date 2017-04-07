@@ -9,21 +9,15 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>메인</title>  
+<title>메인</title>
 <title>Verti by HTML5 UP</title>
 
 <jsp:include page="/template/script.jsp"></jsp:include>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css" />
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-
-<!--------------- script ajax ----------------->
- <script type="text/javascript"> 
-
+<!-- script ajax -->
+<script type="text/javascript"> 
+ // 선택한 탭 active
+>>>>>>> branch 'master' of https://github.com/prisml/BookieOnAndOn.git
  $(document).ready(function(){
 	 $(".nav-justified li").click(function(){
 		 // 클릭한 탭 active
@@ -100,7 +94,7 @@
  });//ready
  </script>
 </head>
-<body class="homepage"> 
+<body class="homepage">
 	<div id="page-wrapper">
 		<jsp:include page="/template/header.jsp"></jsp:include>
 		<div id="features-wrapper">
@@ -170,19 +164,11 @@
 			<div class="genregage"><!-- 장르 리스트의 페이징 :ajax에서 --><ul class="pagination"></ul></div>
 		</div><!-- col-lg-12 -->  	
 		</div><!-- row text-center -->
+
 			</div>
 		</div>
 		<jsp:include page="/template/footer.jsp"></jsp:include>
 	</div>
-	
-	<!-- Scripts -->
-	
-	<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/js/jquery.dropotron.min.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/js/skel.min.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/js/util.js"></script>
-	<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-	<script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
 
 </body>
 </html>

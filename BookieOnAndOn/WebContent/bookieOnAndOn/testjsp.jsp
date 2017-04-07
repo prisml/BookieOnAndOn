@@ -25,7 +25,6 @@
 					ID: <input type="text" name="id"> 
 					<input type="submit" value="검색"> 
 					<input type="hidden" name="command" value="bookingList">
-					
 					<hr>
 					&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/DispatcherServlet?command=sawBookList">mypage</a>
 				</form>
