@@ -5,9 +5,8 @@
 <html>
 <head>
 <title>도서검색</title>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/main.css" />
+
+<jsp:include page="/template/script.jsp"></jsp:include>
 </head>
 <body class="homepage">
 	<div id="page-wrapper">
@@ -56,19 +55,5 @@
 		</div>
 		<jsp:include page="/template/footer.jsp"></jsp:include>
 	</div>
-
-
-
-
-
-
-	<!-- Scripts -->
-	<script
-		src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/assets/js/jquery.dropotron.min.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/js/skel.min.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/js/util.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
 </body>
 </html>
