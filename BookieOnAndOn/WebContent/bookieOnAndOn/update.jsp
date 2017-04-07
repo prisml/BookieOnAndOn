@@ -48,7 +48,7 @@ function reset(){
 	<article class="container">
 	<div class="center-block" align="middle">
 		<h1>
-			<a href="${pageContext.request.contextPath}/bookieOnAndOn/main.jsp">
+			<a href="${pageContext.request.contextPath}/index.jsp">
 			<img src="${pageContext.request.contextPath}/images/Logo.png"> </a>
 		</h1>
 	</div>

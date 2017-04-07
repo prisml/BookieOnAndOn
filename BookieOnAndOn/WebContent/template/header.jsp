@@ -22,13 +22,13 @@
 				<div id="logo">
 					<a href="${pageContext.request.contextPath}/index.jsp"><img
 						src="${pageContext.request.contextPath}/images/Logo.png"
-						style="width: 150px; padding: 15px;"></a>
+						style="width: 220px;"></a>
 				</div>
 				<!-- Nav -->
 				<nav id="nav">
 					<ul>
 						<li class="current"><a
-							href="${pageContext.request.contextPath}/bookieOnAndOn/main.jsp">welcome</a></li>
+							href="${pageContext.request.contextPath}/index.jsp">welcome</a></li>
 						<li><a
 							href="${pageContext.request.contextPath}/bookieOnAndOn/login.jsp">Login</a></li>
 						<li><a
@@ -51,7 +51,7 @@
 				<nav id="nav">
 					<ul>
 						<li class="current"><a
-							href="${pageContext.request.contextPath}/bookieOnAndOn/main.jsp">welcome</a></li>
+							href="${pageContext.request.contextPath}/index.jsp">welcome</a></li>
 						<li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=mypage">마이페이지</a></li>
 						<li><a href="${pageContext.request.contextPath}/bookieOnAndOn/update.jsp">회원정보수정</a></li>
 						<li>${sessionScope.mvo.name}님<a href="javascript:logout()">Logout</a></li>					
