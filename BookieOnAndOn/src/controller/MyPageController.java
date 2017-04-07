@@ -14,6 +14,7 @@ public class MyPageController implements Controller {
 		
 		response.setContentType("text/html;charset=utf-8");
 		String id=request.getParameter("id");
+		System.out.println("부킹리스트에서 넘어온 리시버 아이디: "+id);
 		String url="";
 		int bookingcount=0;
 		bookingcount=BookingDAO.getInstance().getTotalBookingCount(id);

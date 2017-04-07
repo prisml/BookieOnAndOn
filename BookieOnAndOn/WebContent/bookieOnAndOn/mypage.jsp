@@ -29,7 +29,7 @@
 
 <div id="mypageInfo">
  	<h3>mypage 입니다</h3>
- 	booking : <a href="${pageContext.request.contextPath}/DispatcherServlet?command=bookingList&id=java">${bookingcount}</a>
+ 	booking : <a href="${pageContext.request.contextPath}/DispatcherServlet?command=bookingList">${bookingcount}</a>
 
 </div>
 
