@@ -46,7 +46,7 @@
  		</c:when>
  	<c:otherwise>
  			<h3>mypage</h3>
- 			booking : <a href="${pageContext.request.contextPath}/DispatcherServlet?command=bookingList&id=java">${bookingcount}</a>
+ 			booking : <a href="${pageContext.request.contextPath}/DispatcherServlet?command=bookingList&id=${mvo.id}">${bookingcount}</a>
  	
  	</c:otherwise>   
  	</c:choose>

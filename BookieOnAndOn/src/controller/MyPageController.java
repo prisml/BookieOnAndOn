@@ -31,6 +31,7 @@ public class MyPageController implements Controller {
 		} else {
 
 			if (id == null) {
+				//MemberVO lvo = MemberDAO.getInstance().getMemberById(id);
 				bookingcount = BookingDAO.getInstance().getTotalBookingCount(vo.getId());
 				session.setAttribute("bookingcount", bookingcount);
 				url = "redirect:bookieOnAndOn/mypage.jsp";
