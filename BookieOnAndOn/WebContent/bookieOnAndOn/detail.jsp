@@ -66,6 +66,12 @@
 				data:"command=detail&bookno=${vo.bookno}&page="+$(this).text()
 			});
 		});
+		$( ".star_rating a" ).click(function() {
+			event.preventDefault();
+		     $(this).parent().children("a").removeClass("on");
+		     $(this).addClass("on").prevAll("a").addClass("on");
+		     return false;
+		});
 	}); 
 </script>
 </head>
@@ -99,7 +105,20 @@
 		<br> <br>
 		<div id="banner-wrapper">
 			<div class="box container">
-				<div class="row"></div>
+				<div class="row">
+					<div class="3u">
+					<p class="star_rating">
+					    <a href="#" class="on">★</a>
+					    <a href="#" class="on">★</a>
+					    <a href="#" class="on">★</a>
+					    <a href="#" class="on">★</a>
+					    <a href="#" class="on">★</a>
+					</p>
+					</div>
+					<div class="9u">
+					<input class="w3-input w3-border-0" type="text">
+					</div>
+				</div>
 			</div>
 		</div>
 		<br> <br>

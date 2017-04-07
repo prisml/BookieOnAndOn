@@ -42,6 +42,12 @@ public class HandlerMapping {
 			c = new WishController();
 		} else if(command.equals("mypage")){
 			c = new MyPageController();
+		} else if(command.equals("reviewRegist")){
+			c = new ReviewRegistController();
+		} else if(command.equals("reviewUpdate")){
+			c = new ReviewUpdateController();
+		} else if(command.equals("reviewDelete")){
+			c = new ReviewDeleteController();
 		}
 		return c;
 	}
