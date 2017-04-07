@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.BookingDAO;
 import model.ListVO;
+import model.MemberDAO;
+import model.MemberVO;
 import model.PagingBean;
 import model.VO;
 
@@ -23,10 +25,12 @@ public class BookingListController implements Controller {
 		} else {
 			pagingBean = new PagingBean(receiverIdCount, Integer.parseInt(nowPage));
 		}
+		MemberVO myId = MemberDAO.getInstance().getMemberById(id);
 		ArrayList<VO> receiverIdList = BookingDAO.getInstance().getBookingList(id,pagingBean);
 		ListVO listVO = new ListVO(receiverIdList, pagingBean);
 		request.setAttribute("receiverIdList", listVO);
 		request.setAttribute("receiverIdCount", receiverIdCount);
+		request.setAttribute("myId", myId);
 		request.setAttribute("id", id);
 		return "bookieOnAndOn/booking_list.jsp";
 	}
