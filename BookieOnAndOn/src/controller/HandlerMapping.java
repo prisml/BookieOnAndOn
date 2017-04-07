@@ -26,7 +26,10 @@ public class HandlerMapping {
 			c = new BookingListController();
 		} else if(command.equals("bookSearch")){
 			c = new BookSearchController();
-		} else if(command.equals("sawBookList")){
+		} else if(command.equals("bookAutoComplete")){
+			c = new BookAutoCompleteController();
+		}
+		else if(command.equals("sawBookList")){
 			c = new SawBookListController();
 		} else if(command.equals("wishBookList")){
 			c = new WishBookListController();

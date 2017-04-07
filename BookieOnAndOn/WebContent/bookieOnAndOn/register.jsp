@@ -81,7 +81,7 @@
 		<h1>
 			<a href="${pageContext.request.contextPath}/index.jsp">
 			<img src="${pageContext.request.contextPath}/images/Logo.png"> </a>
-		</h1>
+		</h1>	
 	</div>
 
 	<div class="center-block" style="width: 300px; padding: 15px;">

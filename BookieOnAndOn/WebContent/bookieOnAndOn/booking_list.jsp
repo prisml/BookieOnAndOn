@@ -6,7 +6,6 @@
 <head>
 <jsp:include page="/template/script.jsp"></jsp:include>
 <title>booking_list</title>
-
 </head>
 <body class="homepage">
 	<div id="page-wrapper">
@@ -17,8 +16,15 @@
 				<table id="table" class="table table-hover">
 					<thead>
 						<tr>
-							<th><h1>내가 부킹한 북멤버: ${requestScope.receiverIdCount }명</h1></th>
-							<th><h1>Booking_Count</h1></th>
+							<c:choose>
+								<c:when test="${requestScope.myId.name == sessionScope.mvo.name}">
+									<td align="center"><h1>내가 부킹한 북멤버: ${requestScope.receiverIdCount }명</h1></td>
+								</c:when>
+								<c:otherwise>
+									<td align="center"><h1>${requestScope.myId.name }님이 부킹한 북멤버: ${requestScope.receiverIdCount }명</h1></td>
+								</c:otherwise>
+							</c:choose>
+							<td align="center"><h1>Booking_Count</h1></td>
 						</tr>
 					</thead>
 					<tbody>
