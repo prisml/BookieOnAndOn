@@ -112,10 +112,6 @@ select receiberid from booking where senderid='jdbc';
 select count(*) from booking where senderid='jdbc';
 -- 정우성이 부킹한 아이디와 부킹한 수
 select receiverid, count(*) from booking where senderid='java';
-select receiverid, count(*) from booking where senderid='java' group by receiverid;
-select receiverid, count(*) from booking where senderid='jquery' group by receiverid;
-
-select receiberid, count(*) from booking where senderid='jdbc' group by receiverid;
 -- 아래꺼부터 드롭
 drop table book;
 drop sequence bookno_seq;

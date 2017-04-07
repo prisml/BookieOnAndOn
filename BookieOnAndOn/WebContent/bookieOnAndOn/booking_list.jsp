@@ -38,7 +38,7 @@
 						<c:forEach var="mvo" items="${requestScope.receiverIdList.list }">
 							<tr>
 								<td>${mvo.receiverid }</td>
-								<td></td>
+								<td>${mvo.receiveridcount }</td>
 							</tr>
 						</c:forEach>
 					</tbody>
