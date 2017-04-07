@@ -49,4 +49,65 @@ public class MemberDAO {
 		}
 		return list;
 	}
+
+	public MemberVO login(String id, String password) throws SQLException {
+		MemberVO vo = null;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			con = dataSource.getConnection();
+			String sql = "select name,tel from bookmember where id=? and password=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setString(2, password);
+			rs = pstmt.executeQuery();
+			if (rs.next())
+				vo = new MemberVO(id, password, rs.getString(1), rs.getString(2));
+		} finally {
+			closeAll(rs, pstmt, con);
+		}
+		return vo;
+	}
+	public void register(MemberVO vo) throws SQLException {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		try{
+			con=dataSource.getConnection();
+			String sql="insert into bookmember(id,password,name,tel) values(?,?,?,?)";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, vo.getId());
+			pstmt.setString(2, vo.getPassword());
+			pstmt.setString(3, vo.getName());
+			pstmt.setString(4, vo.getTel());
+			pstmt.executeUpdate();
+			System.out.println(vo);
+		}finally{
+			closeAll(pstmt, con);
+		}
+	}	
+	public boolean idCheck(String id) throws SQLException{
+		boolean flag = false;
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try{
+			con=dataSource.getConnection();
+			String sql="select count(*) from bookmember where id=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1,id);
+			rs=pstmt.executeQuery();
+			if(rs.next()){
+				if(rs.getInt(1) == 0){
+					flag = true;
+				}
+			}
+		}finally{
+			closeAll(rs,pstmt,con);
+		}
+			return flag;
+	}
+	
+
+
 }

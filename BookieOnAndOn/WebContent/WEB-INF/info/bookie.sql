@@ -1,7 +1,6 @@
 --도서 테이블
 drop table book;
-
-
+select * from book;
 create table book(
 
    bookno number primary key,
@@ -26,6 +25,12 @@ create table bookmember(
    name varchar2(100) not null,
    tel varchar2(100) not null
 )
+
+insert into bookmember(id,password,name,tel) values ('java','1234','김래현','011');
+insert into bookmember(id,password,name,tel) values ('jquery','1111','문성준','012');
+select * from bookmember;
+select name,tel from bookmember where id='jquery' and password='1111';
+
 insert into bookmember(id,password,name,tel) values('java','abcd','정우성','01011112222');
 insert into bookmember(id,password,name,tel) values('jquery','dcba','전지현','01033334444');
 insert into bookmember(id,password,name,tel) values('jdbc','aaaa','아이유','01055556666');
@@ -41,6 +46,7 @@ insert into bookmember(id,password,name,tel) values('java9','aaaa','아이유','
 insert into bookmember(id,password,name,tel) values('java10','aaaa','아이유','01055556666');
 insert into bookmember(id,password,name,tel) values('java11','aaaa','아이유','01055556666');
 
+commit
 select * from bookmember;
 --리뷰 테이블
 drop table review;
@@ -218,7 +224,6 @@ Insert into SCOTT.BOOK (BOOKNO,TITLE,RATE,AUTHOR,PUB,PUBDATE,GENRE) values (92,'
 Insert into SCOTT.BOOK (BOOKNO,TITLE,RATE,AUTHOR,PUB,PUBDATE,GENRE) values (93,'원피스1',0,'오다 에이치로','대원',to_date('16/11/25','RR/MM/DD'),'만화');
 Insert into SCOTT.BOOK (BOOKNO,TITLE,RATE,AUTHOR,PUB,PUBDATE,GENRE) values (94,'원피스1',0,'오다 에이치로','대원',to_date('16/11/25','RR/MM/DD'),'만화');
 Insert into SCOTT.BOOK (BOOKNO,TITLE,RATE,AUTHOR,PUB,PUBDATE,GENRE) values (95,'원피스1',0,'오다 에이치로','대원',to_date('16/11/25','RR/MM/DD'),'만화');
-
 
 
 

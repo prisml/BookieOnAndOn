@@ -5,11 +5,7 @@
 <html>
 <head>
 <title>mypage</title>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css" />
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<jsp:include page="/template/script.jsp"></jsp:include>
 </head>
 
 
@@ -33,7 +29,7 @@
 
 <div id="mypageInfo">
  	<h3>mypage 입니다</h3>
- 	booking : <a>${bookingcount}</a>
+ 	booking : <a href="${pageContext.request.contextPath}/DispatcherServlet?command=bookingList&id=java">${bookingcount}</a>
 
 </div>
 
@@ -45,20 +41,5 @@
 		</div>
 		<jsp:include page="/template/footer.jsp"></jsp:include>
 	</div>
-
-
-
-
-
-
-
-	<!-- Scripts       -->
-	<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/js/jquery.dropotron.min.js"></script>
-
-	<script src="${pageContext.request.contextPath}/assets/js/skel.min.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/js/util.js"></script>
-	<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-	<script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
 </body>
 </html>
