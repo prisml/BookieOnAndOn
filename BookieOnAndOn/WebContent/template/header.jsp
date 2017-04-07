@@ -54,7 +54,7 @@
 		<div id="header-wrapper">
 			<header id="header" class="container">
 				<!-- Logo -->
-				<a href="${pageContext.request.contextPath}/bookieOnAndOn/index.jsp">
+				<a href="${pageContext.request.contextPath}/index.jsp">
 					<img src="${pageContext.request.contextPath}/images/Logo.png"
 					style="width: 250px;">
 				</a>
@@ -63,7 +63,7 @@
 				<nav id="nav">
 					<ul>
 						<li class="current"><a
-							href="${pageContext.request.contextPath}/bookieOnAndOn/main.jsp">welcome</a></li>
+							href="${pageContext.request.contextPath}/index.jsp">welcome</a></li>
 						<li><a
 							href="${pageContext.request.contextPath}/bookieOnAndOn/login.jsp">Login</a></li>
 						<li><a
