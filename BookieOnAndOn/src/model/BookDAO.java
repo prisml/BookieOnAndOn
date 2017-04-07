@@ -25,67 +25,96 @@ public class BookDAO {
 	}
 	
 	// 도서명에 따라 도서를 검색하는 메서드 : 성준
-	public ArrayList<VO> findBookByTitle(String title, PagingBean pagingBean) throws SQLException{
-		ArrayList<VO> findBookList = new ArrayList<VO>();
-		
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		
-		try
-		{
-			con = getConnection();
+		public ArrayList<VO> findBookByTitle(String title, PagingBean pagingBean) throws SQLException{
+			ArrayList<VO> findBookList = new ArrayList<VO>();
 			
-			StringBuilder sql=new StringBuilder();
-			sql.append("select findBookList.* from(");
-			sql.append("select row_number() over(order by bookno) rnum, bookno, title, author, pub, rate ");
-			sql.append("from book where title like '"); 
-			sql.append(title.charAt(0) + "%' order by bookno");
-			sql.append(") findBookList where rnum between ? and ? ");
-			pstmt = con.prepareStatement(sql.toString());
-			pstmt.setInt(1, pagingBean.getStartRowNumber());
-			pstmt.setInt(2, pagingBean.getEndRowNumber());
-			rs = pstmt.executeQuery();
-			 
-			while(rs.next()){
-				findBookList.add(new BookVO(rs.getString("bookno"), rs.getString("title"), rs.getString("author"), rs.getString("pub"), rs.getDouble("rate")));
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			
+			try
+			{
+				con = getConnection();
+				
+				StringBuilder sql=new StringBuilder();
+				sql.append("select findBookList.* from(");
+				sql.append("select row_number() over(order by bookno) rnum, bookno, title, author, pub, rate ");
+				sql.append("from book where title like '%"); 
+				sql.append(title + "%' order by bookno");
+				sql.append(") findBookList where rnum between ? and ? ");
+				pstmt = con.prepareStatement(sql.toString());
+				pstmt.setInt(1, pagingBean.getStartRowNumber());
+				pstmt.setInt(2, pagingBean.getEndRowNumber());
+				rs = pstmt.executeQuery();
+				 
+				while(rs.next()){
+					findBookList.add(new BookVO(rs.getString("bookno"), rs.getString("title"), rs.getString("author"), rs.getString("pub"), rs.getDouble("rate")));
+				}
 			}
-		}
-		finally
-		{
-			closeAll(rs, pstmt, con);
-		}
-		
-		return findBookList;
-	}
-	
-	// 도서검색리스트수 반환 메서드 : 성준
-	public int getTotalFindBookListCount(String title) throws SQLException{
-		int totalFindBookListCount = 0;
-		
-		Connection con=null;
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-		
-		try
-		{
-			con=getConnection(); 
-			
-			String sql="select count(*) from book where title like '"+ title.charAt(0) +"%'";
-			pstmt=con.prepareStatement(sql);
-			rs=pstmt.executeQuery();
-			
-			if(rs.next()){
-				totalFindBookListCount = rs.getInt(1);
+			finally
+			{
+				closeAll(rs, pstmt, con);
 			}
-		}
-		finally
-		{
-			closeAll(rs,pstmt,con);
+			
+			return findBookList;
 		}
 		
-		return totalFindBookListCount;
-	}
+		// 도서검색리스트수 반환 메서드 : 성준
+		public int getTotalFindBookListCount(String title) throws SQLException{
+			int totalFindBookListCount = 0;
+			
+			Connection con=null;
+			PreparedStatement pstmt=null;
+			ResultSet rs=null;
+			
+			try
+			{
+				con=getConnection(); 
+				
+				String sql="select count(*) from book where title like '%"+ title +"%'";
+				pstmt=con.prepareStatement(sql);
+				rs=pstmt.executeQuery();
+				
+				if(rs.next()){
+					totalFindBookListCount = rs.getInt(1);
+				}
+			}
+			finally
+			{
+				closeAll(rs,pstmt,con);
+			}
+			
+			return totalFindBookListCount;
+		}
+		
+		// 도서검색 자동완성 리스트 반환 함수 : 성준
+		public ArrayList<VO> getBookAutoCompleteList(String title) throws SQLException{
+			ArrayList<VO> bookAutoCompleteList = new ArrayList<VO>();
+			
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			
+			try
+			{
+				con = getConnection();
+				
+				String sql = "select title from book where title like'"+title.charAt(0)+"%'";
+				pstmt = con.prepareStatement(sql);
+
+				rs = pstmt.executeQuery();
+				 
+				while(rs.next()){
+					bookAutoCompleteList.add(new BookVO(rs.getString("title")));
+				}
+			}
+			finally
+			{
+				closeAll(rs, pstmt, con);
+			}
+			
+			return bookAutoCompleteList;
+		}
 	
 	/**
 	 * 도서 상세 정보 가져오기 - 영덕
