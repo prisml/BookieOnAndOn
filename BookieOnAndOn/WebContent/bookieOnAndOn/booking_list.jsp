@@ -17,7 +17,7 @@
 				<table id="table" class="table table-hover">
 					<thead>
 						<tr>
-							<th><h1>내가 부킹한 북멤버: ${requestScope.receiverIdCount }명</h1></th>
+							<th><h1>${requestScope.myId.name }님이 부킹한 북멤버: ${requestScope.receiverIdCount }명</h1></th>
 							<th><h1>Booking_Count</h1></th>
 						</tr>
 					</thead>
