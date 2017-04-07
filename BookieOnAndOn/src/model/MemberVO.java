@@ -1,6 +1,6 @@
 package model;
 
-public class MemberVO {
+public class MemberVO implements VO{
 	private String id;
 	private String password;
 	private String name;

@@ -2,7 +2,7 @@ package model;
 
 import java.sql.Blob;
 
-public class BookVO {
+public class BookVO implements VO{
 	private String bookno;
 	private String title;
 	private String author;
@@ -10,14 +10,23 @@ public class BookVO {
 	private String pubdate;
 	private String genre;
 	private String summary;
-	private int rate;
+	private double rate;
 	private Blob bookcover;
 	public BookVO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	public BookVO(String bookno, String title, String author, String pub, double rate){
+		this.bookno = bookno;
+		this.title = title;
+		this.author = author;
+		this.pub = pub;
+		this.rate = rate;
+	}
+	
 	public BookVO(String bookno, String title, String author, String pub, String pubdate, String genre, String summary,
-			int rate, Blob bookcover) {
+			double rate, Blob bookcover) {
 		super();
 		this.bookno = bookno;
 		this.title = title;
@@ -28,6 +37,18 @@ public class BookVO {
 		this.summary = summary;
 		this.rate = rate;
 		this.bookcover = bookcover;
+	}
+	public BookVO(String bookno, String title, String author, String pub, String pubdate, String genre, String summary,
+			double rate) {
+		super();
+		this.bookno = bookno;
+		this.title = title;
+		this.author = author;
+		this.pub = pub;
+		this.pubdate = pubdate;
+		this.genre = genre;
+		this.summary = summary;
+		this.rate = rate;
 	}
 	public String getBookno() {
 		return bookno;
@@ -71,10 +92,10 @@ public class BookVO {
 	public void setSummary(String summary) {
 		this.summary = summary;
 	}
-	public int getRate() {
+	public double getRate() {
 		return rate;
 	}
-	public void setRate(int rate) {
+	public void setRate(double rate) {
 		this.rate = rate;
 	}
 	public Blob getBookcover() {
@@ -83,17 +104,11 @@ public class BookVO {
 	public void setBookcover(Blob bookcover) {
 		this.bookcover = bookcover;
 	}
+	
 	@Override
 	public String toString() {
 		return "BookVO [bookno=" + bookno + ", title=" + title + ", author=" + author + ", pub=" + pub + ", pubdate="
 				+ pubdate + ", genre=" + genre + ", summary=" + summary + ", rate=" + rate + ", bookcover=" + bookcover
 				+ "]";
 	}
-	
-	
-	
-	
-	
-	
-
 }

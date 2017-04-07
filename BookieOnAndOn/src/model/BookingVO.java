@@ -1,6 +1,6 @@
 package model;
 
-public class BookingVO {
+public class BookingVO implements VO{
 	private String senderid;
 	private String receiverid;
 	public BookingVO() {
@@ -28,7 +28,4 @@ public class BookingVO {
 	public String toString() {
 		return "BookingVO [senderid=" + senderid + ", receiverid=" + receiverid + "]";
 	}
-	
-	
-
 }
