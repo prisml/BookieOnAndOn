@@ -6,6 +6,7 @@
 <head>
 <jsp:include page="/template/script.jsp"></jsp:include>
 <title>booking_list</title>
+
 </head>
 <body class="homepage">
 	<div id="page-wrapper">
@@ -23,11 +24,7 @@
 					<tbody>
 						<c:forEach var="mvo" items="${requestScope.receiverIdList.list }">
 							<tr>
-								<td align="center"><a 
-								href="${pageContext.request.contextPath }/DispatcherServlet?command=mypage&id=${mvo.receiverid }">
-								${mvo.receiverid }</a>
-								</td>
-								
+								<td align="center"><a href="${pageContext.request.contextPath}/DispatcherServlet?command=mypage&id=${mvo.receiverid }">${mvo.receiverid }</a></td>
 								<td align="center">${mvo.receiveridcount }</td>
 							</tr>
 						</c:forEach>

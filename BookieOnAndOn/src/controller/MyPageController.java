@@ -13,14 +13,15 @@ public class MyPageController implements Controller {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		
+
 		response.setContentType("text/html;charset=utf-8");
-		String id=request.getParameter("id");
-		String url="";
-		int bookingcount=0;
-		bookingcount=BookingDAO.getInstance().getTotalBookingCount(id);
+		String id = null;
+		id = request.getParameter("id");
+		String url = "";
+		int bookingcount = 0;
+		bookingcount = BookingDAO.getInstance().getTotalBookingCount(id);
 		request.setAttribute("bookingcount", bookingcount);
-		
+
 		HttpSession session = request.getSession();
 		MemberVO vo = (MemberVO) session.getAttribute("mvo");
 		if (vo == null) {
@@ -36,10 +37,10 @@ public class MyPageController implements Controller {
 
 			} else {
 				MemberVO fvo = MemberDAO.getInstance().getMemberById(id);
-				session.setAttribute("fvo", fvo);
+				request.setAttribute("fvo", fvo);
 				bookingcount = BookingDAO.getInstance().getTotalBookingCount(fvo.getId());
-				session.setAttribute("bookingcount", bookingcount);
-				url = "redirect:bookieOnAndOn/mypage.jsp";
+				request.setAttribute("fbookingcount", bookingcount);
+				url = "bookieOnAndOn/mypage.jsp";
 
 			}
 

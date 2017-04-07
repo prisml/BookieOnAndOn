@@ -32,10 +32,7 @@
  	<c:if test="${!empty fvo }">
  	${fvo.name } 님의 page입니다
  	
- 	</c:if>
- 	<h3>mypage</h3>
- 	booking : <a href="${pageContext.request.contextPath}/DispatcherServlet?command=bookingList">${bookingcount}</a>
-
+ 	</div>
 </div>
 
 <!-- 여기까지 본문입니다 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
