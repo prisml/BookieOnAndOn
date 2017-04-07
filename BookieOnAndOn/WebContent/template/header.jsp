@@ -21,7 +21,7 @@
 				<!-- Logo -->
 				<div id="logo">
 					<a href="${pageContext.request.contextPath}/bookieOnAndOn/main.jsp"><img
-						src="${pageContext.request.contextPath}/images/logo.png"
+						src="${pageContext.request.contextPath}/images/Logo.png"
 						style="width: 150px; padding: 15px;"></a>
 				</div>
 				<!-- Nav -->
@@ -44,7 +44,7 @@
 			<header id="header" class="container">
 				<div id="logo">
 					<a href="${pageContext.request.contextPath}/bookieOnAndOn/main.jsp"><img
-						src="${pageContext.request.contextPath}/images/logo.png"
+						src="${pageContext.request.contextPath}/images/Logo.png"
 						style="width: 150px; padding: 15px;"></a>
 				</div>
 				<!-- Nav -->
@@ -54,6 +54,9 @@
 						<li class="current"><a
 							href="${pageContext.request.contextPath}/bookieOnAndOn/main.jsp">welcome</a></li>
 						<li>${sessionScope.mvo.name}님<a href="javascript:logout()">Logout</a></li>
+						<li><a href="${pageContext.request.contextPath}/bookieOnAndOn/mypage.jsp">마이페이지</a></li>
+						<li><a href="${pageContext.request.contextPath}/bookieOnAndOn/mypage.jsp">마이페이지</a></li>
+						<li><a href="${pageContext.request.contextPath}/bookieOnAndOn/update.jsp">회원정보수정</a></li>
 					</ul>
 				</nav>
 			<div class="container">

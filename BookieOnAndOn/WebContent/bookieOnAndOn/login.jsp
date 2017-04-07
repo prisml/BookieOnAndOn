@@ -16,7 +16,7 @@
 
   <article class="container">
         <div class="center-block" align="middle"><br>
-          <h1><a href="${pageContext.request.contextPath}/bookieOnAndOn/main.jsp"><img src="${pageContext.request.contextPath}/images/logo.png"> </a></h1>
+          <h1><a href="${pageContext.request.contextPath}/bookieOnAndOn/main.jsp"><img src="${pageContext.request.contextPath}/images/Logo.png"> </a></h1>
         </div>
         <br>
         <div class="center-block" style="width: 300px;padding:15px;">

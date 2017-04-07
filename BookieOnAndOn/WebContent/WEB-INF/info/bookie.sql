@@ -25,12 +25,12 @@ create table bookmember(
    name varchar2(100) not null,
    tel varchar2(100) not null
 )
-<<<<<<< HEAD
+
 insert into bookmember(id,password,name,tel) values ('java','1234','김래현','011');
 insert into bookmember(id,password,name,tel) values ('jquery','1111','문성준','012');
 select * from bookmember;
 select name,tel from bookmember where id='jquery' and password='1111';
-=======
+
 insert into bookmember(id,password,name,tel) values('java','abcd','정우성','01011112222');
 insert into bookmember(id,password,name,tel) values('jquery','dcba','전지현','01033334444');
 insert into bookmember(id,password,name,tel) values('jdbc','aaaa','아이유','01055556666');
