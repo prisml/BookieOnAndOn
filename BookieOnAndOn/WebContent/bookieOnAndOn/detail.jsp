@@ -5,6 +5,7 @@
 <html>
 <head>
 <jsp:include page="/template/script.jsp"></jsp:include>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/assets/css/main.css" />
 <title>(책이름) 정보</title>
@@ -68,10 +69,14 @@
 		});
 		$( ".star_rating a" ).click(function() {
 			event.preventDefault();
-		     $(this).parent().children("a").removeClass("on");
-		     $(this).addClass("on").prevAll("a").addClass("on");
-		     return false;
+			$(this).parent().children("a").removeClass("on");
+			$(this).addClass("on").prevAll("a").addClass("on");
+			$(this).parent().children("a").html("<img style='width:30px' src='${pageContext.request.contextPath}/images/staroff.png'>");
+			$(".on").html("<img style='width:30px' src='${pageContext.request.contextPath}/images/staron.png'>");
+			return false;
 		});
+		$(".on").html("<img style='width:30px' src='${pageContext.request.contextPath}/images/staron.png'>");
+		$(".off").html("<img style='width:30px' src='${pageContext.request.contextPath}/images/staron.png'>");
 	}); 
 </script>
 </head>
@@ -86,6 +91,7 @@
 					</div>
 					<div class="8u 12u(medium)">
 						<ul id="bookInfo">
+							<li>제목 : ${vo.title}</li>
 							<li>저자 : ${vo.author}</li>
 							<li>장르 : ${vo.genre}</li>
 							<li>출판사 : ${vo.pub }</li>
@@ -95,8 +101,16 @@
 					</div>
 					<div class="1u 12(medium)">
 						<ul>
-							<li id="sawLi">봤어요</li>
-							<li id="wishLi">보고싶어요</li>
+							<li id="sawLi">
+							<br>
+							<img alt="봤어요" 
+							src="${pageContext.request.contextPath}/images/staroff.png"
+							 style="width:50px"></li>
+							<li id="wishLi">
+							<br>
+							<img alt="봤어요" 
+							src="${pageContext.request.contextPath}/images/heartoff.png"
+							 style="width:50px"></li>
 						</ul>
 					</div>
 				</div>
@@ -106,19 +120,29 @@
 		<div id="banner-wrapper">
 			<div class="box container">
 				<div class="row">
-					<div class="3u">
-					<p class="star_rating">
-					    <a href="#" class="on">★</a>
-					    <a href="#" class="on">★</a>
-					    <a href="#" class="on">★</a>
-					    <a href="#" class="on">★</a>
-					    <a href="#" class="on">★</a>
-					</p>
+					<div class="2u">
+						<p class="star_rating" style="padding-top:20px">
+						    <a href="#" class="on"></a>
+						    <a href="#" class="on"></a>
+						    <a href="#" class="on"></a>
+						    <a href="#" class="on"></a>
+						    <a href="#" class="on"></a>
+						</p>
 					</div>
-					<div class="9u">
-					<form class="w3-container">
-					<input class="w3-input w3-border-0" type="text">
-					</form>
+					<div class="10u">
+						<form
+							class="w3-container w3-text-blue">
+							<div class="w3-row w3-section">
+								<div class="w3-rest">
+									<input class="w3-input w3-border" type="text"
+										placeholder="리뷰 등록"> 
+										<input id="reviewHidden" type="text" style="display: none;" />
+								</div>
+								<div class="w3-col" style="padding-left:20px; padding-top:2px">
+									<i id="reviewSummit" class="w3-xxlarge fa fa-pencil"></i>
+								</div>
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>
