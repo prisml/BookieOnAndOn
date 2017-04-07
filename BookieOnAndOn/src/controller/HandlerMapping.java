@@ -19,13 +19,21 @@ public class HandlerMapping {
 		} else if(command.equals("bookSearch")){
 			c = new BookSearchController();
 		} else if(command.equals("sawBookList")){
-			c= new SawBookListController();
+			c = new SawBookListController();
+		} else if(command.equals("wishBookList")){
+			c = new WishBookListController();
 		} else if (command.equals("genre")) {
 			c = new GenreListController();
 		} else if (command.equals("detail")) {
 			c = new BookDetailController();
 		} else if (command.equals("getReviewList")) {
 			c = new GetReviewListController();
+		} else if(command.equals("saw")) {
+			c = new SawController();
+		} else if(command.equals("wish")) {
+			c = new WishController();
+		} else if(command.equals("mypage")){
+			c = new MyPageController();
 		}
 		return c;
 	}

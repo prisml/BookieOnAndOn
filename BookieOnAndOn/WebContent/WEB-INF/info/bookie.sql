@@ -29,6 +29,18 @@ create table bookmember(
 insert into bookmember(id,password,name,tel) values('java','abcd','정우성','01011112222');
 insert into bookmember(id,password,name,tel) values('jquery','dcba','전지현','01033334444');
 insert into bookmember(id,password,name,tel) values('jdbc','aaaa','아이유','01055556666');
+insert into bookmember(id,password,name,tel) values('java1','abcd','정우성','01011112222');
+insert into bookmember(id,password,name,tel) values('java2','dcba','전지현','01033334444');
+insert into bookmember(id,password,name,tel) values('java3','aaaa','아이유','01055556666');
+insert into bookmember(id,password,name,tel) values('java4','abcd','정우성','01011112222');
+insert into bookmember(id,password,name,tel) values('java5','dcba','전지현','01033334444');
+insert into bookmember(id,password,name,tel) values('java6','aaaa','아이유','01055556666');
+insert into bookmember(id,password,name,tel) values('java7','abcd','정우성','01011112222');
+insert into bookmember(id,password,name,tel) values('java8','dcba','전지현','01033334444');
+insert into bookmember(id,password,name,tel) values('java9','aaaa','아이유','01055556666');
+insert into bookmember(id,password,name,tel) values('java10','aaaa','아이유','01055556666');
+insert into bookmember(id,password,name,tel) values('java11','aaaa','아이유','01055556666');
+
 select * from bookmember;
 --리뷰 테이블
 drop table review;
@@ -78,6 +90,18 @@ create table booking(
 )
 insert into booking(senderid,receiverid) values('java','jquery');
 insert into booking(senderid,receiverid) values('java','jdbc');
+insert into booking(senderid,receiverid) values('java','java1');
+insert into booking(senderid,receiverid) values('java','java2');
+insert into booking(senderid,receiverid) values('java','java3');
+insert into booking(senderid,receiverid) values('java','java4');
+insert into booking(senderid,receiverid) values('java','java5');
+insert into booking(senderid,receiverid) values('java','java6');
+insert into booking(senderid,receiverid) values('java','java7');
+insert into booking(senderid,receiverid) values('java','java8');
+insert into booking(senderid,receiverid) values('java','java9');
+insert into booking(senderid,receiverid) values('java','java10');
+insert into booking(senderid,receiverid) values('java','java11');
+
 insert into booking(senderid,receiverid) values('jquery','java');
 
 select receiverid from booking where senderid='java';

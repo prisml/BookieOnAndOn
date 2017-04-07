@@ -30,12 +30,12 @@
 				<table id="table" class="table table-hover">
 					<thead>
 						<tr>
-							<th>내가 부킹한 북멤버: ${requestScope.listSize }명</th>
-							<th> Booking_Count</th>
+							<th>내가 부킹한 북멤버: ${requestScope.receiverIdCount }명</th>
+							<th>Booking_Count</th>
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach var="mvo" items="${requestScope.list }">
+						<c:forEach var="mvo" items="${requestScope.receiverIdList.list }">
 							<tr>
 								<td>${mvo.receiverid }</td>
 								<td></td>
@@ -43,23 +43,43 @@
 						</c:forEach>
 					</tbody>
 				</table>
+
+				<!-- Pagination -->
+				<div class="row text-center">
+					<div class="col-lg-12">
+						<ul class="pagination">
+							<c:set var="pb"
+								value="${requestScope.receiverIdList.pagingBean }" />
+							<!-- 이전 page -->
+							<c:if test="${pb.previousPageGroup }">
+								<li><a
+									href="${pageContext.request.contextPath}/DispatcherServlet?command=bookingList&pageNo=${pb.startPageOfPageGroup-1 }">&laquo;</a></li>
+							</c:if>
+							<!-- 현재 page -->
+							<c:forEach begin="${pb.startPageOfPageGroup }"
+								end="${pb.endPageOfPageGroup }" var="pageNo">
+								<c:choose>
+									<c:when test="${pb.nowPage!=pageNo }">
+										<li><a
+											href="${pageContext.request.contextPath}/DispatcherServlet?command=bookingList&pageNo=${pageNo }&id=${requestScope.id}">${pageNo }</a></li>
+									</c:when>
+									<c:otherwise>
+										<li class="active"><a>${pageNo }</a></li>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
+							<!-- 다음 page -->
+							<c:if test="${pb.nextPageGroup }">
+								<li><a
+									href="${pageContext.request.contextPath}/DispatcherServlet?command=bookingList&pageNo=${pb.endPageOfPageGroup+1 }">&raquo;</a></li>
+							</c:if>
+						</ul>
+					</div>
+				</div>
 			</div>
 			<hr>
 
-			<!-- Pagination -->
-			<div class="row text-center">
-				<div class="col-lg-12">
-					<ul class="pagination">
-						<li><a href="#">&laquo;</a></li>
-						<li class="active"><a href="#">1</a></li>
-						<li><a href="#">2</a></li>
-						<li><a href="#">3</a></li>
-						<li><a href="#">4</a></li>
-						<li><a href="#">5</a></li>
-						<li><a href="#">&raquo;</a></li>
-					</ul>
-				</div>
-			</div>
+			
 			<!-- /.row -->
 		</div>
 		<jsp:include page="/template/footer.jsp"></jsp:include>

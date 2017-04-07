@@ -6,9 +6,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.BookingDAO;
-import model.BookingVO;
 import model.ListVO;
 import model.PagingBean;
+import model.VO;
 
 public class BookingListController implements Controller {
 
@@ -16,21 +16,23 @@ public class BookingListController implements Controller {
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String id=request.getParameter("id");
 		System.out.println("jsp Parameter: "+id);
-		/*int totalContents = BookingDAO.getInstance().getTotalBookingContent(id);
+		int receiverIdCount = BookingDAO.getInstance().getTotalBookingCount(id);
 		String nowPage = request.getParameter("pageNo");
 		System.out.println(nowPage);
 		PagingBean pagingBean = null;
 		if (nowPage == null){
-			pagingBean = new PagingBean(totalContents);
+			pagingBean = new PagingBean(receiverIdCount);
 		} else {
-			pagingBean = new PagingBean(totalContents, Integer.parseInt(nowPage));
-		}*/
-		ArrayList<BookingVO> list = BookingDAO.getInstance().getBookingList(id);
-		System.out.println("DAO에서 넘어 온 list: "+list);
-		System.out.println("list 수: "+list.size());
-		//ListVO listVO = new ListVO(list, pagingBean);
-		request.setAttribute("list", list);
-		request.setAttribute("listSize", list.size());
+			pagingBean = new PagingBean(receiverIdCount, Integer.parseInt(nowPage));
+		}
+		ArrayList<VO> receiverIdList = BookingDAO.getInstance().getBookingList(id,pagingBean);
+		System.out.println("DAO에서 넘어 온 list: "+receiverIdList);
+		System.out.println("receiverIdCount 수: "+receiverIdCount);
+		ListVO listVO = new ListVO(receiverIdList, pagingBean);
+		System.out.println(listVO);
+		request.setAttribute("receiverIdList", listVO);
+		request.setAttribute("receiverIdCount", receiverIdCount);
+		request.setAttribute("id", id);
 		return "bookieOnAndOn/booking_list.jsp";
 	}
 

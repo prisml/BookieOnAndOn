@@ -4,14 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-
-<script src="//code.jquery.com/jquery.min.js"></script>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/main.css" />
-<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+<jsp:include page="/template/script.jsp"></jsp:include>
 <title>(책이름) 정보</title>
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -31,9 +24,47 @@
 					$("#reviewList").append("</li>");
 				}
 				$("#reviewList").append("</ul>");
+				var pb = data.pagingBean;
+				if(pb.previousPageGroup ==true){
+					$("#reviewPaging").append("<li id=prePage><<</li>");
+				}
+				for(var i=pb.startPageOfPageGroup;i<=pb.endPageOfPageGroup;i++){
+					$("#reviewPaging").append("<li><a class=movePage href=#>"+i+"</a></li>");
+				}
+				if(pb.nextPageGroup ==true){
+					$("#reviewPaging").append("<li id=nextPage>>></li>");
+				}
 			}
 		});
-	});
+		$("#sawLi").click(function(){
+			$.ajax({
+				type:"get",
+				url:"DispatcherServlet",
+				data:"command=saw&bookno=${vo.bookno}&id=java",
+				success:function(data){
+					alert(data);
+				}
+			});
+		});
+		$("#wishLi").click(function(){
+			$.ajax({
+				type:"get",
+				url:"DispatcherServlet",
+				data:"command=wish&bookno=${vo.bookno}&id=java",
+				success:function(data){
+					alert(data);
+				}
+			});
+		});
+		$("#reviewPaging").on("click","a",function() {
+			event.preventDefault();
+			$.ajax({
+				type:"get",
+				url:"DispatcherServlet",
+				data:"command=detail&bookno=${vo.bookno}&page="+$(this).text()
+			});
+		});
+	}); 
 </script>
 </head>
 <body class="homepage">
@@ -56,8 +87,8 @@
 					</div>
 					<div class="1u 12(medium)">
 						<ul>
-							<li>봤어요</li>
-							<li>보고싶어요</li>
+							<li id="sawLi">봤어요</li>
+							<li id="wishLi">보고싶어요</li>
 						</ul>
 					</div>
 				</div>
@@ -73,7 +104,17 @@
 		<div>
 			<div class="box container">
 				<div class="row 200%">
-					<div id="reviewList" class="12u 12u(medium) important(medium)">
+					<div class="2u 12u(medium)">
+					</div>
+					<div id="reviewList" class="8u 12u(medium) important(medium)">
+					</div>
+					<div class="2u 12u(medium)">
+					</div>
+				</div>
+				<div class="row text-center">
+					<div class="col-lg-12">
+						<ul class="pagination" id="reviewPaging">
+		                </ul>
 					</div>
 				</div>
 			</div>
