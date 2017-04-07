@@ -30,7 +30,8 @@
 <div id="mypageInfo">
 	<c:forEach var="bvo" items="${requestScope.listVO.list}">
 					<div class='col-sm-3'>
-						<img src='http://placehold.it/260x390'>
+					<a href="${pageContext.request.contextPath}/DispatcherServlet?command=detail&bookno=${bvo.bookno}">
+						<img src='http://placehold.it/260x390'></a>
 							${bvo.title }<br>
 							${bvo.rate }<br>
 						</div>

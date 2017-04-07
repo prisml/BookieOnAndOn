@@ -35,6 +35,7 @@ public class BookingDAO {
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		ArrayList<VO> list = new ArrayList<VO>();
+		BookingVO vo = null;
 		//ListVO lvo = new ListVO();
 		try{
 			con=dataSource.getConnection();
@@ -49,14 +50,15 @@ public class BookingDAO {
 			pstmt.setInt(3, pagingBean.getEndRowNumber());
 			rs=pstmt.executeQuery();
 			while(rs.next()){
-				BookingVO vo = new BookingVO();
+				vo = new BookingVO();
 				vo.setReceiverid(rs.getString("receiverid"));
 				list.add(vo);
 			}
 		}finally{
 			closeAll(rs, pstmt,con);
 		}
-		System.out.println("DAO: "+list);
+		System.out.println("receiverid: "+list);
+		System.out.println("receiveridcount: "+list);
 		return list;
 	}
 		
