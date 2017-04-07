@@ -20,8 +20,8 @@
 			<header id="header" class="container">
 				<!-- Logo -->
 				<div id="logo">
-					<a href="${pageContext.request.contextPath}/bookieOnAndOn/main.jsp"><img
-						src="${pageContext.request.contextPath}/images/bookie.png"
+					<a href="${pageContext.request.contextPath}/index.jsp"><img
+						src="${pageContext.request.contextPath}/images/Logo.png"
 						style="width: 250px;"></a>
 				</div>
 				<!-- Nav -->
