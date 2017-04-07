@@ -80,7 +80,7 @@
 	<div class="center-block" align="middle">
 		<h1>
 			<a href="${pageContext.request.contextPath}/bookieOnAndOn/main.jsp">
-			<img src="${pageContext.request.contextPath}/images/logo.png"> </a>
+			<img src="${pageContext.request.contextPath}/images/Logo.png"> </a>
 		</h1>
 	</div>
 
