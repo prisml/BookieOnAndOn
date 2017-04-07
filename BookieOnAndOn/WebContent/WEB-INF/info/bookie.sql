@@ -2,7 +2,6 @@
 drop table book;
 select * from book;
 create table book(
-
    bookno number primary key,
    title varchar2(100) not null,
    bookphoto blob,

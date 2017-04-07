@@ -6,18 +6,7 @@
 <head>
 <jsp:include page="/template/script.jsp"></jsp:include>
 <title>booking_list</title>
-<!-- <script type="text/javascript">
-	$(document).ready(function(){
-		$("#table td").click(function(){
-			alert($(this).text());
-				 $.ajax({
-				type:"post",
-				url:"DispatcherServlet",
-				data:"command=mypage&id="+$(this).text(),
-			});//ajax 
-		});//click
-	});//ready
-</script> -->
+
 </head>
 <body class="homepage">
 	<div id="page-wrapper">
@@ -58,8 +47,7 @@
 								end="${pb.endPageOfPageGroup }" var="pageNo">
 								<c:choose>
 									<c:when test="${pb.nowPage!=pageNo }">
-										<li><a
-											href="${pageContext.request.contextPath}/DispatcherServlet?command=bookingList&pageNo=${pageNo }&id=${requestScope.id}">${pageNo }</a></li>
+										<li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=bookingList&pageNo=${pageNo }&id=${requestScope.id}">${pageNo }</a></li>
 									</c:when>
 									<c:otherwise>
 										<li class="active"><a>${pageNo }</a></li>
@@ -68,8 +56,7 @@
 							</c:forEach>
 							<!-- 다음 page -->
 							<c:if test="${pb.nextPageGroup }">
-								<li><a
-									href="${pageContext.request.contextPath}/DispatcherServlet?command=bookingList&pageNo=${pb.endPageOfPageGroup+1 }">&raquo;</a></li>
+								<li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=bookingList&pageNo=${pb.endPageOfPageGroup+1 }">&raquo;</a></li>
 							</c:if>
 						</ul>
 					</div>
