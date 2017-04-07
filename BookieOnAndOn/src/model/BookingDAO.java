@@ -54,13 +54,6 @@ public class BookingDAO {
 				vo.setReceiverid(rs.getString("receiverid"));
 				list.add(vo);
 			}
-			pstmt.close();
-			pstmt = con.prepareStatement("select count(*) from booking where senderid=?");
-			pstmt.setString(1, vo.getReceiverid());
-			pstmt.executeQuery();
-			if(rs.next()){
-				list.add(rs.getInt(1), vo);
-			}
 		}finally{
 			closeAll(rs, pstmt,con);
 		}
