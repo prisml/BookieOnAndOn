@@ -22,13 +22,26 @@
 			<div class="container">
 		
 <ul class="nav nav-tabs">
-  <li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=mypage" >mypage </a></li>
-  <li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=sawBookList" >본책 </a></li>
-  <li class="active"><a href="${pageContext.request.contextPath}/DispatcherServlet?command=wishBookList">보고싶은책</a></li>
+ <c:choose>
+ 		<c:when test="${!empty fvo }">
+ 			<li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=mypage&id=${fvo.id}" >${fvo.name }님의 page </a></li>
+ 			<li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=sawBookList&id=${fvo.id }" >본책 </a></li>
+		    <li class="active"><a href="${pageContext.request.contextPath}/DispatcherServlet?command=wishBookList&id=${fvo.id }">보고싶은책</a></li>
+ 		</c:when>
+ 		<c:otherwise>
+ 			<li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=mypage" >mypage </a></li>
+ 			<li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=sawBookList" >본책 </a></li>
+		    <li class="active"><a href="${pageContext.request.contextPath}/DispatcherServlet?command=wishBookList">보고싶은책</a></li>
+ 		</c:otherwise>   
+ 	</c:choose>
 </ul>
 <br><br><br>
+
+
 <div id="mypageInfo">
-	<c:forEach var="bvo" items="${requestScope.listVO.list}">
+ 	<c:choose>
+ 		<c:when test="${!empty fvo }">
+ 				<c:forEach var="bvo" items="${requestScope.flistVO.list}">
 					<div class='col-sm-3'>
 					<a href="${pageContext.request.contextPath}/DispatcherServlet?command=detail&bookno=${bvo.bookno}">
 					<img src='http://placehold.it/260x390'></a>
@@ -39,12 +52,46 @@
 <div class='row text-center'>
    	<div class='container col-sm-12'>
    	<ul class='pagination'>
-   	<c:if test="${requestScope.listVO.pagingBean.previousPageGroup}">
-<li class='previous'><a href="${pageContext.request.contextPath}/DispatcherServlet?command=wishBookList&nowPage=${requestScope.listVO.pagingBean.startPageOfPageGroup-1}">Previous</a></li>
+   	<c:if test="${requestScope.flistVO.pagingBean.previousPageGroup}">
+<li class='previous'><a href="${pageContext.request.contextPath}/DispatcherServlet?command=wishBookList&nowPage=${requestScope.flistVO.pagingBean.startPageOfPageGroup-1}&id=${fvo.id}">Previous</a></li>
 	</c:if>
-   	<c:forEach var="num" begin="${requestScope.listVO.pagingBean.startPageOfPageGroup}" end="${requestScope.listVO.pagingBean.endPageOfPageGroup}">
+   	<c:forEach var="num" begin="${requestScope.flistVO.pagingBean.startPageOfPageGroup}" end="${requestScope.flistVO.pagingBean.endPageOfPageGroup}">
 			<c:choose>
-				<c:when test="${num!=requestScope.listVO.pagingBean.nowPage }">
+				<c:when test="${num!=requestScope.flistVO.pagingBean.nowPage }">
+				<li><a id='pagelink' href="${pageContext.request.contextPath}/DispatcherServlet?command=wishBookList&nowPage=${num}&id=${fvo.id}">${num }</a></li>
+				
+				</c:when>
+				<c:otherwise>
+					<li class='active'><a>${num }</a></li>
+				</c:otherwise>
+			</c:choose>
+	</c:forEach>
+	<c:if test="${requestScope.flistVO.pagingBean.nextPageGroup}">
+<li class='next'><a href="${pageContext.request.contextPath}/DispatcherServlet?command=wishBookList&nowPage=${requestScope.flistVO.pagingBean.endPageOfPageGroup+1}&id=${fvo.id}">Next </a></li>
+	</c:if>
+			</ul>
+		</div>
+	</div>
+ 	
+ 		</c:when>
+ 	<c:otherwise>
+ 		<c:forEach var="bvo" items="${sessionScope.listVO.list}">
+					<div class='col-sm-3'>
+					<a href="${pageContext.request.contextPath}/DispatcherServlet?command=detail&bookno=${bvo.bookno}">
+					<img src='http://placehold.it/260x390'></a>
+							${bvo.title }<br>
+							${bvo.rate }<br>
+						</div>
+   	</c:forEach>
+<div class='row text-center'>
+   	<div class='container col-sm-12'>
+   	<ul class='pagination'>
+   	<c:if test="${sessionScope.listVO.pagingBean.previousPageGroup}">
+<li class='previous'><a href="${pageContext.request.contextPath}/DispatcherServlet?command=wishBookList&nowPage=${sessionScope.listVO.pagingBean.startPageOfPageGroup-1}">Previous</a></li>
+	</c:if>
+   	<c:forEach var="num" begin="${sessionScope.listVO.pagingBean.startPageOfPageGroup}" end="${sessionScope.listVO.pagingBean.endPageOfPageGroup}">
+			<c:choose>
+				<c:when test="${num!=sessionScope.listVO.pagingBean.nowPage }">
 				<li><a id='pagelink' href="${pageContext.request.contextPath}/DispatcherServlet?command=wishBookList&nowPage=${num}">${num }</a></li>
 				
 				</c:when>
@@ -53,24 +100,29 @@
 				</c:otherwise>
 			</c:choose>
 	</c:forEach>
-	<c:if test="${requestScope.listVO.pagingBean.nextPageGroup}">
-<li class='next'><a href="${pageContext.request.contextPath}/DispatcherServlet?command=wishBookList&nowPage=${requestScope.listVO.pagingBean.endPageOfPageGroup+1}">Next </a></li>
+	<c:if test="${sessionScope.listVO.pagingBean.nextPageGroup}">
+<li class='next'><a href="${pageContext.request.contextPath}/DispatcherServlet?command=wishBookList&nowPage=${sessionScope.listVO.pagingBean.endPageOfPageGroup+1}">Next </a></li>
 	</c:if>
 			</ul>
 		</div>
 	</div>
-</div>
+ 	
+ 	</c:otherwise>   
+ 	</c:choose>
+ 	
+ 	
+ 	</div>
 
   
   										
-</div>						
-
+	
 <!-- 여기까지 본문입니다 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
 			  
 
 			
-		</div>
+		</div>						
+	</div>
 		<jsp:include page="/template/footer.jsp"></jsp:include>
 	</div>
 

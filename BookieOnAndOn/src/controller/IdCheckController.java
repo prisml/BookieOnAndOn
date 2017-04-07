@@ -6,7 +6,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.MemberDAO;
-import model.MemberVO;
 
 public class IdCheckController implements Controller {
 

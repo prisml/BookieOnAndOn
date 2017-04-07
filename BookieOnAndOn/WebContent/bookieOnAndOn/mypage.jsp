@@ -5,7 +5,6 @@
 <html>
 <head>
 <title>mypage</title>
-
 <jsp:include page="/template/script.jsp"></jsp:include>
 </head>
 
@@ -22,25 +21,45 @@
 			<div class="container">
 
 <ul class="nav nav-tabs">
-  <li class="active"><a href="${pageContext.request.contextPath}/bookieOnAndOn/mypage.jsp" >mypage </a></li>
-  <li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=sawBookList" >본책 </a></li>
-  <li ><a href="${pageContext.request.contextPath}/DispatcherServlet?command=wishBookList">보고싶은책</a></li>
+	
+	<c:choose>
+ 		<c:when test="${!empty fvo }">
+ 			<li class="active"><a href="${pageContext.request.contextPath}/DispatcherServlet?command=mypage&id=${fvo.id}">${fvo.name }님의 page </a></li>
+ 			<li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=sawBookList&id=${fvo.id}" >본책 </a></li>
+		    <li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=wishBookList&id=${fvo.id }">보고싶은책</a></li>
+ 		</c:when>
+ 		<c:otherwise>
+ 			<li class="active"><a href="${pageContext.request.contextPath}/DispatcherServlet?command=mypage" >mypage </a></li>
+ 			<li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=sawBookList" >본책 </a></li>
+		    <li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=wishBookList">보고싶은책</a></li>
+ 		</c:otherwise>   
+ 	</c:choose>
+   			
 </ul>
 <br><br><br>
 
-<div id="mypageInfo">
- 	<h3>mypage 입니다</h3>
- 	booking : <a href="${pageContext.request.contextPath}/DispatcherServlet?command=bookingList&id=java">${bookingcount}</a>
-
+	<div id="mypageInfo">
+ 	<c:choose>
+ 		<c:when test="${!empty fvo }">
+ 			${fvo.name } 님의 page입니다<br>
+ 			booking : <a href="${pageContext.request.contextPath}/DispatcherServlet?command=bookingList">${fbookingcount}</a>
+ 		</c:when>
+ 	<c:otherwise>
+ 			<h3>mypage</h3>
+ 			booking : <a href="${pageContext.request.contextPath}/DispatcherServlet?command=bookingList&id=java">${bookingcount}</a>
+ 	
+ 	</c:otherwise>   
+ 	</c:choose>
+ 	
+ 	
+ 	</div>
 </div>
-
 <!-- 여기까지 본문입니다 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-
-			  
-
-			</div>
-		</div>
-		<jsp:include page="/template/footer.jsp"></jsp:include>
+		
 	</div>
+</div>
+			  
+		<jsp:include page="/template/footer.jsp"></jsp:include>
+
 </body>
 </html>

@@ -31,8 +31,7 @@
               <input name="password" type="password" class="form-control" id="password" placeholder="비밀번호">
             </div>
             <div class="form-group text-center">
-             <h3> <button type="submit" class="btn btn-info btn-lg">로그인<i class="fa fa-check spaceLeft" ></i></button></h3>
-             
+             <h3> <button class="btn btn-info btn-lg">로그인<i class="fa fa-check spaceLeft" ></i></button></h3>            
              <a href="findIdPw.jsp">아이디/비밀번호 찾기</a><br>
              <a href="register.jsp">회원가입</a>
             </div>
