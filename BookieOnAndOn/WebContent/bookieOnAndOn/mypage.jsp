@@ -28,7 +28,12 @@
 <br><br><br>
 
 <div id="mypageInfo">
- 	<h3>mypage 입니다</h3>
+ 	
+ 	<c:if test="${!empty fvo }">
+ 	${fvo.name } 님의 page입니다
+ 	
+ 	</c:if>
+ 	<h3>mypage</h3>
  	booking : <a href="${pageContext.request.contextPath}/DispatcherServlet?command=bookingList&id=java">${bookingcount}</a>
 
 </div>
