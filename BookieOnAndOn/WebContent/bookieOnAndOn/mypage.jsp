@@ -31,7 +31,7 @@
  	
  	<c:if test="${!empty fvo }">
  	${fvo.name } 님의 page입니다
- 	
+ 	</c:if>
  	</div>
 </div>
 
