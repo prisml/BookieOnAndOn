@@ -15,12 +15,12 @@ public class LoginController implements Controller {
 		String password=request.getParameter("password");
 		MemberVO vo = MemberDAO.getInstance().login(id, password);
 		String path=null;
-		if(vo==null){
-			path="redirect:login_fail.jsp";
-		}else{
+		if(vo!=null){
 			HttpSession session=request.getSession();
 			session.setAttribute("mvo", vo);
-			path="redirect:DispatcherServlet?command=list";
+			path="redirect:DispatcherServlet?command=main";
+		}else{			
+			path="redirect:bookieOnAndOn/login.jsp";
 		}
 		return path;
 	}

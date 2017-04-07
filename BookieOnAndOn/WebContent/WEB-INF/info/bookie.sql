@@ -24,7 +24,12 @@ create table bookmember(
    name varchar2(100) not null,
    tel varchar2(100) not null
 )
+insert into bookmember(id,password,name,tel) values ('java','1234','김래현','011');
+insert into bookmember(id,password,name,tel) values ('jquery','1111','문성준','012');
+select * from bookmember;
+select name,tel from bookmember where id='jquery' and password='1111';
 
+commit
 --리뷰 테이블
 drop table review;
 

@@ -10,7 +10,15 @@ public class HandlerMapping {
 		Controller c=null;
 		if(command.equals("main")){
 			c = new MainController();
-	}
+		}else if(command.equals("login")){
+			c = new LoginController();
+		}else if(command.equals("register")){
+			c = new RegisterController();
+		}else if(command.equals("logout")){
+			c = new LogOutController();
+		}else if(command.equals("idCheck")){
+			c = new IdCheckController();
+		}
 
 		return c;
 	}

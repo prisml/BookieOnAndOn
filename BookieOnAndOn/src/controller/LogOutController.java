@@ -2,13 +2,15 @@ package controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class LogOutController implements Controller {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		HttpSession session=request.getSession(false);
+		if(session!=null)
+			session.invalidate();
+		return "redirect:index.jsp";
 	}
-
 }
