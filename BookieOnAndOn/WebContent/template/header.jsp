@@ -60,4 +60,7 @@
 		</div>
 	</header>
 </div>
+<<<<<<< HEAD
+=======
 
+>>>>>>> branch 'master' of https://github.com/prisml/BookieOnAndOn.git
