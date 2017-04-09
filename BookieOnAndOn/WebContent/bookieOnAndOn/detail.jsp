@@ -5,7 +5,6 @@
 <html>
 <head>
 <jsp:include page="/template/script.jsp"></jsp:include>
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/assets/css/main.css" />
 <title>(책이름) 정보</title>
@@ -64,7 +63,8 @@
 			$.ajax({
 				type:"get",
 				url:"DispatcherServlet",
-				data:"command=detail&bookno=${vo.bookno}&page="+$(this).text()
+				data:"command=detail&bookno=${vo.bookno}&page="+$(this).text(),
+				success:function(){}
 			});
 		});
 		$( ".star_rating a" ).click(function() {
@@ -77,6 +77,16 @@
 		});
 		$(".on").html("<img style='width:30px' src='${pageContext.request.contextPath}/images/staron.png'>");
 		$(".off").html("<img style='width:30px' src='${pageContext.request.contextPath}/images/staron.png'>");
+		$("#reviewSubmit").click(){
+			$.ajax({
+				type:"get",
+				url:"DispatcherServlet",
+				data:"command=reviewRegist&bookno=${vo.bookno}&content=$('#reviewContent').val()&star=$('.on').length",
+				success:function(){
+					location.href=document.location.href;
+				}
+			});
+		}
 	}); 
 </script>
 </head>
@@ -130,11 +140,10 @@
 						</p>
 					</div>
 					<div class="10u">
-						<form
-							class="w3-container w3-text-blue">
+						<form class="w3-container w3-text-blue">
 							<div class="w3-row w3-section">
 								<div class="w3-rest">
-									<input class="w3-input w3-border" type="text"
+									<input id="reviewContent" class="w3-input w3-border" type="text"
 										placeholder="리뷰 등록"> 
 										<input id="reviewHidden" type="text" style="display: none;" />
 								</div>
