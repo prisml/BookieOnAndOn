@@ -60,6 +60,8 @@ public class HandlerMapping {
 			c = new GetSawController();
 		} else if(command.equals("addBooking")){
 			c = new AddBookingController();
+		} else if(command.equals("bookingCheck")){
+			c = new BookingCheckController();
 		}
 		return c;
 	}
