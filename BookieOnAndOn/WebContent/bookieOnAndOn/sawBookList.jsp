@@ -29,7 +29,7 @@
 
 .imagecontainer:hover .overlay {
   height: 40%;
-  opacity: 0.5;
+  opacity: 0.8;
 }
 
 .text {
@@ -91,7 +91,7 @@
 					<div class='col-sm-3'>
 					<a href="${pageContext.request.contextPath}/DispatcherServlet?command=detail&bookno=${bvo[i*4+j].bookno}">
 					<div class='imagecontainer'>
-						<img src='http://placehold.it/260x390'>
+						<img width='260' height="360" src='${pageContext.request.contextPath}/images/bookcover/${bvo[i*4+j].bookno}.jpg'>
 						<div class="overlay">
 					 <div class="text">
 								<h4>${bvo[i*4+j].title }</h4>  
@@ -141,7 +141,7 @@
 					<div class='col-sm-3'>
 					<a href="${pageContext.request.contextPath}/DispatcherServlet?command=detail&bookno=${bvo[i*4+j].bookno}">
 					<div class='imagecontainer'>
-						<img src='http://placehold.it/260x390'>
+						<img width='260' height="360" src='${pageContext.request.contextPath}/images/bookcover/${bvo[i*4+j].bookno}.jpg'>
 						<div class="overlay">
 					 <div class="text">
 							<h4>${bvo[i*4+j].title }</h4> 
