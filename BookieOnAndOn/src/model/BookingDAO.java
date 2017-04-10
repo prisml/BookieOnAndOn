@@ -91,5 +91,23 @@ public class BookingDAO {
 	      }
 	      return totalCount;
 	   }
+	
+	
+	// 송희 부킹하는 메서드
+	public void addBooking(String senderid,String receiverid ) throws SQLException{
+		Connection con = null;
+	      PreparedStatement pstmt = null;
+	      try {
+			con = dataSource.getConnection();
+			String sql="insert into(senderid,receiverid) values(?,?)";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, senderid);
+			pstmt.setString(2, receiverid);
+			pstmt.executeUpdate();
+		}finally{
+			closeAll(pstmt, con);
+		}
+		
+	}
 
 }
