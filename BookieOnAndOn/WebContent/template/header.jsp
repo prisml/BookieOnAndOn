@@ -64,13 +64,19 @@
 					<ul>
 						<li class="current"><a
 							href="${pageContext.request.contextPath}/index.jsp">welcome</a></li>
+							<li>|</li>
 						<li><a
 							href="${pageContext.request.contextPath}/bookieOnAndOn/login.jsp">Login</a></li>
+							<li>|</li>
 						<li><a
 							href="${pageContext.request.contextPath}/bookieOnAndOn/register.jsp">Register</a></li>
+							<li>|</li>
 						<li><a
-							href="${pageContext.request.contextPath}/bookieOnAndOn/findIdPw.jsp">Find
-								ID/PW</a></li>
+							href="${pageContext.request.contextPath}/bookieOnAndOn/findId.jsp">Find	ID</a></li>
+							<li>/</li>
+						<li><a 
+							href="${pageContext.request.contextPath}/bookieOnAndOn/findPw.jsp">PW</a></li>
+							<li>|</li>
 					</ul>
 				</nav>
 

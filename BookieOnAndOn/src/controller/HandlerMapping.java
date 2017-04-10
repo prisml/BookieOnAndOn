@@ -52,6 +52,10 @@ public class HandlerMapping {
 			c = new ReviewDeleteController();
 		} else if(command.equals("update")){
 			c = new UpdateController();
+		} else if(command.equals("findId")){
+			c= new FindIdController();
+		} else if(command.equals("findPw")){
+			c= new FindPasswordController();
 		}
 		return c;
 	}

@@ -11,9 +11,28 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font-awesome.min-register.css" media="screen" title="no title" charset="utf-8">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/style.css" media="screen" title="no title" charset="utf-8">
 <title>Insert title here</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 </head>
 <body>
-
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#findIdbtn").click(function(){
+			$.ajax({
+				type:"get",
+				url:"${pageContext.request.contextPath}/DispatcherServlet?command=findId",
+				data:{"name":$("#name").val(), "tel":$("#tel").val()},
+				success:function(id){
+					if(id == null){
+						alert("찾는 정보 없어 개년아");
+					}
+					else{
+						alert(id);
+					}
+				}
+			});
+		});
+	});
+</script>
 
   <article class="container">
         <div class="center-block" align="middle"><br>
@@ -21,27 +40,25 @@
         </div>
         <br>
         <div class="center-block" style="width: 300px;padding:15px;">
-          <form  name="loginForm" method="post" action="${pageContext.request.contextPath}/DispatcherServlet">
-           <input type="hidden" name="command" value="login">
             <div class="form-group" >
-              <label for="id" >아이디</label>
-              <input name="id" type="text" class="form-control" id="id" required="required" placeholder="아이디" >
+              <label>이름</label>
+              <input id="name" type="text" class="form-control" required="required" placeholder="이름" >
             </div>
             <div class="form-group">
-              <label for="password">비밀번호</label>
-              <input name="password" type="password" class="form-control" id="password" placeholder="비밀번호">
+              <label>전화번호</label>
+              <input id="tel" type="text" class="form-control" placeholder="전화번호">
             </div>
             <div class="form-group text-center">
-             <h3> <button class="btn btn-info btn-lg">로그인<i class="fa fa-check spaceLeft" ></i></button></h3>            
-             <a href="findIdPw.jsp">아이디/비밀번호 찾기</a><br>
+             <button class="btn btn-info " id = "findIdbtn">아이디 찾기<i class="fa fa-check spaceLeft" ></i></button>            
+             <br><br>
              <a href="register.jsp">회원가입</a>
             </div>
-          </form>
+        
         </div>
       </article>
-
+      
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
     <!-- Include all compiled plugins (below), or include individual files as needed -->
   
 </body>

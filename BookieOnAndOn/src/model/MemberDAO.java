@@ -1,6 +1,7 @@
 package model;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -138,16 +139,58 @@ public class MemberDAO {
 			pstmt.setString(1,id);
 			rs=pstmt.executeQuery();
 			if(rs.next()){
-				vo=new MemberVO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4));
-			
-				}
-			
+				vo=new MemberVO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4));			
+				}			
 		}finally{
 			closeAll(rs,pstmt,con);
 		}
 			return vo;
-
 	}
-
-
+	public String findMemberById(String name,String tel) throws SQLException {
+		String id = null;	
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;		
+		try{
+			con=dataSource.getConnection();
+			String sql=
+			"select id from bookmember where name=? and tel=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, name);
+			pstmt.setString(2, tel);
+			rs=pstmt.executeQuery();
+			if(rs.next()){
+				id = rs.getString("id");
+			}
+		}finally {
+			closeAll(rs, pstmt, con);
+		}
+		return id;
+	}
+	
+	public String findMemberByPw(String id, String name,String tel) throws SQLException {
+		String pw = null;
+		
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		
+		try{
+			con=dataSource.getConnection();
+			String sql=
+			"select password from bookmember where id = ? and name=? and tel=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setString(2, name);
+			pstmt.setString(3, tel);
+			rs=pstmt.executeQuery();
+			if(rs.next()){
+				pw = rs.getString("password");
+			}
+		}finally {
+			closeAll(rs, pstmt, con);
+		}
+		return pw;
+	}
+	
 }
