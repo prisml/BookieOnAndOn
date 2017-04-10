@@ -1,56 +1,129 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <title>도서검색</title>
+<style type="text/css">
+@import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
 
+.w3-one {
+	position: relative;
+	display: block;
+}
+
+.w3-one:hover .overlay {
+	opacity: 0.8;
+	width:260px;
+}
+
+.w3-one:hover img {
+	opacity: 1;
+}
+
+.overlay {
+	dispaly: block;
+	position: absolute;
+	top: 57%;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: black;
+	opacity: 0;
+	transition: .5s ease;
+	width:260px;
+}
+
+.overlaytext {
+	font-family: 'Jeju Gothic', serif;
+	color: white;
+	position: absolute;
+	font-size: 14px;
+	top: 10%;
+	left: 7%;
+	right: 7%;
+}
+
+.overlaytable{
+	font-family: 'Jeju Gothic', serif;
+	color: white;
+}
+
+.bookImage{
+	width:260px;
+	height:360px;
+}
+</style>
 <jsp:include page="/template/script.jsp"></jsp:include>
+
 </head>
 <body class="homepage">
 	<div id="page-wrapper">
 		<jsp:include page="/template/header.jsp"></jsp:include>
 		<div id="features-wrapper">
-			<div class="container"> 
-				<div class="container-fluid bg-3 text-center">
+			<div class="container">
+				<div class="container-fluid bg-3">
 					<div class="row">
 						<c:forEach var="lvo" items="${requestScope.lvo.list}">
 							<div class="col-sm-3">
-								<a href = "${pageContext.request.contextPath}/DispatcherServlet?command=detail&bookno=${lvo.bookno}"><img src="https://placehold.it/260x360?text=IMAGE" class="img-responsive" style="width: 100%" alt="Image"></a>
-								<p>도서명 : ${lvo.title}</p>
-								<p>저자명 : ${lvo.author}</p>
-								<p>출판일 : ${lvo.pub}</p>
-								<p>평점 : ${lvo.rate}</p>
+								<div class="w3-one">
+									<a
+										href="${pageContext.request.contextPath}/DispatcherServlet?command=detail&bookno=${lvo.bookno}">
+										<img src="${pageContext.request.contextPath}/images/bookcover/${lvo.bookno}.jpg" class = "bookImage">
+									</a>
+									<div class='overlay'>
+										<div class='overlaytext'>
+											<h4>${lvo.title}</h4>
+											<table class = 'overlaytable'>
+												<tr>
+													<td>저자</td><td>${lvo.author}</td>
+												</tr>
+												<tr>
+													<td>출판사</td><td>${lvo.pub}</td>
+												</tr>
+												<tr>
+													<td>평점</td><td>${lvo.rate}</td>
+												</tr>
+											</table>
+										</div>
+									</div>
+								</div>
 							</div>
 						</c:forEach>
 					</div>
 				</div>
-				<br>
-				<p class="paging">
-					<!--for each로 1, 2, 3 ,4 -->
+				<div class="row text-center">
+					<div class="col-lg-12">
+						<p class="paging">
+							<!--for each로 1, 2, 3 ,4 -->
+							<c:if test="${lvo.pagingBean.previousPageGroup == true}">
+								<a
+									href="${pageContext.request.contextPath}/DispatcherServlet?command=bookSearch&pageNo=${lvo.pagingBean.startPageOfPageGroup-1}">&laquo;</a>
+							</c:if>
 
-					<c:if test="${lvo.pagingBean.previousPageGroup == true}">
-						<a href="${pageContext.request.contextPath}/DispatcherServlet?command=bookSearch&pageNo=${lvo.pagingBean.startPageOfPageGroup-1}"><img
-							src="" alt="이전"></a>
-					</c:if>
 
-					<c:forEach begin="${lvo.pagingBean.startPageOfPageGroup}" end="${lvo.pagingBean.endPageOfPageGroup}" var="num">
-						<c:choose>
-							<c:when test="${lvo.pagingBean.nowPage == num}">
-								${num} &nbsp;
-							</c:when>
-							<c:otherwise>
-								<a href="${pageContext.request.contextPath}/DispatcherServlet?command=bookSearch&pageNo=${num}&title=${requestScope.title}">${num}</a> &nbsp;
-				</c:otherwise>
-						</c:choose>
-					</c:forEach>
+							<c:forEach begin="${lvo.pagingBean.startPageOfPageGroup}"
+								end="${lvo.pagingBean.endPageOfPageGroup}" var="num">
+								<ul class="pagination">
+									<c:choose>
+										<c:when test="${lvo.pagingBean.nowPage == num}">
+											<li class="active"><a>${num}</a></li>
+										</c:when>
+										<c:otherwise>
+											<li><a
+												href="${pageContext.request.contextPath}/DispatcherServlet?command=bookSearch&pageNo=${num}&title=${requestScope.title}">${num}</a></li>
+										</c:otherwise>
+									</c:choose>
+								</ul>
+							</c:forEach>
 
-					<c:if test="${lvo.pagingBean.nextPageGroup == true}">
-			 &nbsp; <a href="${pageContext.request.contextPath}/DispatcherServlet?command=bookSearch&pageNo=${lvo.pagingBean.endPageOfPageGroup+1}">
-			 			<img src="" alt="다음"></a>
-					</c:if>
-				</p>
+							<c:if test="${lvo.pagingBean.nextPageGroup == true}">
+								<a
+									href="${pageContext.request.contextPath}/DispatcherServlet?command=bookSearch&pageNo=${lvo.pagingBean.endPageOfPageGroup+1}">&raquo;</a>
+							</c:if>
+						</p>
+					</div>
+				</div>
 			</div>
 		</div>
 		<jsp:include page="/template/footer.jsp"></jsp:include>
