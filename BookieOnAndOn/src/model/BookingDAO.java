@@ -97,6 +97,12 @@ public class BookingDAO {
 		}
 		return totalCount;
 	}
+	/**
+	 * 부킹멤버 삭제
+	 * @param senderid
+	 * @param receiverid
+	 * @throws SQLException
+	 */
 	public void bookingMemberDelete(String senderid, String receiverid) throws SQLException{
 		Connection con = null;
 		PreparedStatement pstmt = null;
