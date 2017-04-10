@@ -7,6 +7,9 @@
 <title>메인</title>
 <style type="text/css">	
 @import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
+a:hover{
+ text-decoration: none;
+}
 .w3-one {
    position: relative;
    display: block;
@@ -66,7 +69,7 @@
 							 if(i*4+j+1>data.list.length)
 								break;
 							 info+="<div class='col-md-3 portfolio-item'>";
-							 info+="<a href='http://localhost:8888/BookieOnAndOn/DispatcherServlet?command=detail&bookno=";
+							 info+="<a  href='http://localhost:8888/BookieOnAndOn/DispatcherServlet?command=detail&bookno=";
 							 info+=data.list[i*4+j].bookno+"'>";
 							 info+="<div class='w3-one'>";
 							// info+="<img class='img-responsive' src='http://placehold.it/260x390' alt=''>";
@@ -74,8 +77,9 @@
 							 info+= "<div class='overlay'><div class='overlaytext'>";
 							 info+="<h4>"+data.list[i*4+j].title+"</h4>";
 							 info+="저자&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+data.list[i*4+j].author+"<br>출판사&nbsp;&nbsp;&nbsp;"+data.list[i*4+j].pub;
-							 info+="</div></div></div>";
-							 info+=data.list[i*4+j].title;
+							 info+="</div></div></div><br>";
+							 info+="<h4>"+data.list[i*4+j].title;
+							 info+="&nbsp;&nbsp;|&nbsp; <img width='20px' src='${pageContext.request.contextPath}/images/staron.png'>&nbsp;"+data.list[i*4+j].rate+"<h4>";
 							 info+="</a></div>";
 						 }
 						 info+="</div>";
