@@ -24,11 +24,11 @@
 						innerHtml += "<img style='width:30px' src='${pageContext.request.contextPath}/images/staron.png'> ";
 					for(var j=data.list[i].star;j<5;j++)
 						innerHtml += "<img style='width:30px' src='${pageContext.request.contextPath}/images/staroff.png'> ";
-					innerHtml += "</div>";
+					innerHtml += "</div><div class=''>";
 					innerHtml += data.list[i].id+" : "; // to do
 					innerHtml += data.list[i].rvcontent+"<br>";
 					innerHtml += data.list[i].rvdate+"<br>";
-					innerHtml += "</div></li>";
+					innerHtml += "</div></div></li>";
 					$("#reviewList").append(innerHtml);					
 				}
 				$("#reviewList").append("</ul>");
