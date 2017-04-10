@@ -13,7 +13,8 @@
 }
 
 .w3-one:hover .overlay {
-	opacity: 1;
+	opacity: 0.8;
+	width:260px;
 }
 
 .w3-one:hover img {
@@ -30,6 +31,7 @@
 	background-color: black;
 	opacity: 0;
 	transition: .5s ease;
+	width:260px;
 }
 
 .overlaytext {
