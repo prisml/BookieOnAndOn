@@ -5,6 +5,60 @@
 <html>
 <head>
 <title>mypage</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<script src="//code.jquery.com/jquery.min.js"></script>
+<style type="text/css">
+
+.material-icons{
+	color:#0000e6;
+	position: relative;
+	top:10px;
+}
+
+.iconInfo{
+	visibility: hidden;
+	background-color: gray;
+    color: #fff;
+    border-radius: 6px;
+    font-size: 5px;
+    padding: 5px;
+	position: absolute;
+	z-index: 1;
+}
+.material-icons:hover .iconInfo {
+    visibility: visible;
+}
+.jumbotron{
+position: relative;
+
+}
+#bookingIcon{
+position:absolute;
+font-size:24px;
+color: #ffff80;
+right: 50px;
+}
+
+
+
+</style>
+<script type="text/javascript">
+
+$(document).ready(function(){
+	$("#bookingIcon").click(function(){
+		$.ajax({
+				type:"get",
+				url:"DispatcherServlet",
+				data:"command=addBooking&senderid=${sessionScope.mvo.id}&receiverid=${fvo.id }",
+				success:function(data){
+					alert(data);
+					}
+			
+			});
+		});
+	});
+
+</script>
 <jsp:include page="/template/script.jsp"></jsp:include>
 </head>
 
@@ -39,33 +93,35 @@
 <br><br><br>
 
 	<div id="mypageInfo">
- 	<c:choose>
- 		<c:when test="${!empty fvo }">
+ <c:choose>
+ 	<c:when test="${!empty fvo }">
  		<div class="container">
   		<div class="jumbotron">
- 			<h2>${fvo.name } 님의 page입니다</h2><br>
+  		<span id="bookingIcon" class="fa">&#xf02d;</span>
+ 			<h4 style='color:#3377ff'>${fvo.name } 님의 page입니다</h4><br>      
  			 <a class="btn btn-primary" href="${pageContext.request.contextPath}/DispatcherServlet?command=bookingList&id=${fvo.id}">
  			 booking
  			<span class="badge">
  			${fbookingcount}
  			</span></a>
- 			</div>
- 			</div>
- 		</c:when>
- 	<c:otherwise>
- 	<div class="container">
-  		<div class="jumbotron">
- 			<h3>${mvo.name} 님의 page입니다</h3><br>
  			
+ 			</div>
+ 			</div>
+ 	</c:when>
+ 	<c:otherwise>
+ 		<div class="container">
+  			<div class="jumbotron">
+ 			<h3 style='color:#3377ff'>Mypage</h3><br>
  			<a class="btn btn-primary" href="${pageContext.request.contextPath}/DispatcherServlet?command=bookingList&id=${mvo.id}">booking
  			<span class="badge">
  			${bookingcount}
  			</span>
  			</a>
+ 			<div class="material-icons">&#xe88f;<span class='iconInfo'>당신이 즐겨찾기한 사람의 수를 나타냅니다</span></div>
  	
  	
- 	 </div>
- 	</div>
+ 		 </div>
+ 		</div>
  	</c:otherwise>   
  	</c:choose>
  	
