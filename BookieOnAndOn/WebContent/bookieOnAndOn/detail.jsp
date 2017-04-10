@@ -7,7 +7,7 @@
 <jsp:include page="/template/script.jsp"></jsp:include>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/assets/css/main.css" />
-<title>(책이름) 정보</title>
+<title>${vo.title }</title>
 <script type="text/javascript">
 	$(document).ready(function() {
 		$.ajax({
@@ -24,11 +24,11 @@
 						innerHtml += "<img style='width:30px' src='${pageContext.request.contextPath}/images/staron.png'> ";
 					for(var j=data.list[i].star;j<5;j++)
 						innerHtml += "<img style='width:30px' src='${pageContext.request.contextPath}/images/staroff.png'> ";
-					innerHtml += "</div>";
+					innerHtml += "</div><div class=''>";
 					innerHtml += data.list[i].id+" : "; // to do
 					innerHtml += data.list[i].rvcontent+"<br>";
 					innerHtml += data.list[i].rvdate+"<br>";
-					innerHtml += "</div></li>";
+					innerHtml += "</div></div></li>";
 					$("#reviewList").append(innerHtml);					
 				}
 				$("#reviewList").append("</ul>");
@@ -50,6 +50,7 @@
 				url:"DispatcherServlet",
 				data:"command=saw&bookno=${vo.bookno}&id=java",
 				success:function(data){
+					alert(data);
 				}
 			});
 		});
@@ -59,6 +60,7 @@
 				url:"DispatcherServlet",
 				data:"command=wish&bookno=${vo.bookno}&id=java",
 				success:function(data){
+					alert(data);
 				}
 			});
 		});
@@ -100,7 +102,7 @@
 			<div class="container">
 				<div class="row">
 					<div id="bookImg" class="3u 12u(medium)">
-						<img class="img-responsive" src="http://placehold.it/260x390">
+						<img width="260px" class="img-responsive" src="${pageContext.request.contextPath}/images/bookcover/${vo.bookno}.jpg">
 					</div>
 					<div class="8u 12u(medium)">
 						<ul id="bookInfo">

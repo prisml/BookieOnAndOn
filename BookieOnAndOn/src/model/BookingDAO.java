@@ -30,6 +30,13 @@ public class BookingDAO {
 		if(con!=null)
 			con.close();
 	}
+	/**
+	 * 부킹리스트
+	 * @param id
+	 * @param pagingBean
+	 * @return
+	 * @throws SQLException
+	 */
 	public ArrayList<VO> getBookingList(String id, PagingBean pagingBean) throws SQLException{
 		Connection con=null;
 		PreparedStatement pstmt=null;
@@ -60,7 +67,12 @@ public class BookingDAO {
 		}
 		return list;
 	}
-		
+	/**
+	 * 부킹리스트 멤버 총 수
+	 * @param id
+	 * @return
+	 * @throws SQLException
+	 */
 	public int getTotalBookingCount(String id) throws SQLException {
 	      Connection con = null;
 	      PreparedStatement pstmt = null;

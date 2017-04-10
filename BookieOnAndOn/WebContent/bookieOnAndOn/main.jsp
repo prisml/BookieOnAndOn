@@ -13,7 +13,7 @@
 }
 
 .w3-one:hover .overlay {
-   opacity: 0.5;
+   opacity: 0.8;
 }
 
 .w3-one:hover img {
@@ -67,9 +67,10 @@
 								break;
 							 info+="<div class='col-md-3 portfolio-item'>";
 							 info+="<a href='http://localhost:8888/BookieOnAndOn/DispatcherServlet?command=detail&bookno=";
-							 info+=data.list[i*4+j].bookno;
-							 info+="'><div class='w3-one'><img class='img-responsive' src='http://placehold.it/260x390' alt=''>";
-							 //info+="<img class='img-responsive' src="+data.list[i*4+j].bookcover+" alt=''>"
+							 info+=data.list[i*4+j].bookno+"'>";
+							 info+="<div class='w3-one'>";
+							// info+="<img class='img-responsive' src='http://placehold.it/260x390' alt=''>";
+							 info+="<img class='img-responsive' width='260' height=auto src='${pageContext.request.contextPath}/images/bookcover/"+data.list[i*4+j].bookno+".jpg' alt=''>"
 							 info+= "<div class='overlay'><div class='overlaytext'>";
 							 info+="<h4>"+data.list[i*4+j].title+"</h4>";
 							 info+="저자&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+data.list[i*4+j].author+"<br>출판사&nbsp;&nbsp;&nbsp;"+data.list[i*4+j].pub;
@@ -113,9 +114,10 @@
 							break;
 						 info+="<div class='col-md-3 portfolio-item'>";
 						 info+="<a href='http://localhost:8888/BookieOnAndOn/DispatcherServlet?command=detail&bookno=";
-						 info+=data.list[i*4+j].bookno;
-						 info+="'><div class='w3-one'><img class='img-responsive' src='http://placehold.it/260x390' alt=''>";
-						 //info+="<img class='img-responsive' src="+data.list[i*4+j].bookcover+" alt=''>"
+						 info+=data.list[i*4+j].bookno+"'>";
+						 info+="<div class='w3-one'>";
+						// info+="<img class='img-responsive' src='http://placehold.it/260x390' alt=''>";
+						 info+="<img class='img-responsive' width='260' height=auto src='${pageContext.request.contextPath}/images/bookcover/"+data.list[i*4+j].bookno+".jpg' alt=''>"
 						 info+= "<div class='overlay'><div class='overlaytext'>";
 						 info+="<h4>"+data.list[i*4+j].title+"</h4>";
 						 info+="저자&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+data.list[i*4+j].author+"<br>출판사&nbsp;&nbsp;&nbsp;"+data.list[i*4+j].pub;
@@ -163,7 +165,8 @@
 			<div class="col-md-3 portfolio-item">
 				<a href="${pageContext.request.contextPath}/DispatcherServlet?command=detail&bookno=${listVo.list[i*4+j].bookno}">
 				<div class="w3-one">
-				<img class="img-responsive" src="http://placehold.it/260x390" alt="" />
+				<!-- <img class="img-responsive" src="http://placehold.it/260x390" alt="" /> -->
+				<img class="im-responsive" width="260" height=auto src="${pageContext.request.contextPath}/images/bookcover/${listVo.list[i*4+j].bookno}.jpg" alt=''>
 				<div class='overlay'><div class='overlaytext'>
 				<h4>${listVo.list[i*4+j].title}</h4>
 				저자&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

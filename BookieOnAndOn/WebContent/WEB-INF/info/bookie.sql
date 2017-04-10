@@ -230,4 +230,6 @@ Insert into SCOTT.BOOK (BOOKNO,TITLE,RATE,AUTHOR,PUB,PUBDATE,GENRE) values (95,'
 
 
 
-
+update book set rate=(select avg(star) from review where bookno=1) 
+select rate from book where bookno=1
+select * from book
