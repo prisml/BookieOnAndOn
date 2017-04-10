@@ -99,7 +99,7 @@ public class BookingDAO {
 	      PreparedStatement pstmt = null;
 	      try {
 			con = dataSource.getConnection();
-			String sql="insert into(senderid,receiverid) values(?,?)";
+			String sql="insert into booking(senderid,receiverid) values(?,?)";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, senderid);
 			pstmt.setString(2, receiverid);
@@ -109,5 +109,29 @@ public class BookingDAO {
 		}
 		
 	}
+	//송희송희 booking 체크 메서드
+	public boolean BookingCheck(String senderid,String receiverid ) throws SQLException{
+		Connection con = null;
+	      PreparedStatement pstmt = null;
+	      ResultSet rs=null;
+	      boolean flag=false;
+	      try {
+			con = dataSource.getConnection();
+			String sql="select count(*)from booking where senderid=?and receiverid=? ";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, senderid);
+			pstmt.setString(2, receiverid);
+			rs=pstmt.executeQuery();
+			if(rs.next()){
+				if(rs.getInt(1)==0)
+				 flag=true;
+			}
+		}finally{
+			closeAll(rs, pstmt, con);
+		}
+	      return flag;
+		
+	}
+	
 
 }
