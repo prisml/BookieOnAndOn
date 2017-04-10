@@ -14,12 +14,12 @@ public class ReviewUpdateController implements Controller {
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session = request.getSession();
 		String bookno = request.getParameter("bookno");
-		MemberVO vo = (MemberVO) session.getAttribute("vo");
+		MemberVO vo = (MemberVO) session.getAttribute("mvo");
 		String id = vo.getId();
 		String content = request.getParameter("content");
 		int star = Integer.parseInt(request.getParameter("star"));
 		ReviewDAO.getInstance().updateReview(new ReviewVO(bookno, id, star, content, ""));
-		return "DispatcherServlet?command=detail&bookno="+bookno;
+		return "AjaxView";
 	}
 
 }

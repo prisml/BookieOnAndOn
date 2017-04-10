@@ -8,7 +8,7 @@ import model.MemberVO;
 import model.ReviewDAO;
 import model.ReviewVO;
 
-public class ReviewDeleteController implements Controller {
+public class ReviewReadController implements Controller {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -16,7 +16,7 @@ public class ReviewDeleteController implements Controller {
 		String bookno = request.getParameter("bookno");
 		MemberVO vo = (MemberVO) session.getAttribute("mvo");
 		String id = vo.getId();
-		ReviewDAO.getInstance().registReview(new ReviewVO(bookno, id, 0, "", ""));
+		ReviewVO rvo = ReviewDAO.getInstance().getReview(bookno,id);
 		return "AjaxView";
 	}
 
