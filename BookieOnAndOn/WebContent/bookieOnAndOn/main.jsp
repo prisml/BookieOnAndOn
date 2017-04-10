@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>    
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -184,7 +185,7 @@ a:hover{
 				${listVo.list[i*4+j].pub}
 				</div></div></div><br><!-- overlay -->
 				 ${listVo.list[i*4+j].title}&nbsp;&nbsp;|&nbsp; <img width="17px" src="${pageContext.request.contextPath}/images/staron.png">&nbsp;
-				 ${listVo.list[i*4+j].rate}</a>		 
+				 <fmt:parseNumber var="pageCount" value="${listVo.list[i*4+j].rate}"/></a>		 
 			</div>
 			</c:otherwise>
 			</c:choose>		
