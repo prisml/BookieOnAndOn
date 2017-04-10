@@ -5,6 +5,32 @@
 <html>
 <head>
 <title>mypage</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style type="text/css">
+
+.material-icons{
+	color:#0000e6;
+	position: relative;
+	top:10px;
+}
+
+.iconInfo{
+	visibility: hidden;
+	background-color: gray;
+    color: #fff;
+    border-radius: 6px;
+    font-size: 5px;
+    padding: 5px;
+	position: absolute;
+	z-index: 1;
+}
+.material-icons:hover .iconInfo {
+    visibility: visible;
+}
+a:hover{
+text-decoration:none;
+}
+</style>
 <jsp:include page="/template/script.jsp"></jsp:include>
 </head>
 
@@ -39,11 +65,11 @@
 <br><br><br>
 
 	<div id="mypageInfo">
- 	<c:choose>
- 		<c:when test="${!empty fvo }">
+ <c:choose>
+ 	<c:when test="${!empty fvo }">
  		<div class="container">
   		<div class="jumbotron">
- 			<h2>${fvo.name } 님의 page입니다</h2><br>
+ 			<h4 style='color:#3377ff'>${fvo.name } 님의 page입니다</h4><br>
  			 <a class="btn btn-primary" href="${pageContext.request.contextPath}/DispatcherServlet?command=bookingList&id=${fvo.id}">
  			 booking
  			<span class="badge">
@@ -51,21 +77,21 @@
  			</span></a>
  			</div>
  			</div>
- 		</c:when>
+ 	</c:when>
  	<c:otherwise>
- 	<div class="container">
-  		<div class="jumbotron">
- 			<h3>${mvo.name} 님의 page입니다</h3><br>
- 			
+ 		<div class="container">
+  			<div class="jumbotron">
+ 			<h3 style='color:#3377ff'>Mypage</h3><br>
  			<a class="btn btn-primary" href="${pageContext.request.contextPath}/DispatcherServlet?command=bookingList&id=${mvo.id}">booking
  			<span class="badge">
  			${bookingcount}
  			</span>
  			</a>
+ 			<div class="material-icons">&#xe88f;<span class='iconInfo'>당신이 즐겨찾기한 사람의 수를 나타냅니다</span></div>
  	
  	
- 	 </div>
- 	</div>
+ 		 </div>
+ 		</div>
  	</c:otherwise>   
  	</c:choose>
  	
