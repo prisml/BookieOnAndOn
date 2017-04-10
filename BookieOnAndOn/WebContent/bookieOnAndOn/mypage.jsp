@@ -41,13 +41,31 @@
 	<div id="mypageInfo">
  	<c:choose>
  		<c:when test="${!empty fvo }">
- 			${fvo.name } 님의 page입니다<br>
- 			booking : <a href="${pageContext.request.contextPath}/DispatcherServlet?command=bookingList&id=${fvo.id}">${fbookingcount}</a>
+ 		<div class="container">
+  		<div class="jumbotron">
+ 			<h2>${fvo.name } 님의 page입니다</h2><br>
+ 			 <a class="btn btn-primary" href="${pageContext.request.contextPath}/DispatcherServlet?command=bookingList&id=${fvo.id}">
+ 			 booking
+ 			<span class="badge">
+ 			${fbookingcount}
+ 			</span></a>
+ 			</div>
+ 			</div>
  		</c:when>
  	<c:otherwise>
- 			<h3>${mvo.name} 님의 page입니다</h3>
- 			booking : <a href="${pageContext.request.contextPath}/DispatcherServlet?command=bookingList&id=${mvo.id}">${bookingcount}</a>
+ 	<div class="container">
+  		<div class="jumbotron">
+ 			<h3>${mvo.name} 님의 page입니다</h3><br>
+ 			
+ 			<a class="btn btn-primary" href="${pageContext.request.contextPath}/DispatcherServlet?command=bookingList&id=${mvo.id}">booking
+ 			<span class="badge">
+ 			${bookingcount}
+ 			</span>
+ 			</a>
  	
+ 	
+ 	 </div>
+ 	</div>
  	</c:otherwise>   
  	</c:choose>
  	
