@@ -97,7 +97,8 @@
 								<h4>${bvo[i*4+j].title }</h4>  
 								 저자 : ${bvo[i*4+j].author}<br>
 					 			출판사: ${bvo[i*4+j].pub }</div></div></div>
-							${bvo[i*4+j].title }(${bvo[i*4+j].rate })</a>
+							${bvo[i*4+j].title } &nbsp;&nbsp;|&nbsp; <img width="17px" src="${pageContext.request.contextPath}/images/staron.png">&nbsp;
+				 ${bvo[i*4+j].rate}</a>
 						</div>
 				</c:otherwise>
 			</c:choose>		
@@ -147,7 +148,8 @@
 							<h4>${bvo[i*4+j].title }</h4> 
 					 저자 : ${bvo[i*4+j].author}<br>
 					 					출판사: ${bvo[i*4+j].pub }</div></div></div>
-							${bvo[i*4+j].title }(${bvo[i*4+j].rate })</a>
+							${bvo[i*4+j].title }(${bvo[i*4+j].rate})&nbsp;&nbsp;|&nbsp; <img width="17px" src="${pageContext.request.contextPath}/images/staron.png">&nbsp;
+				 ${bvo[i*4+j].rate}</a>
 						</div>
 						</c:otherwise>
 						</c:choose>		
