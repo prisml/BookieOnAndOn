@@ -1,16 +1,12 @@
-<%@page import="model.PagingBean"%>
-<%@page import="model.VO"%>
-<%@page import="model.BookVO"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="model.ListVO"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>    
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <title>메인</title>
-<style type="text/css">
+<style type="text/css">	
+@import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
 .w3-one {
    position: relative;
    display: block;
@@ -37,11 +33,13 @@
 }
 
 .overlaytext {
+	font-family: 'Jeju Gothic', serif;
    color: white;
    position: absolute;
-   font-size: 15px;
+   font-size: 14px;
    top: 10%;
-   left: 10%;
+   left: 7%;
+   right: 7%;
 }
 
 </style>
@@ -73,6 +71,7 @@
 							 info+="'><div class='w3-one'><img class='img-responsive' src='http://placehold.it/260x390' alt=''>";
 							 //info+="<img class='img-responsive' src="+data.list[i*4+j].bookcover+" alt=''>"
 							 info+= "<div class='overlay'><div class='overlaytext'>";
+							 info+="<h4>"+data.list[i*4+j].title+"</h4>";
 							 info+="저자&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+data.list[i*4+j].author+"<br>출판사&nbsp;&nbsp;&nbsp;"+data.list[i*4+j].pub;
 							 info+="</div></div></div>";
 							 info+=data.list[i*4+j].title;
@@ -112,12 +111,17 @@
 					for(var j=0;j<4;j++){
 						if(i*4+j+1>data.list.length)
 							break;
-						info+="<div class='col-md-3 portfolio-item'>";
-						info+="<a href='#'>";
-						info+="<img class='img-responsive' src='http://placehold.it/260x390' alt=''>";
-						//info+="<img class='img-responsive' src="+data.list[page*12+i*4+j].bookcover+" alt=''>";
-						info+=data.list[i*4+j].title;
-						info+="</a></div>";
+						 info+="<div class='col-md-3 portfolio-item'>";
+						 info+="<a href='http://localhost:8888/BookieOnAndOn/DispatcherServlet?command=detail&bookno=";
+						 info+=data.list[i*4+j].bookno;
+						 info+="'><div class='w3-one'><img class='img-responsive' src='http://placehold.it/260x390' alt=''>";
+						 //info+="<img class='img-responsive' src="+data.list[i*4+j].bookcover+" alt=''>"
+						 info+= "<div class='overlay'><div class='overlaytext'>";
+						 info+="<h4>"+data.list[i*4+j].title+"</h4>";
+						 info+="저자&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+data.list[i*4+j].author+"<br>출판사&nbsp;&nbsp;&nbsp;"+data.list[i*4+j].pub;
+						 info+="</div></div></div>";
+						 info+=data.list[i*4+j].title;
+						 info+="</a></div>";
 					}//j
 					info+="</div>";
 				}//i 
@@ -146,32 +150,34 @@
   	</ul>
   	<br><br> 
   	<!--------------- 책 리스트 -----------------> 
-  	<% ListVO listVo = (ListVO)request.getAttribute("listVo");
-  		 ArrayList<VO> list=listVo.getList();
-  		 PagingBean pb=listVo.getPagingBean();
-  	%>
-  	<div id="showBookList">
-   	<%for(int i=0; i<3; i++){ %>
+  	<c:set var="listVo" value="${requestScope.listVo}"/>  
+  	<c:set var="size" value="${fn:length(listVo.list)}"/>
+  	<div id="showBookList">  	
+  	<c:forEach begin="0" end="2" var="i">
   		<div class="row">
-  		<%for(int j=0; j<4; j++){%>	
-  				<%if(i*4+j+1>list.size()){
-					break;} %>
+  		<c:forEach begin="0" end="3" var="j">
+  		<c:choose>
+  			<c:when test="${(i*4+j+1)>size}">  				
+  			</c:when>
+  			<c:otherwise>
 			<div class="col-md-3 portfolio-item">
-				<a href="${pageContext.request.contextPath}/DispatcherServlet?command=detail&bookno=<%=((BookVO)list.get(i*4+j)).getBookno()%>">
-				<div class='w3-one'>
-				<img class="img-responsive" src="http://placehold.it/260x390" alt="">
+				<a href="${pageContext.request.contextPath}/DispatcherServlet?command=detail&bookno=${listVo.list[i*4+j].bookno}">
+				<div class="w3-one">
+				<img class="img-responsive" src="http://placehold.it/260x390" alt="" />
 				<div class='overlay'><div class='overlaytext'>
-				<h5><%=((BookVO)list.get(i*4+j)).getTitle()%></h5>
+				<h4>${listVo.list[i*4+j].title}</h4>
 				저자&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<%=((BookVO)list.get(i*4+j)).getAuthor()%><br>
+				${listVo.list[i*4+j].author}<br>
 				출판사&nbsp;&nbsp;&nbsp;
-				<%=((BookVO)list.get(i*4+j)).getPub()%>
+				${listVo.list[i*4+j].pub}
 				</div></div></div><!-- overlay -->
-				 <%=((BookVO)list.get(i*4+j)).getTitle()%></a>
+				 ${listVo.list[i*4+j].title}</a>				 
 			</div>
-		<%}%>
+			</c:otherwise>
+			</c:choose>		
+		</c:forEach><!-- j -->
 		</div>
-	<%}%> 
+	</c:forEach><!-- i -->	
   	</div><!-- showBookList -->			
 	<hr>	
 	<!---------------- 페이징 ------------------>
@@ -179,26 +185,26 @@
 			<div class="col-lg-12">
 			<div class="page"><!-- 전체 리스트의 페이징 -->
 			<ul class="pagination">
-			<c:if test="${requestScope.listVo.pagingBean.previousPageGroup}">
+			<c:if test="${listVo.pagingBean.previousPageGroup}">
 							<li><a
-								href="${pageContext.request.contextPath}/DispatcherServlet?command=main&pageNo=${requestScope.listVo.pagingBean.startPageOfPageGroup-1}">&laquo;</a></li>
+								href="${pageContext.request.contextPath}/DispatcherServlet?command=main&pageNo=${listVo.pagingBean.startPageOfPageGroup-1}">&laquo;</a></li>
 						</c:if>
 						<c:forEach var="num"
-							begin="${requestScope.listVo.pagingBean.startPageOfPageGroup}"
-							end="${requestScope.listVo.pagingBean.endPageOfPageGroup}">
+							begin="${listVo.pagingBean.startPageOfPageGroup}"
+							end="${listVo.pagingBean.endPageOfPageGroup}">
 							<c:choose>
-								<c:when test="${num!=requestScope.listVo.pagingBean.nowPage }">
+								<c:when test="${num!=listVo.pagingBean.nowPage }">
 									<li><a id='pagelink'
-										href="${pageContext.request.contextPath}/DispatcherServlet?command=main&pageNo=${num}">${num }</a></li>
+										href="${pageContext.request.contextPath}/DispatcherServlet?command=main&pageNo=${num}">${num}</a></li>
 								</c:when>
 								<c:otherwise>
 									<li class='active'><a>${num }</a></li>
 								</c:otherwise>
 							</c:choose>
 						</c:forEach>
-						<c:if test="${requestScope.listVo.pagingBean.nextPageGroup}">
+						<c:if test="${listVo.pagingBean.nextPageGroup}">
 							<li><a
-								href="${pageContext.request.contextPath}/DispatcherServlet?command=main&pageNo=${requestScope.listVo.pagingBean.endPageOfPageGroup+1}">&raquo;
+								href="${pageContext.request.contextPath}/DispatcherServlet?command=main&pageNo=${listVo.pagingBean.endPageOfPageGroup+1}">&raquo;
 							</a></li>
 						</c:if>
 			</ul></div>
