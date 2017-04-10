@@ -45,6 +45,7 @@ a:hover{
    left: 7%;
    right: 7%;
 }
+
 </style>
 <jsp:include page="/template/script.jsp"></jsp:include>
 
@@ -184,7 +185,7 @@ a:hover{
 				${listVo.list[i*4+j].pub}
 				</div></div></div><br><!-- overlay -->
 				 ${listVo.list[i*4+j].title}&nbsp;&nbsp;|&nbsp; <img width="17px" src="${pageContext.request.contextPath}/images/staron.png">&nbsp;
-				 <fmt:parseNumber var="pageCount" value="${listVo.list[i*4+j].rate}"/></a>		 
+				 <fmt:formatNumber value="${listVo.list[i*4+j].rate}" pattern="0.0"/></a>		 
 			</div>
 			</c:otherwise>
 			</c:choose>		
