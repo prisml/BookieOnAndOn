@@ -121,7 +121,7 @@ public class ReviewDAO {
 		ResultSet rs = null;
 		try {
 			con = dataSource.getConnection();
-			String sql = "update review set(rvcontent,star) = (?,?) where bookno=? and id=?";
+			String sql = "update review set rvcontent=?, star=? where bookno=? and id=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(3, vo.getBookno());
 			pstmt.setString(4, vo.getId());
@@ -147,5 +147,25 @@ public class ReviewDAO {
 		} finally {
 			closeAll(rs, pstmt, con);
 		}
+	}
+
+	public ReviewVO getReview(String bookno, String id) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ReviewVO vo = null;
+		try {
+			con = dataSource.getConnection();
+			String sql = "select bookno,id,star,rvcontent,rvdate from review where bookno=? and id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, bookno);
+			pstmt.setString(2, id);
+			rs = pstmt.executeQuery();
+			if(rs.next())
+				vo = new ReviewVO(rs.getString(1),rs.getString(2),rs.getInt(3),rs.getString(4),rs.getString(5));
+		} finally {
+			closeAll(rs, pstmt, con);
+		}
+		return vo;
 	}
 }

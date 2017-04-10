@@ -37,7 +37,7 @@ public class HandlerMapping {
 		} else if (command.equals("detail")) {
 			c = new BookDetailController();
 		} else if (command.equals("getReviewList")) {
-			c = new GetReviewListController();
+			c = new ReviewListController();
 		} else if(command.equals("saw")) {
 			c = new SawController();
 		} else if(command.equals("wish")) {
@@ -52,6 +52,8 @@ public class HandlerMapping {
 			c = new ReviewDeleteController();
 		} else if(command.equals("update")){
 			c = new UpdateController();
+		} else if(command.equals("reviewRead")){
+			c = new ReviewReadController();
 		}
 		return c;
 	}

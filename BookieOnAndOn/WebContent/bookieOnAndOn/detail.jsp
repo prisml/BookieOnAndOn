@@ -18,12 +18,18 @@
 			success:function(data){
 				$("#reviewList").append("<ul>");
 				for(var i=0;i<data.list.length;i++){
-					$("#reviewList").append("<li>");
-					$("#reviewList").append(data.list[i].id+" : ");
-					$("#reviewList").append(data.list[i].rvcontent+"<br>");
-					$("#reviewList").append(data.list[i].rvdate+"<br>");
-					$("#reviewList").append(data.list[i].star);
-					$("#reviewList").append("</li>");
+					var innerHtml = "";
+					innerHtml += "<div class='row'><div class='3u 12u(medium)'>";
+					for(var j=0;j<data.list[i].star;j++)
+						innerHtml += "<img style='width:30px' src='${pageContext.request.contextPath}/images/staron.png'> ";
+					for(var j=data.list[i].star;j<5;j++)
+						innerHtml += "<img style='width:30px' src='${pageContext.request.contextPath}/images/staroff.png'> ";
+					innerHtml += "</div>";
+					innerHtml += data.list[i].id+" : "; // to do
+					innerHtml += data.list[i].rvcontent+"<br>";
+					innerHtml += data.list[i].rvdate+"<br>";
+					innerHtml += "</div></li>";
+					$("#reviewList").append(innerHtml);					
 				}
 				$("#reviewList").append("</ul>");
 				var pb = data.pagingBean;
@@ -44,7 +50,6 @@
 				url:"DispatcherServlet",
 				data:"command=saw&bookno=${vo.bookno}&id=java",
 				success:function(data){
-					alert(data);
 				}
 			});
 		});
@@ -54,7 +59,6 @@
 				url:"DispatcherServlet",
 				data:"command=wish&bookno=${vo.bookno}&id=java",
 				success:function(data){
-					alert(data);
 				}
 			});
 		});
@@ -76,17 +80,16 @@
 			return false;
 		});
 		$(".on").html("<img style='width:30px' src='${pageContext.request.contextPath}/images/staron.png'>");
-		$(".off").html("<img style='width:30px' src='${pageContext.request.contextPath}/images/staron.png'>");
-		$("#reviewSubmit").click(){
+		$("#reviewSubmit").click(function(){
 			$.ajax({
 				type:"get",
 				url:"DispatcherServlet",
-				data:"command=reviewRegist&bookno=${vo.bookno}&content=$('#reviewContent').val()&star=$('.on').length",
+				data:"command=reviewRegist&bookno=${vo.bookno}&content="+$("#reviewContent").val()+"&star="+$(".on").length,
 				success:function(){
 					location.href=document.location.href;
 				}
 			});
-		}
+		});
 	}); 
 </script>
 </head>
@@ -147,8 +150,8 @@
 										placeholder="리뷰 등록"> 
 										<input id="reviewHidden" type="text" style="display: none;" />
 								</div>
-								<div class="w3-col" style="padding-left:20px; padding-top:2px">
-									<i id="reviewSummit" class="w3-xxlarge fa fa-pencil"></i>
+								<div id="reviewSubmit" class="w3-col" style="padding-left:20px; padding-top:2px">
+									<i class="w3-xxlarge fa fa-pencil"></i>
 								</div>
 							</div>
 						</form>
@@ -160,9 +163,7 @@
 		<div>
 			<div class="box container">
 				<div class="row 200%">
-					<div class="2u 12u(medium)">
-					</div>
-					<div id="reviewList" class="8u 12u(medium) important(medium)">
+					<div id="reviewList" class="10u 12u(medium) important(medium)">
 					</div>
 					<div class="2u 12u(medium)">
 					</div>
