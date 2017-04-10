@@ -37,6 +37,14 @@
 						</c:forEach>
 					</tbody>
 				</table>
+				<div class="row">
+					<div class="col-sm-8"></div>
+						<div class="col-sm-4" align="right">
+							<a href="${pageContext.request.contextPath}/DispatcherServlet?command=mypage"><button class="btn-primary btn-lg">My Page</button></a>
+							<a href="${pageContext.request.contextPath}/DispatcherServlet?command=main"><button class="btn-success btn-lg">Home</button></a>
+						</div>
+					</div>
+				</div>
 				<!-- Pagination -->
 				<div class="row text-center">
 					<div class="col-lg-12">
@@ -71,6 +79,6 @@
 			<!-- /.row -->
 		</div>
 		<jsp:include page="/template/footer.jsp"></jsp:include>
-	</div>
+	
 </body>
 </html>
