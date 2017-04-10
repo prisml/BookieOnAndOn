@@ -50,6 +50,7 @@
 				url:"DispatcherServlet",
 				data:"command=saw&bookno=${vo.bookno}&id=java",
 				success:function(data){
+					alert(data);
 				}
 			});
 		});
@@ -59,6 +60,7 @@
 				url:"DispatcherServlet",
 				data:"command=wish&bookno=${vo.bookno}&id=java",
 				success:function(data){
+					alert(data);
 				}
 			});
 		});

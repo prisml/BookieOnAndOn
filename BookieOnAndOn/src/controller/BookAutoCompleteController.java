@@ -7,11 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONArray;
-import org.json.JSONObject;
 
 import model.BookDAO;
-import model.ListVO;
-import model.PagingBean;
 import model.VO;
 
 public class BookAutoCompleteController implements Controller {
