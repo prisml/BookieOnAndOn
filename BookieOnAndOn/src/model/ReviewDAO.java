@@ -49,7 +49,7 @@ public class ReviewDAO {
 			con = dataSource.getConnection();
 			StringBuilder sql = new StringBuilder();
 			sql.append("select A.* from(SELECT row_number() over(order by rvdate desc) ");
-			sql.append("as rnum, bookno,id,star,rvcontent,rvdate ");
+			sql.append("as rnum, bookno,id,star,rvcontent,to_char(rvdate,'yyyy-mm-dd') ");
 			sql.append("from review B where bookno=? ) A where rnum between ? and ?");
 			pstmt = con.prepareStatement(sql.toString());
 			pstmt.setString(1, no);
