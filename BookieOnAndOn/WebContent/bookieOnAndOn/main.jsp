@@ -45,7 +45,6 @@ a:hover{
    left: 7%;
    right: 7%;
 }
-
 </style>
 <jsp:include page="/template/script.jsp"></jsp:include>
 

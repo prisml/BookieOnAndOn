@@ -6,6 +6,7 @@
 <head>
 <title>mypage</title>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<script src="//code.jquery.com/jquery.min.js"></script>
 <style type="text/css">
 
 .material-icons{
@@ -27,14 +28,37 @@
 .material-icons:hover .iconInfo {
     visibility: visible;
 }
-.bookingIcon{
-color:red;
+.jumbotron{
+position: relative;
+
+}
+#bookingIcon{
+position:absolute;
 font-size:24px;
+color: #ffff80;
+right: 50px;
 }
 
 
 
 </style>
+<script type="text/javascript">
+
+$(document).ready(function(){
+	$("#bookingIcon").click(function(){
+		$.ajax({
+				type:"get",
+				url:"DispatcherServlet",
+				data:"command=addBooking&senderid=${sessionScope.mvo.id}&receiverid=${fvo.id }",
+				success:function(data){
+					alert(data);
+					}
+			
+			});
+		});
+	});
+
+</script>
 <jsp:include page="/template/script.jsp"></jsp:include>
 </head>
 
@@ -73,13 +97,14 @@ font-size:24px;
  	<c:when test="${!empty fvo }">
  		<div class="container">
   		<div class="jumbotron">
+  		<span id="bookingIcon" class="fa">&#xf02d;</span>
  			<h4 style='color:#3377ff'>${fvo.name } 님의 page입니다</h4><br>      
  			 <a class="btn btn-primary" href="${pageContext.request.contextPath}/DispatcherServlet?command=bookingList&id=${fvo.id}">
  			 booking
  			<span class="badge">
  			${fbookingcount}
  			</span></a>
- 			<div class="bookingIcon">&#xf02d;</div>
+ 			
  			</div>
  			</div>
  	</c:when>
