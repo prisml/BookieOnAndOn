@@ -27,9 +27,13 @@
 .material-icons:hover .iconInfo {
     visibility: visible;
 }
-a:hover{
-text-decoration:none;
+.bookingIcon{
+color:red;
+font-size:24px;
 }
+
+
+
 </style>
 <jsp:include page="/template/script.jsp"></jsp:include>
 </head>
@@ -69,12 +73,13 @@ text-decoration:none;
  	<c:when test="${!empty fvo }">
  		<div class="container">
   		<div class="jumbotron">
- 			<h4 style='color:#3377ff'>${fvo.name } 님의 page입니다</h4><br>
+ 			<h4 style='color:#3377ff'>${fvo.name } 님의 page입니다</h4><br>      
  			 <a class="btn btn-primary" href="${pageContext.request.contextPath}/DispatcherServlet?command=bookingList&id=${fvo.id}">
  			 booking
  			<span class="badge">
  			${fbookingcount}
  			</span></a>
+ 			<div class="bookingIcon">&#xf02d;</div>
  			</div>
  			</div>
  	</c:when>
