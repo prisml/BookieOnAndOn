@@ -7,7 +7,7 @@
 <jsp:include page="/template/script.jsp"></jsp:include>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/assets/css/main.css" />
-<title>(책이름) 정보</title>
+<title>${vo.title }</title>
 <script type="text/javascript">
 	$(document).ready(function() {
 		$.ajax({
@@ -102,7 +102,7 @@
 			<div class="container">
 				<div class="row">
 					<div id="bookImg" class="3u 12u(medium)">
-						<img class="img-responsive" src="http://placehold.it/260x390">
+						<img width="260px" class="img-responsive" src="${pageContext.request.contextPath}/images/bookcover/${vo.bookno}.jpg">
 					</div>
 					<div class="8u 12u(medium)">
 						<ul id="bookInfo">

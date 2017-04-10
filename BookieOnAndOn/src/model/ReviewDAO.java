@@ -168,4 +168,19 @@ public class ReviewDAO {
 		}
 		return vo;
 	}
+
+	public void updateStar(String bookno) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			con = dataSource.getConnection();
+			String sql = "update book set rate=(select avg(star) from review where bookno=?)";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, bookno);
+			pstmt.executeUpdate();
+		} finally {
+			closeAll(rs, pstmt, con);
+		}
+	}
 }
