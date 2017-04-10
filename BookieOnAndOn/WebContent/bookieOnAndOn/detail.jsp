@@ -7,7 +7,7 @@
 <jsp:include page="/template/script.jsp"></jsp:include>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/assets/css/main.css" />
-<title>(책이름) 정보</title>
+<title>${vo.title }</title>
 <script type="text/javascript">
 	$(document).ready(function() {
 		$.ajax({
@@ -18,12 +18,18 @@
 			success:function(data){
 				$("#reviewList").append("<ul>");
 				for(var i=0;i<data.list.length;i++){
-					$("#reviewList").append("<li>");
-					$("#reviewList").append(data.list[i].id+" : ");
-					$("#reviewList").append(data.list[i].rvcontent+"<br>");
-					$("#reviewList").append(data.list[i].rvdate+"<br>");
-					$("#reviewList").append(data.list[i].star);
-					$("#reviewList").append("</li>");
+					var innerHtml = "";
+					innerHtml += "<div class='row'><div class='3u 12u(medium)'>";
+					for(var j=0;j<data.list[i].star;j++)
+						innerHtml += "<img style='width:30px' src='${pageContext.request.contextPath}/images/staron.png'> ";
+					for(var j=data.list[i].star;j<5;j++)
+						innerHtml += "<img style='width:30px' src='${pageContext.request.contextPath}/images/staroff.png'> ";
+					innerHtml += "</div><div class=''>";
+					innerHtml += data.list[i].id+" : "; // to do
+					innerHtml += data.list[i].rvcontent+"<br>";
+					innerHtml += data.list[i].rvdate+"<br>";
+					innerHtml += "</div></div></li>";
+					$("#reviewList").append(innerHtml);					
 				}
 				$("#reviewList").append("</ul>");
 				var pb = data.pagingBean;
@@ -63,7 +69,27 @@
 			$.ajax({
 				type:"get",
 				url:"DispatcherServlet",
-				data:"command=detail&bookno=${vo.bookno}&page="+$(this).text()
+				data:"command=detail&bookno=${vo.bookno}&page="+$(this).text(),
+				success:function(){}
+			});
+		});
+		$( ".star_rating a" ).click(function() {
+			event.preventDefault();
+			$(this).parent().children("a").removeClass("on");
+			$(this).addClass("on").prevAll("a").addClass("on");
+			$(this).parent().children("a").html("<img style='width:30px' src='${pageContext.request.contextPath}/images/staroff.png'>");
+			$(".on").html("<img style='width:30px' src='${pageContext.request.contextPath}/images/staron.png'>");
+			return false;
+		});
+		$(".on").html("<img style='width:30px' src='${pageContext.request.contextPath}/images/staron.png'>");
+		$("#reviewSubmit").click(function(){
+			$.ajax({
+				type:"get",
+				url:"DispatcherServlet",
+				data:"command=reviewRegist&bookno=${vo.bookno}&content="+$("#reviewContent").val()+"&star="+$(".on").length,
+				success:function(){
+					location.href=document.location.href;
+				}
 			});
 		});
 	}); 
@@ -76,10 +102,11 @@
 			<div class="container">
 				<div class="row">
 					<div id="bookImg" class="3u 12u(medium)">
-						<img class="img-responsive" src="http://placehold.it/260x390">
+						<img width="260px" class="img-responsive" src="${pageContext.request.contextPath}/images/bookcover/${vo.bookno}.jpg">
 					</div>
 					<div class="8u 12u(medium)">
 						<ul id="bookInfo">
+							<li>제목 : ${vo.title}</li>
 							<li>저자 : ${vo.author}</li>
 							<li>장르 : ${vo.genre}</li>
 							<li>출판사 : ${vo.pub }</li>
@@ -89,8 +116,16 @@
 					</div>
 					<div class="1u 12(medium)">
 						<ul>
-							<li id="sawLi">봤어요</li>
-							<li id="wishLi">보고싶어요</li>
+							<li id="sawLi">
+							<br>
+							<img alt="봤어요" 
+							src="${pageContext.request.contextPath}/images/staroff.png"
+							 style="width:50px"></li>
+							<li id="wishLi">
+							<br>
+							<img alt="봤어요" 
+							src="${pageContext.request.contextPath}/images/heartoff.png"
+							 style="width:50px"></li>
 						</ul>
 					</div>
 				</div>
@@ -99,16 +134,38 @@
 		<br> <br>
 		<div id="banner-wrapper">
 			<div class="box container">
-				<div class="row"></div>
+				<div class="row">
+					<div class="2u">
+						<p class="star_rating" style="padding-top:20px">
+						    <a href="#" class="on"></a>
+						    <a href="#" class="on"></a>
+						    <a href="#" class="on"></a>
+						    <a href="#" class="on"></a>
+						    <a href="#" class="on"></a>
+						</p>
+					</div>
+					<div class="10u">
+						<form class="w3-container w3-text-blue">
+							<div class="w3-row w3-section">
+								<div class="w3-rest">
+									<input id="reviewContent" class="w3-input w3-border" type="text"
+										placeholder="리뷰 등록"> 
+										<input id="reviewHidden" type="text" style="display: none;" />
+								</div>
+								<div id="reviewSubmit" class="w3-col" style="padding-left:20px; padding-top:2px">
+									<i class="w3-xxlarge fa fa-pencil"></i>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
 			</div>
 		</div>
 		<br> <br>
 		<div>
 			<div class="box container">
 				<div class="row 200%">
-					<div class="2u 12u(medium)">
-					</div>
-					<div id="reviewList" class="8u 12u(medium) important(medium)">
+					<div id="reviewList" class="10u 12u(medium) important(medium)">
 					</div>
 					<div class="2u 12u(medium)">
 					</div>

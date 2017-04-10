@@ -96,4 +96,91 @@ public class ReviewDAO {
 		}
 		return result;
 	}
+	
+	public void registReview(ReviewVO vo) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			con = dataSource.getConnection();
+			String sql = "insert into review(bookno,id,rvcontent,rvdate,star) values(?,?,?,sysdate,?)";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, vo.getBookno());
+			pstmt.setString(2, vo.getId());
+			pstmt.setString(3, vo.getRvcontent());
+			pstmt.setInt(4, vo.getStar());
+			pstmt.executeUpdate();
+		} finally {
+			closeAll(rs, pstmt, con);
+		}
+	}
+	
+	public void updateReview(ReviewVO vo) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			con = dataSource.getConnection();
+			String sql = "update review set rvcontent=?, star=? where bookno=? and id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(3, vo.getBookno());
+			pstmt.setString(4, vo.getId());
+			pstmt.setString(1, vo.getRvcontent());
+			pstmt.setInt(2, vo.getStar());
+			pstmt.executeUpdate();
+		} finally {
+			closeAll(rs, pstmt, con);
+		}
+	}
+	
+	public void deleteReview(ReviewVO vo) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			con = dataSource.getConnection();
+			String sql = "delete from review where bookno=? and id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, vo.getBookno());
+			pstmt.setString(2, vo.getId());
+			pstmt.executeUpdate();
+		} finally {
+			closeAll(rs, pstmt, con);
+		}
+	}
+
+	public ReviewVO getReview(String bookno, String id) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ReviewVO vo = null;
+		try {
+			con = dataSource.getConnection();
+			String sql = "select bookno,id,star,rvcontent,rvdate from review where bookno=? and id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, bookno);
+			pstmt.setString(2, id);
+			rs = pstmt.executeQuery();
+			if(rs.next())
+				vo = new ReviewVO(rs.getString(1),rs.getString(2),rs.getInt(3),rs.getString(4),rs.getString(5));
+		} finally {
+			closeAll(rs, pstmt, con);
+		}
+		return vo;
+	}
+
+	public void updateStar(String bookno) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			con = dataSource.getConnection();
+			String sql = "update book set rate=(select avg(star) from review where bookno=?)";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, bookno);
+			pstmt.executeUpdate();
+		} finally {
+			closeAll(rs, pstmt, con);
+		}
+	}
 }

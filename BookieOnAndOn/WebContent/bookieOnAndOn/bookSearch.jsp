@@ -13,7 +13,7 @@
 }
 
 .w3-one:hover .overlay {
-	opacity: 0.5;
+	opacity: 1;
 }
 
 .w3-one:hover img {
@@ -28,7 +28,7 @@
 	left: 0;
 	right: 0;
 	background-color: black;
-	opacity: 0.0;
+	opacity: 0;
 	transition: .5s ease;
 }
 
@@ -46,6 +46,11 @@
 	font-family: 'Jeju Gothic', serif;
 	color: white;
 }
+
+.bookImage{
+	width:260px;
+	height:360px;
+}
 </style>
 <jsp:include page="/template/script.jsp"></jsp:include>
 
@@ -62,8 +67,7 @@
 								<div class="w3-one">
 									<a
 										href="${pageContext.request.contextPath}/DispatcherServlet?command=detail&bookno=${lvo.bookno}">
-										<img src="https://placehold.it/260x360?text=IMAGE"
-										class="img-responsive" style="width: 100%" alt="Image">
+										<img src="${pageContext.request.contextPath}/images/bookcover/${lvo.bookno}.jpg" class = "bookImage">
 									</a>
 									<div class='overlay'>
 										<div class='overlaytext'>

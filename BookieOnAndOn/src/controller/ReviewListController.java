@@ -13,7 +13,7 @@ import model.PagingBean;
 import model.ReviewDAO;
 import model.VO;
 
-public class GetReviewListController implements Controller {
+public class ReviewListController implements Controller {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {

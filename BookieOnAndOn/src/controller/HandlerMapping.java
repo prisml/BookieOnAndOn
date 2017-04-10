@@ -28,8 +28,7 @@ public class HandlerMapping {
 			c = new BookSearchController();
 		} else if(command.equals("bookAutoComplete")){
 			c = new BookAutoCompleteController();
-		}
-		else if(command.equals("sawBookList")){
+		} else if(command.equals("sawBookList")){
 			c = new SawBookListController();
 		} else if(command.equals("wishBookList")){
 			c = new WishBookListController();
@@ -38,15 +37,23 @@ public class HandlerMapping {
 		} else if (command.equals("detail")) {
 			c = new BookDetailController();
 		} else if (command.equals("getReviewList")) {
-			c = new GetReviewListController();
+			c = new ReviewListController();
 		} else if(command.equals("saw")) {
 			c = new SawController();
 		} else if(command.equals("wish")) {
 			c = new WishController();
 		} else if(command.equals("mypage")){
 			c = new MyPageController();
+		} else if(command.equals("reviewRegist")){
+			c = new ReviewRegistController();
+		} else if(command.equals("reviewUpdate")){
+			c = new ReviewUpdateController();
+		} else if(command.equals("reviewDelete")){
+			c = new ReviewDeleteController();
 		} else if(command.equals("update")){
 			c = new UpdateController();
+		} else if(command.equals("reviewRead")){
+			c = new ReviewReadController();
 		}
 		return c;
 	}

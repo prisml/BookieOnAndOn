@@ -44,9 +44,8 @@
  				<c:forEach var="bvo" items="${requestScope.flistVO.list}">
 					<div class='col-sm-3'>
 					<a href="${pageContext.request.contextPath}/DispatcherServlet?command=detail&bookno=${bvo.bookno}">
-					<img src='http://placehold.it/260x390'></a>
-							${bvo.title }<br>
-							${bvo.rate }<br>
+					<img src='http://placehold.it/260x390'>
+							${bvo.title }(${bvo.rate })</a>
 						</div>
    	</c:forEach>
 <div class='row text-center'>
@@ -78,9 +77,8 @@
  		<c:forEach var="bvo" items="${sessionScope.listVO.list}">
 					<div class='col-sm-3'>
 					<a href="${pageContext.request.contextPath}/DispatcherServlet?command=detail&bookno=${bvo.bookno}">
-					<img src='http://placehold.it/260x390'></a>
-							${bvo.title }<br>
-							${bvo.rate }<br>
+					<img src='http://placehold.it/260x390'>
+							${bvo.title }(${bvo.rate })</a>
 						</div>
    	</c:forEach>
 <div class='row text-center'>
