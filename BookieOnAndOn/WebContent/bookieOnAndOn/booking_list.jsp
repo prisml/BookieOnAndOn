@@ -18,10 +18,10 @@
 						<tr>
 							<c:choose>
 								<c:when test="${requestScope.myId.name == sessionScope.mvo.name}">
-									<td align="center"><h1>내가 부킹한 북멤버: ${requestScope.receiverIdCount }명</h1></td>
+									<td align="center"><h1>나의 Booking: ${requestScope.receiverIdCount }명</h1></td>
 								</c:when>
 								<c:otherwise>
-									<td align="center"><h1>${requestScope.myId.name }님이 부킹한 북멤버: ${requestScope.receiverIdCount }명</h1></td>
+									<td align="center"><h1>${requestScope.myId.name }님의 Booking: ${requestScope.receiverIdCount }명</h1></td>
 								</c:otherwise>
 							</c:choose>
 							<td align="center"><h1>Booking_Count</h1></td>
@@ -29,28 +29,25 @@
 					</thead>
 					<tbody>
 						<c:forEach var="mvo" items="${requestScope.receiverIdList.list }">
-							<tr>
-								<td align="center"><a href="${pageContext.request.contextPath}/DispatcherServlet?command=mypage&id=${mvo.receiverid }">${mvo.receiverid }</a></td>
+							<tr class="success">
+								<td align="center"><a style="text-decoration:none"
+								href="${pageContext.request.contextPath}/DispatcherServlet?command=mypage&id=${mvo.receiverid }">${mvo.receiverid }</a></td>
 								<td align="center">${mvo.receiveridcount }</td>
 							</tr>
 						</c:forEach>
 					</tbody>
 				</table>
-
 				<!-- Pagination -->
 				<div class="row text-center">
 					<div class="col-lg-12">
 						<ul class="pagination">
-							<c:set var="pb"
-								value="${requestScope.receiverIdList.pagingBean }" />
+							<c:set var="pb" value="${requestScope.receiverIdList.pagingBean }" />
 							<!-- 이전 page -->
 							<c:if test="${pb.previousPageGroup }">
-								<li><a
-									href="${pageContext.request.contextPath}/DispatcherServlet?command=bookingList&pageNo=${pb.startPageOfPageGroup-1 }">&laquo;</a></li>
+								<li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=bookingList&pageNo=${pb.startPageOfPageGroup-1 }">&laquo;</a></li>
 							</c:if>
 							<!-- 현재 page -->
-							<c:forEach begin="${pb.startPageOfPageGroup }"
-								end="${pb.endPageOfPageGroup }" var="pageNo">
+							<c:forEach begin="${pb.startPageOfPageGroup }" end="${pb.endPageOfPageGroup }" var="pageNo">
 								<c:choose>
 									<c:when test="${pb.nowPage!=pageNo }">
 										<li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=bookingList&pageNo=${pageNo }&id=${requestScope.id}">${pageNo }</a></li>
