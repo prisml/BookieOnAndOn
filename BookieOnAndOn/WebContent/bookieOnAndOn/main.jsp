@@ -10,8 +10,6 @@
 <html>
 <head>
 <title>메인</title>
-<title>Verti by HTML5 UP</title>
-
 <jsp:include page="/template/script.jsp"></jsp:include>
 
 <!-- script ajax -->
@@ -154,8 +152,7 @@
 							</c:choose>
 						</c:forEach>
 						<c:if test="${requestScope.listVo.pagingBean.nextPageGroup}">
-							<li><a
-								href="${pageContext.request.contextPath}/DispatcherServlet?command=main&pageNo=${requestScope.listVo.pagingBean.endPageOfPageGroup+1}">&raquo;
+							<li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=main&pageNo=${requestScope.listVo.pagingBean.endPageOfPageGroup+1}">&raquo;
 							</a></li>
 						</c:if>
 			</ul></div>

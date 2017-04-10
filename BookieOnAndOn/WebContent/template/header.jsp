@@ -46,6 +46,12 @@
 							}
 						});
 	});
+	
+	$(document).ready(function(){
+		$("#tags").css("height","60px");
+		$("#tagsSpan").css("height","60px");
+		$("#tagsI").css("width","40px");
+	});
 </script>
 
 <c:choose>
@@ -62,18 +68,16 @@
 				<!-- Nav -->
 				<nav id="nav">
 					<ul>
-						<li class="current"><a
-							href="${pageContext.request.contextPath}/index.jsp">welcome</a></li>
 						<li><a
-							href="${pageContext.request.contextPath}/bookieOnAndOn/login.jsp">Login</a></li>
+							href="${pageContext.request.contextPath}/bookieOnAndOn/login.jsp" style="font-size: 28px">Login</a></li>
 						<li><a
-							href="${pageContext.request.contextPath}/bookieOnAndOn/register.jsp">Register</a></li>
+							href="${pageContext.request.contextPath}/bookieOnAndOn/register.jsp" style="font-size: 28px">Register</a></li>
 						<li><a
-							href="${pageContext.request.contextPath}/bookieOnAndOn/findIdPw.jsp">Find
+							href="${pageContext.request.contextPath}/bookieOnAndOn/findIdPw.jsp" style="font-size: 28px">Find
 								ID/PW</a></li>
 					</ul>
 				</nav>
-
+				<br><br><br><br>
 				<div class="container">
 					<div class="row">
 						<div class="2u"></div>
@@ -84,9 +88,9 @@
 								<div class="ui-widget">
 									<div class="input-group input-group-lg">
 										<input type="hidden" name="command" value="bookSearch">
-										<input id="tags" type="text" class="form-control" name="title">
-										<span class="input-group-addon"> <i
-											class="fa fa-search" onclick="bookSearch()"></i>
+										<input id="tags" type="text" class="form-control" name="title" style="border-color: #cccccc">
+										<span class="input-group-addon" id = "tagsSpan"> <i
+											class="fa fa-search" id = "tagsI" onclick="bookSearch()"></i>
 										</span>
 									</div>
 								</div>
@@ -105,7 +109,7 @@
 			<div id="logo">
 				<a href="${pageContext.request.contextPath}/index.jsp"><img
 					src="${pageContext.request.contextPath}/images/Logo.png"
-					style="width: 220px;"></a>
+					style="width: 250px;"></a>
 			</div>
 			<!-- Nav -->
 			<nav id="nav">
@@ -119,7 +123,7 @@
 						href="${pageContext.request.contextPath}/bookieOnAndOn/update.jsp">회원정보수정</a></li>
 				</ul>
 			</nav>
-
+			
 			<div class="container">
 				<div class="row">
 					<div class="2u"></div>
@@ -131,8 +135,8 @@
 								<div class="input-group input-group-lg">
 									<input type="hidden" name="command" value="bookSearch">
 									<input id="tags" type="text" class="form-control" name="title">
-									<span class="input-group-addon"> <i class="fa fa-search"
-										onclick="bookSearch()"></i>
+									<span class="input-group-addon"> 
+										<i class="fa fa-search" onclick="bookSearch()"></i>
 									</span>
 								</div>
 							</div>
