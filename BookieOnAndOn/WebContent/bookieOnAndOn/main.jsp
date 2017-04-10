@@ -158,7 +158,15 @@
 					break;} %>
 			<div class="col-md-3 portfolio-item">
 				<a href="${pageContext.request.contextPath}/DispatcherServlet?command=detail&bookno=<%=((BookVO)list.get(i*4+j)).getBookno()%>">
+				<div class='w3-one'>
 				<img class="img-responsive" src="http://placehold.it/260x390" alt="">
+				<div class='overlay'><div class='overlaytext'>
+				<h5><%=((BookVO)list.get(i*4+j)).getTitle()%></h5>
+				저자&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<%=((BookVO)list.get(i*4+j)).getAuthor()%><br>
+				출판사&nbsp;&nbsp;&nbsp;
+				<%=((BookVO)list.get(i*4+j)).getPub()%>
+				</div></div></div><!-- overlay -->
 				 <%=((BookVO)list.get(i*4+j)).getTitle()%></a>
 			</div>
 		<%}%>
@@ -182,7 +190,6 @@
 								<c:when test="${num!=requestScope.listVo.pagingBean.nowPage }">
 									<li><a id='pagelink'
 										href="${pageContext.request.contextPath}/DispatcherServlet?command=main&pageNo=${num}">${num }</a></li>
-
 								</c:when>
 								<c:otherwise>
 									<li class='active'><a>${num }</a></li>
