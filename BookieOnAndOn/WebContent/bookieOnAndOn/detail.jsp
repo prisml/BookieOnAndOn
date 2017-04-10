@@ -25,7 +25,8 @@
 					for(var j=data.list[i].star;j<5;j++)
 						innerHtml += "<img style='width:30px' src='${pageContext.request.contextPath}/images/staroff.png'> ";
 					innerHtml += "</div><div class=''>";
-					innerHtml += data.list[i].id+" : "; // to do
+					innerHtml += "<a href=${pageContext.request.contextPath}/DispatcherServlet?command=mypage&id="+data.list[i].id+">"
+					innerHtml += data.list[i].id+"</a> <br> "; // to do
 					innerHtml += data.list[i].rvcontent+"<br>";
 					innerHtml += data.list[i].rvdate+"<br>";
 					innerHtml += "</div></div></li>";
@@ -44,13 +45,29 @@
 				}
 			}
 		});
+		$.ajax({
+			type:"get",
+			url:"DispatcherServlet",
+			data:"command=getSaw&bookno=${vo.bookno}&id=${mvo.id}",
+			success:function(data){
+				$("#sawLi").html("<br><img alt='봤어요' src='${pageContext.request.contextPath}/images/star"+data+".png' style='width:50px'>");
+			}
+		});
+		$.ajax({
+			type:"get",
+			url:"DispatcherServlet",
+			data:"command=getWish&bookno=${vo.bookno}&id=${mvo.id}",
+			success:function(data){
+				$("#wishLi").html("<br><img alt='보고싶어요' src='${pageContext.request.contextPath}/images/heart"+data+".png' style='width:50px'>");
+			}
+		});
 		$("#sawLi").click(function(){
 			$.ajax({
 				type:"get",
 				url:"DispatcherServlet",
-				data:"command=saw&bookno=${vo.bookno}&id=java",
+				data:"command=saw&bookno=${vo.bookno}&id=${mvo.id}",
 				success:function(data){
-					alert(data);
+					$("#sawLi").html("<br><img alt='봤어요' src='${pageContext.request.contextPath}/images/star"+data+".png' style='width:50px'>");
 				}
 			});
 		});
@@ -58,9 +75,9 @@
 			$.ajax({
 				type:"get",
 				url:"DispatcherServlet",
-				data:"command=wish&bookno=${vo.bookno}&id=java",
+				data:"command=wish&bookno=${vo.bookno}&id=${mvo.id}",
 				success:function(data){
-					alert(data);
+					$("#wishLi").html("<br><img alt='보고싶어요' src='${pageContext.request.contextPath}/images/heart"+data+".png' style='width:50px'>");
 				}
 			});
 		});
@@ -81,9 +98,10 @@
 							innerHtml += "<img style='width:30px' src='${pageContext.request.contextPath}/images/staron.png'> ";
 						for(var j=data.list[i].star;j<5;j++)
 							innerHtml += "<img style='width:30px' src='${pageContext.request.contextPath}/images/staroff.png'> ";
-						innerHtml += "</div><div class=''>";
-						innerHtml += data.list[i].id+" : "; // to do
-						innerHtml += data.list[i].rvcontent+"<br>";
+							innerHtml += "</div><div class=''>";
+							innerHtml += "<a href=${pageContext.request.contextPath}/DispatcherServlet?command=mypage&id="+data.list[i].id+">"
+							innerHtml += data.list[i].id+"</a> <br> "; // to do
+							innerHtml += data.list[i].rvcontent+"<br>";
 						innerHtml += data.list[i].rvdate+"<br>";
 						innerHtml += "</div></div></li>";
 						$("#reviewList").append(innerHtml);					
@@ -148,15 +166,15 @@
 					<c:if test="${!empty mvo }">
 						<ul>
 							<li id="sawLi">
-							<br>
+							<!-- <br>
 							<img alt="봤어요" 
 							src="${pageContext.request.contextPath}/images/staroff.png"
-							 style="width:50px"></li>
-							<li id="wishLi">
+							 style="width:50px"> --></li>
+							<li id="wishLi"><!-- 
 							<br>
 							<img alt="봤어요" 
 							src="${pageContext.request.contextPath}/images/heartoff.png"
-							 style="width:50px"></li>
+							 style="width:50px"> --></li>
 						</ul>
 						</c:if>
 					</div>
