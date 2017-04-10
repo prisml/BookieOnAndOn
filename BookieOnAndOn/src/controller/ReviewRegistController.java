@@ -26,6 +26,7 @@ public class ReviewRegistController implements Controller {
 		} else {
 			ReviewDAO.getInstance().updateReview(new ReviewVO(bookno, id, star, content, ""));
 		}
+		ReviewDAO.getInstance().updateStar(bookno);
 		return "AjaxView";
 	}
 

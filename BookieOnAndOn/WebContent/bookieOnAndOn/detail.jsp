@@ -7,7 +7,7 @@
 <jsp:include page="/template/script.jsp"></jsp:include>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/assets/css/main.css" />
-<title>(책이름) 정보</title>
+<title>${vo.title }</title>
 <script type="text/javascript">
 	$(document).ready(function() {
 		$.ajax({
@@ -24,11 +24,11 @@
 						innerHtml += "<img style='width:30px' src='${pageContext.request.contextPath}/images/staron.png'> ";
 					for(var j=data.list[i].star;j<5;j++)
 						innerHtml += "<img style='width:30px' src='${pageContext.request.contextPath}/images/staroff.png'> ";
-					innerHtml += "</div>";
+					innerHtml += "</div><div class=''>";
 					innerHtml += data.list[i].id+" : "; // to do
 					innerHtml += data.list[i].rvcontent+"<br>";
 					innerHtml += data.list[i].rvdate+"<br>";
-					innerHtml += "</div></li>";
+					innerHtml += "</div></div></li>";
 					$("#reviewList").append(innerHtml);					
 				}
 				$("#reviewList").append("</ul>");
@@ -50,6 +50,7 @@
 				url:"DispatcherServlet",
 				data:"command=saw&bookno=${vo.bookno}&id=java",
 				success:function(data){
+					alert(data);
 				}
 			});
 		});
@@ -59,16 +60,47 @@
 				url:"DispatcherServlet",
 				data:"command=wish&bookno=${vo.bookno}&id=java",
 				success:function(data){
+					alert(data);
 				}
 			});
 		});
-		$("#reviewPaging").on("click","a",function() {
+		$("#reviewPaging").on("click","li",function() {
 			event.preventDefault();
 			$.ajax({
-				type:"get",
+				type:"post",
 				url:"DispatcherServlet",
-				data:"command=detail&bookno=${vo.bookno}&page="+$(this).text(),
-				success:function(){}
+				data:"command=getReviewList&bookno=${vo.bookno}&page="+$(this).children("a").text(),
+				dataType:"json",
+				success:function(data){
+					$("#reviewList").html("");		
+					$("#reviewList").append("<ul>");
+					for(var i=0;i<data.list.length;i++){
+						var innerHtml = "";
+						innerHtml += "<div class='row'><div class='3u 12u(medium)'>";
+						for(var j=0;j<data.list[i].star;j++)
+							innerHtml += "<img style='width:30px' src='${pageContext.request.contextPath}/images/staron.png'> ";
+						for(var j=data.list[i].star;j<5;j++)
+							innerHtml += "<img style='width:30px' src='${pageContext.request.contextPath}/images/staroff.png'> ";
+						innerHtml += "</div><div class=''>";
+						innerHtml += data.list[i].id+" : "; // to do
+						innerHtml += data.list[i].rvcontent+"<br>";
+						innerHtml += data.list[i].rvdate+"<br>";
+						innerHtml += "</div></div></li>";
+						$("#reviewList").append(innerHtml);					
+					}
+					$("#reviewList").append("</ul>");
+					$("#reviewPaging").html("");
+					var pb = data.pagingBean;
+					if(pb.previousPageGroup ==true){
+						$("#reviewPaging").append("<li><a style='display: none;'>"+pb.startPageOfPageGroup-1+"</a><<</li>");
+					}
+					for(var i=pb.startPageOfPageGroup;i<=pb.endPageOfPageGroup;i++){
+						$("#reviewPaging").append("<li><a class=movePage href=#>"+i+"</a></li>");
+					}
+					if(pb.nextPageGroup ==true){
+						$("#reviewPaging").append("<li><a style='display: none;'>"+pb.endPageOfPageGroup+1+"</a>>></li>");
+					}
+				}
 			});
 		});
 		$( ".star_rating a" ).click(function() {
@@ -100,7 +132,7 @@
 			<div class="container">
 				<div class="row">
 					<div id="bookImg" class="3u 12u(medium)">
-						<img class="img-responsive" src="http://placehold.it/260x390">
+						<img width="260px" class="img-responsive" src="${pageContext.request.contextPath}/images/bookcover/${vo.bookno}.jpg">
 					</div>
 					<div class="8u 12u(medium)">
 						<ul id="bookInfo">
@@ -113,6 +145,7 @@
 						</ul>
 					</div>
 					<div class="1u 12(medium)">
+					<c:if test="${!empty mvo }">
 						<ul>
 							<li id="sawLi">
 							<br>
@@ -125,11 +158,13 @@
 							src="${pageContext.request.contextPath}/images/heartoff.png"
 							 style="width:50px"></li>
 						</ul>
+						</c:if>
 					</div>
 				</div>
 			</div>
 		</div>
 		<br> <br>
+		<c:if test="${!empty mvo }">
 		<div id="banner-wrapper">
 			<div class="box container">
 				<div class="row">
@@ -177,6 +212,7 @@
 			</div>
 		</div>
 		<jsp:include page="/template/footer.jsp"></jsp:include>
+	</c:if>
 	</div>
 </body>
 </html>
