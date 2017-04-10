@@ -123,7 +123,6 @@ a:hover{
 						 info+="<a  href='http://localhost:8888/BookieOnAndOn/DispatcherServlet?command=detail&bookno=";
 						 info+=data.list[i*4+j].bookno+"'>";
 						 info+="<div class='w3-one'>";
-						// info+="<img class='img-responsive' src='http://placehold.it/260x390' alt=''>";
 						 info+="<div class=bookcover style='height:390px'>";
 						 info+="<img height='390px' width='263px' src='${pageContext.request.contextPath}/images/bookcover/"+data.list[i*4+j].bookno+".jpg' alt=''>"
 						 info+= "<div class='overlay'><div class='overlaytext'>";
@@ -175,7 +174,6 @@ a:hover{
 			<div class="col-md-3 portfolio-item">
 				<a href="${pageContext.request.contextPath}/DispatcherServlet?command=detail&bookno=${listVo.list[i*4+j].bookno}">
 				<div class="w3-one">
-				<!-- <img class="img-responsive" src="http://placehold.it/260x390" alt="" /> -->
 				<img height="390px" width="263px" src="${pageContext.request.contextPath}/images/bookcover/${listVo.list[i*4+j].bookno}.jpg" alt="">
 				<div class='overlay'><div class='overlaytext'>
 				<h4>${listVo.list[i*4+j].title}</h4>
@@ -208,7 +206,7 @@ a:hover{
 							end="${listVo.pagingBean.endPageOfPageGroup}">
 							<c:choose>
 								<c:when test="${num!=listVo.pagingBean.nowPage }">
-									<li><a id='pagelink'
+									<li><a id="pagelink"
 										href="${pageContext.request.contextPath}/DispatcherServlet?command=main&pageNo=${num}">${num}</a></li>
 								</c:when>
 								<c:otherwise>
@@ -217,7 +215,7 @@ a:hover{
 							</c:choose>
 						</c:forEach>
 						<c:if test="${listVo.pagingBean.nextPageGroup}">
-							<li><a
+							<li><a 
 								href="${pageContext.request.contextPath}/DispatcherServlet?command=main&pageNo=${listVo.pagingBean.endPageOfPageGroup+1}">&raquo;
 							</a></li>
 						</c:if>
