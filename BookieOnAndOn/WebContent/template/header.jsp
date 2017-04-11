@@ -8,8 +8,9 @@
 }
 
 .tab{
-	font-size: 20px;
+	font-size: 18px;
 }
+
 #tags {
 	height: 60px;
 }
@@ -28,14 +29,25 @@
       if (f)
          location.href = "${pageContext.request.contextPath}/DispatcherServlet?command=logout";
    }
+   
+   $(document).ready(function(){
+		$("#tagsI").mouseover(function(){
+			$("#tagsSpan").css("background", "white");
+		});
+		
+		$("#tagsI").mouseout(function(){
+			$("#tagsSpan").css("background", "");
+		});
+   });
+   
 	function bookSearch() {
 		if ($("#tags").val() == 0) {
 			return;
 		} else {
-			$("#tagsSpan").css("background", "white");
 			$("#bookSearchForm").submit();
 		}
 	}
+	
   $(function() {
       $("#tags")
             .autocomplete(
@@ -72,7 +84,7 @@
 				type : "get",
 				url : "${pageContext.request.contextPath}/DispatcherServlet?command=bookAutoComplete",
 				dataType : "json",
-				data : {
+				data : { 
 					"title" : request.term
 				},
 				success : function(data) {

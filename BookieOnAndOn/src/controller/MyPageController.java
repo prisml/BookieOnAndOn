@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -7,6 +9,8 @@ import javax.servlet.http.HttpSession;
 import model.BookingDAO;
 import model.MemberDAO;
 import model.MemberVO;
+import model.SawWishDAO;
+import model.VO;
 
 public class MyPageController implements Controller {
 
@@ -33,12 +37,18 @@ public class MyPageController implements Controller {
 			if (id == null) {
 				bookingcount = BookingDAO.getInstance().getTotalBookingCount(vo.getId());
 				session.setAttribute("bookingcount", bookingcount);
+				ArrayList<VO> list= new ArrayList<VO>(); 
+				list=SawWishDAO.getInstance().getSawBookSlideList(vo.getId());
+				session.setAttribute("sawSlide", list);
 				url = "redirect:bookieOnAndOn/mypage.jsp";
 
 			} else {
 				if(id.equals(vo.getId())){
 					bookingcount = BookingDAO.getInstance().getTotalBookingCount(vo.getId());
 					session.setAttribute("bookingcount", bookingcount);
+					ArrayList<VO> list= new ArrayList<VO>(); 
+					list=SawWishDAO.getInstance().getSawBookSlideList(vo.getId());
+					session.setAttribute("sawSlide", list);
 					url = "redirect:bookieOnAndOn/mypage.jsp";
 					
 				}else{
@@ -46,6 +56,9 @@ public class MyPageController implements Controller {
 					request.setAttribute("fvo", fvo);
 					bookingcount = BookingDAO.getInstance().getTotalBookingCount(fvo.getId());
 					request.setAttribute("fbookingcount", bookingcount);
+					ArrayList<VO> list= new ArrayList<VO>(); 
+					list=SawWishDAO.getInstance().getSawBookSlideList(fvo.getId());
+					request.setAttribute("fsawSlide", list);
 					url = "bookieOnAndOn/mypage.jsp";
 
 					
