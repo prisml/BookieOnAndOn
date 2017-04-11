@@ -92,7 +92,6 @@
 						<li>/</li>
 						<li><a
 							href="${pageContext.request.contextPath}/bookieOnAndOn/findPw.jsp">PW</a></li>
-						<li>|</li>
 					</ul>
 				</nav>
 				<br> <br> <br> <br>

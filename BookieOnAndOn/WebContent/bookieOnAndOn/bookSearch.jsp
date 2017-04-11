@@ -86,8 +86,8 @@
 													<td>${lvo.pub}</td>
 												</tr>
 												<tr>
-													<td>평점</td>
-													<td>${lvo.rate}</td>
+													<td>출판일</td>
+													<td>${lvo.pubdate}</td>
 												</tr>
 											</table>
 										</div>
