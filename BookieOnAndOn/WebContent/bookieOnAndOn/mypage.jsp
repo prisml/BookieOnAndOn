@@ -35,8 +35,6 @@ position: relative;
 }
 #bookingIcon{
 position:absolute;
-font-size:24px;
-color: #ffff80;
 right: 50px;
 }
 
@@ -58,10 +56,10 @@ if(${!empty fvo }){
 				
 				if(data=="true"){
 					//덮힌 책,부킹할 수 잇다
-					$("#bookingIcon").html("<span  class='fa'>&#xf02d;</span>").css("color","yellow");
+					$("#bookingIcon").html("<img style='width:50px' src='${pageContext.request.contextPath}/images/bookingoff.png'>");
 				}else{
 					//펼쳐진 책,부킹이 이미 되어있어서 할 수 없다
-					$("#bookingIcon").html("<span  class='fa'>&#xf212;</span>").css("color","pink");
+					$("#bookingIcon").html("<img style='width:50px' src='${pageContext.request.contextPath}/images/bookingon.png'>");
 				}//if
 			}//success
 		});//ajax
@@ -76,7 +74,7 @@ if(${!empty fvo }){
 						
 						if(data=="true"){
 							$("#bookingIcon").empty();
-							$("#bookingIcon").html("<span  class='fa'>&#xf212;</span>").css("color","pink");
+							$("#bookingIcon").html("<img style='width:50px' src='${pageContext.request.contextPath}/images/bookingon.png'>");
 						}else{
 							alert("이미 부킹되어있습니다");
 						}
@@ -87,19 +85,7 @@ if(${!empty fvo }){
 			});//on
 
 	});//ready
-}else{
-	$(document).ready(function(){
-		$.ajax({
-			type:"get",
-			url:"DispatcherServlet",
-			data:"command=sawBookSlide",
-			success:function(data){
-				alert("나의 페이지에서 나와야한다");
-				
-			}//success
-		});//ajax
-	});//ready
-}//if
+}
 </script>
 
 <jsp:include page="/template/script.jsp"></jsp:include>
@@ -154,41 +140,23 @@ if(${!empty fvo }){
  	<c:otherwise>
  		<div class="container">
   			<div class="jumbotron">
+  			
  			<h3 style='color:#3377ff'>Mypage</h3><br>
- 			<a class="btn btn-primary" href="${pageContext.request.contextPath}/DispatcherServlet?command=bookingList&id=${mvo.id}">booking
+ 			<a class="btn btn-primary" href="${pageContext.request.contextPath}/DispatcherServlet?command=bookingList&id=${mvo.id}">
+ 			booking
  			<span class="badge">
- 			${bookingcount}
+ 			${sessionScope.bookingcount}
  			</span>
  			</a>
  			<div class="material-icons">&#xe88f;<span class='iconInfo'>당신이 즐겨찾기한 사람의 수를 나타냅니다</span></div><br><br><br>
  			<p>내가 최근 본 책</p>
- 			<div  class="container">
- 			<div class="row">
- 			<img class="mySlides" src="${pageContext.request.contextPath}/images/bookcover/1.jpg" width="200px">
- 			<img class="mySlides" src="${pageContext.request.contextPath}/images/bookcover/10.jpg" width="200px">
- 			<img class="mySlides" src="${pageContext.request.contextPath}/images/bookcover/11.jpg" width="200px">
- 			<img class="mySlides" src="${pageContext.request.contextPath}/images/bookcover/12.jpg" width="200px">
- 			<img class="mySlides" src="${pageContext.request.contextPath}/images/bookcover/13.jpg" width="200px">
- 			</div>
- 			</div>
-<script>
-var myIndex = 0;
-carousel();
-
-function carousel() {
-    var i;
-    var x = document.getElementsByClassName("mySlides");
-    for (i = 0; i < x.length; i++) {
-       x[i].style.display = "none"; 
-    }
-    myIndex++;
-    if (myIndex > x.length) {myIndex = 1}    
-    x[myIndex-1].style.display = "block";  
-    x[myIndex].style.display = "block"; 
-    x[myIndex+1].style.display = "block"; 
-    setTimeout(carousel, 2000); // Change image every 2 seconds
-}
-</script>
+ 	          <div  class="container">
+         				<div class="row">
+          <c:forEach items="${sessionScope.sawSlide }" var="saw" begin="1" end="5">
+             <img src="${pageContext.request.contextPath}/images/bookcover/${saw.bookno}.jpg" style="width:200px">
+          </c:forEach>
+          </div>
+          </div>
  		 </div>
  		</div>
  	</c:otherwise>   
