@@ -14,7 +14,7 @@ a:hover{
  text-decoration: none;
 }
 body {
-	font-size: 15pt;
+	font-size: 14pt;
 }
 </style>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
