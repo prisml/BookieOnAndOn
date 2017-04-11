@@ -1642,7 +1642,7 @@ ol.default li {
 
 /* Wrappers */
 #header-wrapper {
-	padding: 1em 0 1em 0;
+	padding: 2em 0 1em 0;
 }
 
 #features-wrapper {
@@ -1935,7 +1935,7 @@ ol.default li {
 
 	/* Wrappers */
 	#header-wrapper {
-		padding: 1em 0 1em 0;
+		padding: 2em 0 1em 0;
 		text-align: center;
 	}
 	#footer-wrapper {
@@ -2230,7 +2230,7 @@ ol.default li {
 
 	/* Wrappers */
 	#header-wrapper {
-		padding: 3em 0 1.5em 0;
+		padding: 2em 0 1.5em 0;
 	}
 	#banner-wrapper {
 		padding: 0 15px 0 15px;

@@ -7,16 +7,16 @@
 	font-size: 17px;
 }
 
-#tags{
-	height:60px;
+#tags {
+	height: 60px;
 }
 
-#tagsSpan{
-	height:60px;
+#tagsSpan {
+	height: 60px;
 }
 
-#tagsI{
-	width:40px;
+#tagsI {
+	width: 40px;
 }
 </style>
 <script>
@@ -36,30 +36,29 @@
 	}
 
 	$(function() {
-		$("#tags")
-				.autocomplete(
-						{
-							source : function(request, response) {
-								$.ajax({
-											type : "get",
-											url : "${pageContext.request.contextPath}/DispatcherServlet?command=bookAutoComplete",
-											dataType : "json",
-											data : {
-												"title" : request.term
-											},
-											success : function(data) {
-												var bookAutoCompleteList = [];
-												var temp = JSON.parse(JSON.stringify(data));
-
-												for (var i = 0; i < temp.length; i++) {
-													bookAutoCompleteList.push(temp[i].title);
-												}
-
-												return response(bookAutoCompleteList);
-											}
-										});
-							}
-						});
+		$("#tags").autocomplete({source : function(request, response) {
+			$.ajax({
+				type : "get",
+				url : "${pageContext.request.contextPath}/DispatcherServlet?command=bookAutoComplete",
+				dataType : "json",
+				data : {
+					"title" : request.term
+				},
+				success : function(data) {
+					var bookAutoCompleteList = [];
+					var temp = JSON.parse(JSON
+							.stringify(data));
+	
+					for (var i = 0; i < temp.length; i++) {
+						bookAutoCompleteList
+								.push(temp[i].title);
+					}
+	
+					return response(bookAutoCompleteList);
+				}
+			});
+		}
+		});
 	});
 </script>
 
@@ -79,22 +78,19 @@
 					<ul>
 						<li class="current"><a
 							href="${pageContext.request.contextPath}/index.jsp">welcome</a></li>
-						<li>|</li>
+						
 						<li><a
-							href="${pageContext.request.contextPath}/bookieOnAndOn/login.jsp">Login</a></li>
-						<li>|</li>
+							href="${pageContext.request.contextPath}/bookieOnAndOn/login.jsp">로그인</a></li>
+						
 						<li><a
-							href="${pageContext.request.contextPath}/bookieOnAndOn/register.jsp">Register</a></li>
-						<li>|</li>
+							href="${pageContext.request.contextPath}/bookieOnAndOn/register.jsp">회원가입</a></li>
+						
 						<li><a
-							href="${pageContext.request.contextPath}/bookieOnAndOn/findId.jsp">Find
-								ID</a></li>
+							href="${pageContext.request.contextPath}/bookieOnAndOn/findId.jsp">아이디 찾기</a></li>
 						<li>/</li>
-						<li><a
-							href="${pageContext.request.contextPath}/bookieOnAndOn/findPw.jsp">PW</a></li>
+						<li><a href="${pageContext.request.contextPath}/bookieOnAndOn/findPw.jsp">비밀번호 찾기</a></li>
 					</ul>
 				</nav>
-				<br> <br> <br> <br>
 				<div class="container">
 					<div class="row">
 						<div class="2u"></div>
@@ -105,8 +101,8 @@
 								<div class="ui-widget">
 									<div class="input-group input-group-lg">
 										<input type="hidden" name="command" value="bookSearch">
-										<input id="tags" type="text" class="form-control"
-											name="title" style="border-color: #cccccc"> <span
+										<input id="tags" type="text" class="form-control" name="title"
+											style="border-color: #cccccc"> <span
 											class="input-group-addon" id="tagsSpan"> <i
 											class="fa fa-search" id="tagsI" onclick="bookSearch()"></i>
 										</span>
