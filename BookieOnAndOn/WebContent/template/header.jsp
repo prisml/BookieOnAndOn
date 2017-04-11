@@ -7,6 +7,9 @@
    font-size: 17px;
 }
 
+.tab{
+	font-size: 20px;
+}
 #tags {
 	height: 60px;
 }
@@ -17,7 +20,6 @@
 
 #tagsI {
 	width: 40px;
->>>>>>> branch 'master' of https://github.com/prisml/BookieOnAndOn.git
 }
 </style>
 <script>
@@ -64,11 +66,6 @@
                   });
    });
 
-   $(document).ready(function() {
-      $("#tags").css("height", "60px");
-      $("#tagsSpan").css("height", "60px");
-      $("#tagsI").css("width", "40px");
-   });
 	$(function() {
 		$("#tags").autocomplete({source : function(request, response) {
 			$.ajax({
@@ -110,26 +107,23 @@
            <!-- Nav -->
             <nav id="nav">
                <ul>
-                  <li class="current"><a
+                  <li class="current"><a class = "tab"
                      href="${pageContext.request.contextPath}/index.jsp">welcome</a></li>
                      <li>|</li>
-                  <li><a
-                     href="${pageContext.request.contextPath}/bookieOnAndOn/login.jsp">Login</a></li>
+                  <li><a class = "tab"
+                     href="${pageContext.request.contextPath}/bookieOnAndOn/login.jsp">로그인</a></li>
                      <li>|</li>
-                  <li><a
-                     href="${pageContext.request.contextPath}/bookieOnAndOn/register.jsp">Register</a></li>
+                  <li><a class = "tab"
+                     href="${pageContext.request.contextPath}/bookieOnAndOn/register.jsp">회원가입</a></li>
                      <li>|</li>
-                  <li><a
-                     href="${pageContext.request.contextPath}/bookieOnAndOn/findId.jsp">Find   ID</a></li>
-                     <li>/</li>
-                  <li><a 
-                     href="${pageContext.request.contextPath}/bookieOnAndOn/findPw.jsp">PW</a></li>
-                     <li>|</li>
+                  <li><a class = "tab"
+                     href="${pageContext.request.contextPath}/bookieOnAndOn/findId.jsp">아이디 찾기</a></li>
+                     <li style = "padding:0px;">/</li>
+                  <li style = "margin-left:-25px;"><a class = "tab"
+                     href="${pageContext.request.contextPath}/bookieOnAndOn/findPw.jsp">비밀번호 찾기</a></li>
                </ul>
 
             </nav>
-            <br>
-            <br>
             <br>
             <br>
             <div class="container">
@@ -166,16 +160,15 @@
                   src="${pageContext.request.contextPath}/images/Logo.png"
                   style="width: 250px;"></a>
             </div>
+            <br>
+             <br>
             <!-- Nav -->
             <nav id="nav">
                <ul>
-               <li class="current"><a
-                  href="${pageContext.request.contextPath}/index.jsp">welcome</a></li>
-               <li><a href="javascript:logout()">${sessionScope.mvo.name}님 &nbsp; Logout</a></li>
-               <li><a
-                  href="${pageContext.request.contextPath}/DispatcherServlet?command=mypage">마이페이지</a></li>
-               <li><a
-                  href="${pageContext.request.contextPath}/bookieOnAndOn/update.jsp">회원정보수정</a></li>
+               <li class="current"><a class = "tab" href="${pageContext.request.contextPath}/index.jsp">welcome</a></li>
+               <li><a class = "tab" href="javascript:logout()">${sessionScope.mvo.name}님 &nbsp; 로그아웃</a></li>
+               <li><a class = "tab" href="${pageContext.request.contextPath}/DispatcherServlet?command=mypage">마이페이지</a></li>
+               <li><a class = "tab" href="${pageContext.request.contextPath}/bookieOnAndOn/update.jsp">회원정보수정</a></li>
             </ul>
             </nav>
 				<div class="container">
@@ -202,28 +195,5 @@
 				</div>
 			</header>
 		</div>
-
-            <div class="container">
-               <div class="row">
-                  <div class="2u"></div>
-                  <div class="8u">
-                     <form
-                        action="${pageContext.request.contextPath}/DispatcherServlet"
-                        id="bookSearchForm">
-                        <div class="ui-widget">
-                           <div class="input-group input-group-lg">
-                              <input type="hidden" name="command" value="bookSearch">
-                              <input id="tags" type="text" class="form-control" name="title">
-                              <span class="input-group-addon"> <i
-                                 class="fa fa-search" onclick="bookSearch()"></i>
-                              </span>
-                           </div>
-                        </div>
-                     </form>
-                  </div>
-                  <div class="2u"></div>
-               </div>
-            </div>
-
    </c:otherwise>
 </c:choose>

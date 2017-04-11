@@ -37,7 +37,7 @@ a:hover{
 }
 
 .overlaytext {
-	font-family: 'Jeju Gothic', serif;
+   font-family: 'Jeju Gothic', serif;
    color: white;
    position: absolute;
    font-size: 14px;

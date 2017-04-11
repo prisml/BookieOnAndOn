@@ -7,16 +7,9 @@
 <jsp:include page="/template/script.jsp"></jsp:include>
 <title>Login</title>
 </head>
-<<<<<<< HEAD
 <body>
-<script type="text/javascript">
-	function login(){
-		
-	}
-</script>
-=======
+
 <body class="homepage">
->>>>>>> branch 'master' of https://github.com/prisml/BookieOnAndOn.git
 
 	<article class="container">
 	<div class="center-block" align="middle">
@@ -54,8 +47,7 @@
 	</article>
 
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 
 </body>
