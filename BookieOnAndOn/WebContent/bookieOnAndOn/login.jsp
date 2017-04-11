@@ -13,7 +13,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<script type="text/javascript">
+	function login(){
+		
+	}
+</script>
 
   <article class="container">
         <div class="center-block" align="middle"><br>

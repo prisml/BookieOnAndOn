@@ -9,6 +9,11 @@
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css" />
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<style type="text/css">	
+a:hover{
+ text-decoration: none;
+}
+</style>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/jquery.dropotron.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/skel.min.js"></script>

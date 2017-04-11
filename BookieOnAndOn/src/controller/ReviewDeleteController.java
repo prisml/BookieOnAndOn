@@ -14,10 +14,10 @@ public class ReviewDeleteController implements Controller {
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session = request.getSession();
 		String bookno = request.getParameter("bookno");
-		MemberVO vo = (MemberVO) session.getAttribute("vo");
+		MemberVO vo = (MemberVO) session.getAttribute("mvo");
 		String id = vo.getId();
 		ReviewDAO.getInstance().registReview(new ReviewVO(bookno, id, 0, "", ""));
-		return "DispatcherServlet?command=detail&bookno="+bookno;
+		return "AjaxView";
 	}
 
 }

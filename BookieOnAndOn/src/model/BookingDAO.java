@@ -30,6 +30,13 @@ public class BookingDAO {
 		if(con!=null)
 			con.close();
 	}
+	/**
+	 * 부킹리스트
+	 * @param id
+	 * @param pagingBean
+	 * @return
+	 * @throws SQLException
+	 */
 	public ArrayList<VO> getBookingList(String id, PagingBean pagingBean) throws SQLException{
 		Connection con=null;
 		PreparedStatement pstmt=null;
@@ -60,7 +67,12 @@ public class BookingDAO {
 		}
 		return list;
 	}
-		
+	/**
+	 * 부킹리스트 멤버 총 수
+	 * @param id
+	 * @return
+	 * @throws SQLException
+	 */
 	public int getTotalBookingCount(String id) throws SQLException {
 	      Connection con = null;
 	      PreparedStatement pstmt = null;
@@ -79,5 +91,47 @@ public class BookingDAO {
 	      }
 	      return totalCount;
 	   }
+	
+	
+	// 송희 부킹하는 메서드
+	public void addBooking(String senderid,String receiverid ) throws SQLException{
+		Connection con = null;
+	      PreparedStatement pstmt = null;
+	      try {
+			con = dataSource.getConnection();
+			String sql="insert into booking(senderid,receiverid) values(?,?)";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, senderid);
+			pstmt.setString(2, receiverid);
+			pstmt.executeUpdate();
+		}finally{
+			closeAll(pstmt, con);
+		}
+		
+	}
+	//송희송희 booking 체크 메서드
+	public boolean BookingCheck(String senderid,String receiverid ) throws SQLException{
+		Connection con = null;
+	      PreparedStatement pstmt = null;
+	      ResultSet rs=null;
+	      boolean flag=false;
+	      try {
+			con = dataSource.getConnection();
+			String sql="select count(*)from booking where senderid=?and receiverid=? ";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, senderid);
+			pstmt.setString(2, receiverid);
+			rs=pstmt.executeQuery();
+			if(rs.next()){
+				if(rs.getInt(1)==0)
+				 flag=true;
+			}
+		}finally{
+			closeAll(rs, pstmt, con);
+		}
+	      return flag;
+		
+	}
+	
 
 }

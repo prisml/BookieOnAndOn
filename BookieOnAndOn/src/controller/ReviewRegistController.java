@@ -14,12 +14,20 @@ public class ReviewRegistController implements Controller {
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session = request.getSession();
 		String bookno = request.getParameter("bookno");
-		MemberVO vo = (MemberVO) session.getAttribute("vo");
+		MemberVO vo = (MemberVO) session.getAttribute("mvo");
 		String id = vo.getId();
+
 		String content = request.getParameter("content");
 		int star = Integer.parseInt(request.getParameter("star"));
-		ReviewDAO.getInstance().registReview(new ReviewVO(bookno, id, star, content, ""));
-		return "DispatcherServlet?command=detail&bookno="+bookno;
+
+		ReviewVO rvo = ReviewDAO.getInstance().getReview(bookno, id);
+		if (rvo == null) {
+			ReviewDAO.getInstance().registReview(new ReviewVO(bookno, id, star, content, ""));
+		} else {
+			ReviewDAO.getInstance().updateReview(new ReviewVO(bookno, id, star, content, ""));
+		}
+		ReviewDAO.getInstance().updateStar(bookno);
+		return "AjaxView";
 	}
 
 }

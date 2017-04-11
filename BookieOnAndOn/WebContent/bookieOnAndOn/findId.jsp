@@ -23,7 +23,7 @@
 				data:{"name":$("#name").val(), "tel":$("#tel").val()},
 				success:function(id){
 					if(id == null){
-						alert("찾는 정보 없어 개년아");
+						alert("찾는 정보가 없습니다.");
 					}
 					else{
 						alert(id);

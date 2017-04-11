@@ -37,7 +37,7 @@ public class HandlerMapping {
 		} else if (command.equals("detail")) {
 			c = new BookDetailController();
 		} else if (command.equals("getReviewList")) {
-			c = new GetReviewListController();
+			c = new ReviewListController();
 		} else if(command.equals("saw")) {
 			c = new SawController();
 		} else if(command.equals("wish")) {
@@ -56,6 +56,14 @@ public class HandlerMapping {
 			c= new FindIdController();
 		} else if(command.equals("findPw")){
 			c= new FindPasswordController();
+		} else if(command.equals("reviewRead")){
+			c = new ReviewReadController();
+		} else if(command.equals("getWish")){
+			c = new GetWishController();
+		} else if(command.equals("getSaw")){
+			c = new GetSawController();
+		} else if(command.equals("addBooking")){
+			c = new AddBookingController();
 		}
 		return c;
 	}
