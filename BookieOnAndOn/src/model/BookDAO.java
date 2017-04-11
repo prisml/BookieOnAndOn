@@ -99,7 +99,7 @@ public class BookDAO {
 			{
 				con = getConnection();
 				
-				String sql = "select title from book where title like'"+title.charAt(0)+"%'";
+				String sql = "select title from book where title like '%"+title+"%'";
 				pstmt = con.prepareStatement(sql);
 
 				rs = pstmt.executeQuery();
@@ -156,7 +156,7 @@ public class BookDAO {
 			con=dataSource.getConnection(); 
 			StringBuilder sql = new StringBuilder();
 			sql.append("select A.* from(SELECT row_number() over(order by rate desc) ");
-			sql.append("as rnum,bookno,title,author,pub,pubdate,genre,rate,bookphoto ");
+			sql.append("as rnum,bookno,title,author,pub,to_char(pubdate,'yyyy-mm-dd') as pubdatee,genre,rate,bookphoto ");
 			sql.append(" from book) A where rnum between ? and ?");
 			pstmt=con.prepareStatement(sql.toString());	
 			pstmt.setInt(1, pb.getStartRowNumber());
@@ -168,7 +168,7 @@ public class BookDAO {
 				vo.setTitle(rs.getString("title"));
 				vo.setAuthor(rs.getString("author"));
 				vo.setPub(rs.getString("pub"));
-				vo.setPubdate(rs.getString("pubdate"));
+				vo.setPubdate(rs.getString("pubdatee"));
 				vo.setGenre(rs.getString("genre"));
 				vo.setRate(rs.getDouble("rate"));
 				vo.setBookcover(rs.getBlob("bookphoto"));
@@ -194,7 +194,7 @@ public class BookDAO {
 			con=dataSource.getConnection();
 			StringBuilder sql = new StringBuilder();
 			sql.append("select A.* from(SELECT row_number() over(order by rate desc) ");
-			sql.append("as rnum,bookno,title,author,pub,pubdate,genre,rate,bookphoto ");
+			sql.append("as rnum,bookno,title,author,pub,to_char(pubdate,'yyyy-mm-dd') as pubdatee,genre,rate,bookphoto ");
 			sql.append("from book where genre=? ) A where rnum between ? and ?");
 			pstmt=con.prepareStatement(sql.toString());	
 			pstmt.setString(1, genre);
@@ -207,7 +207,7 @@ public class BookDAO {
 				vo.setTitle(rs.getString("title"));
 				vo.setAuthor(rs.getString("author"));
 				vo.setPub(rs.getString("pub"));
-				vo.setPubdate(rs.getString("pubdate"));
+				vo.setPubdate(rs.getString("pubdatee"));
 				vo.setGenre(genre);
 				vo.setRate(rs.getDouble("rate"));
 				vo.setBookcover(rs.getBlob("bookphoto"));
