@@ -133,6 +133,7 @@ if(${!empty fvo }){
  			<span class="badge">
  			${fbookingcount}
  			</span></a>
+ 			<p>${fvo.name}님의  본 책</p>
  			
  			</div>
  			</div>
@@ -149,7 +150,7 @@ if(${!empty fvo }){
  			</span>
  			</a>
  			<div class="material-icons">&#xe88f;<span class='iconInfo'>당신이 즐겨찾기한 사람의 수를 나타냅니다</span></div><br><br><br>
- 			<p>내가 최근 본 책</p>
+ 			<p>내가 본 책</p>
  	          <div  class="container">
          				<div class="row">
           <c:forEach items="${sessionScope.sawSlide }" var="saw" begin="1" end="5">
