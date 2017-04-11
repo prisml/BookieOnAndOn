@@ -90,7 +90,8 @@ right: 50px;
 			});//ajax
 		});//on
 	});//ready
-	
+
+
 </script>
 
 <jsp:include page="/template/script.jsp"></jsp:include>
