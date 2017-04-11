@@ -97,6 +97,7 @@ public class BookingDAO {
 		}
 		return totalCount;
 	}
+	
 	/**
 	 * 부킹멤버 삭제
 	 * @param senderid
