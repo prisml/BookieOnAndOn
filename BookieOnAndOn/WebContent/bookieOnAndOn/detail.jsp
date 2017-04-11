@@ -137,7 +137,7 @@
 		});
 		$(".on").html("<img style='width:30px' src='${pageContext.request.contextPath}/images/staron.png'>");
 		$("#reviewSubmit").click(function(){
-			if(("#reviewContent").val() == ""){
+			if($("#reviewContent").val() == ""){
 				alert("리뷰를 입력하세요");
 				return false;
 			}
@@ -219,15 +219,15 @@
 						</p>
 					</div>
 					<div class="9u">
-						<form class="w3-container">
+						<form class="w3-container w3-card-4 w3-light-grey w3-text-blue w3-margin">
 							<div class="w3-row w3-section">
-								<div class="w3-col m8 l9" style="float:left; padding:15px">
+								<div  class="w3-col" style="width:50px;float:right;" id="reviewSubmit" style="width:50px;">
+									<i style="padding:15px;" class="fa fa-pencil fa-2x w3-text-blue"></i>
+								</div>
+								<div class="w3-rest">
 									<input id="reviewContent" class="w3-input w3-border"
 										placeholder="리뷰 등록">
-										<input id="reviewHidden" type="text" style="display: none;" />
-								</div>
-								<div style="float:left;" class="w3-rest" id="reviewSubmit" style="width:50px;">
-									<i style="padding:15px;" class="fa fa-pencil fa-2x w3-text-blue"></i>
+										<input id="reviewHidden" type="text" style="display: none; width:100%;" />
 								</div>
 							</div>
 							
