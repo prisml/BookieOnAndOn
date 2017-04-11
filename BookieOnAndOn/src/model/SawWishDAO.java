@@ -274,4 +274,31 @@ public class SawWishDAO {
 		}
 		return result;
 	}
+	//송희 slideshow를 위한 본책 리스트 5개 뽑기
+	public ArrayList<VO> getSawBookSlideList(String id) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ArrayList<VO> list = new ArrayList<VO>();
+		try {
+			con = dataSource.getConnection();
+			String sql = "select * "
+					+ "from (select row_number() over(order by bookno desc)as rnum,bookno from saw where id=?)s,"
+					+ "	(select bookno,title,author,pub,to_char(pubdate,'yyyy-mm-dd') as pubdate,genre,summary,rate,bookphoto from book)b "
+					+ "where s.bookno=b.bookno";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+
+				list.add(new BookVO(rs.getString("bookno"), rs.getString("title"), rs.getString("author"),
+						rs.getString("pub"), rs.getString("pubdate"), rs.getString("genre"), rs.getString("summary"),
+						rs.getDouble("rate"), rs.getBlob("bookphoto")));
+
+			}
+		} finally {
+			closeAll(rs, pstmt, con);
+		}
+		return list;
+	}
 }

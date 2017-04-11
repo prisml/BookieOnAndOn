@@ -82,10 +82,10 @@ a:hover{
 							 info+="저자&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+data.list[i*4+j].author+"<br>출판사&nbsp;&nbsp;&nbsp;"+data.list[i*4+j].pub;
 							 info+="<br>출판일&nbsp;&nbsp;&nbsp;"+data.list[i*4+j].pubdate;
 							 info+="</div></div></div>";
-							 info+="</div><br>";
+							 info+="</div><br><div style='text-align: center'>";
 							 info+=data.list[i*4+j].title;
-							 info+="&nbsp;&nbsp;|&nbsp; <img width='17px' src='${pageContext.request.contextPath}/images/staron.png'>&nbsp;"+data.list[i*4+j].rate.toFixed(1)+"";
-							 info+="</a></div>";
+							 info+="<br><img width='17px' src='${pageContext.request.contextPath}/images/staron.png'>&nbsp;"+data.list[i*4+j].rate.toFixed(1)+"";
+							 info+="</div></a></div>";
 						 }
 						 info+="</div>";
 					 }			
@@ -125,6 +125,7 @@ a:hover{
 						 info+="<a  href='http://localhost:8888/BookieOnAndOn/DispatcherServlet?command=detail&bookno=";
 						 info+=data.list[i*4+j].bookno+"'>";
 						 info+="<div class='w3-one'>";
+						// info+="<img class='img-responsive' src='http://placehold.it/260x390' alt=''>";
 						 info+="<div class=bookcover style='height:390px'>";
 						 info+="<img height='390px' width='263px' src='${pageContext.request.contextPath}/images/bookcover/"+data.list[i*4+j].bookno+".jpg' alt=''>"
 						 info+= "<div class='overlay'><div class='overlaytext'>";
@@ -132,10 +133,10 @@ a:hover{
 						 info+="저자&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+data.list[i*4+j].author+"<br>출판사&nbsp;&nbsp;&nbsp;"+data.list[i*4+j].pub;
 						 info+="<br>출판일&nbsp;&nbsp;&nbsp;"+data.list[i*4+j].pubdate;
 						 info+="</div></div></div>";
-						 info+="</div><br>";
+						 info+="</div><br><div style='text-align: center'>";
 						 info+=data.list[i*4+j].title;
-						 info+="&nbsp;&nbsp;|&nbsp; <img width='17px' src='${pageContext.request.contextPath}/images/staron.png'>&nbsp;"+data.list[i*4+j].rate.toFixed(1)+"";
-						 info+="</a></div>";
+						 info+="<br><img width='17px' src='${pageContext.request.contextPath}/images/staron.png'>&nbsp;"+data.list[i*4+j].rate.toFixed(1)+"";
+						 info+="</div></a></div>";
 					}//j
 					info+="</div>";
 				}//i 
@@ -187,8 +188,12 @@ a:hover{
 				출판일&nbsp;&nbsp;&nbsp;
 				${listVo.list[i*4+j].pubdate}
 				</div></div></div><br><!-- overlay -->
-				 ${listVo.list[i*4+j].title}&nbsp;&nbsp;|&nbsp; <img width="17px" src="${pageContext.request.contextPath}/images/staron.png">&nbsp;
-				 <fmt:formatNumber value="${listVo.list[i*4+j].rate}" pattern="0.0"/></a>		 
+				<div style="text-align: center">
+				 ${listVo.list[i*4+j].title}<br>
+				 <img width="17px" src="${pageContext.request.contextPath}/images/staron.png">&nbsp;
+				 <fmt:formatNumber value="${listVo.list[i*4+j].rate}" pattern="0.0"/>
+				 </div>
+				 </a>		 
 			</div>
 			</c:otherwise>
 			</c:choose>		

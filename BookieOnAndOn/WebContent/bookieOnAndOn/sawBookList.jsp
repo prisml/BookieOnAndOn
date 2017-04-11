@@ -44,6 +44,7 @@
   top: 10%;
   left: 7%;
   right: 7%;
+  line-height: 140%;
 
 }
 
@@ -102,8 +103,10 @@
 								 저자 : ${bvo[i*4+j].author}<br>
 					 			출판사: ${bvo[i*4+j].pub }<br>
 					 			출판일: ${bvo[i*4+j].pubdate }</div></div></div>
-							${bvo[i*4+j].title } &nbsp;&nbsp;|&nbsp; <img width="17px" src="${pageContext.request.contextPath}/images/staron.png">&nbsp;
-				<fmt:formatNumber value="${bvo[i*4+j].rate}" pattern="0.0"/> </a> 
+								<div style="text-align: center">
+								${bvo[i*4+j].title }<br>
+							 	<img width="17px" src="${pageContext.request.contextPath}/images/staron.png">&nbsp;
+								<fmt:formatNumber value="${bvo[i*4+j].rate}" pattern="0.0"/></div> </a> 
 						</div>
 				</c:otherwise>
 			</c:choose>		
@@ -158,8 +161,10 @@
 					 				저자 : ${bvo[i*4+j].author}<br>
 					 				출판사: ${bvo[i*4+j].pub }<br>
 					 				출판일: ${bvo[i*4+j].pubdate }</div></div></div>
-							${bvo[i*4+j].title }&nbsp;&nbsp;|&nbsp; <img width="17px" src="${pageContext.request.contextPath}/images/staron.png">&nbsp;
-							<fmt:formatNumber value="${bvo[i*4+j].rate}" pattern="0.0"/></a>
+							<div style="text-align: center">
+							${bvo[i*4+j].title }<br>
+							<img width="17px" src="${pageContext.request.contextPath}/images/staron.png">&nbsp;
+							<fmt:formatNumber value="${bvo[i*4+j].rate}" pattern="0.0"/></div></a>
 						</div>
 						</c:otherwise>
 						</c:choose>		
