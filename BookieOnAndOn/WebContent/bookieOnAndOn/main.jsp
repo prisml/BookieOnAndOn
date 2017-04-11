@@ -40,10 +40,11 @@ a:hover{
 	font-family: 'Jeju Gothic', serif;
    color: white;
    position: absolute;
-   font-size: 13px;
+   font-size: 14px;
    top: 10%;
    left: 7%;
    right: 7%;
+   line-height: 140%;
 }
 
 </style>
