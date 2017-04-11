@@ -123,8 +123,8 @@
 				<button class="btn btn-danger" type="submit"  onclick = "cancel()">
 					가입취소<i class="fa fa-times spaceLeft"></i>
 				</button>
-				<br> <a href="${pageContext.request.contextPath}/findIdPw.jsp">아이디/비밀번호 찾기</a><br> 
-			
+				<br> <a href="findId.jsp">아이디</a>/<a href="findPw.jsp">비밀번호</a> 찾기
+				 
 			</div>
 		</form>
 	</div>

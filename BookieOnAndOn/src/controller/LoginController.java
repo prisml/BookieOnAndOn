@@ -18,11 +18,8 @@ public class LoginController implements Controller {
 		if(vo!=null){
 			HttpSession session=request.getSession();
 			session.setAttribute("mvo", vo);
-			path="redirect:DispatcherServlet?command=main";
-		}else{			
-			path="redirect:bookieOnAndOn/login.jsp";
 		}
-		return path;
+		return "redirect:bookieOnAndOn/login_result.jsp";
 	}
 
 }
