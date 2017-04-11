@@ -99,7 +99,7 @@ public class BookDAO {
 			{
 				con = getConnection();
 				
-				String sql = "select title from book where title like'"+title.charAt(0)+"%'";
+				String sql = "select title from book where title like '%"+title+"%'";
 				pstmt = con.prepareStatement(sql);
 
 				rs = pstmt.executeQuery();

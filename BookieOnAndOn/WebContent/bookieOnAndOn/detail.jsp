@@ -131,14 +131,36 @@
 		});
 		$(".on").html("<img style='width:30px' src='${pageContext.request.contextPath}/images/staron.png'>");
 		$("#reviewSubmit").click(function(){
-			$.ajax({
-				type:"get",
-				url:"DispatcherServlet",
-				data:"command=reviewRegist&bookno=${vo.bookno}&content="+$("#reviewContent").val()+"&star="+$(".on").length,
-				success:function(){
-					location.href=document.location.href;
+			if($("#sawLi").html()!="<br><img alt='보고싶어요' src='${pageContext.request.contextPath}/images/hearton.png' style='width:50px'>"){
+				if(confirm("본책으로 등록하시겠습니까?")){
+					$.ajax({
+						type:"get",
+						url:"DispatcherServlet",
+						data:"command=saw&bookno=${vo.bookno}&id=${mvo.id}",
+						success:function(data){
+							$("#sawLi").html("<br><img alt='봤어요' src='${pageContext.request.contextPath}/images/star"+data+".png' style='width:50px'>");
+						}
+					});
+					$.ajax({
+						type:"get",
+						url:"DispatcherServlet",
+						data:"command=reviewRegist&bookno=${vo.bookno}&content="+$("#reviewContent").val()+"&star="+$(".on").length,
+						success:function(){
+							location.href=document.location.href;
+						}
+					});
 				}
-			});
+			}
+			else{
+				$.ajax({
+					type:"get",
+					url:"DispatcherServlet",
+					data:"command=reviewRegist&bookno=${vo.bookno}&content="+$("#reviewContent").val()+"&star="+$(".on").length,
+					success:function(){
+						location.href=document.location.href;
+					}
+				});
+			}
 		});
 	}); 
 </script>
@@ -186,7 +208,7 @@
 		<div id="banner-wrapper">
 			<div class="box container">
 				<div class="row">
-					<div class="2u">
+					<div class="2u 12u(medium)">
 						<p class="star_rating" style="padding-top:20px">
 						    <a href="#" class="on"></a>
 						    <a href="#" class="on"></a>
@@ -195,7 +217,7 @@
 						    <a href="#" class="on"></a>
 						</p>
 					</div>
-					<div class="10u">
+					<div class="9u">
 						<form class="w3-container w3-text-blue">
 							<div class="w3-row w3-section">
 								<div class="w3-rest">
@@ -222,7 +244,7 @@
 					</div>
 				</div>
 				<div class="row text-center">
-					<div class="col-lg-12">
+					<div class="12u 12u(medium)">
 						<ul class="pagination" id="reviewPaging">
 		                </ul>
 					</div>

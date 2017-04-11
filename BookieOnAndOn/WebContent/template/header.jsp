@@ -1,10 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<jsp:include page="/template/script.jsp"></jsp:include>
+
 <style>
-#nav{
+#nav {
 	font-size: 17px;
+}
+
+#tags {
+	height: 60px;
+}
+
+#tagsSpan {
+	height: 60px;
+}
+
+#tagsI {
+	width: 40px;
 }
 </style>
 <script>
@@ -18,44 +30,35 @@
 		if ($("#tags").val() == 0) {
 			return;
 		} else {
+			$("#tagsSpan").css("background", "white");
 			$("#bookSearchForm").submit();
 		}
 	}
 
 	$(function() {
-		$("#tags")
-				.autocomplete(
-						{
-							source : function(request, response) {
-								$
-										.ajax({
-											type : "get",
-											url : "${pageContext.request.contextPath}/DispatcherServlet?command=bookAutoComplete",
-											dataType : "json",
-											data : {
-												"title" : request.term
-											},
-											success : function(data) {
-												var bookAutoCompleteList = [];
-												var temp = JSON.parse(JSON
-														.stringify(data));
-
-												for (var i = 0; i < temp.length; i++) {
-													bookAutoCompleteList
-															.push(temp[i].title);
-												}
-
-												return response(bookAutoCompleteList);
-											}
-										});
-							}
-						});
-	});
-
-	$(document).ready(function() {
-		$("#tags").css("height", "60px");
-		$("#tagsSpan").css("height", "60px");
-		$("#tagsI").css("width", "40px");
+		$("#tags").autocomplete({source : function(request, response) {
+			$.ajax({
+				type : "get",
+				url : "${pageContext.request.contextPath}/DispatcherServlet?command=bookAutoComplete",
+				dataType : "json",
+				data : {
+					"title" : request.term
+				},
+				success : function(data) {
+					var bookAutoCompleteList = [];
+					var temp = JSON.parse(JSON
+							.stringify(data));
+	
+					for (var i = 0; i < temp.length; i++) {
+						bookAutoCompleteList
+								.push(temp[i].title);
+					}
+	
+					return response(bookAutoCompleteList);
+				}
+			});
+		}
+		});
 	});
 </script>
 
@@ -72,29 +75,24 @@
 
 				<!-- Nav -->
 				<nav id="nav">
-				   <ul>
-                  <li class="current"><a
-                     href="${pageContext.request.contextPath}/index.jsp">welcome</a></li>
-                     <li>|</li>
-                  <li><a
-                     href="${pageContext.request.contextPath}/bookieOnAndOn/login.jsp">Login</a></li>
-                     <li>|</li>
-                  <li><a
-                     href="${pageContext.request.contextPath}/bookieOnAndOn/register.jsp">Register</a></li>
-                     <li>|</li>
-                  <li><a
-                     href="${pageContext.request.contextPath}/bookieOnAndOn/findId.jsp">Find   ID</a></li>
-                     <li>/</li>
-                  <li><a 
-                     href="${pageContext.request.contextPath}/bookieOnAndOn/findPw.jsp">PW</a></li>
-                     <li>|</li>
-               </ul>
-
+					<ul>
+						<li class="current"><a
+							href="${pageContext.request.contextPath}/index.jsp">welcome</a></li>
+						
+						<li><a
+							href="${pageContext.request.contextPath}/bookieOnAndOn/login.jsp">로그인</a></li>
+						
+						<li><a
+							href="${pageContext.request.contextPath}/bookieOnAndOn/register.jsp">회원가입</a></li>
+						
+						<li><a
+							href="${pageContext.request.contextPath}/bookieOnAndOn/findId.jsp">아이디 찾기</a></li>
+						<li>/</li>
+						<li><a
+							href="${pageContext.request.contextPath}/bookieOnAndOn/findPw.jsp">비밀번호 찾기</a></li>
+						
+					</ul>
 				</nav>
-				<br>
-				<br>
-				<br>
-				<br>
 				<div class="container">
 					<div class="row">
 						<div class="2u"></div>
@@ -132,14 +130,15 @@
 				<!-- Nav -->
 				<nav id="nav">
 					<ul>
-					<li class="current"><a
-						href="${pageContext.request.contextPath}/index.jsp">welcome</a></li>
-					<li><a href="javascript:logout()">${sessionScope.mvo.name}님 &nbsp; Logout</a></li>
-					<li><a
-						href="${pageContext.request.contextPath}/DispatcherServlet?command=mypage">마이페이지</a></li>
-					<li><a
-						href="${pageContext.request.contextPath}/bookieOnAndOn/update.jsp">회원정보수정</a></li>
-				</ul>
+						<li class="current"><a
+							href="${pageContext.request.contextPath}/index.jsp">welcome</a></li>
+						<li><a href="javascript:logout()">${sessionScope.mvo.name}님
+								&nbsp; Logout</a></li>
+						<li><a
+							href="${pageContext.request.contextPath}/DispatcherServlet?command=mypage">마이페이지</a></li>
+						<li><a
+							href="${pageContext.request.contextPath}/bookieOnAndOn/update.jsp">회원정보수정</a></li>
+					</ul>
 				</nav>
 
 				<div class="container">

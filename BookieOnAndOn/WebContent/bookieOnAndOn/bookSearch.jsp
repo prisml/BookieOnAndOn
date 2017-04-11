@@ -14,7 +14,7 @@
 
 .w3-one:hover .overlay {
 	opacity: 0.8;
-	width:260px;
+	width: 260px;
 }
 
 .w3-one:hover img {
@@ -31,7 +31,7 @@
 	background-color: black;
 	opacity: 0;
 	transition: .5s ease;
-	width:260px;
+	width: 260px;
 }
 
 .overlaytext {
@@ -44,14 +44,14 @@
 	right: 7%;
 }
 
-.overlaytable{
+.overlaytable {
 	font-family: 'Jeju Gothic', serif;
 	color: white;
 }
 
-.bookImage{
-	width:260px;
-	height:360px;
+.bookImage {
+	width: 260px;
+	height: 360px;
 }
 </style>
 <jsp:include page="/template/script.jsp"></jsp:include>
@@ -69,24 +69,38 @@
 								<div class="w3-one">
 									<a
 										href="${pageContext.request.contextPath}/DispatcherServlet?command=detail&bookno=${lvo.bookno}">
-										<img src="${pageContext.request.contextPath}/images/bookcover/${lvo.bookno}.jpg" class = "bookImage">
+										<img
+										src="${pageContext.request.contextPath}/images/bookcover/${lvo.bookno}.jpg"
+										class="bookImage">
 									</a>
 									<div class='overlay'>
 										<div class='overlaytext'>
 											<h4>${lvo.title}</h4>
-											<table class = 'overlaytable'>
+											<table class='overlaytable'>
 												<tr>
-													<td>저자</td><td>${lvo.author}</td>
+													<td>저자</td>
+													<td>${lvo.author}</td>
 												</tr>
 												<tr>
-													<td>출판사</td><td>${lvo.pub}</td>
+													<td>출판사</td>
+													<td>${lvo.pub}</td>
 												</tr>
 												<tr>
-													<td>평점</td><td>${lvo.rate}</td>
+													<td>평점</td>
+													<td>${lvo.rate}</td>
 												</tr>
 											</table>
 										</div>
 									</div>
+								</div>
+								<br>
+								<div class="w3-one">
+									<a
+										href="${pageContext.request.contextPath}/DispatcherServlet?command=detail&bookno=${lvo.bookno}">
+										${lvo.title}&nbsp;&nbsp;|&nbsp; <img width="17px"
+										src="${pageContext.request.contextPath}/images/staron.png">&nbsp;
+										${lvo.rate}
+									</a>
 								</div>
 							</div>
 						</c:forEach>
