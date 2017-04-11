@@ -56,10 +56,10 @@ if(${!empty fvo }){
 				
 				if(data=="true"){
 					//덮힌 책,부킹할 수 잇다
-					$("#bookingIcon").html("<img style='width:50px' src='${pageContext.request.contextPath}/images/bookingoff.png'>");
+					$("#bookingIcon").html("<span><img style='width:50px' src='${pageContext.request.contextPath}/images/bookingoff.png'></span>");
 				}else{
 					//펼쳐진 책,부킹이 이미 되어있어서 할 수 없다
-					$("#bookingIcon").html("<img style='width:50px' src='${pageContext.request.contextPath}/images/bookingon.png'>");
+					$("#bookingIcon").html("<span><img style='width:50px' src='${pageContext.request.contextPath}/images/bookingon.png'></span>");
 				}//if
 			}//success
 		});//ajax
@@ -74,7 +74,7 @@ if(${!empty fvo }){
 						
 						if(data=="true"){
 							$("#bookingIcon").empty();
-							$("#bookingIcon").html("<img style='width:50px' src='${pageContext.request.contextPath}/images/bookingon.png'>");
+							$("#bookingIcon").html("<span><img style='width:50px' src='${pageContext.request.contextPath}/images/bookingon.png'></span>");
 						}else{
 							alert("이미 부킹되어있습니다");
 						}
@@ -133,6 +133,7 @@ if(${!empty fvo }){
  			<span class="badge">
  			${fbookingcount}
  			</span></a>
+ 			<p>${fvo.name}님의  본 책</p>
  			
  			</div>
  			</div>
@@ -149,7 +150,7 @@ if(${!empty fvo }){
  			</span>
  			</a>
  			<div class="material-icons">&#xe88f;<span class='iconInfo'>당신이 즐겨찾기한 사람의 수를 나타냅니다</span></div><br><br><br>
- 			<p>내가 최근 본 책</p>
+ 			<p>내가 본 책</p>
  	          <div  class="container">
          				<div class="row">
           <c:forEach items="${sessionScope.sawSlide }" var="saw" begin="1" end="5">
