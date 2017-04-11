@@ -5,8 +5,6 @@
 <html>
 <head>
 <jsp:include page="/template/script.jsp"></jsp:include>
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/main.css" />
 <title>${vo.title }</title>
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -176,7 +174,7 @@
 					</div>
 					<div class="8u 12u(medium)">
 						<ul id="bookInfo">
-							<li>제목 : ${vo.title}</li>
+							<li><h3>${vo.title}</h3></li>
 							<li>저자 : ${vo.author}</li>
 							<li>장르 : ${vo.genre}</li>
 							<li>출판사 : ${vo.pub }</li>
@@ -187,23 +185,15 @@
 					<div class="1u 12(medium)">
 					<c:if test="${!empty mvo }">
 						<ul>
-							<li id="sawLi">
-							<!-- <br>
-							<img alt="봤어요" 
-							src="${pageContext.request.contextPath}/images/staroff.png"
-							 style="width:50px"> --></li>
-							<li id="wishLi"><!-- 
-							<br>
-							<img alt="봤어요" 
-							src="${pageContext.request.contextPath}/images/heartoff.png"
-							 style="width:50px"> --></li>
+							<li id="sawLi"></li>
+							<li id="wishLi"></li>
 						</ul>
 						</c:if>
 					</div>
 				</div>
 			</div>
 		</div>
-		<br> <br>
+		<br>
 		<c:if test="${!empty mvo }">
 		<div id="banner-wrapper">
 			<div class="box container">
@@ -218,23 +208,24 @@
 						</p>
 					</div>
 					<div class="9u">
-						<form class="w3-container w3-text-blue">
+						<form class="w3-container">
 							<div class="w3-row w3-section">
-								<div class="w3-rest">
+								<div class="w3-col m8 l9">
 									<input id="reviewContent" class="w3-input w3-border" type="text"
 										placeholder="리뷰 등록"> 
 										<input id="reviewHidden" type="text" style="display: none;" />
 								</div>
-								<div id="reviewSubmit" class="w3-col" style="padding-left:20px; padding-top:2px">
-									<i class="w3-xxlarge fa fa-pencil"></i>
+								<div class="w3-col m4 l3" id="reviewSubmit" style="width:50px;">
+									<i class="fa fa-pencil fa-2x w3-text-blue"></i>
 								</div>
 							</div>
+							
 						</form>
 					</div>
 				</div>
 			</div>
 		</div>
-		<br> <br>
+		<br>
 		<div>
 			<div class="box container">
 				<div class="row 200%">
