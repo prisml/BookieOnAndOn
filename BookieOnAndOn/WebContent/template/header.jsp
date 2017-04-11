@@ -90,7 +90,7 @@
 				<!-- Nav -->
 				<nav id="nav">
 					<ul>
-						<li class="current"><a class = "" href="${pageContext.request.contextPath}/index.jsp">welcome</a></li>
+						<li class="current"><a class = "tab" href="${pageContext.request.contextPath}/index.jsp">welcome</a></li>
 						<li><a class = "tab" href="${pageContext.request.contextPath}/bookieOnAndOn/login.jsp">로그인</a></li>
 						<li><a class = "tab" href="${pageContext.request.contextPath}/bookieOnAndOn/register.jsp">회원가입</a></li>
 						<li><a class = "tab" href="${pageContext.request.contextPath}/bookieOnAndOn/findId.jsp">아이디 찾기</a></li>
@@ -110,7 +110,8 @@
 										<input type="hidden" name="command" value="bookSearch">
 										<input id="tags" type="text" class="form-control" name="title"
 											style="border-color: #cccccc"><span
-											class="input-group-addon" id="tagsSpan"> <i
+											class="input-group-addon" id="tagsSpan"> 
+											<i
 											class="fa fa-search" id="tagsI" onclick="bookSearch()"></i>
 										</span>
 									</div>
@@ -132,11 +133,12 @@
 						src="${pageContext.request.contextPath}/images/Logo.png"
 						style="width: 250px;"></a>
 				</div>
+					<br><br>
 				<!-- Nav -->
 				<nav id="nav">
 					<ul>
 						<li class="current"><a
-							class = "tab" href="${pageContext.request.contextPath}/index.jsp">welcome</a></li>
+							class ="tab" href="${pageContext.request.contextPath}/index.jsp">welcome</a></li>
 						<li><a class = "tab" href="javascript:logout()">${sessionScope.mvo.name}님
 								&nbsp; Logout</a></li>
 						<li><a
@@ -156,9 +158,10 @@
 								<div class="ui-widget">
 									<div class="input-group input-group-lg">
 										<input type="hidden" name="command" value="bookSearch">
-										<input id="tags" type="text" class="form-control" name="title">
-										<span class="input-group-addon"> <i
-											class="fa fa-search" onclick="bookSearch()"></i>
+										<input id="tags" type="text" class="form-control" name="title"
+											style="border-color: #cccccc"><span
+											class="input-group-addon" id="tagsSpan"> <i
+											class="fa fa-search" id="tagsI" onclick="bookSearch()"></i>
 										</span>
 									</div>
 								</div>
