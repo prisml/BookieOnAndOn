@@ -17,7 +17,6 @@
 
 #tagsI {
 	width: 40px;
->>>>>>> branch 'master' of https://github.com/prisml/BookieOnAndOn.git
 }
 </style>
 <script>
@@ -128,8 +127,6 @@
                </ul>
 
             </nav>
-            <br>
-            <br>
             <br>
             <br>
             <div class="container">
