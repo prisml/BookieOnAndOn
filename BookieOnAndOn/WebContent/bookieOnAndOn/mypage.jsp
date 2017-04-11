@@ -156,6 +156,7 @@ right: 50px;
  			<p>내가 최근 본 책</p>
  			<div  class="container">
  			<div class="row">
+ 			<%-- <c:forEach items="" var=""></c:forEach> --%>
  			<img class="mySlides" src="${pageContext.request.contextPath}/images/bookcover/1.jpg" width="200px">
  			<img class="mySlides" src="${pageContext.request.contextPath}/images/bookcover/10.jpg" width="200px">
  			<img class="mySlides" src="${pageContext.request.contextPath}/images/bookcover/11.jpg" width="200px">
