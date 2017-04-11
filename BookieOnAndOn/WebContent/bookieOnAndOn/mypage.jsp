@@ -43,7 +43,7 @@ right: 50px;
 
 </style>
 <script type="text/javascript">
-if(${!empty fvo }){
+
 	$(document).ready(function(){
 		$.ajax({
 			type:"get",
@@ -76,6 +76,7 @@ if(${!empty fvo }){
 						}else{
 							alert("이미 부킹되어있습니다");
 							
+							
 						}
 					
 				
@@ -85,7 +86,7 @@ if(${!empty fvo }){
 		});//on
 	});//ready
 
-}
+	
 
 
 </script>

@@ -15,6 +15,26 @@ a:hover{
 }
 body {
 	font-size: 14pt;
+	background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0.05),
+		rgba(0, 0, 0, 0)), url("images/bg01.png");
+	background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.05),
+		rgba(0, 0, 0, 0)), url("images/bg01.png");
+	background-image: -ms-linear-gradient(top, rgba(0, 0, 0, 0.05),
+		rgba(0, 0, 0, 0)), url("images/bg01.png");
+	background-image: linear-gradient(top, rgba(0, 0, 0, 0.05),
+		rgba(0, 0, 0, 0)), url("images/bg01.png");
+	background-color: #f7f7f7;
+	background-position: top left, top left;
+	background-repeat: repeat-x, repeat;
+	background-size: 100% 30em, auto;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 13pt;
+	color: #696969;
+	font-weight: 300;
+	line-height: 2.25em;
+}
+input[type=password]{
+	font-family: 'Malgun Gothic';
 }
 </style>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
