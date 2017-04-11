@@ -29,6 +29,7 @@ public class SawBookListController implements Controller {
 
 		} else {
 			if (id == null) {
+				//나의 페이지 들어갈 때
 				int totalContent = SawWishDAO.getInstance().getSawTotalContent(vo.getId());
 				String nowpage = request.getParameter("nowPage");
 				if (nowpage == null) {
@@ -42,6 +43,7 @@ public class SawBookListController implements Controller {
 				url = "redirect:bookieOnAndOn/sawBookList.jsp";
 
 			} else {
+				//남의 페이지 들어갈 때
 				int totalContent = SawWishDAO.getInstance().getSawTotalContent(id);
 				String nowpage = request.getParameter("nowPage");
 				if (nowpage == null) {
