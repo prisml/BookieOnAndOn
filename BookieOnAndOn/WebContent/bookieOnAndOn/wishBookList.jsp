@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -100,7 +101,7 @@
 					 			출판사: ${bvo[i*4+j].pub }<br>
 					 			출판일: ${bvo[i*4+j].pubdate }</div></div></div>
 							${bvo[i*4+j].title }&nbsp;&nbsp;|&nbsp; <img width="17px" src="${pageContext.request.contextPath}/images/staron.png">&nbsp;
-							${bvo[i*4+j].rate}</a>
+							<fmt:formatNumber value="${bvo[i*4+j].rate}" pattern="0.0"/></a>
 						</div>
 				</c:otherwise>
 			</c:choose>		
@@ -158,7 +159,7 @@
 					 출판사: ${bvo[i*4+j].pub }<br>
 					 출판일: ${bvo[i*4+j].pubdate }</div></div></div>
 					${bvo[i*4+j].title }&nbsp;&nbsp;|&nbsp; <img width="17px" src="${pageContext.request.contextPath}/images/staron.png">&nbsp;
-							${bvo[i*4+j].rate}</a>
+							<fmt:formatNumber value="${bvo[i*4+j].rate}" pattern="0.0"/></a>
 						</div>
 						</c:otherwise>
 						</c:choose>		
