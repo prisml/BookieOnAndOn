@@ -1,8 +1,7 @@
 @import url("font-awesome.min.css");
 @import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
-@import
-	url("https://fonts.googleapis.com/css?family=Oleo+Script:400|Open+Sans:300,300italic,600,600italic,800")
-	;
+@import url("https://fonts.googleapis.com/css?family=Oleo+Script:400|Open+Sans:300,300italic,600,600italic,800");
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
 
 /*
 	Verti by HTML5 UP
@@ -1652,7 +1651,7 @@ ol.default li {
 #main-wrapper {
 	background: #fff;
 	box-shadow: 0px 3px 0px 0px rgba(0, 0, 0, 0.05);
-	padding: 5em 0 5em 0;
+	padding: 3em 0 3em 0;
 }
 
 #footer-wrapper {
@@ -2239,7 +2238,7 @@ ol.default li {
 		padding: 0 15px 15px 15px;
 	}
 	#main-wrapper, #footer-wrapper {
-		padding: 40px 30px 40px 30px;
+		padding: 20px 30px 20px 30px;
 	}
 
 	/* Logo */
