@@ -87,19 +87,7 @@ if(${!empty fvo }){
 			});//on
 
 	});//ready
-}else{
-	$(document).ready(function(){
-		$.ajax({
-			type:"get",
-			url:"DispatcherServlet",
-			data:"command=sawBookSlide",
-			success:function(data){
-				alert("나의 페이지에서 나와야한다");
-				
-			}//success
-		});//ajax
-	});//ready
-}//if
+}
 </script>
 
 <jsp:include page="/template/script.jsp"></jsp:include>
@@ -164,32 +152,11 @@ if(${!empty fvo }){
  			<p>내가 최근 본 책</p>
  			<div  class="container">
  			<div class="row">
- 			<%-- <c:forEach items="" var=""></c:forEach> --%>
- 			<img class="mySlides" src="${pageContext.request.contextPath}/images/bookcover/1.jpg" width="200px">
- 			<img class="mySlides" src="${pageContext.request.contextPath}/images/bookcover/10.jpg" width="200px">
- 			<img class="mySlides" src="${pageContext.request.contextPath}/images/bookcover/11.jpg" width="200px">
- 			<img class="mySlides" src="${pageContext.request.contextPath}/images/bookcover/12.jpg" width="200px">
- 			<img class="mySlides" src="${pageContext.request.contextPath}/images/bookcover/13.jpg" width="200px">
+ 			<c:forEach items="#" var="#">
+ 			<img class="mySlides" src="" width="200px">
+ 			</c:forEach>
  			</div>
  			</div>
-<script>
-var myIndex = 0;
-carousel();
-
-function carousel() {
-    var i;
-    var x = document.getElementsByClassName("mySlides");
-    for (i = 0; i < x.length; i++) {
-       x[i].style.display = "none"; 
-    }
-    myIndex++;
-    if (myIndex > x.length) {myIndex = 1}    
-    x[myIndex-1].style.display = "block";  
-    x[myIndex].style.display = "block"; 
-    x[myIndex+1].style.display = "block"; 
-    setTimeout(carousel, 2000); // Change image every 2 seconds
-}
-</script>
  		 </div>
  		</div>
  	</c:otherwise>   

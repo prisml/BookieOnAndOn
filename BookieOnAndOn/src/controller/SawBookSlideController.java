@@ -28,8 +28,6 @@ public class SawBookSlideController implements Controller {
 		out.print(json.toString());
 		out.close();
 		
-		
-		
 		return "AjaxView";
 	}
 
