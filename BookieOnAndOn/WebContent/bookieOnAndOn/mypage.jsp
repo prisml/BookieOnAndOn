@@ -84,7 +84,7 @@ if(${!empty fvo }){
 			});//ajax
 		});//on
 	});//ready
-	
+
 }
 
 
