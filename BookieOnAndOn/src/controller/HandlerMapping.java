@@ -50,7 +50,6 @@ public class HandlerMapping {
 			c = new ReviewUpdateController();
 		} else if(command.equals("reviewDelete")){
 			c = new ReviewDeleteController();
-<<<<<<< HEAD
 		} else if(command.equals("update")){
 			c = new UpdateController();
 		} else if(command.equals("findId")){
@@ -59,14 +58,8 @@ public class HandlerMapping {
 			c= new FindPasswordController();
 		} else if(command.equals("reviewRead")){
 			c = new ReviewReadController();
-=======
-		} else if(command.equals("update")){
-			c = new UpdateController();
-		} else if(command.equals("reviewRead")){
-			c = new ReviewReadController();
 		} else if(command.equals("bookingMemberDelete")){
 			c = new BookingMemberDeleteController();
->>>>>>> branch 'master' of https://github.com/prisml/BookieOnAndOn.git
 		} else if(command.equals("getWish")){
 			c = new GetWishController();
 		} else if(command.equals("getSaw")){

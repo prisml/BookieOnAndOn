@@ -38,7 +38,7 @@ public class BookDAO {
 				
 				StringBuilder sql=new StringBuilder();
 				sql.append("select findBookList.* from(");
-				sql.append("select row_number() over(order by bookno) rnum, bookno, title, author, pub, rate ");
+				sql.append("select row_number() over(order by bookno) rnum, bookno, title, author, pub, to_char(pubdate, 'YYYY-MM-DD') as pubdate, rate ");
 				sql.append("from book where title like '%"); 
 				sql.append(title + "%' order by bookno");
 				sql.append(") findBookList where rnum between ? and ? ");
@@ -48,7 +48,7 @@ public class BookDAO {
 				rs = pstmt.executeQuery();
 				 
 				while(rs.next()){
-					findBookList.add(new BookVO(rs.getString("bookno"), rs.getString("title"), rs.getString("author"), rs.getString("pub"), rs.getDouble("rate")));
+					findBookList.add(new BookVO(rs.getString("bookno"), rs.getString("title"), rs.getString("author"), rs.getString("pub"), rs.getString("pubdate"), rs.getDouble("rate")));
 				}
 			}
 			finally

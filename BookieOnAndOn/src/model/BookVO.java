@@ -21,11 +21,12 @@ public class BookVO implements VO{
 		this.title = title;
 	}
 
-	public BookVO(String bookno, String title, String author, String pub, double rate){
+	public BookVO(String bookno, String title, String author, String pub, String pubdate, double rate){
 		this.bookno = bookno;
 		this.title = title;
 		this.author = author;
 		this.pub = pub;
+		this.pubdate = pubdate;
 		this.rate = rate;
 	}
 	
