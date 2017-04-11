@@ -233,6 +233,10 @@ Insert into SCOTT.BOOK (BOOKNO,TITLE,RATE,AUTHOR,PUB,PUBDATE,GENRE) values (93,'
 Insert into SCOTT.BOOK (BOOKNO,TITLE,RATE,AUTHOR,PUB,PUBDATE,GENRE) values (94,'원피스1',0,'오다 에이치로','대원',to_date('16/11/25','RR/MM/DD'),'만화');
 Insert into SCOTT.BOOK (BOOKNO,TITLE,RATE,AUTHOR,PUB,PUBDATE,GENRE) values (95,'원피스1',0,'오다 에이치로','대원',to_date('16/11/25','RR/MM/DD'),'만화');
 
+	select id from bookmember where name='페이커' and  tel='011';
+select count(*) from bookmember where name='페이커'and tel='011';
+insert into bookmember(id,password,name,tel) values ('카레','1234','페이커','011');
+
 
 update book set rate=(select avg(star) from review where bookno=1) 
 select rate from book where bookno=1

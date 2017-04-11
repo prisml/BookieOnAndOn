@@ -7,7 +7,16 @@
 <jsp:include page="/template/script.jsp"></jsp:include>
 <title>Login</title>
 </head>
+<<<<<<< HEAD
+<body>
+<script type="text/javascript">
+	function login(){
+		
+	}
+</script>
+=======
 <body class="homepage">
+>>>>>>> branch 'master' of https://github.com/prisml/BookieOnAndOn.git
 
 	<article class="container">
 	<div class="center-block" align="middle">

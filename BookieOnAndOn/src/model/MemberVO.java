@@ -13,6 +13,11 @@ public class MemberVO implements VO{
 		this.name = name;
 		this.tel = tel;
 	}
+	public MemberVO(String name, String tel, String id) {
+		this.name = name;
+		this.tel = tel;
+		this.id = id;
+	}
 	public String getId() {
 		return id;
 	}
