@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -79,7 +80,9 @@
 <div id="mypageInfo">
  		<c:choose>
  		<c:when test="${!empty fvo }">
- 		<c:set var="bvo" value="${requestScope.flistVO.list}"/>
+ 			<c:choose>
+ 			<c:when test="${!empty requestScope.flistVO.list}">
+ 			<c:set var="bvo" value="${requestScope.flistVO.list}"/>
  			<c:forEach begin="0" end="2" var="i">
   		<div class="row">
   		<c:forEach begin="0" end="3" var="j">
@@ -95,8 +98,10 @@
 					 <div class="text">
 								<h4>${bvo[i*4+j].title }</h4>  
 								 저자 : ${bvo[i*4+j].author}<br>
-					 			출판사: ${bvo[i*4+j].pub }</div></div></div>
-							${bvo[i*4+j].title }(${bvo[i*4+j].rate })</a>
+					 			출판사: ${bvo[i*4+j].pub }<br>
+					 			출판일: ${bvo[i*4+j].pubdate }</div></div></div>
+							${bvo[i*4+j].title }&nbsp;&nbsp;|&nbsp; <img width="17px" src="${pageContext.request.contextPath}/images/staron.png">&nbsp;
+							<fmt:formatNumber value="${bvo[i*4+j].rate}" pattern="0.0"/></a>
 						</div>
 				</c:otherwise>
 			</c:choose>		
@@ -126,9 +131,14 @@
 			</ul>
 		</div>
 	</div>
- 	
+	</c:when>
+	<c:otherwise>
+	보고싶은 책의 정보가 없습니다
+	</c:otherwise> 
+	</c:choose>
  		</c:when>
  	<c:otherwise>
+ 	<c:choose><c:when test="${!empty sessionScope.listVO.list}">
  		<c:set var="bvo" value="${sessionScope.listVO.list}"/>
  			<c:forEach begin="0" end="2" var="i">
   		<div class="row">
@@ -146,8 +156,10 @@
 					 <div class="text">
 					<h4>${bvo[i*4+j].title }</h4> 
 					 저자 : ${bvo[i*4+j].author}<br>
-					 출판사: ${bvo[i*4+j].pub }</div></div></div>
-					${bvo[i*4+j].title }(${bvo[i*4+j].rate })</a>
+					 출판사: ${bvo[i*4+j].pub }<br>
+					 출판일: ${bvo[i*4+j].pubdate }</div></div></div>
+					${bvo[i*4+j].title }&nbsp;&nbsp;|&nbsp; <img width="17px" src="${pageContext.request.contextPath}/images/staron.png">&nbsp;
+							<fmt:formatNumber value="${bvo[i*4+j].rate}" pattern="0.0"/></a>
 						</div>
 						</c:otherwise>
 						</c:choose>		
@@ -178,7 +190,11 @@
 			</ul>
 		</div>
 	</div>
- 	
+ 	</c:when>
+ 		<c:otherwise>
+ 			보고싶은 책의 정보가 없습니다
+ 		</c:otherwise>
+ 		 </c:choose>
  	</c:otherwise>   
  	</c:choose>
  	

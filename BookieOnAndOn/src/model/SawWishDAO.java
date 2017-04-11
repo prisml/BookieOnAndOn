@@ -132,7 +132,8 @@ public class SawWishDAO {
 		try {
 			con = dataSource.getConnection();
 			String sql = "select * "
-					+ "from (select row_number() over(order by bookno desc)as rnum,bookno from saw where id=?)s,book b "
+					+ "from (select row_number() over(order by bookno desc)as rnum,bookno from saw where id=?)s,"
+					+ "	(select bookno,title,author,pub,to_char(pubdate,'yyyy-mm-dd') as pubdate,genre,summary,rate,bookphoto from book)b "
 					+ "where s.bookno=b.bookno and rnum between ? and ? ";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id);
@@ -189,7 +190,8 @@ public class SawWishDAO {
 		try {
 			con = dataSource.getConnection();
 			String sql = "select * "
-					+ "from (select row_number() over(order by bookno desc)as rnum,bookno from wish where id=?)s,book b "
+					+ "from (select row_number() over(order by bookno desc)as rnum,bookno from wish where id=?)s,"
+					+ "	(select bookno,title,author,pub,to_char(pubdate,'yyyy-mm-dd') as pubdate,genre,summary,rate,bookphoto from book)b "
 					+ "where s.bookno=b.bookno and rnum between ? and ? ";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id);

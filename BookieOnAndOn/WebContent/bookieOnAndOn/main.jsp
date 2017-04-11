@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>    
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -39,11 +40,12 @@ a:hover{
 	font-family: 'Jeju Gothic', serif;
    color: white;
    position: absolute;
-   font-size: 14px;
+   font-size: 13px;
    top: 10%;
    left: 7%;
    right: 7%;
 }
+
 </style>
 <jsp:include page="/template/script.jsp"></jsp:include>
 
@@ -77,6 +79,7 @@ a:hover{
 							 info+= "<div class='overlay'><div class='overlaytext'>";
 							 info+="<h4>"+data.list[i*4+j].title+"</h4>";
 							 info+="저자&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+data.list[i*4+j].author+"<br>출판사&nbsp;&nbsp;&nbsp;"+data.list[i*4+j].pub;
+							 info+="<br>출판일&nbsp;&nbsp;&nbsp;"+data.list[i*4+j].pubdate;
 							 info+="</div></div></div>";
 							 info+="</div><br>";
 							 info+=data.list[i*4+j].title;
@@ -121,12 +124,12 @@ a:hover{
 						 info+="<a  href='http://localhost:8888/BookieOnAndOn/DispatcherServlet?command=detail&bookno=";
 						 info+=data.list[i*4+j].bookno+"'>";
 						 info+="<div class='w3-one'>";
-						// info+="<img class='img-responsive' src='http://placehold.it/260x390' alt=''>";
 						 info+="<div class=bookcover style='height:390px'>";
 						 info+="<img height='390px' width='263px' src='${pageContext.request.contextPath}/images/bookcover/"+data.list[i*4+j].bookno+".jpg' alt=''>"
 						 info+= "<div class='overlay'><div class='overlaytext'>";
 						 info+="<h4>"+data.list[i*4+j].title+"</h4>";
 						 info+="저자&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+data.list[i*4+j].author+"<br>출판사&nbsp;&nbsp;&nbsp;"+data.list[i*4+j].pub;
+						 info+="<br>출판일&nbsp;&nbsp;&nbsp;"+data.list[i*4+j].pubdate;
 						 info+="</div></div></div>";
 						 info+="</div><br>";
 						 info+=data.list[i*4+j].title;
@@ -173,17 +176,18 @@ a:hover{
 			<div class="col-md-3 portfolio-item">
 				<a href="${pageContext.request.contextPath}/DispatcherServlet?command=detail&bookno=${listVo.list[i*4+j].bookno}">
 				<div class="w3-one">
-				<!-- <img class="img-responsive" src="http://placehold.it/260x390" alt="" /> -->
 				<img height="390px" width="263px" src="${pageContext.request.contextPath}/images/bookcover/${listVo.list[i*4+j].bookno}.jpg" alt="">
 				<div class='overlay'><div class='overlaytext'>
 				<h4>${listVo.list[i*4+j].title}</h4>
 				저자&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				${listVo.list[i*4+j].author}<br>
 				출판사&nbsp;&nbsp;&nbsp;
-				${listVo.list[i*4+j].pub}
+				${listVo.list[i*4+j].pub}<br>
+				출판일&nbsp;&nbsp;&nbsp;
+				${listVo.list[i*4+j].pubdate}
 				</div></div></div><br><!-- overlay -->
 				 ${listVo.list[i*4+j].title}&nbsp;&nbsp;|&nbsp; <img width="17px" src="${pageContext.request.contextPath}/images/staron.png">&nbsp;
-				 ${listVo.list[i*4+j].rate}</a>		 
+				 <fmt:formatNumber value="${listVo.list[i*4+j].rate}" pattern="0.0"/></a>		 
 			</div>
 			</c:otherwise>
 			</c:choose>		
@@ -206,7 +210,7 @@ a:hover{
 							end="${listVo.pagingBean.endPageOfPageGroup}">
 							<c:choose>
 								<c:when test="${num!=listVo.pagingBean.nowPage }">
-									<li><a id='pagelink'
+									<li><a id="pagelink"
 										href="${pageContext.request.contextPath}/DispatcherServlet?command=main&pageNo=${num}">${num}</a></li>
 								</c:when>
 								<c:otherwise>
@@ -215,7 +219,7 @@ a:hover{
 							</c:choose>
 						</c:forEach>
 						<c:if test="${listVo.pagingBean.nextPageGroup}">
-							<li><a
+							<li><a 
 								href="${pageContext.request.contextPath}/DispatcherServlet?command=main&pageNo=${listVo.pagingBean.endPageOfPageGroup+1}">&raquo;
 							</a></li>
 						</c:if>
