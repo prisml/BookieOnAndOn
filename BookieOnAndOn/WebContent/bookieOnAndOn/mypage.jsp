@@ -53,6 +53,18 @@ right: 50px;
 		$.ajax({
 			type:"get",
 			url:"DispatcherServlet",
+			data:"command=sawBookSlide",
+			success:function(data){
+				alert("갓다왓습니다");
+			}
+		});//ajax sawslide
+		
+		
+		
+		
+		$.ajax({
+			type:"get",
+			url:"DispatcherServlet",
 			data:"command=bookingCheck&senderid=${sessionScope.mvo.id}&receiverid=${fvo.id }",
 			success:function(data){
 				
@@ -80,8 +92,6 @@ right: 50px;
 							$("#bookingIcon").html("<span  class='fa'>&#xf212;</span>").css("color","pink");
 						}else{
 							alert("이미 부킹되어있습니다");
-							
-							
 						}
 					
 				
@@ -177,6 +187,7 @@ function carousel() {
     if (myIndex > x.length) {myIndex = 1}    
     x[myIndex-1].style.display = "block";  
     x[myIndex].style.display = "block"; 
+    x[myIndex+1].style.display = "block"; 
     setTimeout(carousel, 2000); // Change image every 2 seconds
 }
 </script>

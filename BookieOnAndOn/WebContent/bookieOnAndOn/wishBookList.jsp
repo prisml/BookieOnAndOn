@@ -42,6 +42,7 @@
   top: 10%;
   left: 7%;
   right: 7%;
+  line-height: 140%;
 }
 
 </style>
