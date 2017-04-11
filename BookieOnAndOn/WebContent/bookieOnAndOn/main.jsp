@@ -40,7 +40,7 @@ a:hover{
 	font-family: 'Jeju Gothic', serif;
    color: white;
    position: absolute;
-   font-size: 14px;
+   font-size: 13px;
    top: 10%;
    left: 7%;
    right: 7%;
@@ -79,6 +79,7 @@ a:hover{
 							 info+= "<div class='overlay'><div class='overlaytext'>";
 							 info+="<h4>"+data.list[i*4+j].title+"</h4>";
 							 info+="저자&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+data.list[i*4+j].author+"<br>출판사&nbsp;&nbsp;&nbsp;"+data.list[i*4+j].pub;
+							 info+="<br>출판일&nbsp;&nbsp;&nbsp;"+data.list[i*4+j].pubdate;
 							 info+="</div></div></div>";
 							 info+="</div><br>";
 							 info+=data.list[i*4+j].title;
@@ -128,6 +129,7 @@ a:hover{
 						 info+= "<div class='overlay'><div class='overlaytext'>";
 						 info+="<h4>"+data.list[i*4+j].title+"</h4>";
 						 info+="저자&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+data.list[i*4+j].author+"<br>출판사&nbsp;&nbsp;&nbsp;"+data.list[i*4+j].pub;
+						 info+="<br>출판일&nbsp;&nbsp;&nbsp;"+data.list[i*4+j].pubdate;
 						 info+="</div></div></div>";
 						 info+="</div><br>";
 						 info+=data.list[i*4+j].title;
@@ -180,7 +182,9 @@ a:hover{
 				저자&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				${listVo.list[i*4+j].author}<br>
 				출판사&nbsp;&nbsp;&nbsp;
-				${listVo.list[i*4+j].pub}
+				${listVo.list[i*4+j].pub}<br>
+				출판일&nbsp;&nbsp;&nbsp;
+				${listVo.list[i*4+j].pubdate}
 				</div></div></div><br><!-- overlay -->
 				 ${listVo.list[i*4+j].title}&nbsp;&nbsp;|&nbsp; <img width="17px" src="${pageContext.request.contextPath}/images/staron.png">&nbsp;
 				 <fmt:formatNumber value="${listVo.list[i*4+j].rate}" pattern="0.0"/></a>		 
