@@ -44,8 +44,6 @@ position: relative;
 }
 #bookingIcon{
 position:absolute;
-font-size:24px;
-color: #ffff80;
 right: 50px;
 }
 
@@ -66,10 +64,10 @@ if(${!empty fvo }){
 				
 				if(data=="true"){
 					//덮힌 책,부킹할 수 잇다
-					$("#bookingIcon").html("<span  class='fa'>&#xf02d;</span>").css("color","yellow");
+					$("#bookingIcon").html("<span><img style='width:50px' src='${pageContext.request.contextPath}/images/bookingoff.png'></span>");
 				}else{
 					//펼쳐진 책,부킹이 이미 되어있어서 할 수 없다
-					$("#bookingIcon").html("<span  class='fa'>&#xf212;</span>").css("color","pink");
+					$("#bookingIcon").html("<span><img style='width:50px' src='${pageContext.request.contextPath}/images/bookingon.png'></span>");
 				}//if
 			}//success
 		});//ajax
@@ -84,7 +82,7 @@ if(${!empty fvo }){
 						
 						if(data=="true"){
 							$("#bookingIcon").empty();
-							$("#bookingIcon").html("<span  class='fa'>&#xf212;</span>").css("color","pink");
+							$("#bookingIcon").html("<span><img style='width:50px' src='${pageContext.request.contextPath}/images/bookingon.png'></span>");
 						}else{
 							alert("이미 부킹되어있습니다");
 						}
@@ -143,6 +141,7 @@ if(${!empty fvo }){
  			<span class="badge">
  			${fbookingcount}
  			</span></a>
+ 			<p>${fvo.name}님의  본 책</p>
  			
  			</div>
  			</div>
@@ -150,10 +149,12 @@ if(${!empty fvo }){
  	<c:otherwise>
  		<div class="container">
   			<div class="jumbotron">
+  			
  			<h3 style='color:#3377ff'>Mypage</h3><br>
- 			<a class="btn btn-primary" href="${pageContext.request.contextPath}/DispatcherServlet?command=bookingList&id=${mvo.id}">booking
+ 			<a class="btn btn-primary" href="${pageContext.request.contextPath}/DispatcherServlet?command=bookingList&id=${mvo.id}">
+ 			booking
  			<span class="badge">
- 			${bookingcount}
+ 			${sessionScope.bookingcount}
  			</span>
  			</a>
  			<div class="material-icons">&#xe88f;<span class='iconInfo'>당신이 즐겨찾기한 사람의 수를 나타냅니다</span></div><br><br><br>

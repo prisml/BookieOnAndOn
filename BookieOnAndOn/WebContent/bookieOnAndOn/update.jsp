@@ -94,7 +94,8 @@ function reset(){
 				<button class="btn btn-warning btn-sm" type="button"  onclick = "reset()">
 					새로작성<i class="fa fa-times spaceLeft"></i>
 				</button>
-				<br> <a href="findIdPw.jsp">아이디/비밀번호 찾기</a><br> 
+				<br> <a href="findId.jsp">아이디</a>/<a href="findPw.jsp">비밀번호</a>　찾기
+				 
 			
 			</div>
 		</form>

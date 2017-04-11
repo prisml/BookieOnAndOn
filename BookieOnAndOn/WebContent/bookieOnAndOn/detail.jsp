@@ -48,7 +48,7 @@
 			url:"DispatcherServlet",
 			data:"command=getSaw&bookno=${vo.bookno}&id=${mvo.id}",
 			success:function(data){
-				$("#sawLi").html("<br><img alt='봤어요' src='${pageContext.request.contextPath}/images/star"+data+".png' style='width:50px'>");
+				$("#sawLi").html("<br><img alt='봤어요' src='${pageContext.request.contextPath}/images/check"+data+".png' style='width:50px'>");
 			}
 		});
 		$.ajax({
@@ -65,7 +65,11 @@
 				url:"DispatcherServlet",
 				data:"command=saw&bookno=${vo.bookno}&id=${mvo.id}",
 				success:function(data){
-					$("#sawLi").html("<br><img alt='봤어요' src='${pageContext.request.contextPath}/images/star"+data+".png' style='width:50px'>");
+					if(data=="on")
+						alert("본 책으로 등록!");
+					else
+						alert("본 책으로 취소!");
+					$("#sawLi").html("<br><img alt='봤어요' src='${pageContext.request.contextPath}/images/check"+data+".png' style='width:50px'>");
 				}
 			});
 		});
@@ -75,6 +79,10 @@
 				url:"DispatcherServlet",
 				data:"command=wish&bookno=${vo.bookno}&id=${mvo.id}",
 				success:function(data){
+					if(data=="on")
+						alert("보고싶은 책으로 등록!");
+					else
+						alert("보고싶은 책으로 취소!");
 					$("#wishLi").html("<br><img alt='보고싶어요' src='${pageContext.request.contextPath}/images/heart"+data+".png' style='width:50px'>");
 				}
 			});
@@ -123,22 +131,35 @@
 			event.preventDefault();
 			$(this).parent().children("a").removeClass("on");
 			$(this).addClass("on").prevAll("a").addClass("on");
-			$(this).parent().children("a").html("<img style='width:30px' src='${pageContext.request.contextPath}/images/staroff.png'>");
+			$(this).parent().children("a").html("<img style='width:30px' src='${pageContext.request.contextPath}/images/checkoff.png'>");
 			$(".on").html("<img style='width:30px' src='${pageContext.request.contextPath}/images/staron.png'>");
 			return false;
 		});
 		$(".on").html("<img style='width:30px' src='${pageContext.request.contextPath}/images/staron.png'>");
 		$("#reviewSubmit").click(function(){
-			if($("#sawLi").html()!="<br><img alt='보고싶어요' src='${pageContext.request.contextPath}/images/hearton.png' style='width:50px'>"){
-				if(confirm("본책으로 등록하시겠습니까?")){
-					$.ajax({
-						type:"get",
-						url:"DispatcherServlet",
-						data:"command=saw&bookno=${vo.bookno}&id=${mvo.id}",
-						success:function(data){
-							$("#sawLi").html("<br><img alt='봤어요' src='${pageContext.request.contextPath}/images/star"+data+".png' style='width:50px'>");
+			if($("#reviewContent").val() == ""){
+				alert("리뷰를 입력하세요");
+				return false;
+			}
+			$.ajax({
+				type:"get",
+				url:"DispatcherServlet",
+				data:"command=getSaw&bookno=${vo.bookno}&id=${mvo.id}",
+				success:function(data){
+					if(data =="off"){
+						if(confirm("본책으로 등록하시겠습니까?")){
+							$.ajax({
+								type:"get",
+								url:"DispatcherServlet",
+								data:"command=saw&bookno=${vo.bookno}&id=${mvo.id}",
+								success:function(data){
+									alert("본 책으로 등록!");
+									$("#sawLi").html("<br><img alt='봤어요' src='${pageContext.request.contextPath}/images/check"+data+".png' style='width:50px'>");
+								}
+							});
 						}
-					});
+						else return false;
+					}
 					$.ajax({
 						type:"get",
 						url:"DispatcherServlet",
@@ -148,17 +169,7 @@
 						}
 					});
 				}
-			}
-			else{
-				$.ajax({
-					type:"get",
-					url:"DispatcherServlet",
-					data:"command=reviewRegist&bookno=${vo.bookno}&content="+$("#reviewContent").val()+"&star="+$(".on").length,
-					success:function(){
-						location.href=document.location.href;
-					}
-				});
-			}
+			});
 		});
 	}); 
 </script>
@@ -210,16 +221,14 @@
 					<div class="9u">
 						<form class="w3-container">
 							<div class="w3-row w3-section">
-								<div class="w3-col m8 l9">
-									<input id="reviewContent" class="w3-input w3-border" type="text"
-										placeholder="리뷰 등록"> 
-										<input id="reviewHidden" type="text" style="display: none;" />
+								<div id="reviewSubmit" class="w3-col" style="width:50px;float:right;"> 
+									<i class="w3-xxlarge fa fa-pencil w3-text-blue"></i>
 								</div>
-								<div class="w3-col m4 l3" id="reviewSubmit" style="width:50px;">
-									<i class="fa fa-pencil fa-2x w3-text-blue"></i>
-								</div>
+							    <div class="w3-rest" style="padding-right:30px">
+							      <input id="reviewContent" class="w3-input w3-border" name="message" type="text" placeholder="리뷰 등록">
+							    </div>
 							</div>
-							
+							<input id="reviewHidden" type="text" style="display: none; width:auto;" />
 						</form>
 					</div>
 				</div>
