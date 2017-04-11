@@ -1,10 +1,13 @@
 package controller;
 
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import org.json.JSONObject;
 
 import model.MemberVO;
 import model.SawWishDAO;
@@ -20,7 +23,10 @@ public class SawBookSlideController implements Controller {
 		ArrayList<VO> list= new ArrayList<VO>(); 
 		list=SawWishDAO.getInstance().getSawBookSlideList(vo.getId());
 		System.out.println(list);
-		
+		PrintWriter out=response.getWriter();
+		JSONObject json=new JSONObject(list);
+		out.print(json.toString());
+		out.close();
 		
 		
 		

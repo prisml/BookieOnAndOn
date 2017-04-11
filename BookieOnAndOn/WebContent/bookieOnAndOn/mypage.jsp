@@ -47,21 +47,9 @@ right: 50px;
 </style>
 <script src="/lib/w3.js"></script>
 <script type="text/javascript">
-	
 
+if(${!empty fvo }){
 	$(document).ready(function(){
-		$.ajax({
-			type:"get",
-			url:"DispatcherServlet",
-			data:"command=sawBookSlide",
-			success:function(data){
-				alert("갓다왓습니다");
-			}
-		});//ajax sawslide
-		
-		
-		
-		
 		$.ajax({
 			type:"get",
 			url:"DispatcherServlet",
@@ -74,12 +62,11 @@ right: 50px;
 				}else{
 					//펼쳐진 책,부킹이 이미 되어있어서 할 수 없다
 					$("#bookingIcon").html("<span  class='fa'>&#xf212;</span>").css("color","pink");
-					
-				}
-			
+				}//if
+			}//success
+		});//ajax
 		
-			}
-		});
+		
 		$("#bookingIcon").on("click","span",function(){
 			$.ajax({
 				type:"get",
@@ -95,13 +82,24 @@ right: 50px;
 						}
 					
 				
-					}
-			
-			});//ajax
-		});//on
+					}//success
+				});//ajax
+			});//on
+
 	});//ready
-
-
+}else{
+	$(document).ready(function(){
+		$.ajax({
+			type:"get",
+			url:"DispatcherServlet",
+			data:"command=sawBookSlide",
+			success:function(data){
+				alert("나의 페이지에서 나와야한다");
+				
+			}//success
+		});//ajax
+	});//ready
+}//if
 </script>
 
 <jsp:include page="/template/script.jsp"></jsp:include>
