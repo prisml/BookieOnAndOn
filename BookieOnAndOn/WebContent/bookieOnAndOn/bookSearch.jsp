@@ -42,6 +42,7 @@
 	top: 10%;
 	left: 7%;
 	right: 7%;
+	line-height: 140%;
 }
 
 .overlaytable {
@@ -93,7 +94,6 @@
 										</div>
 									</div>
 								</div>
-								<br>
 								<div class="w3-one">
 									<a
 										href="${pageContext.request.contextPath}/DispatcherServlet?command=detail&bookno=${lvo.bookno}">

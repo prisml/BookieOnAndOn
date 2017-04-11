@@ -14,7 +14,6 @@ a:hover{
  text-decoration: none;
 }
 body {
-	font-size: 14pt;
 	background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0.05),
 		rgba(0, 0, 0, 0)), url("images/bg01.png");
 	background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.05),
@@ -27,11 +26,9 @@ body {
 	background-position: top left, top left;
 	background-repeat: repeat-x, repeat;
 	background-size: 100% 30em, auto;
-	font-family: 'Open Sans', sans-serif;
 	font-size: 13pt;
 	color: #696969;
 	font-weight: 300;
-	line-height: 2.25em;
 }
 input[type=password]{
 	font-family: 'Malgun Gothic';

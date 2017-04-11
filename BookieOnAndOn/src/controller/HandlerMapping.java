@@ -52,6 +52,10 @@ public class HandlerMapping {
 			c = new ReviewDeleteController();
 		} else if(command.equals("update")){
 			c = new UpdateController();
+		} else if(command.equals("findId")){
+			c= new FindIdController();
+		} else if(command.equals("findPw")){
+			c= new FindPasswordController();
 		} else if(command.equals("reviewRead")){
 			c = new ReviewReadController();
 		} else if(command.equals("bookingMemberDelete")){
@@ -64,6 +68,8 @@ public class HandlerMapping {
 			c = new AddBookingController();
 		} else if(command.equals("bookingCheck")){
 			c = new BookingCheckController();
+		} else if(command.equals("sawBookSlide")){
+			c = new SawBookSlideController();
 		}
 		return c;
 	}

@@ -230,7 +230,7 @@ public class BookDAO {
 		ResultSet rs=null;
 		int contents=0;
 		try{
-			con=dataSource.getConnection();; 
+			con=dataSource.getConnection();
 			String sql="select count(*) from book";
 			pstmt=con.prepareStatement(sql);
 			rs=pstmt.executeQuery();
