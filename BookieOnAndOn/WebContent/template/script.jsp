@@ -13,6 +13,9 @@
 a:hover{
  text-decoration: none;
 }
+body {
+	font-size: 15pt;
+}
 </style>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/jquery.dropotron.min.js"></script>
