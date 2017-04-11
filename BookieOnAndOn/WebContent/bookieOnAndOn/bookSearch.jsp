@@ -94,7 +94,6 @@
 										</div>
 									</div>
 								</div>
-								<br>
 								<div class="w3-one">
 									<a
 										href="${pageContext.request.contextPath}/DispatcherServlet?command=detail&bookno=${lvo.bookno}">
