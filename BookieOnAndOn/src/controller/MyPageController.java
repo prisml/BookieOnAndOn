@@ -37,6 +37,7 @@ public class MyPageController implements Controller {
 			if (id == null) {
 				bookingcount = BookingDAO.getInstance().getTotalBookingCount(vo.getId());
 				session.setAttribute("bookingcount", bookingcount);
+				System.out.println(bookingcount);
 				ArrayList<VO> list= new ArrayList<VO>(); 
 				list=SawWishDAO.getInstance().getSawBookSlideList(vo.getId());
 				session.setAttribute("sawSlide", list);
