@@ -19,16 +19,12 @@ public class SawBookSlideController implements Controller {
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session=request.getSession();
 		MemberVO vo=(MemberVO)session.getAttribute("mvo");
-		System.out.println(vo);
 		ArrayList<VO> list= new ArrayList<VO>(); 
 		list=SawWishDAO.getInstance().getSawBookSlideList(vo.getId());
-		System.out.println(list);
 		PrintWriter out=response.getWriter();
 		JSONObject json=new JSONObject(list);
 		out.print(json.toString());
 		out.close();
-		
-		
 		
 		return "AjaxView";
 	}

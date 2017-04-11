@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Random;
 
 import javax.sql.DataSource;
 
@@ -294,11 +296,19 @@ public class SawWishDAO {
 				list.add(new BookVO(rs.getString("bookno"), rs.getString("title"), rs.getString("author"),
 						rs.getString("pub"), rs.getString("pubdate"), rs.getString("genre"), rs.getString("summary"),
 						rs.getDouble("rate"), rs.getBlob("bookphoto")));
+			
 
 			}
 		} finally {
 			closeAll(rs, pstmt, con);
 		}
+		long seed=System.nanoTime();
+		Collections.shuffle(list,new Random(seed));
+		
+		for(int i = 0; i < list.size(); i++){
+			System.out.println(list.get(i));
+		}
+		
 		return list;
 	}
 }
