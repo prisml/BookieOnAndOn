@@ -132,7 +132,7 @@ if(${!empty fvo }){
  			 booking
  			<span class="badge">
  			${fbookingcount}
- 			</span></a>
+ 			</span></a><br><br><br>
  			<p>${fvo.name}님의  본 책</p>
  			
  			</div>
@@ -153,7 +153,7 @@ if(${!empty fvo }){
  			<p>내가 본 책</p>
  	          <div  class="container">
          				<div class="row">
-          <c:forEach items="${sessionScope.sawSlide }" var="saw" begin="1" end="5">
+          <c:forEach items="${sessionScope.sawSlide }" var="saw">
              <img src="${pageContext.request.contextPath}/images/bookcover/${saw.bookno}.jpg" style="width:200px">
           </c:forEach>
           </div>
