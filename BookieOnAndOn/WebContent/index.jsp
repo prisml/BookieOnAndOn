@@ -2,5 +2,5 @@
     pageEncoding="UTF-8"%>
 <jsp:forward page ="DispatcherServlet">
 		<jsp:param value="main" name="command"/>
-</jsp:forward>
+</jsp:forward> 
 
