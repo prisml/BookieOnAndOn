@@ -157,19 +157,40 @@ if(${!empty fvo }){
  			${sessionScope.bookingcount}
  			</span>
  			</a>
-
  			<div class="material-icons">&#xe88f;<span class='iconInfo'>당신이 즐겨찾기한 사람의 수를 나타냅니다</span></div><br><br><br>
  			<p>내가 최근 본 책</p>
- 			<div  class="container">
- 			<div class="row">
- 			<div class="cycle-slideshow" cycle-slidershow data-cycle-loader="wait" data-cycle-fx=scrollHorz data-cycle-timeout=2000>
- 			<c:forEach items="${sessionScope.sawSlide }" var="sawSlide">
- 			<img class="slideCount" src="${pageContext.request.contextPath}/images/bookcover/${sawSlide.bookno }.jpg" style="width: 200px;">
+ 			<div class="container">
+ 				<div class="row">
+ 				<c:forEach items="${sessionScope.sawSlide }" var="sawSlide">
+ 			<img class="mySlides" src="${pageContext.request.contextPath}/images/bookcover/${sawSlide.bookno }.jpg" style="width: 200px;">
  			</c:forEach>
+ 				</div>
  			</div>
- 			</div>
- 			</div>
+<script>
+var myIndex = 0;
+carousel();
 
+function carousel() {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";  
+    }
+    myIndex++;
+     if (myIndex > x.length) {myIndex = 1}    
+    x[myIndex-1].style.display = "block";
+     if (myIndex+1 > x.length) {myIndex = 1} 
+    x[myIndex].style.display = "block";
+     if (myIndex+2 > x.length) {myIndex = 1} 
+    x[myIndex+1].style.display = "block";
+     if (myIndex+3 > x.length) {myIndex = 1} 
+    x[myIndex+2].style.display = "block";
+     if (myIndex+4 > x.length) {myIndex = 1} 
+    x[myIndex+3].style.display = "block";
+   
+    setTimeout(carousel, 2000); // Change image every 2 seconds
+}
+</script>
  		 </div>
  		</div>
  	</c:otherwise>   
