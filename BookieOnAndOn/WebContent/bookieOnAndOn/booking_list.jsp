@@ -6,6 +6,21 @@
 <head>
 <jsp:include page="/template/script.jsp"></jsp:include>
 <title>booking_list</title>
+<!-- 부킹삭제 ajax -->
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#receiverid").click(function(){
+			$.ajax({
+				type: "post",
+				url: "${pageContext.request.contextPath}/DispatcherServlet",
+				data:{"command":"bookingMemberDelete", "receiverid":$(this).val()},
+				success:function(){
+		               location.href=document.location.href;
+		            }//success
+			});//ajax
+		});//click
+	});//ready
+</script>
 </head>
 <body class="homepage">
 	<div id="page-wrapper">
@@ -24,15 +39,19 @@
 									<td align="center"><h1>${requestScope.myId.name }님의 Booking: ${requestScope.receiverIdCount }명</h1></td>
 								</c:otherwise>
 							</c:choose>
-							<td align="center"><h1>Booking_Count</h1></td>
+							<td colspan="2"><h1>Booking_Count</h1></td>
 						</tr>
 					</thead>
 					<tbody>
 						<c:forEach var="mvo" items="${requestScope.receiverIdList.list }">
-							<tr class="success">
+							<tr id="${mvo.receiverid }" class="success">
+								<!-- 부킹 상대 아이디 -->
 								<td align="center"><a style="text-decoration:none"
 								href="${pageContext.request.contextPath}/DispatcherServlet?command=mypage&id=${mvo.receiverid }">${mvo.receiverid }</a></td>
+								<!-- 상대 아이디별 부킹 수 -->
 								<td align="center">${mvo.receiveridcount }</td>
+								<!-- 부킹 취소 버튼 -->
+								<td align="center"><button id="receiverid" class="btn-danger btn-sm" value="${mvo.receiverid }">Cancel</button></td>
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -79,6 +98,5 @@
 			<!-- /.row -->
 		</div>
 		<jsp:include page="/template/footer.jsp"></jsp:include>
-	
 </body>
 </html>

@@ -18,9 +18,9 @@ public class SawBookListController implements Controller {
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		response.setContentType("text/html;charset=utf-8");
-		String id=null;
+		String id = null;
 		String url = "";
-		id=request.getParameter("id");
+		id = request.getParameter("id");
 		HttpSession session = request.getSession();
 		MemberVO vo = (MemberVO) session.getAttribute("mvo");
 		if (vo == null) {
@@ -28,7 +28,8 @@ public class SawBookListController implements Controller {
 			url = "index.jsp";
 
 		} else {
-			if(id==null){
+			if (id == null) {
+				//나의 페이지 들어갈 때
 				int totalContent = SawWishDAO.getInstance().getSawTotalContent(vo.getId());
 				String nowpage = request.getParameter("nowPage");
 				if (nowpage == null) {
@@ -41,8 +42,8 @@ public class SawBookListController implements Controller {
 				session.setAttribute("slistVO", listvo);
 				url = "redirect:bookieOnAndOn/sawBookList.jsp";
 
-				
-			}else{
+			} else {
+				//남의 페이지 들어갈 때
 				int totalContent = SawWishDAO.getInstance().getSawTotalContent(id);
 				String nowpage = request.getParameter("nowPage");
 				if (nowpage == null) {
@@ -56,13 +57,9 @@ public class SawBookListController implements Controller {
 				MemberVO fvo = MemberDAO.getInstance().getMemberById(id);
 				request.setAttribute("fvo", fvo);
 				url = "bookieOnAndOn/sawBookList.jsp";
-				
-				
-				
+
 			}
-			
-			
-			
+
 		}
 
 		return url;

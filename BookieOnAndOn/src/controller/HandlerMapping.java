@@ -54,12 +54,16 @@ public class HandlerMapping {
 			c = new UpdateController();
 		} else if(command.equals("reviewRead")){
 			c = new ReviewReadController();
+		} else if(command.equals("bookingMemberDelete")){
+			c = new BookingMemberDeleteController();
 		} else if(command.equals("getWish")){
 			c = new GetWishController();
 		} else if(command.equals("getSaw")){
 			c = new GetSawController();
 		} else if(command.equals("addBooking")){
 			c = new AddBookingController();
+		} else if(command.equals("bookingCheck")){
+			c = new BookingCheckController();
 		}
 		return c;
 	}

@@ -80,6 +80,7 @@
  <div id="mypageInfo">
  	<c:choose>
  		<c:when test="${!empty fvo }">
+ 		<c:choose><c:when test="${!empty requestScope.flistVO.list}">
  		<c:set var="bvo" value="${requestScope.flistVO.list}"/>
  			<c:forEach begin="0" end="2" var="i">
   		<div class="row">
@@ -97,7 +98,8 @@
 								<h4>${bvo[i*4+j].title }</h4>  
 								 저자 : ${bvo[i*4+j].author}<br>
 					 			출판사: ${bvo[i*4+j].pub }</div></div></div>
-							${bvo[i*4+j].title }(${bvo[i*4+j].rate })</a>
+							${bvo[i*4+j].title } &nbsp;&nbsp;|&nbsp; <img width="17px" src="${pageContext.request.contextPath}/images/staron.png">&nbsp;
+				 ${bvo[i*4+j].rate}</a>
 						</div>
 				</c:otherwise>
 			</c:choose>		
@@ -127,31 +129,36 @@
 			</ul>
 			</div>
 		</div>
+		</c:when><c:otherwise> 본 책 정보가 없습니다</c:otherwise>  </c:choose>
  		</c:when>
  	<c:otherwise>
- 	
+ <!--   내가 본 책 리스트~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->	
+ <c:choose>
+ <c:when test="${!empty sessionScope.slistVO.list}">
  	<c:set var="bvo" value="${sessionScope.slistVO.list}"/>
+
  			<c:forEach begin="0" end="2" var="i">
-  		<div class="row">
-  		<c:forEach begin="0" end="3" var="j">
-  		<c:choose>
-  		<c:when test="${(i*4+j+1)>fn:length(sessionScope.slistVO.list)}">  				
-  			</c:when>
-  			<c:otherwise>
-					<div class='col-sm-3'>
-					<a href="${pageContext.request.contextPath}/DispatcherServlet?command=detail&bookno=${bvo[i*4+j].bookno}">
-					<div class='imagecontainer'>
-						<img width='260' height="360" src='${pageContext.request.contextPath}/images/bookcover/${bvo[i*4+j].bookno}.jpg'>
-						<div class="overlay">
-					 <div class="text">
-							<h4>${bvo[i*4+j].title }</h4> 
-					 저자 : ${bvo[i*4+j].author}<br>
-					 					출판사: ${bvo[i*4+j].pub }</div></div></div>
-							${bvo[i*4+j].title }(${bvo[i*4+j].rate })</a>
+  				<div class="row">
+  				<c:forEach begin="0" end="3" var="j">
+  						<c:choose>
+  							<c:when test="${(i*4+j+1)>fn:length(sessionScope.slistVO.list)}">  				
+  							</c:when>
+  						<c:otherwise>
+							<div class='col-sm-3'>
+							<a href="${pageContext.request.contextPath}/DispatcherServlet?command=detail&bookno=${bvo[i*4+j].bookno}">
+							<div class='imagecontainer'>
+							<img width='260' height="360" src='${pageContext.request.contextPath}/images/bookcover/${bvo[i*4+j].bookno}.jpg'>
+							<div class="overlay">
+							 <div class="text">
+								<h4>${bvo[i*4+j].title }</h4> 
+					 				저자 : ${bvo[i*4+j].author}<br>
+					 				출판사: ${bvo[i*4+j].pub }</div></div></div>
+							${bvo[i*4+j].title }&nbsp;&nbsp;|&nbsp; <img width="17px" src="${pageContext.request.contextPath}/images/staron.png">&nbsp;
+							${bvo[i*4+j].rate}</a>
 						</div>
 						</c:otherwise>
 						</c:choose>		
-		</c:forEach><!-- j -->
+				</c:forEach><!-- j -->
 		</div>
 	</c:forEach><!-- i -->	
 			<div class='row text-center'>
@@ -177,12 +184,16 @@
 			</ul>
 			</div>
 		</div>
- 	
- 	</c:otherwise>   
- </c:choose>
- 	
- 	
- 	</div>		
+		</c:when>
+		<c:otherwise>
+		본 책 정보가 없습니다
+		</c:otherwise>
+ </c:choose>		
+ 			</c:otherwise>   
+ 		</c:choose>
+
+ 
+ 	</div><!-- 전체 div -->
 
 <!-- 여기까지 본문입니다 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 

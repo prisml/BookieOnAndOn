@@ -119,8 +119,13 @@ select receiverid from booking where senderid='jquery';
 select count(*) from booking where senderid='jquery';
 select receiberid from booking where senderid='jdbc';
 select count(*) from booking where senderid='jdbc';
--- 정우성이 부킹한 아이디와 부킹한 수
-select receiverid, count(*) from booking where senderid='java';
+
+-- 정우성의 부킹멤버 취소
+delete from booking where senderid='java' and receiverid='java11';
+
+-- 부킹확인
+select count(*)from booking where senderid='java' and receiverid='jquery';
+select count(*)from booking where senderid='jquery' and receiverid='java11';
 -- 아래꺼부터 드롭
 drop table book;
 drop sequence bookno_seq;
