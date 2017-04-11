@@ -6,6 +6,7 @@
 <head>
 <title>mypage</title>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <script src="//code.jquery.com/jquery.min.js"></script>
 <style type="text/css">
 
@@ -39,10 +40,14 @@ color: #ffff80;
 right: 50px;
 }
 
+.mySlides {display:none;}
+
 
 
 </style>
+<script src="/lib/w3.js"></script>
 <script type="text/javascript">
+	
 
 	$(document).ready(function(){
 		$.ajax({
@@ -86,10 +91,9 @@ right: 50px;
 		});//on
 	});//ready
 
-	
-
 
 </script>
+
 <jsp:include page="/template/script.jsp"></jsp:include>
 </head>
 
@@ -148,7 +152,34 @@ right: 50px;
  			${bookingcount}
  			</span>
  			</a>
- 			<div class="material-icons">&#xe88f;<span class='iconInfo'>당신이 즐겨찾기한 사람의 수를 나타냅니다</span></div>
+ 			<div class="material-icons">&#xe88f;<span class='iconInfo'>당신이 즐겨찾기한 사람의 수를 나타냅니다</span></div><br><br><br>
+ 			<p>내가 최근 본 책</p>
+ 			<div  class="container">
+ 			<div class="row">
+ 			<img class="mySlides" src="${pageContext.request.contextPath}/images/bookcover/1.jpg" width="200px">
+ 			<img class="mySlides" src="${pageContext.request.contextPath}/images/bookcover/10.jpg" width="200px">
+ 			<img class="mySlides" src="${pageContext.request.contextPath}/images/bookcover/11.jpg" width="200px">
+ 			<img class="mySlides" src="${pageContext.request.contextPath}/images/bookcover/12.jpg" width="200px">
+ 			<img class="mySlides" src="${pageContext.request.contextPath}/images/bookcover/13.jpg" width="200px">
+ 			</div>
+ 			</div>
+<script>
+var myIndex = 0;
+carousel();
+
+function carousel() {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none"; 
+    }
+    myIndex++;
+    if (myIndex > x.length) {myIndex = 1}    
+    x[myIndex-1].style.display = "block";  
+    x[myIndex].style.display = "block"; 
+    setTimeout(carousel, 2000); // Change image every 2 seconds
+}
+</script>
  		 </div>
  		</div>
  	</c:otherwise>   

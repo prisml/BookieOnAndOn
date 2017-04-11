@@ -36,12 +36,21 @@ public class MyPageController implements Controller {
 				url = "redirect:bookieOnAndOn/mypage.jsp";
 
 			} else {
-				MemberVO fvo = MemberDAO.getInstance().getMemberById(id);
-				request.setAttribute("fvo", fvo);
-				bookingcount = BookingDAO.getInstance().getTotalBookingCount(fvo.getId());
-				request.setAttribute("fbookingcount", bookingcount);
-				url = "bookieOnAndOn/mypage.jsp";
+				if(id.equals(vo.getId())){
+					bookingcount = BookingDAO.getInstance().getTotalBookingCount(vo.getId());
+					session.setAttribute("bookingcount", bookingcount);
+					url = "redirect:bookieOnAndOn/mypage.jsp";
+					
+				}else{
+					MemberVO fvo = MemberDAO.getInstance().getMemberById(id);
+					request.setAttribute("fvo", fvo);
+					bookingcount = BookingDAO.getInstance().getTotalBookingCount(fvo.getId());
+					request.setAttribute("fbookingcount", bookingcount);
+					url = "bookieOnAndOn/mypage.jsp";
 
+					
+				}
+				
 			}
 
 		}
