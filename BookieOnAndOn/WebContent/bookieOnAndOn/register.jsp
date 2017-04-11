@@ -67,6 +67,7 @@
 				return true;
 			}
 			else{
+				alert("ID,PASSWORD를 확인하여주십시오");
 				return false;
 			}
 		});
