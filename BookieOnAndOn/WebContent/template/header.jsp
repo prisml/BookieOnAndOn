@@ -84,7 +84,7 @@
 				type : "get",
 				url : "${pageContext.request.contextPath}/DispatcherServlet?command=bookAutoComplete",
 				dataType : "json",
-				data : {
+				data : { 
 					"title" : request.term
 				},
 				success : function(data) {
