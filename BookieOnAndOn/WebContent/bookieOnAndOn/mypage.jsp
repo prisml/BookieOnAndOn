@@ -56,10 +56,10 @@ if(${!empty fvo }){
 				
 				if(data=="true"){
 					//덮힌 책,부킹할 수 잇다
-					$("#bookingIcon").html("<img style='width:50px' src='${pageContext.request.contextPath}/images/bookingoff.png'>");
+					$("#bookingIcon").html("<span><img style='width:50px' src='${pageContext.request.contextPath}/images/bookingoff.png'></span>");
 				}else{
 					//펼쳐진 책,부킹이 이미 되어있어서 할 수 없다
-					$("#bookingIcon").html("<img style='width:50px' src='${pageContext.request.contextPath}/images/bookingon.png'>");
+					$("#bookingIcon").html("<span><img style='width:50px' src='${pageContext.request.contextPath}/images/bookingon.png'></span>");
 				}//if
 			}//success
 		});//ajax
@@ -74,7 +74,7 @@ if(${!empty fvo }){
 						
 						if(data=="true"){
 							$("#bookingIcon").empty();
-							$("#bookingIcon").html("<img style='width:50px' src='${pageContext.request.contextPath}/images/bookingon.png'>");
+							$("#bookingIcon").html("<span><img style='width:50px' src='${pageContext.request.contextPath}/images/bookingon.png'></span>");
 						}else{
 							alert("이미 부킹되어있습니다");
 						}
