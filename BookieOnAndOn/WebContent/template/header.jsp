@@ -121,13 +121,10 @@
                <ul>
                   <li class="current"><a class = "tab"
                      href="${pageContext.request.contextPath}/index.jsp">welcome</a></li>
-                     <li>|</li>
                   <li><a class = "tab"
                      href="${pageContext.request.contextPath}/bookieOnAndOn/login.jsp">로그인</a></li>
-                     <li>|</li>
                   <li><a class = "tab"
                      href="${pageContext.request.contextPath}/bookieOnAndOn/register.jsp">회원가입</a></li>
-                     <li>|</li>
                   <li><a class = "tab"
                      href="${pageContext.request.contextPath}/bookieOnAndOn/findId.jsp">아이디 찾기</a></li>
                      <li style = "padding:0px;">/</li>
