@@ -38,20 +38,56 @@ font-size:24px;
 color: #ffff80;
 right: 50px;
 }
-
+#bookingIcon2{
+position:absolute;
+font-size:24px;
+color: pink;
+right: 50px;
+}
 
 
 </style>
 <script type="text/javascript">
 
 $(document).ready(function(){
+	$.ajax({
+		type:"get",
+		url:"DispatcherServlet",
+		data:"command=bookingCheck&senderid=${sessionScope.mvo.id}&receiverid=${fvo.id }",
+		success:function(data){
+			
+			alert(data);
+			if(data=="true"){
+				$("#bookingIcon").html("<span  class='fa'>&#xf02d;</span>");
+			}else{
+				$("#bookingIcon2").html("<span  class='fa'>&#xf212;</span>");
+				
+			}
+		
+	
+		}
+	});
+
 	$("#bookingIcon").click(function(){
 		$.ajax({
 				type:"get",
 				url:"DispatcherServlet",
 				data:"command=addBooking&senderid=${sessionScope.mvo.id}&receiverid=${fvo.id }",
 				success:function(data){
-					alert(data);
+					
+						alert(data);
+						if(data=="true"){
+							$("#bookingIcon2").html("");
+							$("#bookingIcon").html("");
+							$("#bookingIcon").html("<span  class='fa'>&#xf02d;</span>");
+						}else{
+							$("#bookingIcon2").html("");
+							$("#bookingIcon").html("");
+							$("#bookingIcon2").html("<span  class='fa'>&#xf212;</span>");
+							
+						}
+					
+				
 					}
 			
 			});
@@ -97,7 +133,7 @@ $(document).ready(function(){
  	<c:when test="${!empty fvo }">
  		<div class="container">
   		<div class="jumbotron">
-  		<span id="bookingIcon" class="fa">&#xf02d;</span>
+  		<span id="bookingIcon"></span><span id="bookingIcon2"></span>
  			<h4 style='color:#3377ff'>${fvo.name } 님의 page입니다</h4><br>      
  			 <a class="btn btn-primary" href="${pageContext.request.contextPath}/DispatcherServlet?command=bookingList&id=${fvo.id}">
  			 booking
