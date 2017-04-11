@@ -40,7 +40,7 @@ public class MyPageController implements Controller {
 				ArrayList<VO> list= new ArrayList<VO>(); 
 				list=SawWishDAO.getInstance().getSawBookSlideList(vo.getId());
 				session.setAttribute("sawSlide", list);
-				url = "redirect:bookieOnAndOn/mypage.jsp";
+				url = "bookieOnAndOn/mypage.jsp";
 
 			} else {
 				if(id.equals(vo.getId())){
@@ -49,7 +49,7 @@ public class MyPageController implements Controller {
 					ArrayList<VO> list= new ArrayList<VO>(); 
 					list=SawWishDAO.getInstance().getSawBookSlideList(vo.getId());
 					session.setAttribute("sawSlide", list);
-					url = "redirect:bookieOnAndOn/mypage.jsp";
+					url = "bookieOnAndOn/mypage.jsp";
 					
 				}else{
 					MemberVO fvo = MemberDAO.getInstance().getMemberById(id);

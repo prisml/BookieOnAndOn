@@ -162,33 +162,13 @@ if(${!empty fvo }){
  			</a>
  			<div class="material-icons">&#xe88f;<span class='iconInfo'>당신이 즐겨찾기한 사람의 수를 나타냅니다</span></div><br><br><br>
  			<p>내가 최근 본 책</p>
- 			<div  class="container">
- 			<div class="row">
- 			<img class="mySlides" src="${pageContext.request.contextPath}/images/bookcover/1.jpg" width="200px">
- 			<img class="mySlides" src="${pageContext.request.contextPath}/images/bookcover/10.jpg" width="200px">
- 			<img class="mySlides" src="${pageContext.request.contextPath}/images/bookcover/11.jpg" width="200px">
- 			<img class="mySlides" src="${pageContext.request.contextPath}/images/bookcover/12.jpg" width="200px">
- 			<img class="mySlides" src="${pageContext.request.contextPath}/images/bookcover/13.jpg" width="200px">
- 			</div>
- 			</div>
-<script>
-var myIndex = 0;
-carousel();
-
-function carousel() {
-    var i;
-    var x = document.getElementsByClassName("mySlides");
-    for (i = 0; i < x.length; i++) {
-       x[i].style.display = "none"; 
-    }
-    myIndex++;
-    if (myIndex > x.length) {myIndex = 1}    
-    x[myIndex-1].style.display = "block";  
-    x[myIndex].style.display = "block"; 
-    x[myIndex+1].style.display = "block"; 
-    setTimeout(carousel, 2000); // Change image every 2 seconds
-}
-</script>
+ 	          <div  class="container">
+         				<div class="row">
+          <c:forEach items="${sessionScope.sawSlide }" var="saw" begin="1" end="5">
+             <img src="${pageContext.request.contextPath}/images/bookcover/${saw.bookno}.jpg" style="width:200px">
+          </c:forEach>
+          </div>
+          </div>
  		 </div>
  		</div>
  	</c:otherwise>   
