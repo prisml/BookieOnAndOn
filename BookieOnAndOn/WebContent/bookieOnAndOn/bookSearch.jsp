@@ -93,13 +93,16 @@
 														</div>
 													</div>
 												</div>
-							
+												<br><br>
 											<!-- overlay -->
-												${lvo.list[i*4+j].title}&nbsp;&nbsp;|&nbsp; <img
+											<div style="text-align: center">
+												${lvo.list[i*4+j].title}<br>
+												<img
 												width="17px"
 												src="${pageContext.request.contextPath}/images/staron.png">&nbsp;
 												<fmt:formatNumber value="${lvo.list[i*4+j].rate}"
 													pattern="0.0" />
+													</div>
 											</a>
 										</div>
 									</c:otherwise>
