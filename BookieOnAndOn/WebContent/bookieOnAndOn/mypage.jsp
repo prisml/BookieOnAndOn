@@ -43,47 +43,50 @@ right: 50px;
 
 </style>
 <script type="text/javascript">
-
-$(document).ready(function(){
-	$.ajax({
-		type:"get",
-		url:"DispatcherServlet",
-		data:"command=bookingCheck&senderid=${sessionScope.mvo.id}&receiverid=${fvo.id }",
-		success:function(data){
-			
-			if(data=="true"){
-				//덮힌 책,부킹할 수 잇다
-				$("#bookingIcon").html("<span  class='fa'>&#xf02d;</span>").css("color","yellow");
-			}else{
-				//펼쳐진 책,부킹이 이미 되어있어서 할 수 없다
-				$("#bookingIcon").html("<span  class='fa'>&#xf212;</span>").css("color","pink");
-				
-			}
-		
-	
-		}
-	});
-	$("#bookingIcon").on("click","span",function(){
+if(${!empty fvo }){
+	$(document).ready(function(){
 		$.ajax({
 			type:"get",
 			url:"DispatcherServlet",
-			data:"command=addBooking&senderid=${sessionScope.mvo.id}&receiverid=${fvo.id }",
+			data:"command=bookingCheck&senderid=${sessionScope.mvo.id}&receiverid=${fvo.id }",
 			success:function(data){
-					
-					if(data=="true"){
-						$("#bookingIcon").empty();
-						$("#bookingIcon").html("<span  class='fa'>&#xf212;</span>").css("color","pink");
-					}else{
-						alert("이미 부킹되어있습니다");
-						
-					}
 				
-			
+				if(data=="true"){
+					//덮힌 책,부킹할 수 잇다
+					$("#bookingIcon").html("<span  class='fa'>&#xf02d;</span>").css("color","yellow");
+				}else{
+					//펼쳐진 책,부킹이 이미 되어있어서 할 수 없다
+					$("#bookingIcon").html("<span  class='fa'>&#xf212;</span>").css("color","pink");
+					
 				}
+			
 		
-		});//ajax
-	});//on
-});//ready
+			}
+		});
+		$("#bookingIcon").on("click","span",function(){
+			$.ajax({
+				type:"get",
+				url:"DispatcherServlet",
+				data:"command=addBooking&senderid=${sessionScope.mvo.id}&receiverid=${fvo.id }",
+				success:function(data){
+						
+						if(data=="true"){
+							$("#bookingIcon").empty();
+							$("#bookingIcon").html("<span  class='fa'>&#xf212;</span>").css("color","pink");
+						}else{
+							alert("이미 부킹되어있습니다");
+							
+						}
+					
+				
+					}
+			
+			});//ajax
+		});//on
+	});//ready
+	
+}
+
 
 </script>
 <jsp:include page="/template/script.jsp"></jsp:include>
@@ -145,8 +148,6 @@ $(document).ready(function(){
  			</span>
  			</a>
  			<div class="material-icons">&#xe88f;<span class='iconInfo'>당신이 즐겨찾기한 사람의 수를 나타냅니다</span></div>
- 	
- 	
  		 </div>
  		</div>
  	</c:otherwise>   
