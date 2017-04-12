@@ -17,7 +17,7 @@ public class BookingCheckController implements Controller {
 		String receiverid=request.getParameter("receiverid");
 		boolean flag=false;
 		flag=BookingDAO.getInstance().BookingCheck(senderid, receiverid);
-		
+
 		out.print(flag);
 		out.close();
 		
