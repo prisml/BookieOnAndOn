@@ -118,6 +118,7 @@
 
            <!-- Nav -->
             <nav id="nav">
+            <br>
                <ul>
                   <li class="current"><a class = "tab"
                      href="${pageContext.request.contextPath}/index.jsp">welcome</a></li>
