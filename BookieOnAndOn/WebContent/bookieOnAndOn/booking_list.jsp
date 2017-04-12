@@ -9,13 +9,14 @@
 <style type="text/css">
 #toTop {
 	z-index: 1030;
-	width: 100px;
+	width: 60px;
+	height: 60px;
 	border: 2px solid #f7f7f7;
 	background: #f7f7f7;
 	text-align: center;
 	position: fixed;
-	bottom: 10px;
-	right: 10px;
+	bottom: 50px;
+	right: 50px;
 	cursor: pointer;
 	display: none;
 	color: #333;
@@ -104,7 +105,7 @@
 					</tbody>
 				</table>
 				<!-- Top 버튼 -->
-				<div id="toTop" align="right"><i class="fa fa-angle-double-up fa-5x"></i></div>
+				<div id="toTop" align="right"><i class="fa fa-angle-double-up fa-3x"></i></div>
 				
 				<!-- Pagination -->
 				<div class="row text-center">
