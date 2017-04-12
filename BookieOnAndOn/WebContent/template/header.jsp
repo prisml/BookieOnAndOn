@@ -135,7 +135,6 @@
 
             </nav>
             <br>
-            <br>
             <div class="container">
                <div class="row">
                   <div class="2u"></div>
@@ -170,10 +169,10 @@
                   src="${pageContext.request.contextPath}/images/Logo.png"
                   style="width: 250px;"></a>
             </div>
-            <br>
              <br>
             <!-- Nav -->
             <nav id="nav">
+            <br>
                <ul>
                <li class="current"><a class = "tab" href="${pageContext.request.contextPath}/index.jsp">welcome</a></li>
                <li><a class = "tab" href="javascript:logout()">${sessionScope.mvo.name}님 &nbsp; 로그아웃</a></li>
