@@ -132,6 +132,7 @@ if(${!empty fvo }){
  			<span class="badge">
  			${fbookingcount}
  			</span></a><br><br><br>
+ 			<c:if test="${!empty requestScope.fsawSlide }">
  			<p>${fvo.name}님의  본 책</p>		
  			<div class="container">
  				<div class="row">
@@ -140,6 +141,7 @@ if(${!empty fvo }){
  			</c:forEach>
  				</div>
  			</div>
+ 			</c:if>
 <script>
 var myIndex = 0;
 carousel();
@@ -181,6 +183,7 @@ function carousel() {
  			</span>
  			</a>
  			<div class="material-icons">&#xe88f;<span class='iconInfo'>당신이 즐겨찾기한 사람의 수를 나타냅니다</span></div><br><br><br>
+ 			<c:if test="${!empty sessionScope.sawSlide }">
  			<p>내가 본 책</p>
  			<div class="container">
  				<div class="row">
@@ -189,6 +192,7 @@ function carousel() {
  			</c:forEach>
  				</div>
  			</div>
+ 			</c:if>
 <script>
 var myIndex = 0;
 carousel();
