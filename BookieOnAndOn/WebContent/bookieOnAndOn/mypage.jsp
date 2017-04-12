@@ -7,17 +7,7 @@
 <title>mypage</title>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<script src="//code.jquery.com/jquery.min.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-<script src="http://malsup.github.com/jquery.cycle2.js"></script>
 <style type="text/css">
-.cycle-slideshow, .cycle-slideshow * { 
--webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; 
-}
-.cycle-slideshow { 
-width: 240px; min-width: 200px; max-width: 500px; margin: 50px auto; padding: 0; position: relative;
- }
-/* 슬라이드 */
 
 .material-icons{
 	color:#0000e6;
