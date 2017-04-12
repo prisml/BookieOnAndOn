@@ -38,8 +38,9 @@
 						로그인<i class="fa fa-check spaceLeft"></i>
 					</button>
 				</h3>
-				<a href="findIdPw.jsp">아이디/비밀번호 찾기</a><br> <a
-					href="register.jsp">회원가입</a>
+				<a href="${pageContext.request.contextPath}/bookieOnAndOn/findId.jsp">아이디</a>/<a href="${pageContext.request.contextPath}/bookieOnAndOn/findId.jsp">비밀번호 찾기</a>
+				<br> 
+					<a href="register.jsp">회원가입</a>
 			</div>
 		</form>
 	</div>

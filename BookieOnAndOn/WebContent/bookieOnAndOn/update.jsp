@@ -4,15 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font-awesome.min-register.css" media="screen" title="no title" charset="utf-8">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/style.css" media="screen" title="no title" charset="utf-8">
-	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<title>Insert title here</title>
+<jsp:include page="/template/script.jsp"></jsp:include>
 <script type="text/javascript">
 
 function cancel() {
@@ -26,6 +18,8 @@ function reset(){
 }
 
 	$(document).ready(function(){
+		$("#id").css("background", "#FFF0F5");
+		
 		var pw = $("#password");
 		var pwConfirm = $("#pwConfirm");
 		pwConfirm.keyup(function(){
@@ -55,7 +49,7 @@ function reset(){
 
 	<div class="center-block" style="width: 300px; padding: 15px;">
 
-		<form id="registerForm" name="registerForm" action="${pageContext.request.contextPath}/DispatcherServlet?command=update" name="updateForm">
+		<form id="updateForm" name="updateForm" action="${pageContext.request.contextPath}/DispatcherServlet?command=update" name="updateForm">
 			<div class="form-group">
 				<label for="InputEmail">아이디</label>  
 				<input type="text" class="form-control" name="id" id="id" value ="${mvo.id }" placeholder="아이디" readonly>			
@@ -64,13 +58,12 @@ function reset(){
 			<div class="form-group">
 				<label for="InputPassword1">새 비밀번호</label> <input type="password"
 					class="form-control" name="password" id="password"
-					placeholder="비밀번호">
+					placeholder="비밀번호">			
 			</div>
 				<div class="form-group">
 				<label for="InputPassword1">비밀번호 확인</label> <input type="password"
 					class="form-control" name="pwConfirm" id="pwConfirm"
-					placeholder="비밀번호 확인">
-					<span id="pwCheckResult"></span>
+					placeholder="비밀번호 확인">				
 			</div>
 
 			<div class="form-group">
@@ -83,7 +76,7 @@ function reset(){
 					class="form-control" name="tel" id="tel" 
 					placeholder="휴대폰 번호를 입력 해 주세요" value="${mvo.tel }">
 			</div>
-			<div class="form-group text-center">
+			<div class="form-group text-center" style="width:400px; margin-left:-63px;" align = "center">
 				<button type="submit" class="btn btn-info btn-sm " id="updateForm">
 					정보수정<i class="fa fa-check spaceLeft"></i>
 				</button>
@@ -94,9 +87,10 @@ function reset(){
 				<button class="btn btn-warning btn-sm" type="button"  onclick = "reset()">
 					새로작성<i class="fa fa-times spaceLeft"></i>
 				</button>
-				<br> <a href="findId.jsp">아이디</a>/<a href="findPw.jsp">비밀번호</a>　찾기
-				 
-			
+				<br>
+				<div style = "margin-top:10px;">
+					<a href="${pageContext.request.contextPath}/bookieOnAndOn/findId.jsp">아이디</a>/<a href="${pageContext.request.contextPath}/bookieOnAndOn/findPw.jsp">비밀번호 찾기</a>
+				</div>　
 			</div>
 		</form>
 	</div>
