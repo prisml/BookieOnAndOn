@@ -4,20 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link
-	href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css"
-	rel="stylesheet">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/font-awesome.min-register.css"
-	media="screen" title="no title" charset="utf-8">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/style.css"
-	media="screen" title="no title" charset="utf-8">
-<script src="//code.jquery.com/jquery.min.js"></script>
-<title>Insert title here</title>
+<jsp:include page="/template/script.jsp"></jsp:include>
 <script type="text/javascript">
 	function cancel() {
 		var f = confirm("가입을 취소하시겠습니까?");
@@ -123,8 +110,9 @@
 				<button class="btn btn-danger" type="submit"  onclick = "cancel()">
 					가입취소<i class="fa fa-times spaceLeft"></i>
 				</button>
-				<br> <a href="findId.jsp">아이디</a>/<a href="findPw.jsp">비밀번호</a> 찾기
-				 
+				<div style = "margin-top:10px">
+				<a href="${pageContext.request.contextPath}/bookieOnAndOn/findId.jsp">아이디</a>/<a href="${pageContext.request.contextPath}/bookieOnAndOn/findPw.jsp">비밀번호 찾기</a> 
+				 </div>
 			</div>
 		</form>
 	</div>

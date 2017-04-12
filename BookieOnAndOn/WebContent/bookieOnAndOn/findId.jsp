@@ -4,14 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font-awesome.min-register.css" media="screen" title="no title" charset="utf-8">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/style.css" media="screen" title="no title" charset="utf-8">
-<title>Insert title here</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<jsp:include page="/template/script.jsp"></jsp:include>
 </head>
 <body>
 <script type="text/javascript">
@@ -50,8 +43,9 @@
             </div>
             <div class="form-group text-center">
              <button class="btn btn-info " id = "findIdbtn">아이디 찾기<i class="fa fa-check spaceLeft" ></i></button>            
-             <br><br>
-             <a href="register.jsp">회원가입</a>
+             <div style="margin-top:10px">
+             <a href="${pageContext.request.contextPath}/bookieOnAndOn/register.jsp">회원가입</a>
+             </div>
             </div>
         
         </div>
