@@ -7,42 +7,48 @@
 <jsp:include page="/template/script.jsp"></jsp:include>
 <title>${vo.title }</title>
 <script type="text/javascript">
-	$(document).ready(function() {
-		$.ajax({
-			type:"post",
-			url:"DispatcherServlet",
-			data:"command=getReviewList&bookno=${vo.bookno}",
-			dataType:"json",
-			success:function(data){
-				$("#reviewList").append("<ul>");
-				for(var i=0;i<data.list.length;i++){
-					var innerHtml = "";
-					innerHtml += "<div class='row'><div class='3u 12u(medium)'>";
-					for(var j=0;j<data.list[i].star;j++)
-						innerHtml += "<img style='width:30px' src='${pageContext.request.contextPath}/images/staron.png'> ";
-					for(var j=data.list[i].star;j<5;j++)
-						innerHtml += "<img style='width:30px' src='${pageContext.request.contextPath}/images/staroff.png'> ";
-					innerHtml += "</div><div class=''>";
-					innerHtml += "<a href=${pageContext.request.contextPath}/DispatcherServlet?command=mypage&id="+data.list[i].id+">"
-					innerHtml += data.list[i].id+"</a> <br> "; // to do
-					innerHtml += data.list[i].rvcontent+"<br>";
-					innerHtml += data.list[i].rvdate+"<br>";
-					innerHtml += "</div></div></li>";
-					$("#reviewList").append(innerHtml);					
-				}
-				$("#reviewList").append("</ul>");
-				var pb = data.pagingBean;
-				if(pb.previousPageGroup ==true){
-					$("#reviewPaging").append("<li id=prePage><<</li>");
-				}
-				for(var i=pb.startPageOfPageGroup;i<=pb.endPageOfPageGroup;i++){
-					$("#reviewPaging").append("<li><a class=movePage href=#>"+i+"</a></li>");
-				}
-				if(pb.nextPageGroup ==true){
-					$("#reviewPaging").append("<li id=nextPage>>></li>");
-				}
+function paging(page) {
+	$.ajax({
+		type:"post",
+		url:"DispatcherServlet",
+		data:"command=getReviewList&bookno=${vo.bookno}&page="+page,
+		dataType:"json",
+		success:function(data){
+			$("#reviewList").html("");		
+			$("#reviewList").append("<ul>");
+			for(var i=0;i<data.list.length;i++){
+				var innerHtml = "";
+				innerHtml += "<div class='row'><div class='3u 12u(medium)'><br>";
+				for(var j=0;j<data.list[i].star;j++)
+					innerHtml += "<img style='width:30px' src='${pageContext.request.contextPath}/images/staron.png'> ";
+				for(var j=data.list[i].star;j<5;j++)
+					innerHtml += "<img style='width:30px' src='${pageContext.request.contextPath}/images/staroff.png'> ";
+				innerHtml += "</div><div class='8u 12u(medium)'><ul><li>";
+				innerHtml += "<a href=${pageContext.request.contextPath}/DispatcherServlet?command=mypage&id="+data.list[i].id+">"
+				innerHtml += data.list[i].id+"</a> <br></li><li>"; // to do
+				innerHtml += data.list[i].rvcontent+"<br></li><li>";
+				innerHtml += data.list[i].rvdate+"</li><br></ul>";
+				if(data.list[i].id == "${mvo.id}")
+					innerHtml += "</div><div id='deleteReview' style='float:right'><img style='width:20px;padding-top:20px;' src='${pageContext.request.contextPath}/images/x.png'</div></div></li>";
+				$("#reviewList").append(innerHtml);					
 			}
-		});
+			$("#reviewList").append("</ul>");
+			$("#reviewPaging").html("");
+			var pb = data.pagingBean;
+			if(pb.previousPageGroup ==true){
+				$("#reviewPaging").append("<li><a style='display: none;'>"+pb.startPageOfPageGroup-1+"</a><<</li>");
+			}
+			for(var i=pb.startPageOfPageGroup;i<=pb.endPageOfPageGroup;i++){
+				$("#reviewPaging").append("<li><a class=movePage href=#>"+i+"</a></li>");
+			}
+			if(pb.nextPageGroup ==true){
+				$("#reviewPaging").append("<li><a style='display: none;'>"+pb.endPageOfPageGroup+1+"</a>>></li>");
+			}
+		}
+	});
+}
+	$(document).ready(function() {
+		paging(1);
 		$.ajax({
 			type:"get",
 			url:"DispatcherServlet",
@@ -89,49 +95,26 @@
 		});
 		$("#reviewPaging").on("click","li",function() {
 			event.preventDefault();
-			$.ajax({
-				type:"post",
-				url:"DispatcherServlet",
-				data:"command=getReviewList&bookno=${vo.bookno}&page="+$(this).children("a").text(),
-				dataType:"json",
-				success:function(data){
-					$("#reviewList").html("");		
-					$("#reviewList").append("<ul>");
-					for(var i=0;i<data.list.length;i++){
-						var innerHtml = "";
-						innerHtml += "<div class='row'><div class='3u 12u(medium)'>";
-						for(var j=0;j<data.list[i].star;j++)
-							innerHtml += "<img style='width:30px' src='${pageContext.request.contextPath}/images/staron.png'> ";
-						for(var j=data.list[i].star;j<5;j++)
-							innerHtml += "<img style='width:30px' src='${pageContext.request.contextPath}/images/staroff.png'> ";
-							innerHtml += "</div><div class=''>";
-							innerHtml += "<a href=${pageContext.request.contextPath}/DispatcherServlet?command=mypage&id="+data.list[i].id+">"
-							innerHtml += data.list[i].id+"</a> <br> "; // to do
-							innerHtml += data.list[i].rvcontent+"<br>";
-						innerHtml += data.list[i].rvdate+"<br>";
-						innerHtml += "</div></div></li>";
-						$("#reviewList").append(innerHtml);					
-					}
-					$("#reviewList").append("</ul>");
-					$("#reviewPaging").html("");
-					var pb = data.pagingBean;
-					if(pb.previousPageGroup ==true){
-						$("#reviewPaging").append("<li><a style='display: none;'>"+pb.startPageOfPageGroup-1+"</a><<</li>");
-					}
-					for(var i=pb.startPageOfPageGroup;i<=pb.endPageOfPageGroup;i++){
-						$("#reviewPaging").append("<li><a class=movePage href=#>"+i+"</a></li>");
-					}
-					if(pb.nextPageGroup ==true){
-						$("#reviewPaging").append("<li><a style='display: none;'>"+pb.endPageOfPageGroup+1+"</a>>></li>");
-					}
-				}
-			});
+			paging($(this).children("a").text());
 		});
+		$("#reviewList").on("click","#deleteReview",function() {
+			if(confirm("리뷰를 삭제하시겠습니까?")){
+				$.ajax({
+					type:"get",
+					url:"DispatcherServlet",
+					data:"command=reviewDelete&bookno=${vo.bookno}&id=${mvo.id}",
+					success:function(data){
+						location.href=document.location.href;
+					}
+				});
+			}
+		});
+		
 		$( ".star_rating a" ).click(function() {
 			event.preventDefault();
 			$(this).parent().children("a").removeClass("on");
 			$(this).addClass("on").prevAll("a").addClass("on");
-			$(this).parent().children("a").html("<img style='width:30px' src='${pageContext.request.contextPath}/images/checkoff.png'>");
+			$(this).parent().children("a").html("<img style='width:30px' src='${pageContext.request.contextPath}/images/staroff.png'>");
 			$(".on").html("<img style='width:30px' src='${pageContext.request.contextPath}/images/staron.png'>");
 			return false;
 		});

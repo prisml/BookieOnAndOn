@@ -41,7 +41,16 @@ right: 50px;
 .mySlides {display:none;}
 .mySlide{display:none;}
 
-
+.image {
+    position:relative;
+   /*  float:left; /* optional */
+}
+.image .text {
+	font-size:181%;
+    position:absolute;
+    top:72%; /* in conjunction with left property, decides the text position */
+    left:42%;
+}
 
 </style>
 <script type="text/javascript">
@@ -99,39 +108,42 @@ right: 50px;
       
 <!-- 여기서부터 본문입니다~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
          <div class="container">
-
-<ul class="nav nav-tabs">
-   
-   <c:choose>
-       <c:when test="${!empty fvo }">
-          <li class="active"><a href="${pageContext.request.contextPath}/DispatcherServlet?command=mypage&id=${fvo.id}">${fvo.name }님의 page </a></li>
-          <li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=sawBookList&id=${fvo.id}" >본책 </a></li>
-          <li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=wishBookList&id=${fvo.id }">보고싶은책</a></li>
-       </c:when>
-       <c:otherwise>
-          <li class="active"><a href="${pageContext.request.contextPath}/DispatcherServlet?command=mypage" >mypage </a></li>
-          <li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=sawBookList" >본책 </a></li>
-          <li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=wishBookList">보고싶은책</a></li>
-       </c:otherwise>   
-    </c:choose>
-            
-</ul>
-<br><br><br>
-
+         <c:choose>
+       	<c:when test="${!empty fvo }">
+         <h3><a href="${pageContext.request.contextPath}/DispatcherServlet?command=mypage&id=${fvo.id}">&nbsp;&nbsp;&nbsp;&nbsp;${fvo.name }님의 PAGE</a></h3>
+         </c:when>         
+          <c:otherwise>
+          <h3><a href="${pageContext.request.contextPath}/DispatcherServlet?command=mypage" >&nbsp;&nbsp;&nbsp;&nbsp;MY PAGE</a></h3>
+          </c:otherwise>
+          </c:choose><br>
    <div id="mypageInfo">
- <c:choose>
-
+ 	<c:choose>
  	<c:when test="${!empty fvo }">
  		<div class="container">
-  		<div class="jumbotron">
+  		<div class="jumbotron"><!-- 속컨테이너 -->
   		<span id="bookingIcon"></span>
- 			<h4 style='color:#3377ff'>${fvo.name } 님의 page입니다</h4><br>      
- 			 <a class="btn btn-primary" href="${pageContext.request.contextPath}/DispatcherServlet?command=bookingList&id=${fvo.id}">
- 			 booking
- 			<span class="badge">
+ 			<div class="col-3" align="center">
+  			<div class="image">  
+  			<a href="${pageContext.request.contextPath}/DispatcherServlet?command=bookingList&id=${fvo.id}"><img alt="" src="${pageContext.request.contextPath}/images/bookingcount.png"></a>
+  			<div class="text">  			
  			${fbookingcount}
- 			</span></a><br><br><br>
-			<c:if test="${!empty requestScope.fsawSlide }">
+  			</div></div>
+  			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+  			<div class="image">  
+  			<a href="${pageContext.request.contextPath}/DispatcherServlet?command=sawBookList&id=${fvo.id}"><img alt="" src="${pageContext.request.contextPath}/images/sawcount.png"></a>
+  			<div class="text">  			
+ 			${requestScope.SawTotal}
+  			</div></div>
+  			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  			<div class="image">  
+			<a href="${pageContext.request.contextPath}/DispatcherServlet?command=wishBookList&id=${fvo.id}"><img alt="" src="${pageContext.request.contextPath}/images/wishcount.png"></a>
+  			<div class="text">  			
+ 			${requestScope.WishTotal}
+  			</div></div>
+  			</div>
+ 			<!-- 슬라이드 -->
+ 			<br><br><br>
+ 			<c:if test="${!empty requestScope.fsawSlide }">
  			<p>${fvo.name}님의  본 책</p>		
  			<div class="container">
  				<div class="row">
@@ -166,30 +178,45 @@ function carousel() {
    
     setTimeout(carousel, 2000); // Change image every 2 seconds
 }
-</script> 
+</script>
  			
- 			</div>
- 			</div>
+ 			</div><!-- jumbo -->
+ 			</div><!--container -->
  	</c:when>
+ 	
  	<c:otherwise>
  		<div class="container">
   			<div class="jumbotron">
-  			
- 			<h3 style='color:#3377ff'>Mypage</h3><br>
- 			<a class="btn btn-primary" href="${pageContext.request.contextPath}/DispatcherServlet?command=bookingList&id=${mvo.id}">
- 			booking
- 			<span class="badge">
+  			<br><br>
+  			<div class="col-3" align="center">
+  			<div class="image">  
+  			<a href="${pageContext.request.contextPath}/DispatcherServlet?command=bookingList&id=${mvo.id}"><img alt="" src="${pageContext.request.contextPath}/images/bookingcount.png"></a>
+  			<div class="text">  			
  			${sessionScope.bookingcount}
- 			</span>
- 			</a>
- 			<div class="material-icons">&#xe88f;<span class='iconInfo'>당신이 즐겨찾기한 사람의 수를 나타냅니다</span></div><br><br><br>
+  			</div></div>
+  			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+  			<div class="image">  
+  			<a href="${pageContext.request.contextPath}/DispatcherServlet?command=sawBookList"><img alt="" src="${pageContext.request.contextPath}/images/sawcount.png"></a>
+  			<div class="text">  			
+ 			${sessionScope.SawTotalContent}
+  			</div></div>
+  			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  			<div class="image">  
+			<a href="${pageContext.request.contextPath}/DispatcherServlet?command=wishBookList"><img alt="" src="${pageContext.request.contextPath}/images/wishcount.png"></a>
+  			<div class="text">  			
+ 			${sessionScope.WishTotalContent}
+  			</div></div>
+  			</div>
+ 			
+ 			<!-- 슬라이드 -->
+ 			<br><br><br><br>
  			<c:if test="${!empty sessionScope.sawSlide }">
  			<p>내가 본 책</p>
  			<div class="container">
  				<div class="row">
  				<c:forEach items="${sessionScope.sawSlide }" var="sawSlide">
- 			<img class="mySlides" src="${pageContext.request.contextPath}/images/bookcover/${sawSlide.bookno }.jpg" style="width: 200px;">
- 			</c:forEach>
+ 					<img class="mySlides" src="${pageContext.request.contextPath}/images/bookcover/${sawSlide.bookno }.jpg" style="width: 200px;">
+ 				</c:forEach>
  				</div>
  			</div>
  			</c:if>

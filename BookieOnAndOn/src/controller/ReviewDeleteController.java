@@ -16,7 +16,7 @@ public class ReviewDeleteController implements Controller {
 		String bookno = request.getParameter("bookno");
 		MemberVO vo = (MemberVO) session.getAttribute("mvo");
 		String id = vo.getId();
-		ReviewDAO.getInstance().registReview(new ReviewVO(bookno, id, 0, "", ""));
+		ReviewDAO.getInstance().deleteReview(new ReviewVO(bookno, id, 0, "", ""));
 		return "AjaxView";
 	}
 
