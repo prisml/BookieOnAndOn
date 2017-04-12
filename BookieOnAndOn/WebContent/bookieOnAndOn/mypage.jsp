@@ -116,7 +116,6 @@ right: 50px;
           <h3><a href="${pageContext.request.contextPath}/DispatcherServlet?command=mypage" >&nbsp;&nbsp;&nbsp;&nbsp;MY PAGE</a></h3>
           </c:otherwise>
           </c:choose><br>
-
    <div id="mypageInfo">
  	<c:choose>
  	<c:when test="${!empty fvo }">
