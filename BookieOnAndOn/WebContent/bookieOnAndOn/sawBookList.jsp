@@ -129,7 +129,7 @@
 			</ul>
 			</div>
 		</div>
-		</c:when><c:otherwise> 본 책 정보가 없습니다</c:otherwise>  </c:choose>
+		</c:when><c:otherwise> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;본 책 정보가 없습니다</c:otherwise>  </c:choose>
  		</c:when>
  	<c:otherwise>
  <!--   내가 본 책 리스트~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->	
@@ -192,7 +192,7 @@
 		
 		</c:when>
 		<c:otherwise>
-		본 책 정보가 없습니다
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;본 책 정보가 없습니다
 		</c:otherwise>
  </c:choose>		
  			</c:otherwise>   
