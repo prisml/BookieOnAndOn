@@ -28,8 +28,11 @@ body {
 	background-repeat: repeat-x, repeat;
 	background-size: 100% 30em, auto;
 	font-size: 13pt;
-	color: #696969;
+	color: #2E2E2E;
 	font-weight: 300;
+}
+a{
+color:#555;
 }
 input[type=password]{
 	font-family: 'Malgun Gothic';

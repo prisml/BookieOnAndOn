@@ -48,8 +48,11 @@ right: 50px;
 .image .text {
 	font-size:181%;
     position:absolute;
-    top:72%; /* in conjunction with left property, decides the text position */
-    left:42%;
+    top:65%; /* in conjunction with left property, decides the text position */
+    left:0%;
+}
+.text{
+	width: 100%;
 }
 
 </style>
@@ -123,21 +126,19 @@ right: 50px;
   		<div class="jumbotron"><!-- 속컨테이너 -->
   		<span id="bookingIcon"></span>
  			<div class="col-3" align="center">
-  			<div class="image">  
+  			<div style="padding:50px" class="image">  
   			<a href="${pageContext.request.contextPath}/DispatcherServlet?command=bookingList&id=${fvo.id}"><img alt="" src="${pageContext.request.contextPath}/images/bookingcount.png"></a>
-  			<div class="text">  			
+  			<div align="center" class="text">  			
  			${fbookingcount}
-  			</div></div>
-  			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
-  			<div class="image">  
+  			</div></div> 
+  			<div style="padding:50px" class="image">  
   			<a href="${pageContext.request.contextPath}/DispatcherServlet?command=sawBookList&id=${fvo.id}"><img alt="" src="${pageContext.request.contextPath}/images/sawcount.png"></a>
-  			<div class="text">  			
+  			<div align="center" class="text">  			
  			${requestScope.SawTotal}
   			</div></div>
-  			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  			<div class="image">  
+  			<div style="padding:50px" class="image">  
 			<a href="${pageContext.request.contextPath}/DispatcherServlet?command=wishBookList&id=${fvo.id}"><img alt="" src="${pageContext.request.contextPath}/images/wishcount.png"></a>
-  			<div class="text">  			
+  			<div align="center" class="text">  			
  			${requestScope.WishTotal}
   			</div></div>
   			</div>
@@ -189,21 +190,19 @@ function carousel() {
   			<div class="jumbotron">
   			<br><br>
   			<div class="col-3" align="center">
-  			<div class="image">  
+  			<div style="padding:50px" class="image">  
   			<a href="${pageContext.request.contextPath}/DispatcherServlet?command=bookingList&id=${mvo.id}"><img alt="" src="${pageContext.request.contextPath}/images/bookingcount.png"></a>
-  			<div class="text">  			
+  			<div align="center" class="text">  			
  			${sessionScope.bookingcount}
-  			</div></div>
-  			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
-  			<div class="image">  
+  			</div></div> 
+  			<div style="padding:50px" class="image">  
   			<a href="${pageContext.request.contextPath}/DispatcherServlet?command=sawBookList"><img alt="" src="${pageContext.request.contextPath}/images/sawcount.png"></a>
-  			<div class="text">  			
+  			<div align="center" class="text">  			
  			${sessionScope.SawTotalContent}
   			</div></div>
-  			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  			<div class="image">  
+  			<div style="padding:50px" class="image">  
 			<a href="${pageContext.request.contextPath}/DispatcherServlet?command=wishBookList"><img alt="" src="${pageContext.request.contextPath}/images/wishcount.png"></a>
-  			<div class="text">  			
+  			<div align="center" class="text">  			
  			${sessionScope.WishTotalContent}
   			</div></div>
   			</div>
