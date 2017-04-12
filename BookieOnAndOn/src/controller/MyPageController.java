@@ -37,10 +37,13 @@ public class MyPageController implements Controller {
 			if (id == null) {
 				bookingcount = BookingDAO.getInstance().getTotalBookingCount(vo.getId());
 				session.setAttribute("bookingcount", bookingcount);
-				System.out.println(bookingcount);
 				ArrayList<VO> list= new ArrayList<VO>(); 
 				list=SawWishDAO.getInstance().getSawBookSlideList(vo.getId());
 				session.setAttribute("sawSlide", list);
+				int SawTotalContent=SawWishDAO.getInstance().getSawTotalContent(vo.getId());
+				int WishTotalContent=SawWishDAO.getInstance().getWishTotalContent(vo.getId());
+				session.setAttribute("SawTotalContent", SawTotalContent);
+				session.setAttribute("WishTotalContent", WishTotalContent);
 				url = "bookieOnAndOn/mypage.jsp";
 
 			} else {
@@ -50,6 +53,10 @@ public class MyPageController implements Controller {
 					ArrayList<VO> list= new ArrayList<VO>(); 
 					list=SawWishDAO.getInstance().getSawBookSlideList(vo.getId());
 					session.setAttribute("sawSlide", list);
+					int SawTotalContent=SawWishDAO.getInstance().getSawTotalContent(vo.getId());
+					int WishTotalContent=SawWishDAO.getInstance().getWishTotalContent(vo.getId());
+					session.setAttribute("SawTotalContent", SawTotalContent);
+					session.setAttribute("WishTotalContent", WishTotalContent);
 					url = "bookieOnAndOn/mypage.jsp";
 					
 				}else{
@@ -60,6 +67,10 @@ public class MyPageController implements Controller {
 					ArrayList<VO> list= new ArrayList<VO>(); 
 					list=SawWishDAO.getInstance().getSawBookSlideList(fvo.getId());
 					request.setAttribute("fsawSlide", list);
+					int SawTotal=SawWishDAO.getInstance().getSawTotalContent(fvo.getId());
+					int WishTotal=SawWishDAO.getInstance().getWishTotalContent(fvo.getId());
+					request.setAttribute("SawTotal", SawTotal);
+					request.setAttribute("WishTotal", WishTotal);
 					url = "bookieOnAndOn/mypage.jsp";
 
 					

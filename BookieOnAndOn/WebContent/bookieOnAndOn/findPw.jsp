@@ -4,14 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font-awesome.min-register.css" media="screen" title="no title" charset="utf-8">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/style.css" media="screen" title="no title" charset="utf-8">
-<title>Insert title here</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<jsp:include page="/template/script.jsp"></jsp:include>
 </head>
 <body>
 <script type="text/javascript">
@@ -22,7 +15,7 @@
 				url:"${pageContext.request.contextPath}/DispatcherServlet?command=findPw",
 				data:{"id":$("#id").val(), "name":$("#name").val(), "tel":$("#tel").val()},
 				success:function(pw){
-					if(pw == null){
+					if(pw == "null"){
 						alert("찾는 정보 없습니다.");
 					}
 					else{
@@ -30,6 +23,9 @@
 					}
 				}
 			});
+		});
+		$("#loginBtn").click(function(){
+			location.href="${pageContext.request.contextPath}/bookieOnAndOn/login.jsp";
 		});
 	});
 </script>
@@ -42,18 +38,19 @@
         <div class="center-block" style="width: 300px;padding:15px;">
             <div class="form-group" >
                  <label>아이디</label>
-              <input id="id" type="text" class="form-control" placeholder="아이디">
+              <input id="id" type="text" class="form-control" placeholder="아이디"><br>
               <label>이름</label>
-              <input id="name" type="text" class="form-control" required="required" placeholder="이름" >
-            </div>
-            <div class="form-group">
+              <input id="name" type="text" class="form-control" required="required" placeholder="이름" ><br>
+          	
               <label>전화번호</label>
               <input id="tel" type="text" class="form-control" placeholder="전화번호">        
             </div>
             <div class="form-group text-center">
+             <button class="btn btn-warning " id = "loginBtn">로그인하러 가기<i class="fa fa-check spaceLeft" ></i></button>
              <button class="btn btn-info " id = "findIdbtn">비밀번호 찾기<i class="fa fa-check spaceLeft" ></i></button>            
-             <br><br>
-             <a href="register.jsp">회원가입</a>
+             <div style="margin-top:10px">
+             <a href="${pageContext.request.contextPath}/bookieOnAndOn/register.jsp">회원가입</a>
+             </div>
             </div>
         
         </div>

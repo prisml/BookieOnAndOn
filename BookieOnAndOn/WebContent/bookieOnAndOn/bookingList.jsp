@@ -20,6 +20,19 @@
 			});//ajax
 		});//click
 	});//ready
+	/* 스크롤 탑버튼 ajax */
+	$(document).ready(function() {
+		$("#toTop").bind("click", function() {
+			$("body").animate({scrollTop : 0}, 200);
+			});
+		$(window).scroll(function() {
+			if ($(this).scrollTop() != 0) {
+				$('#toTop').fadeIn();
+				} else {
+					$('#toTop').fadeOut();
+					}
+			});
+		});//ready
 </script>
 </head>
 <body class="homepage">
@@ -34,36 +47,34 @@
 							<c:choose>
 								<c:when test="${requestScope.myId.name == sessionScope.mvo.name}">
 									<td align="center"><h1>나의 Booking: ${requestScope.receiverIdCount }명</h1></td>
+									<td colspan="2"><h1>Booking_Count</h1></td>
 								</c:when>
 								<c:otherwise>
 									<td align="center"><h1>${requestScope.myId.name }님의 Booking: ${requestScope.receiverIdCount }명</h1></td>
+									<td align="center"><h1>Booking_Count</h1></td>
 								</c:otherwise>
 							</c:choose>
-							<td colspan="2"><h1>Booking_Count</h1></td>
 						</tr>
 					</thead>
 					<tbody>
 						<c:forEach var="mvo" items="${requestScope.receiverIdList.list }">
-							<tr id="${mvo.receiverid }" class="success">
+							<tr id="${mvo.receiverid }">
 								<!-- 부킹 상대 아이디 -->
 								<td align="center"><a style="text-decoration:none"
 								href="${pageContext.request.contextPath}/DispatcherServlet?command=mypage&id=${mvo.receiverid }">${mvo.receiverid }</a></td>
 								<!-- 상대 아이디별 부킹 수 -->
 								<td align="center">${mvo.receiveridcount }</td>
 								<!-- 부킹 취소 버튼 -->
+								<c:if test="${requestScope.myId.name == sessionScope.mvo.name}">
 								<td align="center"><button id="receiverid" class="btn-danger btn-sm" value="${mvo.receiverid }">Cancel</button></td>
+								</c:if>
 							</tr>
 						</c:forEach>
 					</tbody>
 				</table>
-				<div class="row">
-					<div class="col-sm-8"></div>
-						<div class="col-sm-4" align="right">
-							<a href="${pageContext.request.contextPath}/DispatcherServlet?command=mypage"><button class="btn-primary btn-lg">My Page</button></a>
-							<a href="${pageContext.request.contextPath}/DispatcherServlet?command=main"><button class="btn-success btn-lg">Home</button></a>
-						</div>
-					</div>
-				</div>
+				<!-- Top 버튼 -->
+				<div id="toTop" align="right" ><i class="fa fa-angle-double-up fa-3x"></i></div>
+				
 				<!-- Pagination -->
 				<div class="row text-center">
 					<div class="col-lg-12">
@@ -71,7 +82,7 @@
 							<c:set var="pb" value="${requestScope.receiverIdList.pagingBean }" />
 							<!-- 이전 page -->
 							<c:if test="${pb.previousPageGroup }">
-								<li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=bookingList&pageNo=${pb.startPageOfPageGroup-1 }">&laquo;</a></li>
+								<li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=bookingList&pageNo=${pb.startPageOfPageGroup-1 }">◀</a></li>
 							</c:if>
 							<!-- 현재 page -->
 							<c:forEach begin="${pb.startPageOfPageGroup }" end="${pb.endPageOfPageGroup }" var="pageNo">
@@ -86,13 +97,12 @@
 							</c:forEach>
 							<!-- 다음 page -->
 							<c:if test="${pb.nextPageGroup }">
-								<li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=bookingList&pageNo=${pb.endPageOfPageGroup+1 }">&raquo;</a></li>
+								<li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=bookingList&pageNo=${pb.endPageOfPageGroup+1 }">▶</a></li>
 							</c:if>
 						</ul>
 					</div>
 				</div>
 			</div>
-			<hr>
 
 			
 			<!-- /.row -->

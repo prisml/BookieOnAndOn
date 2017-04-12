@@ -25,6 +25,7 @@ a:hover{
 }
 
 .overlay {
+	width: 260px;
    dispaly: block;
    position: absolute;
    top: 65%;
@@ -154,7 +155,7 @@ a:hover{
 			<div class="container">
 			
 			<!-- Section은 여기서 작업하도록! -->
-	<ul class="nav nav-tabs nav-justified">	
+	<ul class="nav nav-tabs nav-justified" style="align:center">	
    		<li class="active"><a href="${pageContext.request.contextPath}/index.jsp">전체</a></li>
  	    <li><a href="#">인문</a></li>
  	    <li><a href="#">소설</a></li>
@@ -163,7 +164,8 @@ a:hover{
  	    <li><a href="#">IT</a></li>
    		<li><a href="#">만화</a></li>
   	</ul>
-  	<br><br> 
+  	<div class="box">
+  	<br>
   	<!--------------- 책 리스트 -----------------> 
   	<c:set var="listVo" value="${requestScope.listVo}"/>  
   	<c:set var="size" value="${fn:length(listVo.list)}"/>
@@ -178,7 +180,7 @@ a:hover{
 			<div class="col-md-3 portfolio-item">
 				<a href="${pageContext.request.contextPath}/DispatcherServlet?command=detail&bookno=${listVo.list[i*4+j].bookno}">
 				<div class="w3-one">
-				<img height="390px" width="263px" src="${pageContext.request.contextPath}/images/bookcover/${listVo.list[i*4+j].bookno}.jpg" alt="">
+				<img height="390px" width="260px" src="${pageContext.request.contextPath}/images/bookcover/${listVo.list[i*4+j].bookno}.jpg" alt="">
 				<div class='overlay'><div class='overlaytext'>
 				<h4>${listVo.list[i*4+j].title}</h4>
 				저자&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -201,7 +203,6 @@ a:hover{
 		</div>
 	</c:forEach><!-- i -->	
   	</div><!-- showBookList -->			
-	<hr>	
 	<!---------------- 페이징 ------------------>
 	<div class="row text-center">
 			<div class="col-lg-12">
@@ -209,7 +210,7 @@ a:hover{
 			<ul class="pagination">
 			<c:if test="${listVo.pagingBean.previousPageGroup}">
 							<li><a
-								href="${pageContext.request.contextPath}/DispatcherServlet?command=main&pageNo=${listVo.pagingBean.startPageOfPageGroup-1}">&laquo;</a></li>
+								href="${pageContext.request.contextPath}/DispatcherServlet?command=main&pageNo=${listVo.pagingBean.startPageOfPageGroup-1}">◀</a></li>
 						</c:if>
 						<c:forEach var="num"
 							begin="${listVo.pagingBean.startPageOfPageGroup}"
@@ -226,7 +227,7 @@ a:hover{
 						</c:forEach>
 						<c:if test="${listVo.pagingBean.nextPageGroup}">
 							<li><a 
-								href="${pageContext.request.contextPath}/DispatcherServlet?command=main&pageNo=${listVo.pagingBean.endPageOfPageGroup+1}">&raquo;
+								href="${pageContext.request.contextPath}/DispatcherServlet?command=main&pageNo=${listVo.pagingBean.endPageOfPageGroup+1}">▶
 							</a></li>
 						</c:if>
 			</ul></div>
@@ -235,6 +236,7 @@ a:hover{
 		</div><!-- row text-center -->
 
 			</div>
+		</div>
 		</div>
 		<jsp:include page="/template/footer.jsp"></jsp:include>
 	</div>

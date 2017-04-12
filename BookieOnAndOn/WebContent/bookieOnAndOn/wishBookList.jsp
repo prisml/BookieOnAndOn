@@ -22,7 +22,7 @@
   right: 0;
   background-color: black;
   overflow: hidden;
-  width: 100%;
+  width: 260px;
   height: 0;
   transition: .5s ease;
   
@@ -61,21 +61,16 @@
 <!-- 여기서부터 본문입니다~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 			<div class="container">
 		
-<ul class="nav nav-tabs">
- <c:choose>
- 		<c:when test="${!empty fvo }">
- 			<li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=mypage&id=${fvo.id}" >${fvo.name }님의 page </a></li>
- 			<li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=sawBookList&id=${fvo.id }" >본책 </a></li>
-		    <li class="active"><a href="${pageContext.request.contextPath}/DispatcherServlet?command=wishBookList&id=${fvo.id }">보고싶은책</a></li>
- 		</c:when>
- 		<c:otherwise>
- 			<li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=mypage" >mypage </a></li>
- 			<li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=sawBookList" >본책 </a></li>
-		    <li class="active"><a href="${pageContext.request.contextPath}/DispatcherServlet?command=wishBookList">보고싶은책</a></li>
- 		</c:otherwise>   
- 	</c:choose>
-</ul>
-<br><br><br>
+
+	<c:choose>
+       	<c:when test="${!empty fvo }">
+         <h3><a href="${pageContext.request.contextPath}/DispatcherServlet?command=mypage&id=${fvo.id}">&nbsp;&nbsp;&nbsp;&nbsp;${fvo.name }님의 보고싶은 책</a></h3>
+         </c:when>         
+          <c:otherwise>
+          <h3><a href="${pageContext.request.contextPath}/DispatcherServlet?command=mypage" >&nbsp;&nbsp;&nbsp;&nbsp;내가 보고싶은 책</a></h3>
+          </c:otherwise>
+    </c:choose><br>
+
 
 
 <div id="mypageInfo">
@@ -91,7 +86,7 @@
   		<c:when test="${(i*4+j+1)>fn:length(requestScope.flistVO.list)}">  				
   			</c:when>
   			<c:otherwise>
-					<div class='col-sm-3'>
+					<div class="col-md-3 portfolio-item">
 					<a href="${pageContext.request.contextPath}/DispatcherServlet?command=detail&bookno=${bvo[i*4+j].bookno}">
 					<div class='imagecontainer'>
 						<img width='260' height="360" src='${pageContext.request.contextPath}/images/bookcover/${bvo[i*4+j].bookno}.jpg'>
@@ -100,7 +95,7 @@
 								<h4>${bvo[i*4+j].title }</h4>  
 								 저자 : ${bvo[i*4+j].author}<br>
 					 			출판사: ${bvo[i*4+j].pub }<br>
-					 			출판일: ${bvo[i*4+j].pubdate }</div></div></div>
+					 			출판일: ${bvo[i*4+j].pubdate }</div></div></div><br>
 					 			<div style="text-align: center">
 							${bvo[i*4+j].title }<br>
 							<img width="17px" src="${pageContext.request.contextPath}/images/staron.png">&nbsp;
@@ -160,7 +155,7 @@
 					<h4>${bvo[i*4+j].title }</h4> 
 					 저자 : ${bvo[i*4+j].author}<br>
 					 출판사: ${bvo[i*4+j].pub }<br>
-					 출판일: ${bvo[i*4+j].pubdate }</div></div></div>
+					 출판일: ${bvo[i*4+j].pubdate }</div></div></div><br>
 					<div style="text-align: center">
 					${bvo[i*4+j].title }<br>
 					<img width="17px" src="${pageContext.request.contextPath}/images/staron.png">&nbsp;

@@ -16,23 +16,56 @@ a:hover{
 }
 body {
 	background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0.05),
-		rgba(0, 0, 0, 0)), url("images/bg01.png");
+		rgba(0, 0, 0, 0)), url("${pageContext.request.contextPath}/images/bg01.png");
 	background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.05),
-		rgba(0, 0, 0, 0)), url("images/bg01.png");
+		rgba(0, 0, 0, 0)), url("${pageContext.request.contextPath}/images/bg01.png");
 	background-image: -ms-linear-gradient(top, rgba(0, 0, 0, 0.05),
-		rgba(0, 0, 0, 0)), url("images/bg01.png");
+		rgba(0, 0, 0, 0)), url("${pageContext.request.contextPath}/images/bg01.png");
 	background-image: linear-gradient(top, rgba(0, 0, 0, 0.05),
-		rgba(0, 0, 0, 0)), url("images/bg01.png");
+		rgba(0, 0, 0, 0)), url("${pageContext.request.contextPath}/images/bg01.png");
 	background-color: #f7f7f7;
 	background-position: top left, top left;
 	background-repeat: repeat-x, repeat;
 	background-size: 100% 30em, auto;
 	font-size: 13pt;
-	color: #696969;
+	color: #2E2E2E;
 	font-weight: 300;
+}
+a{
+color:#555;
 }
 input[type=password]{
 	font-family: 'Malgun Gothic';
+}
+#toTop {
+	z-index: 1030;
+	width: 70px;
+	height: 70px;
+	border: 2px solid #f7f7f7;
+	background: #f7f7f7;
+	text-align: center;
+	position: fixed;
+	bottom: 50px;
+	right: 50px;
+	cursor: pointer;
+	display: none;
+	color: #333;
+	opacity: 0.6;
+	filter: alpha(opacity = 60);
+	-webkit-border-radius: 30px;
+	-moz-border-radius: 30px;
+	-o-border-radius: 30px;
+	border-radius: 20px;
+	-webkit-transition: all .25s linear;
+	-moz-transition: all .25s linear;
+	-o-transition: all .25s linear;
+	transition: all .25s linear;
+	padding: 5px;
+}
+
+#toTop:hover {
+	background: #b3b3b3;
+	border: 2px solid #b3b3b3;
 }
 </style>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -40,7 +73,7 @@ input[type=password]{
 <script src="${pageContext.request.contextPath}/assets/js/skel.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/util.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
-
+ 
 
 
 
