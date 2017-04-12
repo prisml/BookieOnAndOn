@@ -37,7 +37,6 @@ public class MyPageController implements Controller {
 			if (id == null) {
 				bookingcount = BookingDAO.getInstance().getTotalBookingCount(vo.getId());
 				session.setAttribute("bookingcount", bookingcount);
-				System.out.println(bookingcount);
 				ArrayList<VO> list= new ArrayList<VO>(); 
 				list=SawWishDAO.getInstance().getSawBookSlideList(vo.getId());
 				session.setAttribute("sawSlide", list);
@@ -59,6 +58,7 @@ public class MyPageController implements Controller {
 					request.setAttribute("fbookingcount", bookingcount);
 					ArrayList<VO> list= new ArrayList<VO>(); 
 					list=SawWishDAO.getInstance().getSawBookSlideList(fvo.getId());
+					System.out.println("송희::::::::::::::::::::::::::::::::::::::::::::::::::"+list);
 					request.setAttribute("fsawSlide", list);
 					url = "bookieOnAndOn/mypage.jsp";
 

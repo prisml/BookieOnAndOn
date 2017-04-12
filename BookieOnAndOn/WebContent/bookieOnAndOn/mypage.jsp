@@ -48,6 +48,7 @@ right: 50px;
 }
 
 .mySlides {display:none;}
+.mySlide{display:none;}
 
 
 
@@ -141,10 +142,11 @@ if(${!empty fvo }){
  			<span class="badge">
  			${fbookingcount}
  			</span></a><br><br><br>
- 			<p>${fvo.name}님의  본 책</p>		<div class="container">
+ 			<p>${fvo.name}님의  본 책</p>		
+ 			<div class="container">
  				<div class="row">
- 				<c:forEach items="${requestScope.fsawSlide }" var="sawSlide">
- 			<img class="mySlides" src="${pageContext.request.contextPath}/images/bookcover/${sawSlide.bookno }.jpg" style="width: 200px;">
+ 			<c:forEach items="${fsawSlide }" var="fsawSlide">
+ 			<img class="mySlide" src="${pageContext.request.contextPath}/images/bookcover/${fsawSlide.bookno }.jpg" style="width: 200px;">
  			</c:forEach>
  				</div>
  			</div>
@@ -154,7 +156,7 @@ carousel();
 
 function carousel() {
     var i;
-    var x = document.getElementsByClassName("mySlides");
+    var x = document.getElementsByClassName("mySlide");
     for (i = 0; i < x.length; i++) {
        x[i].style.display = "none";  
     }
@@ -172,6 +174,7 @@ function carousel() {
    
     setTimeout(carousel, 2000); // Change image every 2 seconds
 }
+</script>
  			
  			</div>
  			</div>
@@ -188,7 +191,7 @@ function carousel() {
  			</span>
  			</a>
  			<div class="material-icons">&#xe88f;<span class='iconInfo'>당신이 즐겨찾기한 사람의 수를 나타냅니다</span></div><br><br><br>
- 			<p>내가 최근 본 책</p>
+ 			<p>내가 본 책</p>
  			<div class="container">
  				<div class="row">
  				<c:forEach items="${sessionScope.sawSlide }" var="sawSlide">
@@ -215,7 +218,7 @@ function carousel() {
     x[myIndex+1].style.display = "block";
      if (myIndex+3 > x.length) {myIndex = 1} 
     x[myIndex+2].style.display = "block";
-     if (myIndex+4 > x.length) {myIndex = 1} 
+     if (myIndex+4 > x.length) {myIndex = 1}
     x[myIndex+3].style.display = "block";
    
     setTimeout(carousel, 2000); // Change image every 2 seconds
