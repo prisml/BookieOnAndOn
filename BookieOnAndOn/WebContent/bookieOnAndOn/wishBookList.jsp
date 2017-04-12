@@ -22,7 +22,7 @@
   right: 0;
   background-color: black;
   overflow: hidden;
-  width: 100%;
+  width: 260px;
   height: 0;
   transition: .5s ease;
   
