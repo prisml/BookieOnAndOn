@@ -99,8 +99,16 @@ right: 50px;
       
 <!-- 여기서부터 본문입니다~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
          <div class="container">
+         <c:choose>
+       	<c:when test="${!empty fvo }">
+         <h3><a href="${pageContext.request.contextPath}/DispatcherServlet?command=mypage&id=${fvo.id}">&nbsp;&nbsp;&nbsp;&nbsp;${fvo.name }님의 PAGE</a></h3>
+         </c:when>         
+          <c:otherwise>
+          <h3><a href="${pageContext.request.contextPath}/DispatcherServlet?command=mypage" >&nbsp;&nbsp;&nbsp;&nbsp;MY PAGE</a></h3>
+          </c:otherwise>
+          </c:choose>
 
-<ul class="nav nav-tabs">
+<%-- <ul class="nav nav-tabs">
    
    <c:choose>
        <c:when test="${!empty fvo }">
@@ -115,7 +123,7 @@ right: 50px;
        </c:otherwise>   
     </c:choose>
             
-</ul>
+</ul> --%>
 <br><br><br>
 
    <div id="mypageInfo">
@@ -123,15 +131,14 @@ right: 50px;
 
  	<c:when test="${!empty fvo }">
  		<div class="container">
-  		<div class="jumbotron">
+  		<div class="jumbotron"><!-- 속컨테이너 -->
   		<span id="bookingIcon"></span>
- 			<h4 style='color:#3377ff'>${fvo.name } 님의 page입니다</h4><br>      
- 			 <a class="btn btn-primary" href="${pageContext.request.contextPath}/DispatcherServlet?command=bookingList&id=${fvo.id}">
+ 			 <a class="btn btn-primary" href="${pageContext.request.contextPath}/DispatcherServlet?command=bookingList&id=${fvo.id}"><!-- 파란색 -->
  			 booking
- 			<span class="badge">
- 			${fbookingcount}
- 			</span></a><br><br><br>
-			<c:if test="${!empty requestScope.fsawSlide }">
+ 			<span class="badge"><!-- 베이지색 --> ${fbookingcount} </span></a>
+ 			<br><br><br>
+ 			<!-- 슬라이드 -->
+ 			<c:if test="${!empty requestScope.fsawSlide }">
  			<p>${fvo.name}님의  본 책</p>		
  			<div class="container">
  				<div class="row">
@@ -166,23 +173,31 @@ function carousel() {
    
     setTimeout(carousel, 2000); // Change image every 2 seconds
 }
-</script> 
+</script>
  			
- 			</div>
- 			</div>
+ 			</div><!-- jumbo -->
+ 			</div><!--container -->
  	</c:when>
  	<c:otherwise>
  		<div class="container">
   			<div class="jumbotron">
-  			
- 			<h3 style='color:#3377ff'>Mypage</h3><br>
+  			<br><br>
+  			<div class="col-3" align="center">
+  			<a href="${pageContext.request.contextPath}/DispatcherServlet?command=sawBookList&id=${fvo.id}" ><img alt="" src="${pageContext.request.contextPath}/images/bookingcount.png"></a>
+  			<img alt="" src="${pageContext.request.contextPath}/images/sawcount.png">
+  			<img alt="" src="${pageContext.request.contextPath}/images/wishcount.png">
+  			</div>
+ 			<%-- <h3 style='color:#3377ff'>Mypage</h3><br>
  			<a class="btn btn-primary" href="${pageContext.request.contextPath}/DispatcherServlet?command=bookingList&id=${mvo.id}">
  			booking
  			<span class="badge">
  			${sessionScope.bookingcount}
  			</span>
  			</a>
- 			<div class="material-icons">&#xe88f;<span class='iconInfo'>당신이 즐겨찾기한 사람의 수를 나타냅니다</span></div><br><br><br>
+ 			<div class="material-icons">&#xe88f;<span class='iconInfo'>당신이 즐겨찾기한 사람의 수를 나타냅니다</span></div><br><br><br> --%>
+ 			
+ 			<!-- 슬라이드 -->
+ 			<br><br><br><br>
  			<c:if test="${!empty sessionScope.sawSlide }">
  			<p>내가 본 책</p>
  			<div class="container">
