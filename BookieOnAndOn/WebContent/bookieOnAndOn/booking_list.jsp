@@ -6,6 +6,37 @@
 <head>
 <jsp:include page="/template/script.jsp"></jsp:include>
 <title>booking_list</title>
+<style type="text/css">
+#toTop {
+	z-index: 1030;
+	width: 100px;
+	border: 2px solid #f7f7f7;
+	background: #f7f7f7;
+	text-align: center;
+	position: fixed;
+	bottom: 10px;
+	right: 10px;
+	cursor: pointer;
+	display: none;
+	color: #333;
+	opacity: 0.6;
+	filter: alpha(opacity = 60);
+	-webkit-border-radius: 30px;
+	-moz-border-radius: 30px;
+	-o-border-radius: 30px;
+	border-radius: 20px;
+	-webkit-transition: all .25s linear;
+	-moz-transition: all .25s linear;
+	-o-transition: all .25s linear;
+	transition: all .25s linear;
+	padding: 5px;
+}
+
+#toTop:hover {
+	background: #b3b3b3;
+	border: 2px solid #b3b3b3;
+}
+</style>
 <!-- 부킹삭제 ajax -->
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -20,6 +51,19 @@
 			});//ajax
 		});//click
 	});//ready
+	/* 스크롤 탑버튼 ajax */
+	$(document).ready(function() {
+		$("#toTop").bind("click", function() {
+			$("body").animate({scrollTop : 0}, 200);
+			});
+		$(window).scroll(function() {
+			if ($(this).scrollTop() != 0) {
+				$('#toTop').fadeIn();
+				} else {
+					$('#toTop').fadeOut();
+					}
+			});
+		});//ready
 </script>
 </head>
 <body class="homepage">
@@ -59,7 +103,9 @@
 						</c:forEach>
 					</tbody>
 				</table>
-			
+				<!-- Top 버튼 -->
+				<div id="toTop" align="right"><i class="fa fa-angle-double-up fa-5x"></i></div>
+				
 				<!-- Pagination -->
 				<div class="row text-center">
 					<div class="col-lg-12">
