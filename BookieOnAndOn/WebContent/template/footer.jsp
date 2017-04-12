@@ -5,7 +5,9 @@
 <div id="footer-wrapper">
 	<footer id="footer" class="container">
 		<div class="13u" align="center">
-			<img src="${pageContext.request.contextPath}/images/Logo.png" width="200px"><br><br>
+		
+		<br><br>
+			<img src="${pageContext.request.contextPath}/images/logo4.png" width="250px"><br><br>
 			<div class="div" align="center">
 				<img src="${pageContext.request.contextPath}/images/facebook.png" width="30px">
 				<img src="${pageContext.request.contextPath}/images/google.png" width="30px">
