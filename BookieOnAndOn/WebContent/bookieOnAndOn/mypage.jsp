@@ -141,7 +141,37 @@ if(${!empty fvo }){
  			<span class="badge">
  			${fbookingcount}
  			</span></a><br><br><br>
- 			<p>${fvo.name}님의  본 책</p>
+ 			<p>${fvo.name}님의  본 책</p>		<div class="container">
+ 				<div class="row">
+ 				<c:forEach items="${requestScope.fsawSlide }" var="sawSlide">
+ 			<img class="mySlides" src="${pageContext.request.contextPath}/images/bookcover/${sawSlide.bookno }.jpg" style="width: 200px;">
+ 			</c:forEach>
+ 				</div>
+ 			</div>
+<script>
+var myIndex = 0;
+carousel();
+
+function carousel() {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";  
+    }
+    myIndex++;
+     if (myIndex > x.length) {myIndex = 1}    
+    x[myIndex-1].style.display = "block";
+     if (myIndex+1 > x.length) {myIndex = 1} 
+    x[myIndex].style.display = "block";
+     if (myIndex+2 > x.length) {myIndex = 1} 
+    x[myIndex+1].style.display = "block";
+     if (myIndex+3 > x.length) {myIndex = 1} 
+    x[myIndex+2].style.display = "block";
+     if (myIndex+4 > x.length) {myIndex = 1} 
+    x[myIndex+3].style.display = "block";
+   
+    setTimeout(carousel, 2000); // Change image every 2 seconds
+}
  			
  			</div>
  			</div>
