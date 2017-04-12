@@ -82,7 +82,7 @@
 							<c:set var="pb" value="${requestScope.receiverIdList.pagingBean }" />
 							<!-- 이전 page -->
 							<c:if test="${pb.previousPageGroup }">
-								<li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=bookingList&pageNo=${pb.startPageOfPageGroup-1 }">&laquo;</a></li>
+								<li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=bookingList&pageNo=${pb.startPageOfPageGroup-1 }">◀</a></li>
 							</c:if>
 							<!-- 현재 page -->
 							<c:forEach begin="${pb.startPageOfPageGroup }" end="${pb.endPageOfPageGroup }" var="pageNo">
@@ -97,7 +97,7 @@
 							</c:forEach>
 							<!-- 다음 page -->
 							<c:if test="${pb.nextPageGroup }">
-								<li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=bookingList&pageNo=${pb.endPageOfPageGroup+1 }">&raquo;</a></li>
+								<li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=bookingList&pageNo=${pb.endPageOfPageGroup+1 }">▶</a></li>
 							</c:if>
 						</ul>
 					</div>

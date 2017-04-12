@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <jsp:include page="/template/script.jsp"></jsp:include>
@@ -9,7 +8,6 @@
 </head>
 <body>
 <body class="homepage">
-
 	<article class="container">
 	<div class="center-block" align="middle">
 		<br>
@@ -38,17 +36,15 @@
 						로그인<i class="fa fa-check spaceLeft"></i>
 					</button>
 				</h3>
-				<a href="${pageContext.request.contextPath}/bookieOnAndOn/findId.jsp">아이디</a>/<a href="${pageContext.request.contextPath}/bookieOnAndOn/findId.jsp">비밀번호 찾기</a>
+				<a href="${pageContext.request.contextPath}/bookieOnAndOn/findId.jsp">아이디</a>/<a href="${pageContext.request.contextPath}/bookieOnAndOn/findPw.jsp">비밀번호 찾기</a>
 				<br> 
-					<a href="register.jsp">회원가입</a>
+					<a href="${pageContext.request.contextPath}/bookieOnAndOn/register.jsp">회원가입</a>
 			</div>
 		</form>
 	</div>
 	</article>
 
-	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<!-- Include all compiled plugins (below), or include individual files as needed -->
+
 
 </body>
 </html>

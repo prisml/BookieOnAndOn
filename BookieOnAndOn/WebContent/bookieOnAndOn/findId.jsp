@@ -15,7 +15,7 @@
 				url:"${pageContext.request.contextPath}/DispatcherServlet?command=findId",
 				data:{"name":$("#name").val(), "tel":$("#tel").val()},
 				success:function(id){
-					if(id == null){
+					if(id == "null"){
 						alert("찾는 정보가 없습니다.");
 					}
 					else{
@@ -23,6 +23,9 @@
 					}
 				}
 			});
+		});
+		$("#loginBtn").click(function(){
+			location.href="${pageContext.request.contextPath}/bookieOnAndOn/login.jsp";
 		});
 	});
 </script>
@@ -42,6 +45,7 @@
               <input id="tel" type="text" class="form-control" placeholder="전화번호">
             </div>
             <div class="form-group text-center">
+             <button class="btn btn-warning" id = "loginBtn">로그인 하기<i class="fa fa-check spaceLeft" ></i></button>
              <button class="btn btn-info " id = "findIdbtn">아이디 찾기<i class="fa fa-check spaceLeft" ></i></button>            
              <div style="margin-top:10px">
              <a href="${pageContext.request.contextPath}/bookieOnAndOn/register.jsp">회원가입</a>
