@@ -40,7 +40,7 @@ public class BookingListController implements Controller {
 		request.setAttribute("myId", myId);
 		request.setAttribute("mvo", vo);
 		request.setAttribute("id", id);
-		return "bookieOnAndOn/booking_list.jsp";
+		return "bookieOnAndOn/bookingList.jsp";
 	}
 
 }
