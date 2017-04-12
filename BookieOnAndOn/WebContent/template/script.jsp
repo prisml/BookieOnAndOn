@@ -39,8 +39,8 @@ input[type=password]{
 }
 #toTop {
 	z-index: 1030;
-	width: 60px;
-	height: 60px;
+	width: 70px;
+	height: 70px;
 	border: 2px solid #f7f7f7;
 	background: #f7f7f7;
 	text-align: center;
