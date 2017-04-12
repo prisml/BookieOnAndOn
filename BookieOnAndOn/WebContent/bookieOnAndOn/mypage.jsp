@@ -116,7 +116,6 @@ right: 50px;
           <h3><a href="${pageContext.request.contextPath}/DispatcherServlet?command=mypage" >&nbsp;&nbsp;&nbsp;&nbsp;MY PAGE</a></h3>
           </c:otherwise>
           </c:choose><br>
-
    <div id="mypageInfo">
  	<c:choose>
  	<c:when test="${!empty fvo }">
@@ -133,13 +132,13 @@ right: 50px;
   			<div class="image">  
   			<a href="${pageContext.request.contextPath}/DispatcherServlet?command=sawBookList&id=${fvo.id}"><img alt="" src="${pageContext.request.contextPath}/images/sawcount.png"></a>
   			<div class="text">  			
- 			${fbookingcount}
+ 			${requestScope.SawTotal}
   			</div></div>
   			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   			<div class="image">  
 			<a href="${pageContext.request.contextPath}/DispatcherServlet?command=wishBookList&id=${fvo.id}"><img alt="" src="${pageContext.request.contextPath}/images/wishcount.png"></a>
   			<div class="text">  			
- 			${fbookingcount}
+ 			${requestScope.WishTotal}
   			</div></div>
   			</div>
  			<!-- 슬라이드 -->
@@ -199,13 +198,13 @@ function carousel() {
   			<div class="image">  
   			<a href="${pageContext.request.contextPath}/DispatcherServlet?command=sawBookList"><img alt="" src="${pageContext.request.contextPath}/images/sawcount.png"></a>
   			<div class="text">  			
- 			${sessionScope.bookingcount}
+ 			${sessionScope.SawTotalContent}
   			</div></div>
   			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   			<div class="image">  
 			<a href="${pageContext.request.contextPath}/DispatcherServlet?command=wishBookList"><img alt="" src="${pageContext.request.contextPath}/images/wishcount.png"></a>
   			<div class="text">  			
- 			${sessionScope.bookingcount}
+ 			${sessionScope.WishTotalContent}
   			</div></div>
   			</div>
  			

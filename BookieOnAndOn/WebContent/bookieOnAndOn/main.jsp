@@ -154,7 +154,7 @@ a:hover{
 			<div class="container">
 			
 			<!-- Section은 여기서 작업하도록! -->
-	<ul class="nav nav-tabs nav-justified">	
+	<ul class="nav nav-tabs nav-justified" style="align:center">	
    		<li class="active"><a href="${pageContext.request.contextPath}/index.jsp">전체</a></li>
  	    <li><a href="#">인문</a></li>
  	    <li><a href="#">소설</a></li>
@@ -163,7 +163,7 @@ a:hover{
  	    <li><a href="#">IT</a></li>
    		<li><a href="#">만화</a></li>
   	</ul>
-  	<br><br> 
+  	<br>
   	<!--------------- 책 리스트 -----------------> 
   	<c:set var="listVo" value="${requestScope.listVo}"/>  
   	<c:set var="size" value="${fn:length(listVo.list)}"/>
@@ -201,7 +201,6 @@ a:hover{
 		</div>
 	</c:forEach><!-- i -->	
   	</div><!-- showBookList -->			
-	<hr>	
 	<!---------------- 페이징 ------------------>
 	<div class="row text-center">
 			<div class="col-lg-12">
