@@ -117,7 +117,7 @@ if(${!empty fvo }){
  	</c:choose>
    			
 </ul>
-<br><br><br>
+<br>
 
 	<div id="mypageInfo">
  <c:choose>
