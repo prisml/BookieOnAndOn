@@ -49,7 +49,7 @@ function reset(){
 
 	<div class="center-block" style="width: 300px; padding: 15px;">
 
-		<form id="registerForm" name="registerForm" action="${pageContext.request.contextPath}/DispatcherServlet?command=update" name="updateForm">
+		<form id="updateForm" name="updateForm" action="${pageContext.request.contextPath}/DispatcherServlet?command=update" name="updateForm">
 			<div class="form-group">
 				<label for="InputEmail">아이디</label>  
 				<input type="text" class="form-control" name="id" id="id" value ="${mvo.id }" placeholder="아이디" readonly>			
@@ -58,13 +58,12 @@ function reset(){
 			<div class="form-group">
 				<label for="InputPassword1">새 비밀번호</label> <input type="password"
 					class="form-control" name="password" id="password"
-					placeholder="비밀번호">
+					placeholder="비밀번호">			
 			</div>
 				<div class="form-group">
 				<label for="InputPassword1">비밀번호 확인</label> <input type="password"
 					class="form-control" name="pwConfirm" id="pwConfirm"
-					placeholder="비밀번호 확인">
-					<span id="pwCheckResult"></span>
+					placeholder="비밀번호 확인">				
 			</div>
 
 			<div class="form-group">
