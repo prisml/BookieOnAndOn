@@ -14,7 +14,9 @@ function paging(page) {
 		data:"command=getReviewList&bookno=${vo.bookno}&page="+page,
 		dataType:"json",
 		success:function(data){
-			$("#reviewList").html("");		
+			$("#reviewList").html("");
+			if(data.list.length==0)
+				$("#notExistReview").css("display","");
 			$("#reviewList").append("<ul>");
 			for(var i=0;i<data.list.length;i++){
 				var innerHtml = "";
@@ -36,13 +38,13 @@ function paging(page) {
 			$("#reviewPaging").html("");
 			var pb = data.pagingBean;
 			if(pb.previousPageGroup ==true){
-				$("#reviewPaging").append("<li><a style='display: none;'>"+pb.startPageOfPageGroup-1+"</a><<</li>");
+				$("#reviewPaging").append("<li><a style='display: none;'>"+pb.startPageOfPageGroup-1+"</a>◀</li>");
 			}
 			for(var i=pb.startPageOfPageGroup;i<=pb.endPageOfPageGroup;i++){
 				$("#reviewPaging").append("<li><a class=movePage href=#>"+i+"</a></li>");
 			}
 			if(pb.nextPageGroup ==true){
-				$("#reviewPaging").append("<li><a style='display: none;'>"+pb.endPageOfPageGroup+1+"</a>>></li>");
+				$("#reviewPaging").append("<li><a style='display: none;'>"+pb.endPageOfPageGroup+1+"</a>▶</li>");
 			}
 		}
 	});
@@ -220,6 +222,7 @@ function paging(page) {
 		<br>
 		<div>
 			<div class="box container">
+				<div id="notExistReview" style="display:none;"><h4 style="padding-left:100px;">등록된 리뷰가 없습니다</h4></div>
 				<div class="row 200%">
 					<div id="reviewList" class="10u 12u(medium) important(medium)">
 					</div>
