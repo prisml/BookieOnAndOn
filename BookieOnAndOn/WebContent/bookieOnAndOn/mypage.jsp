@@ -33,10 +33,6 @@
 position: relative;
 
 }
-#bookingIcon{
-position:absolute;
-right: 50px;
-}
 
 .mySlides {display:none;}
 .mySlide{display:none;}
@@ -113,7 +109,9 @@ right: 50px;
          <div class="container">
          <c:choose>
        	<c:when test="${!empty fvo }">
-         <h3><a href="${pageContext.request.contextPath}/DispatcherServlet?command=mypage&id=${fvo.id}">&nbsp;&nbsp;&nbsp;&nbsp;${fvo.name }님의 PAGE</a></h3>
+         <h3><a href="${pageContext.request.contextPath}/DispatcherServlet?command=mypage&id=${fvo.id}">&nbsp;&nbsp;&nbsp;&nbsp;${fvo.name }님의 PAGE</a>
+         &nbsp;&nbsp;<span id="bookingIcon"></span></h3>
+         
          </c:when>         
           <c:otherwise>
           <h3><a href="${pageContext.request.contextPath}/DispatcherServlet?command=mypage" >&nbsp;&nbsp;&nbsp;&nbsp;MY PAGE</a></h3>
@@ -123,8 +121,7 @@ right: 50px;
  	<c:choose>
  	<c:when test="${!empty fvo }">
  		<div class="container">
-  		<div class="jumbotron"><!-- 속컨테이너 -->
-  		<span id="bookingIcon"></span>
+  		<div class="jumbotron"><!-- 속컨테이너 -->  		
  			<div class="col-3" align="center">
   			<div style="padding:50px" class="image">  
   			<a href="${pageContext.request.contextPath}/DispatcherServlet?command=bookingList&id=${fvo.id}"><img alt="" src="${pageContext.request.contextPath}/images/bookingcount.png"></a>
