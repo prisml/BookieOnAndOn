@@ -7,6 +7,7 @@
 <title>mypage</title>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<script src="//code.jquery.com/jquery.min.js"></script>
 <style type="text/css">
 
 .material-icons{
@@ -45,7 +46,6 @@ right: 50px;
 </style>
 <script type="text/javascript">
 
-if(${!empty fvo }){
    $(document).ready(function(){
       $.ajax({
          type:"get",
@@ -82,9 +82,7 @@ if(${!empty fvo }){
                }//success
             });//ajax
          });//on
-
    });//ready
-}
 </script>
 
 <jsp:include page="/template/script.jsp"></jsp:include>
@@ -133,7 +131,7 @@ if(${!empty fvo }){
  			<span class="badge">
  			${fbookingcount}
  			</span></a><br><br><br>
- 			<c:if test="${!empty requestScope.fsawSlide }">
+			<c:if test="${!empty requestScope.fsawSlide }">
  			<p>${fvo.name}님의  본 책</p>		
  			<div class="container">
  				<div class="row">
@@ -168,7 +166,7 @@ function carousel() {
    
     setTimeout(carousel, 2000); // Change image every 2 seconds
 }
-</script>
+</script> 
  			
  			</div>
  			</div>
