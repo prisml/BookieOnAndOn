@@ -42,7 +42,7 @@
 														</div>
 													</div>
 												</div>
-												<br><br>
+												<br>
 											<!-- overlay -->
 											<div style="text-align: center">
 												${lvo.list[i*4+j].title}<br>
@@ -63,50 +63,7 @@
 					<!-- i -->
 				</div>
 				<!-- showBookList -->
-
-
-				<%-- <div class="container-fluid bg-3">
-					<div class="row">
-						<c:forEach var="lvo" items="${requestScope.lvo.list}">
-							<div class="col-sm-3">
-								<div class="w3-one">
-									<a
-										href="${pageContext.request.contextPath}/DispatcherServlet?command=detail&bookno=${lvo.bookno}">
-										<img
-										src="${pageContext.request.contextPath}/images/bookcover/${lvo.bookno}.jpg"
-										class="bookImage">
-									</a>
-									<div class='overlay'>
-										<div class='overlaytext'>
-											<h4>${lvo.title}</h4>
-											<table class='overlaytable'>
-												<tr>
-													<td>저자</td>
-													<td>${lvo.author}</td>
-												</tr>
-												<tr>
-													<td>출판사</td>
-													<td>${lvo.pub}</td>
-												</tr>
-												<tr>
-													<td>출판일</td>
-													<td>${lvo.pubdate}</td>
-												</tr>
-											</table>
-										</div>
-									</div>
-								</div>
-								<div class="w3-one">
-									<a href="${pageContext.request.contextPath}/DispatcherServlet?command=detail&bookno=${lvo.bookno}">
-										${lvo.title}&nbsp;&nbsp;|&nbsp; 
-										<img width="17px" src="${pageContext.request.contextPath}/images/staron.png">&nbsp;
-										${lvo.rate}
-									</a>
-								</div>
-							</div>
-						</c:forEach>
-					</div>
-				</div> --%>
+				
 				<div class="row text-center">
 					<div class="col-lg-12">
 						<p class="paging">

@@ -47,17 +47,32 @@
 		});
 		
 		$("#registerBtn").click(function(){
-			if($("#idCheckResult").text() == "사용 가능한 아이디입니다" && $("#pwCheckResult").text() == "비밀번호가 일치합니다."){
-				document.registerForm.submit();
+			if($("#id").val().length == 0 || $("#idCheckResult").text() == "" || $("#idCheckResult").text() == "4자이상 10자이하만 가능" || $("#idCheckResult").text() == "중복된 아이디 사용불가"){
+				alert("아이디를 확인해주세요.");
 			}
-			else{
-				alert("아이디 또는 패스워드를 확인해주세요.");
-				document.registerForm.reset();
-					$("#idCheckResult").html("");
-					$("#pwCheckResult").html("");	
-				return false;
+			
+			if($("#password").val().length == 0 || $("#pwConfirm").val().length == 0 || $("#pwCheckResult").text() == "" || $("#pwCheckResult").text() == "비밀번호가 불일치합니다."){
+				alert("비밀번호를 확인해주세요.");
 			}
-		});
+			
+			if($("#name").val().length == 0){
+				alert("이름을 확인해주세요.");
+			}
+			
+			if($("#tel").val().length == 0){
+				alert("휴대폰 번호를 확인해주세요.");
+			}
+			
+			 if($("#idCheckResult").text() == "사용 가능한 아이디입니다" && $("#pwCheckResult").text() == "비밀번호가 일치합니다."
+	               && $("#name").val().length!=0 && $("#tel").val().length!=0){         
+	            	document.registerForm.submit();
+	         }
+	         else{
+	             document.registerForm.reset();
+	               $("#idCheckResult").html("");
+	               $("#pwCheckResult").html("");   
+	         }
+	});
 		
 		$("#registerCancelBtn").click(function(){
 			if(confirm("가입을 취소하시겠습니까?")){
@@ -101,14 +116,16 @@
 			</div>
 			<div class="form-group">
 				<label>이름</label> <input type="text" class="form-control"
-					name="name" id="name" placeholder="이름을 입력해 주세요">
+					name="name" id="name" placeholder="이름">
 			</div>
 			<div class="form-group">
 				<label>휴대폰 번호</label> <input type="text" class="form-control"
-					name="tel" id="tel" placeholder="휴대폰 번호를 입력 해 주세요">
+					name="tel" id="tel" placeholder="휴대폰 번호">
 			</div>
 		</form>
-		<div class="form-group text-center">
+	</div>
+	</article>
+	<div style = "text-align: center; margin-top:-100px;">
 			<button id="registerBtn" class="btn btn-info ">
 				회원가입 <i class="fa fa-check spaceLeft"></i>
 			</button>
@@ -122,7 +139,5 @@
 					찾기</a>
 			</div>
 		</div>
-	</div>
-	</article>
 </body>
 </html>
