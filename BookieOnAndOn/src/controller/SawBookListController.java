@@ -40,7 +40,7 @@ public class SawBookListController implements Controller {
 				ArrayList<VO> list = SawWishDAO.getInstance().getSawBookList(vo.getId(), pagingBean);
 				ListVO listvo = new ListVO(list, pagingBean);
 				session.setAttribute("slistVO", listvo);
-				url = "redirect:bookieOnAndOn/sawBookList.jsp";
+				url = "redirect:bookie/sawBookList.jsp";
 
 			} else {
 				//남의 페이지 들어갈 때
@@ -56,7 +56,7 @@ public class SawBookListController implements Controller {
 				request.setAttribute("flistVO", listvo);
 				MemberVO fvo = MemberDAO.getInstance().getMemberById(id);
 				request.setAttribute("fvo", fvo);
-				url = "bookieOnAndOn/sawBookList.jsp";
+				url = "bookie/sawBookList.jsp";
 
 			}
 

@@ -123,14 +123,14 @@
                   <li class="current"><a class = "tab"
                      href="${pageContext.request.contextPath}/index.jsp">welcome</a></li>
                   <li><a class = "tab"
-                     href="${pageContext.request.contextPath}/bookieOnAndOn/login.jsp">로그인</a></li>
+                     href="${pageContext.request.contextPath}/bookie/login.jsp">로그인</a></li>
                   <li><a class = "tab"
-                     href="${pageContext.request.contextPath}/bookieOnAndOn/register.jsp">회원가입</a></li>
+                     href="${pageContext.request.contextPath}/bookie/register.jsp">회원가입</a></li>
                   <li><a class = "tab"
-                     href="${pageContext.request.contextPath}/bookieOnAndOn/findId.jsp">아이디 찾기</a></li>
+                     href="${pageContext.request.contextPath}/bookie/findId.jsp">아이디 찾기</a></li>
                      <li style = "padding:0px;">/</li>
                   <li style = "margin-left:-25px;"><a class = "tab"
-                     href="${pageContext.request.contextPath}/bookieOnAndOn/findPw.jsp">비밀번호 찾기</a></li>
+                     href="${pageContext.request.contextPath}/bookie/findPw.jsp">비밀번호 찾기</a></li>
                </ul>
 
             </nav>
@@ -177,7 +177,7 @@
                <li class="current"><a class = "tab" href="${pageContext.request.contextPath}/index.jsp">welcome</a></li>
                <li><a class = "tab" href="javascript:logout()">${sessionScope.mvo.name}님 &nbsp; 로그아웃</a></li>
                <li><a class = "tab" href="${pageContext.request.contextPath}/DispatcherServlet?command=mypage">마이페이지</a></li>
-               <li><a class = "tab" href="${pageContext.request.contextPath}/bookieOnAndOn/update.jsp">회원정보수정</a></li>
+               <li><a class = "tab" href="${pageContext.request.contextPath}/bookie/update.jsp">회원정보수정</a></li>
             </ul>
             </nav>
 				<div class="container">

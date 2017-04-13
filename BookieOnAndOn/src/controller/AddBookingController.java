@@ -23,7 +23,6 @@ public class AddBookingController implements Controller {
 			out.print(flag);
 		}else{
 			out.print(flag);
-			
 		}
 		
 		out.close();

@@ -58,6 +58,32 @@ insert into bookmember(id,password,name,tel) values('jquery9','aaaa','아이유'
 insert into bookmember(id,password,name,tel) values('jquery10','aaaa','아이유','01055556666');
 insert into bookmember(id,password,name,tel) values('jquery11','aaaa','아이유','01055556666');
 
+insert into bookmember(id,password,name,tel) values('jdbc1','aaaa','아이유','01055556666');
+insert into bookmember(id,password,name,tel) values('jdbc2','aaaa','아이유','01055556666');
+insert into bookmember(id,password,name,tel) values('jdbc3','aaaa','아이유','01055556666');
+insert into bookmember(id,password,name,tel) values('jdbc4','aaaa','아이유','01055556666');
+insert into bookmember(id,password,name,tel) values('jdbc5','aaaa','아이유','01055556666');
+insert into bookmember(id,password,name,tel) values('jdbc6','aaaa','아이유','01055556666');
+insert into bookmember(id,password,name,tel) values('jdbc7','aaaa','아이유','01055556666');
+insert into bookmember(id,password,name,tel) values('jdbc8','aaaa','아이유','01055556666');
+insert into bookmember(id,password,name,tel) values('jdbc9','aaaa','아이유','01055556666');
+insert into bookmember(id,password,name,tel) values('jdbc10','aaaa','아이유','01055556666');
+insert into bookmember(id,password,name,tel) values('jdbc11','aaaa','아이유','01055556666');
+insert into bookmember(id,password,name,tel) values('jdbc12','aaaa','아이유','01055556666');
+
+insert into bookmember(id,password,name,tel) values('ajax1','aaaa','아이유','01055556666');
+insert into bookmember(id,password,name,tel) values('ajax2','aaaa','아이유','01055556666');
+insert into bookmember(id,password,name,tel) values('ajax3','aaaa','아이유','01055556666');
+insert into bookmember(id,password,name,tel) values('ajax4','aaaa','아이유','01055556666');
+insert into bookmember(id,password,name,tel) values('ajax5','aaaa','아이유','01055556666');
+insert into bookmember(id,password,name,tel) values('ajax6','aaaa','아이유','01055556666');
+insert into bookmember(id,password,name,tel) values('ajax7','aaaa','아이유','01055556666');
+insert into bookmember(id,password,name,tel) values('ajax8','aaaa','아이유','01055556666');
+insert into bookmember(id,password,name,tel) values('ajax9','aaaa','아이유','01055556666');
+insert into bookmember(id,password,name,tel) values('ajax10','aaaa','아이유','01055556666');
+insert into bookmember(id,password,name,tel) values('ajax11','aaaa','아이유','01055556666');
+insert into bookmember(id,password,name,tel) values('ajax12','aaaa','아이유','01055556666');
+
 commit
 select * from bookmember;
 --리뷰 테이블
@@ -130,6 +156,30 @@ insert into booking(senderid,receiverid) values('java','jquery8');
 insert into booking(senderid,receiverid) values('java','jquery9');
 insert into booking(senderid,receiverid) values('java','jquery10');
 insert into booking(senderid,receiverid) values('java','jquery11');
+insert into booking(senderid,receiverid) values('java','jdbc1');
+insert into booking(senderid,receiverid) values('java','jdbc2');
+insert into booking(senderid,receiverid) values('java','jdbc3');
+insert into booking(senderid,receiverid) values('java','jdbc4');
+insert into booking(senderid,receiverid) values('java','jdbc5');
+insert into booking(senderid,receiverid) values('java','jdbc6');
+insert into booking(senderid,receiverid) values('java','jdbc7');
+insert into booking(senderid,receiverid) values('java','jdbc8');
+insert into booking(senderid,receiverid) values('java','jdbc9');
+insert into booking(senderid,receiverid) values('java','jdbc10');
+insert into booking(senderid,receiverid) values('java','jdbc11');
+insert into booking(senderid,receiverid) values('java','jdbc12');
+insert into booking(senderid,receiverid) values('java','ajax1');
+insert into booking(senderid,receiverid) values('java','ajax2');
+insert into booking(senderid,receiverid) values('java','ajax3');
+insert into booking(senderid,receiverid) values('java','ajax4');
+insert into booking(senderid,receiverid) values('java','ajax5');
+insert into booking(senderid,receiverid) values('java','ajax6');
+insert into booking(senderid,receiverid) values('java','ajax7');
+insert into booking(senderid,receiverid) values('java','ajax8');
+insert into booking(senderid,receiverid) values('java','ajax9');
+insert into booking(senderid,receiverid) values('java','ajax10');
+insert into booking(senderid,receiverid) values('java','ajax11');
+insert into booking(senderid,receiverid) values('java','ajax12');
 
 insert into booking(senderid,receiverid) values('jquery','java');
 insert into booking(senderid,receiverid) values('jquery','java1');

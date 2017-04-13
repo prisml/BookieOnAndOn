@@ -16,7 +16,7 @@ public class RegisterController implements Controller {
 		String tel=request.getParameter("tel");
 		MemberVO vo=new MemberVO(id,password,name,tel);	
 		MemberDAO.getInstance().register(vo);
-		return "redirect:bookieOnAndOn/register_result.jsp";
+		return "redirect:bookie/register_result.jsp";
 	}
 
 }

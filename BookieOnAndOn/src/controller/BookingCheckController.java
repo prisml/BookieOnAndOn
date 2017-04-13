@@ -21,11 +21,6 @@ public class BookingCheckController implements Controller {
 		out.print(flag);
 		out.close();
 		
-		
-		
-		
-		
-		
 		return "AjaxView";
 	}
 

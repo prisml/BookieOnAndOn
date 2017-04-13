@@ -24,7 +24,7 @@ public class MainController  implements Controller {
 		ListVO listVo = new ListVO(list, pagingBean);
 		request.setAttribute("listVo", listVo);	
 		System.out.println("리스트컨트롤러에서리스트"+list);
-		return "bookieOnAndOn/main.jsp";
+		return "bookie/main.jsp";
 	}
 }
 

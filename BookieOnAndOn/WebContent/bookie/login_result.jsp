@@ -11,7 +11,7 @@
 	<c:otherwise>
 		<script>
 			alert("아이디 또는 비밀번호를 확인해주세요!");
-			location.href = "${pageContext.request.contextPath}/bookieOnAndOn/login.jsp";
+			location.href = "${pageContext.request.contextPath}/bookie/login.jsp";
 		</script>
 	</c:otherwise>
 </c:choose>

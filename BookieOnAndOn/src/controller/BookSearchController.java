@@ -33,7 +33,7 @@ public class BookSearchController implements Controller {
 		 
 		request.setAttribute("lvo", lvo);
 		request.setAttribute("title", title);
-		return "bookieOnAndOn/bookSearch.jsp";
+		return "bookie/bookSearch.jsp";
 	}
 
 }

@@ -36,9 +36,9 @@
 						로그인<i class="fa fa-check spaceLeft"></i>
 					</button>
 				</h3>
-				<a href="${pageContext.request.contextPath}/bookieOnAndOn/findId.jsp">아이디</a>/<a href="${pageContext.request.contextPath}/bookieOnAndOn/findPw.jsp">비밀번호 찾기</a>
+				<a href="${pageContext.request.contextPath}/bookie/findId.jsp">아이디</a>/<a href="${pageContext.request.contextPath}/bookie/findPw.jsp">비밀번호 찾기</a>
 				<br> 
-					<a href="${pageContext.request.contextPath}/bookieOnAndOn/register.jsp">회원가입</a>
+					<a href="${pageContext.request.contextPath}/bookie/register.jsp">회원가입</a>
 			</div>
 		</form>
 	</div>
