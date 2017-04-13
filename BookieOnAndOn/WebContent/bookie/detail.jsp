@@ -30,21 +30,25 @@
 					innerHtml += data.list[i].id+"</a> <br></li><li>"; // to do
 					innerHtml += data.list[i].rvcontent+"<br></li><li>";
 					innerHtml += data.list[i].rvdate+"</li><br></ul>";
-					if(data.list[i].id == "${mvo.id}")
-						innerHtml += "</div><div id='deleteReview' style='float:right'><img style='width:20px;padding-top:20px;' src='${pageContext.request.contextPath}/images/x.png'</div></div></li>";
+					if(data.list[i].id == "${mvo.id}"){
+						innerHtml += "</div><div id='deleteReview' style='float:right'><img style='width:20px;padding-top:20px;'"
+						+" src='${pageContext.request.contextPath}/images/x.png'</div></div></li>";
+					}
 					$("#reviewList").append(innerHtml);					
 				}
 				$("#reviewList").append("</ul>");
 				$("#reviewPaging").html("");
 				var pb = data.pagingBean;
 				if(pb.previousPageGroup ==true){
-					$("#reviewPaging").append("<li><a class='pageMove' style='display: none;'>"+(pb.startPageOfPageGroup-1)+"</a><a class='movePage' href=#>◀</a></li>");
+					$("#reviewPaging").append("<li><a class='pageMove' style='display: none;'>"
+					+(pb.startPageOfPageGroup-1)+"</a><a class='movePage' href=#>◀</a></li>");
 				}
 				for(var i=pb.startPageOfPageGroup;i<=pb.endPageOfPageGroup;i++){
 					$("#reviewPaging").append("<li><a class='movePage pageMove' href=#>"+i+"</a></li>");
 				}
 				if(pb.nextPageGroup ==true){
-					$("#reviewPaging").append("<li><a class='pageMove' style='display: none;'>"+(pb.endPageOfPageGroup+1)+"</a><a class='movePage' href=#>▶</a></li>");
+					$("#reviewPaging").append("<li><a class='pageMove' style='display: none;'>"
+					+(pb.endPageOfPageGroup+1)+"</a><a class='movePage' href=#>▶</a></li>");
 				}
 			}
 		});
@@ -168,7 +172,8 @@
 			<div class="container">
 				<div class="row">
 					<div id="bookImg" class="3u 12u(medium)">
-						<img width="260px" class="img-responsive" src="${pageContext.request.contextPath}/images/bookcover/${vo.bookno}.jpg">
+						<img width="260px" class="img-responsive" 
+						src="${pageContext.request.contextPath}/images/bookcover/${vo.bookno}.jpg">
 					</div>
 					<div class="8u 12u(medium)">
 						<ul id="bookInfo">
