@@ -159,7 +159,7 @@ public class BookDAO {
 			StringBuilder sql = new StringBuilder();
 			sql.append("select A.* from (SELECT row_number() over(order by rate desc, bookno) ");
 			sql.append("as rnum,bookno,title,author,pub,to_char(pubdate,'yyyy-mm-dd') as pubdatee,genre,rate,bookphoto ");
-			sql.append(" from book order by bookno) A where rnum between ? and ?");
+			sql.append(" from book order by rate desc) A where rnum between ? and ?");
 			pstmt=con.prepareStatement(sql.toString());	
 			pstmt.setInt(1, pb.getStartRowNumber());
 			pstmt.setInt(2, pb.getEndRowNumber());
