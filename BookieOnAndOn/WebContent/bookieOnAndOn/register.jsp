@@ -47,11 +47,27 @@
 		});
 		
 		$("#registerBtn").click(function(){
-			if($("#idCheckResult").text() == "사용 가능한 아이디입니다" && $("#pwCheckResult").text() == "비밀번호가 일치합니다."){
+			if($("#idCheckResult").text() == "중복된 아이디 사용불가"){
+				alert("아이디를 확인하여 주세요")
+			}
+			if($("#pwCheckResult").text() == "비밀번호가 불일치합니다."){
+				alert("비밀번호가 일치하지 않습니다.")
+			}
+			if($("#name").val().length ==0){
+				alert("이름을 입력해주세요");
+			}
+			if($("#tel").val().length==0){
+				alert("전화번호를 입력해주세요");
+			}if($("#id").val().length==0){
+				alert("아이디를 입력해주세요");
+			}if($("#password").val().length==0){
+				alert("비밀번호를 입력해주세요");
+			}
+			if($("#idCheckResult").text() == "사용 가능한 아이디입니다" && $("#pwCheckResult").text() == "비밀번호가 일치합니다."
+					&& $("#name").val().length!=0 && $("#tel").val().length!=0){			
 				document.registerForm.submit();
 			}
 			else{
-				alert("아이디 또는 패스워드를 확인해주세요.");
 				document.registerForm.reset();
 					$("#idCheckResult").html("");
 					$("#pwCheckResult").html("");	
@@ -96,15 +112,15 @@
 			</div>
 			<div class="form-group">
 				<label>비밀번호 확인</label> <input type="password" class="form-control"
-					name="pwConfirm" id="pwConfirm" placeholder="비밀번호 확인"> <span
+					name="pwConfirm" id="pwConfirm"  placeholder="비밀번호 확인"> <span
 					id="pwCheckResult"></span>
 			</div>
 			<div class="form-group">
-				<label>이름</label> <input type="text" class="form-control"
-					name="name" id="name" placeholder="이름을 입력해 주세요">
+				<label for ="name">이름</label> <input type="text" class="form-control"
+					 name="name" id="name"  placeholder="이름을 입력해 주세요">
 			</div>
 			<div class="form-group">
-				<label>휴대폰 번호</label> <input type="text" class="form-control"
+				<label>휴대폰 번호</label> <input type="text"  class="form-control"
 					name="tel" id="tel" placeholder="휴대폰 번호를 입력 해 주세요">
 			</div>
 		</form>

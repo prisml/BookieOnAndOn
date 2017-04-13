@@ -17,6 +17,7 @@
 				success:function(pw){
 					if(pw == "null"){
 						alert("찾는 정보 없습니다.");
+						document.findIdForm.reset();
 					}
 					else{
 						alert(pw);
@@ -35,19 +36,21 @@
           <h1><a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath}/images/Logo.png"> </a></h1>
         </div>
         <br>
+        <form name="findPwForm">
         <div class="center-block" style="width: 300px;padding:15px;">
+         
             <div class="form-group" >
                  <label>아이디</label>
               <input id="id" type="text" class="form-control" placeholder="아이디"><br>
               <label>이름</label>
-              <input id="name" type="text" class="form-control" required="required" placeholder="이름" ><br>
-          	
+              <input id="name" type="text" class="form-control"	 placeholder="이름" ><br>      	
               <label>전화번호</label>
               <input id="tel" type="text" class="form-control" placeholder="전화번호">        
             </div>
+           </form> 
             <div class="form-group text-center">
-             <button class="btn btn-warning " id = "loginBtn">로그인하러 가기<i class="fa fa-check spaceLeft" ></i></button>
              <button class="btn btn-info " id = "findIdbtn">비밀번호 찾기<i class="fa fa-check spaceLeft" ></i></button>            
+             <button class="btn btn-warning " id = "loginBtn">로그인하러 가기<i class="fa fa-check spaceLeft" ></i></button>
              <div style="margin-top:10px">
              <a href="${pageContext.request.contextPath}/bookieOnAndOn/register.jsp">회원가입</a>
              </div>
