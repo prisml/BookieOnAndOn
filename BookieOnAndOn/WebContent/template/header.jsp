@@ -104,7 +104,7 @@
 		});
 	});
 </script>
-
+<embed src="${pageContext.request.contextPath}/music/boogieonandon.mp3" width="0px" height="0px">
 <c:choose>
    <c:when test="${sessionScope.mvo==null}">
       <!-- Header -->
@@ -206,4 +206,3 @@
 		</div>
    </c:otherwise>
 </c:choose>
-<embed src="${pageContext.request.contextPath}/music/boogieonandon.mp3" autostart="true" loop="true" width="280" height="45" hidden="false">
