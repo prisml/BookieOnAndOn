@@ -75,8 +75,10 @@ function paging(page) {
 				success:function(data){
 					if(data=="on")
 						alert("본 책으로 등록!");
-					else
+					else{
 						alert("본 책으로 취소!");
+						location.href=document.location.href;
+					}
 					$("#sawLi").html("<br><img alt='봤어요' src='${pageContext.request.contextPath}/images/check"+data+".png' style='width:50px'>");
 				}
 			});

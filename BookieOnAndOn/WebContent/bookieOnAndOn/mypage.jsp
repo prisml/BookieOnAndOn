@@ -81,9 +81,10 @@ position: relative;
                   
                   if(data=="true"){
                      $("#bookingIcon").empty();
+                     alert("Booking 되었습니다");
                      $("#bookingIcon").html("<span><img style='width:50px' src='${pageContext.request.contextPath}/images/bookingon.png'></span>");
                   }else{
-                     alert("이미 부킹되어있습니다");
+                     alert("이미 Booking되어 있습니다\nBooking을 해제하시려면 Booking에 들어가서 취소해주세요");
                   }
                
             

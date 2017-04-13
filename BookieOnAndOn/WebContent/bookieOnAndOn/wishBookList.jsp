@@ -131,7 +131,7 @@
 	</div>
 	</c:when>
 	<c:otherwise>
-	보고싶은 책의 정보가 없습니다
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;보고싶은 책의 정보가 없습니다
 	</c:otherwise> 
 	</c:choose>
  		</c:when>
@@ -192,7 +192,7 @@
 	</div>
  	</c:when>
  		<c:otherwise>
- 			보고싶은 책의 정보가 없습니다
+ 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;보고싶은 책의 정보가 없습니다
  		</c:otherwise>
  		 </c:choose>
  	</c:otherwise>   

@@ -57,6 +57,15 @@ public class SawWishDAO {
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				pstmt.close();
+				sql = "select count(*) from review where id=? and bookno=?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, id);
+				pstmt.setString(2, no);
+				rs.close();
+				rs = pstmt.executeQuery();
+				if(rs.next())
+					ReviewDAO.getInstance().deleteReview(new ReviewVO(no,id,0,"",""));
+				pstmt.close();
 				sql = "delete from saw where id=? and bookno=?";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, id);
