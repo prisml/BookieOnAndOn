@@ -14,12 +14,11 @@ public class LoginController implements Controller {
 		String id=request.getParameter("id");
 		String password=request.getParameter("password");
 		MemberVO vo = MemberDAO.getInstance().login(id, password);
-		String path=null;
 		if(vo!=null){
 			HttpSession session=request.getSession();
 			session.setAttribute("mvo", vo);
 		}
-		return "redirect:bookieOnAndOn/login_result.jsp";
+		return "redirect:bookie/login_result.jsp";
 	}
 
 }

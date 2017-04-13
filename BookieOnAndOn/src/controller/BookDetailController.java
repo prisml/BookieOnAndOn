@@ -13,7 +13,7 @@ public class BookDetailController implements Controller {
 		String no = request.getParameter("bookno");
 		BookVO vo = BookDAO.getInstance().getBookInfoByNo(no);
 		request.setAttribute("vo", vo);
-		return "/bookieOnAndOn/detail.jsp";
+		return "bookie/detail.jsp";
 	}
 
 }

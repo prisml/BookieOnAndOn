@@ -44,7 +44,7 @@ public class MyPageController implements Controller {
 				int WishTotalContent=SawWishDAO.getInstance().getWishTotalContent(vo.getId());
 				session.setAttribute("SawTotalContent", SawTotalContent);
 				session.setAttribute("WishTotalContent", WishTotalContent);
-				url = "bookieOnAndOn/mypage.jsp";
+				url = "bookie/mypage.jsp";
 
 			} else {
 				if(id.equals(vo.getId())){
@@ -57,7 +57,7 @@ public class MyPageController implements Controller {
 					int WishTotalContent=SawWishDAO.getInstance().getWishTotalContent(vo.getId());
 					session.setAttribute("SawTotalContent", SawTotalContent);
 					session.setAttribute("WishTotalContent", WishTotalContent);
-					url = "bookieOnAndOn/mypage.jsp";
+					url = "bookie/mypage.jsp";
 					
 				}else{
 					MemberVO fvo = MemberDAO.getInstance().getMemberById(id);
@@ -71,9 +71,8 @@ public class MyPageController implements Controller {
 					int WishTotal=SawWishDAO.getInstance().getWishTotalContent(fvo.getId());
 					request.setAttribute("SawTotal", SawTotal);
 					request.setAttribute("WishTotal", WishTotal);
-					url = "bookieOnAndOn/mypage.jsp";
+					url = "bookie/mypage.jsp";
 
-					
 				}
 				
 			}

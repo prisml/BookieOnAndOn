@@ -43,7 +43,7 @@ public class WishBookListController implements Controller {
 				ArrayList<VO> list = SawWishDAO.getInstance().getWishBookList(vo.getId(), pagingBean);
 				ListVO listvo = new ListVO(list, pagingBean);
 				session.setAttribute("listVO", listvo);
-				url = "redirect:bookieOnAndOn/wishBookList.jsp";
+				url = "redirect:bookie/wishBookList.jsp";
 
 				
 			}else{
@@ -61,7 +61,7 @@ public class WishBookListController implements Controller {
 				MemberVO fvo = MemberDAO.getInstance().getMemberById(id);
 				request.setAttribute("fvo", fvo);
 				
-				url = "bookieOnAndOn/wishBookList.jsp";
+				url = "bookie/wishBookList.jsp";
 				
 			}
 			
