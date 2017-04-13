@@ -38,13 +38,13 @@
 				$("#reviewPaging").html("");
 				var pb = data.pagingBean;
 				if(pb.previousPageGroup ==true){
-					$("#reviewPaging").append("<li><a style='display: none;'>"+pb.startPageOfPageGroup-1+"</a><a class=movePage href=#>◀</a></li>");
+					$("#reviewPaging").append("<li><a style='display: none;'>"+pb.startPageOfPageGroup-1+"</a><a class='movePage pageMove' href=#>◀</a></li>");
 				}
 				for(var i=pb.startPageOfPageGroup;i<=pb.endPageOfPageGroup;i++){
-					$("#reviewPaging").append("<li><a class=movePage href=#>"+i+"</a></li>");
+					$("#reviewPaging").append("<li><a class='movePage pageMove' href=#>"+i+"</a></li>");
 				}
 				if(pb.nextPageGroup ==true){
-					$("#reviewPaging").append("<li><a style='display: none;'>"+pb.endPageOfPageGroup+1+"</a><a class=movePage href=#>▶</a></li>");
+					$("#reviewPaging").append("<li><a style='display: none;'>"+pb.endPageOfPageGroup+1+"</a><a class='movePage pageMove' href=#>▶</a></li>");
 				}
 			}
 		});
@@ -99,7 +99,7 @@
 		});
 		$("#reviewPaging").on("click","li",function() {
 			event.preventDefault();
-			paging($(this).children(".movePage").text());
+			paging($(this).children(".pageMove").text());
 		});
 		$("#reviewList").on("click","#deleteReview",function() {
 			if(confirm("리뷰를 삭제하시겠습니까?")){
