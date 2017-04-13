@@ -29,7 +29,7 @@
 							 if(i*4+j+1>data.list.length)
 								break;
 							 info+="<div class='col-md-3 portfolio-item'>";
-							 info+="<a  href='http://localhost:8888/BookieOnAndOn/DispatcherServlet?command=detail&bookno=";
+							 info+="<a  href='<%=request.getScheme()%>://<%=request.getServerName()%>:<%=request.getServerPort()%>/BookieOnAndOn/DispatcherServlet?command=detail&bookno=";
 							 info+=data.list[i*4+j].bookno+"'>";
 							 info+="<div class='w3-one'>";
 							// info+="<img class='img-responsive' src='http://placehold.it/260x390' alt=''>";
@@ -80,7 +80,7 @@
 						if(i*4+j+1>data.list.length)
 							break;
 						 info+="<div class='col-md-3 portfolio-item'>";
-						 info+="<a  href='http://localhost:8888/BookieOnAndOn/DispatcherServlet?command=detail&bookno=";
+						 info+="<a  href='<%=request.getScheme()%>://<%=request.getServerName()%>:<%=request.getServerPort()%>/BookieOnAndOn/DispatcherServlet?command=detail&bookno=";
 						 info+=data.list[i*4+j].bookno+"'>";
 						 info+="<div class='w3-one'>";
 						// info+="<img class='img-responsive' src='http://placehold.it/260x390' alt=''>";
