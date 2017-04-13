@@ -6,7 +6,7 @@
 <jsp:include page="/template/script.jsp"></jsp:include>
 <script type="text/javascript">
 	function login() {
-	location.href = "${pageContext.request.contextPath}/bookieOnAndOn/login.jsp";
+	location.href = "${pageContext.request.contextPath}/bookie/login.jsp";
 }
 	function home(){
 		location.href = "${pageContext.request.contextPath}/index.jsp";

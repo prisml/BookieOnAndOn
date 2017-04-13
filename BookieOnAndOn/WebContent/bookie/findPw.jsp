@@ -25,7 +25,7 @@
 			});
 		});
 		$("#loginBtn").click(function(){
-			location.href="${pageContext.request.contextPath}/bookieOnAndOn/login.jsp";
+			location.href="${pageContext.request.contextPath}/bookie/login.jsp";
 		});
 	});
 </script>
@@ -49,7 +49,7 @@
              <button class="btn btn-warning " id = "loginBtn">로그인하러 가기<i class="fa fa-check spaceLeft" ></i></button>
              <button class="btn btn-info " id = "findIdbtn">비밀번호 찾기<i class="fa fa-check spaceLeft" ></i></button>            
              <div style="margin-top:10px">
-             <a href="${pageContext.request.contextPath}/bookieOnAndOn/register.jsp">회원가입</a>
+             <a href="${pageContext.request.contextPath}/bookie/register.jsp">회원가입</a>
              </div>
             </div>
         
