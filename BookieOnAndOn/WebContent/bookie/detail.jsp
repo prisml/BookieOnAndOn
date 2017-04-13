@@ -38,13 +38,13 @@
 				$("#reviewPaging").html("");
 				var pb = data.pagingBean;
 				if(pb.previousPageGroup ==true){
-					$("#reviewPaging").append("<li><a style='display: none;'>"+pb.startPageOfPageGroup-1+"</a><a class=movePage>◀</a></li>");
+					$("#reviewPaging").append("<li><a style='display: none;'>"+pb.startPageOfPageGroup-1+"</a><a class=movePage href=#>◀</a></li>");
 				}
 				for(var i=pb.startPageOfPageGroup;i<=pb.endPageOfPageGroup;i++){
 					$("#reviewPaging").append("<li><a class=movePage href=#>"+i+"</a></li>");
 				}
 				if(pb.nextPageGroup ==true){
-					$("#reviewPaging").append("<li><a style='display: none;'>"+pb.endPageOfPageGroup+1+"</a><a class=movePage>▶</a></li>");
+					$("#reviewPaging").append("<li><a style='display: none;'>"+pb.endPageOfPageGroup+1+"</a><a class=movePage href=#>▶</a></li>");
 				}
 			}
 		});
