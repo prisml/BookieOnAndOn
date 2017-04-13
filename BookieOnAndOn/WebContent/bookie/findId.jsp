@@ -17,6 +17,7 @@
 				success:function(id){
 					if(id == "null"){
 						alert("찾는 정보가 없습니다.");
+						document.findIdForm.reset();
 					}
 					else{
 						alert(id);
@@ -25,7 +26,10 @@
 			});
 		});
 		$("#loginBtn").click(function(){
-			location.href="${pageContext.request.contextPath}/bookie/login.jsp";
+			location.href="${pageContext.request.contextPath}/bookieOnAndOn/login.jsp";
+		});
+		$("#findIdbtn").click(function(){
+			
 		});
 	});
 </script>
@@ -36,6 +40,7 @@
         </div>
         <br>
         <div class="center-block" style="width: 300px;padding:15px;">
+            <form name="findIdForm">
             <div class="form-group" >
               <label>이름</label>
               <input id="name" type="text" class="form-control" required="required" placeholder="이름" >
@@ -44,11 +49,12 @@
               <label>전화번호</label>
               <input id="tel" type="text" class="form-control" placeholder="전화번호">
             </div>
+            </form>
             <div class="form-group text-center">
-             <button class="btn btn-warning" id = "loginBtn">로그인 하기<i class="fa fa-check spaceLeft" ></i></button>
              <button class="btn btn-info " id = "findIdbtn">아이디 찾기<i class="fa fa-check spaceLeft" ></i></button>            
+             <button class="btn btn-warning" id = "loginBtn">로그인 하기<i class="fa fa-check spaceLeft" ></i></button>
              <div style="margin-top:10px">
-             <a href="${pageContext.request.contextPath}/bookie/register.jsp">회원가입</a>
+             <a href="${pageContext.request.contextPath}/bookieOnAndOn/register.jsp">회원가입</a>
              </div>
             </div>
         
