@@ -8,50 +8,6 @@
 <head>
 <jsp:include page="/template/script.jsp"></jsp:include>
 <title>mypage</title>
-<style>
- .imagecontainer {
-  position: relative;
-   display: block;
-}
-
-.overlay {
- dispaly: block;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: black;
-  overflow: hidden;
-  width: 260px;
-  height: 0;
-  transition: .5s ease;
-  
-}
-
-.imagecontainer:hover .overlay {
-  height: 40%;
-  opacity: 0.8;
-}
-
-.text {
-  white-space: nowrap; 
-  color: white;
-  font-size: 14px;
-  position: absolute;
-  overflow: hidden;
-  top: 10%;
-  left: 7%;
-  right: 7%;
-  line-height: 140%;
-}
-
-</style>
-
-</head>
-
-
-
-
 <body class="homepage"> 
 
 	<div id="page-wrapper">
@@ -88,10 +44,10 @@
   			<c:otherwise>
 					<div class="col-md-3 portfolio-item">
 					<a href="${pageContext.request.contextPath}/DispatcherServlet?command=detail&bookno=${bvo[i*4+j].bookno}">
-					<div class='imagecontainer'>
+					<div class='w3-one'>
 						<img width='260' height="360" src='${pageContext.request.contextPath}/images/bookcover/${bvo[i*4+j].bookno}.jpg'>
 						<div class="overlay">
-					 <div class="text">
+					 <div class="overlaytext">
 								<h4>${bvo[i*4+j].title }</h4>  
 								 저자 : ${bvo[i*4+j].author}<br>
 					 			출판사: ${bvo[i*4+j].pub }<br>
@@ -148,10 +104,10 @@
 					<div class='col-sm-3'>
 					
 					<a href="${pageContext.request.contextPath}/DispatcherServlet?command=detail&bookno=${bvo[i*4+j].bookno}">
-					<div class='imagecontainer'>
+					<div class='w3-one'>
 					<img width='260' height="360" src='${pageContext.request.contextPath}/images/bookcover/${bvo[i*4+j].bookno}.jpg'>
 					<div class="overlay">
-					 <div class="text">
+					 <div class="overlaytext">
 					<h4>${bvo[i*4+j].title }</h4> 
 					 저자 : ${bvo[i*4+j].author}<br>
 					 출판사: ${bvo[i*4+j].pub }<br>

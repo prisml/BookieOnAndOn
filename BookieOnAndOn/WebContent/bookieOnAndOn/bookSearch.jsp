@@ -6,57 +6,6 @@
 <html>
 <head>
 <title>도서검색</title>
-<style type="text/css">
-@import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
-
-.w3-one {
-	position: relative;
-	display: block;
-}
-
-.w3-one:hover .overlay {
-	opacity: 0.8;
-	width: 260px;
-}
-
-.w3-one:hover img {
-	opacity: 1;
-}
-
-.overlay {
-	dispaly: block;
-	position: absolute;
-	top: 57%;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	background-color: black;
-	opacity: 0;
-	transition: .5s ease;
-	width: 260px;
-}
-
-.overlaytext {
-	font-family: 'Jeju Gothic', serif;
-	color: white;
-	position: absolute;
-	font-size: 14px;
-	top: 10%;
-	left: 7%;
-	right: 7%;
-	line-height: 140%;
-}
-
-.overlaytable {
-	font-family: 'Jeju Gothic', serif;
-	color: white;
-}
-
-.bookImage {
-	width: 260px;
-	height: 360px;
-}
-</style>
 <jsp:include page="/template/script.jsp"></jsp:include>
 
 </head>
@@ -80,7 +29,7 @@
 											<a
 												href="${pageContext.request.contextPath}/DispatcherServlet?command=detail&bookno=${lvo.list[i*4+j].bookno}">
 												<div class="w3-one">
-													<img height="390px" width="263px"
+													<img height="390px" width="260px"
 														src="${pageContext.request.contextPath}/images/bookcover/${lvo.list[i*4+j].bookno}.jpg"
 														alt="">
 													<div class='overlay'>

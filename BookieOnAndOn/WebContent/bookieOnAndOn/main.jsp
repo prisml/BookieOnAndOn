@@ -6,49 +6,6 @@
 <html>
 <head>
 <title>메인</title>
-<style type="text/css">	
-@import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
-a:hover{
- text-decoration: none;
-}
-.w3-one {
-   position: relative;
-   display: block;
-}
-
-.w3-one:hover .overlay {
-   opacity: 0.8;
-}
-
-.w3-one:hover img {
-   opacity: 1;
-}
-
-.overlay {
-	width: 260px;
-   dispaly: block;
-   position: absolute;
-   top: 65%;
-   bottom: 0;
-   left: 0;
-   right: 0;
-   background-color: black;
-   opacity: 0.0;
-   transition: .5s ease;
-}
-
-.overlaytext {
-   font-family: 'Jeju Gothic', serif;
-   color: white;
-   position: absolute;
-   font-size: 14px;
-   top: 10%;
-   left: 7%;
-   right: 7%;
-   line-height: 140%;
-}
-
-</style>
 <jsp:include page="/template/script.jsp"></jsp:include>
 
 <!-- script ajax -->
