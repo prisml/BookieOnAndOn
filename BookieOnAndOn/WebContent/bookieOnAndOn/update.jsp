@@ -100,10 +100,6 @@ $(document).ready(function(){
 					새로작성
 					<i class="fa fa-times spaceLeft"></i>
 				</button>
-				<br>
-				<div style="margin-top: 10px;">
-					<a href="${pageContext.request.contextPath}/bookieOnAndOn/findId.jsp">아이디</a>/<a href="${pageContext.request.contextPath}/bookieOnAndOn/findPw.jsp">비밀번호 찾기</a>
-				</div>
 			</div>
 	</div>
 </article>
