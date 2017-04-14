@@ -129,12 +129,14 @@ public class BookDAO {
 		BookVO result = null;
 		try{
 			con=dataSource.getConnection();
-			String sql="select title,author,pub,to_char(pubdate,'yyyy-mm-dd'),genre,summary,rate from book where bookno=?";
+			String sql="select title,author,pub,to_char(pubdate,'yyyy-mm-dd')"
+					+ ",genre,summary,rate from book where bookno=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, no);
 			rs=pstmt.executeQuery();
 			if(rs.next()){
-				result = new BookVO(no,rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getDouble(7));
+				result = new BookVO(no,rs.getString(1),rs.getString(2),rs.getString(3)
+						,rs.getString(4),rs.getString(5),rs.getString(6),rs.getDouble(7));
 			}
 		}finally{
 			closeAll(rs, pstmt,con);

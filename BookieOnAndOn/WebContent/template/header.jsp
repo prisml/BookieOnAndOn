@@ -24,22 +24,30 @@
 }
 </style>
 <script>
-   function logout() {
-      var f = confirm("로그아웃 하시겠습니까?");
-      if (f)
-         location.href = "${pageContext.request.contextPath}/DispatcherServlet?command=logout";
-   }
-   
-   $(document).ready(function(){
-		$("#tagsI").mouseover(function(){
+	document.onkeyup = Esc;
+	function Esc() {
+		var KeyID = event.keyCode;
+		if (KeyID == 27) {
+			$("#backgroundMusic").attr("volume", -3400);
+		}
+	}
+	function logout() {
+		var f = confirm("로그아웃 하시겠습니까?");
+		if (f)
+			location.href = "${pageContext.request.contextPath}/DispatcherServlet?command=logout";
+	}
+
+	$(document).ready(function() {
+		$("#tagsI").mouseover(function() {
 			$("#tagsSpan").css("background", "white");
 		});
-		
-		$("#tagsI").mouseout(function(){
+
+		$("#tagsI").mouseout(function() {
 			$("#tagsSpan").css("background", "");
 		});
-   });
-   
+
+	});
+
 	function bookSearch() {
 		if ($("#tags").val() == 0) {
 			return;
@@ -47,64 +55,68 @@
 			$("#bookSearchForm").submit();
 		}
 	}
-	
-  $(function() {
-      $("#tags")
-            .autocomplete(
-                  {
-                     source : function(request, response) {
-                        $
-                              .ajax({
-                                 type : "get",
-                                 url : "${pageContext.request.contextPath}/DispatcherServlet?command=bookAutoComplete",
-                                 dataType : "json",
-                                 data : {
-                                    "title" : request.term
-                                 },
-                                 success : function(data) {
-                                    var bookAutoCompleteList = [];
-                                    var temp = JSON.parse(JSON
-                                          .stringify(data));
-
-                                    for (var i = 0; i < temp.length; i++) {
-                                       bookAutoCompleteList
-                                             .push(temp[i].title);
-                                    }
-
-                                    return response(bookAutoCompleteList);
-                                 }
-                              });
-                     }
-                  });
-   });
 
 	$(function() {
-		$("#tags").autocomplete({source : function(request, response) {
-			$.ajax({
-				type : "get",
-				url : "${pageContext.request.contextPath}/DispatcherServlet?command=bookAutoComplete",
-				dataType : "json",
-				data : { 
-					"title" : request.term
-				},
-				success : function(data) {
-					var bookAutoCompleteList = [];
-					var temp = JSON.parse(JSON
-							.stringify(data));
-	
-					for (var i = 0; i < temp.length; i++) {
-						bookAutoCompleteList
-								.push(temp[i].title);
-					}
-	
-					return response(bookAutoCompleteList);
-				}
-			});
-		}
-		});
+		$("#tags")
+				.autocomplete(
+						{
+							source : function(request, response) {
+								$
+										.ajax({
+											type : "get",
+											url : "${pageContext.request.contextPath}/DispatcherServlet?command=bookAutoComplete",
+											dataType : "json",
+											data : {
+												"title" : request.term
+											},
+											success : function(data) {
+												var bookAutoCompleteList = [];
+												var temp = JSON.parse(JSON
+														.stringify(data));
+
+												for (var i = 0; i < temp.length; i++) {
+													bookAutoCompleteList
+															.push(temp[i].title);
+												}
+
+												return response(bookAutoCompleteList);
+											}
+										});
+							}
+						});
+	});
+
+	$(function() {
+		$("#tags")
+				.autocomplete(
+						{
+							source : function(request, response) {
+								$
+										.ajax({
+											type : "get",
+											url : "${pageContext.request.contextPath}/DispatcherServlet?command=bookAutoComplete",
+											dataType : "json",
+											data : {
+												"title" : request.term
+											},
+											success : function(data) {
+												var bookAutoCompleteList = [];
+												var temp = JSON.parse(JSON
+														.stringify(data));
+
+												for (var i = 0; i < temp.length; i++) {
+													bookAutoCompleteList
+															.push(temp[i].title);
+												}
+
+												return response(bookAutoCompleteList);
+											}
+										});
+							}
+						});
 	});
 </script>
-<embed src="${pageContext.request.contextPath}/music/boogieonandon.mp3" width="0px" height="0px">
+<embed id="backgroundMusic" src="${pageContext.request.contextPath}/music/boogieonandon.mp3" width="0px" height="0px">
 <c:choose>
    <c:when test="${sessionScope.mvo==null}">
       <!-- Header -->
