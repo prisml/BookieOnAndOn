@@ -48,36 +48,6 @@
 		}
 	}
 	
-  $(function() {
-      $("#tags")
-            .autocomplete(
-                  {
-                     source : function(request, response) {
-                        $
-                              .ajax({
-                                 type : "get",
-                                 url : "${pageContext.request.contextPath}/DispatcherServlet?command=bookAutoComplete",
-                                 dataType : "json",
-                                 data : {
-                                    "title" : request.term
-                                 },
-                                 success : function(data) {
-                                    var bookAutoCompleteList = [];
-                                    var temp = JSON.parse(JSON
-                                          .stringify(data));
-
-                                    for (var i = 0; i < temp.length; i++) {
-                                       bookAutoCompleteList
-                                             .push(temp[i].title);
-                                    }
-
-                                    return response(bookAutoCompleteList);
-                                 }
-                              });
-                     }
-                  });
-   });
-
 	$(function() {
 		$("#tags").autocomplete({source : function(request, response) {
 			$.ajax({
@@ -184,16 +154,13 @@
 					<div class="row">
 						<div class="2u"></div>
 						<div class="8u">
-							<form
-								action="${pageContext.request.contextPath}/DispatcherServlet"
-								id="bookSearchForm">
+							<form action="${pageContext.request.contextPath}/DispatcherServlet" id="bookSearchForm">
 								<div class="ui-widget">
 									<div class="input-group input-group-lg">
 										<input type="hidden" name="command" value="bookSearch">
-										<input id="tags" type="text" class="form-control" name="title"
-											style="border-color: #cccccc"> <span
-											class="input-group-addon" id="tagsSpan"> <i
-											class="fa fa-search" id="tagsI" onclick="bookSearch()"></i>
+										<input id="tags" type="text" class="form-control" name="title" style="border-color: #cccccc"> 
+										<span class="input-group-addon" id="tagsSpan"> 
+											<i class="fa fa-search" id="tagsI" onclick="bookSearch()"></i>
 										</span>
 									</div>
 								</div>

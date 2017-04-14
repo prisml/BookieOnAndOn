@@ -1,17 +1,13 @@
 package controller;
-
 import java.util.ArrayList;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import model.BookDAO;
 import model.ListVO;
 import model.PagingBean;
 import model.VO;
 
 public class BookSearchController implements Controller {
-
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String pageNo = request.getParameter("pageNo");
@@ -22,8 +18,7 @@ public class BookSearchController implements Controller {
 
 		if(pageNo == null){
 			pagingBean = new PagingBean(totalFindBookListCount);
-		}
-		else{
+		}else{
 			pagingBean = new PagingBean(totalFindBookListCount, Integer.parseInt(pageNo));
 		}
 		
@@ -35,5 +30,5 @@ public class BookSearchController implements Controller {
 		request.setAttribute("title", title);
 		return "bookie/bookSearch.jsp";
 	}
-
 }
+

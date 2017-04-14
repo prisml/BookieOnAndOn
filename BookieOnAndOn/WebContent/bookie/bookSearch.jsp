@@ -29,8 +29,7 @@
 											<a
 												href="${pageContext.request.contextPath}/DispatcherServlet?command=detail&bookno=${lvo.list[i*4+j].bookno}">
 												<div class="w3-one">
-													<img height="390px" width="260px"
-														src="${pageContext.request.contextPath}/images/bookcover/${lvo.list[i*4+j].bookno}.jpg"
+													<img height="390px" width="260px" src="${pageContext.request.contextPath}/images/bookcover/${lvo.list[i*4+j].bookno}.jpg"
 														alt="">
 													<div class='overlay'>
 														<div class='overlaytext'>

@@ -24,3 +24,4 @@ public class BookAutoCompleteController implements Controller {
 		return "AjaxView";
 	}
 }
+
