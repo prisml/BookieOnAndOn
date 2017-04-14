@@ -111,7 +111,8 @@
 		<div id="features-wrapper">
 			<div class="container">
 			
-			<!-- Section은 여기서 작업하도록! -->
+	<!-- Section -->
+	<!-------------- 장르 별 탭 --------------->
 	<ul class="nav nav-tabs nav-justified" style="align:center">	
    		<li class="active"><a href="${pageContext.request.contextPath}/index.jsp">전체</a></li>
  	    <li><a href="#">인문</a></li>
@@ -136,23 +137,25 @@
   			<c:otherwise>
 			<div class="col-md-3 portfolio-item">
 				<a href="${pageContext.request.contextPath}/DispatcherServlet?command=detail&bookno=${listVo.list[i*4+j].bookno}">
-				<div class="w3-one">
-				<img height="390px" width="260px" src="${pageContext.request.contextPath}/images/bookcover/${listVo.list[i*4+j].bookno}.jpg" alt="">
-				<div class='overlay'><div class='overlaytext'>
-				<h4>${listVo.list[i*4+j].title}</h4>
-				저자&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				${listVo.list[i*4+j].author}<br>
-				출판사&nbsp;&nbsp;&nbsp;
-				${listVo.list[i*4+j].pub}<br>
-				출판일&nbsp;&nbsp;&nbsp;
-				${listVo.list[i*4+j].pubdate}
-				</div></div></div><br><!-- overlay -->
-				<div style="text-align: center">
-				 ${listVo.list[i*4+j].title}<br>
-				 <img width="17px" src="${pageContext.request.contextPath}/images/staron.png">&nbsp;
-				 <fmt:formatNumber value="${listVo.list[i*4+j].rate}" pattern="0.0"/>
-				 </div>
-				 </a>		 
+					<div class="w3-one">
+						<img height="390px" width="260px" src="${pageContext.request.contextPath}/images/bookcover/${listVo.list[i*4+j].bookno}.jpg" 
+						alt="">
+							<div class='overlay'><div class='overlaytext'>
+								<h4>${listVo.list[i*4+j].title}</h4>
+								저자&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								${listVo.list[i*4+j].author}<br>
+								출판사&nbsp;&nbsp;&nbsp;
+								${listVo.list[i*4+j].pub}<br>
+								출판일&nbsp;&nbsp;&nbsp;
+								${listVo.list[i*4+j].pubdate}
+							</div></div><!-- overlay -->
+					</div><br>
+					<div style="text-align: center">
+						${listVo.list[i*4+j].title}<br>
+						<img width="17px" src="${pageContext.request.contextPath}/images/staron.png">&nbsp;
+				 		<fmt:formatNumber value="${listVo.list[i*4+j].rate}" pattern="0.0"/>
+					 </div>
+				</a>		 
 			</div>
 			</c:otherwise>
 			</c:choose>		
