@@ -83,7 +83,6 @@
 						 info+="<a  href='<%=request.getScheme()%>://<%=request.getServerName()%>:<%=request.getServerPort()%>/BookieOnAndOn/DispatcherServlet?command=detail&bookno=";
 						 info+=data.list[i*4+j].bookno+"'>";
 						 info+="<div class='w3-one'>";
-						// info+="<img class='img-responsive' src='http://placehold.it/260x390' alt=''>";
 						 info+="<div class=bookcover style='height:390px'>";
 						 info+="<img height='390px' width='263px' src='${pageContext.request.contextPath}/images/bookcover/"+data.list[i*4+j].bookno+".jpg' alt=''>"
 						 info+= "<div class='overlay'><div class='overlaytext'>";
