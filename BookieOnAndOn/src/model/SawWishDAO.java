@@ -285,7 +285,7 @@ public class SawWishDAO {
 		}
 		return result;
 	}
-	//송희 slideshow를 위한 본책 리스트 5개 뽑기
+	//송희 slideshow를 위한 본책 리스트 
 	public ArrayList<VO> getSawBookSlideList(String id) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;

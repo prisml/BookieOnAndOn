@@ -8,7 +8,6 @@ public class ListVO {
 
 	public ListVO() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public ListVO(ArrayList<VO> list, PagingBean pagingBean) {

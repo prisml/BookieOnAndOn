@@ -25,6 +25,7 @@ public class BookDAO {
 	}
 	
 	// 도서명에 따라 도서를 검색하는 메서드 : 성준
+	
 		public ArrayList<VO> findBookByTitle(String title, PagingBean pagingBean) throws SQLException{
 			ArrayList<VO> findBookList = new ArrayList<VO>();
 			
@@ -48,7 +49,8 @@ public class BookDAO {
 				rs = pstmt.executeQuery();
 				 
 				while(rs.next()){
-					findBookList.add(new BookVO(rs.getString("bookno"), rs.getString("title"), rs.getString("author"), rs.getString("pub"), rs.getString("pubdate"), rs.getDouble("rate")));
+					findBookList.add(new BookVO(rs.getString("bookno"), rs.getString("title"), rs.getString("author"),
+					rs.getString("pub"), rs.getString("pubdate"), rs.getDouble("rate")));
 				}
 			}
 			finally
@@ -87,7 +89,6 @@ public class BookDAO {
 			return totalFindBookListCount;
 		}
 		
-		// 도서검색 자동완성 리스트 반환 함수 : 성준
 		public ArrayList<VO> getBookAutoCompleteList(String title) throws SQLException{
 			ArrayList<VO> bookAutoCompleteList = new ArrayList<VO>();
 			

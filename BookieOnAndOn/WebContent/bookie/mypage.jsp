@@ -122,20 +122,23 @@ position: relative;
  	<c:choose>
  	<c:when test="${!empty fvo }">
  		<div class="container">
-  		<div class="jumbotron"><!-- 속컨테이너 -->  		
+  		<div class="jumbotron">  		
  			<div class="col-3" align="center">
   			<div style="padding:50px" class="image">  
-  			<a href="${pageContext.request.contextPath}/DispatcherServlet?command=bookingList&id=${fvo.id}"><img alt="" src="${pageContext.request.contextPath}/images/bookingcount.png"></a>
+  			<a href="${pageContext.request.contextPath}/DispatcherServlet?command=bookingList&id=${fvo.id}">
+  			<img alt="" src="${pageContext.request.contextPath}/images/bookingcount.png"></a>
   			<div align="center" class="text">  			
  			${fbookingcount}
   			</div></div> 
   			<div style="padding:50px" class="image">  
-  			<a href="${pageContext.request.contextPath}/DispatcherServlet?command=sawBookList&id=${fvo.id}"><img alt="" src="${pageContext.request.contextPath}/images/sawcount.png"></a>
+  			<a href="${pageContext.request.contextPath}/DispatcherServlet?command=sawBookList&id=${fvo.id}">
+  			<img alt="" src="${pageContext.request.contextPath}/images/sawcount.png"></a>
   			<div align="center" class="text">  			
  			${requestScope.SawTotal}
   			</div></div>
   			<div style="padding:50px" class="image">  
-			<a href="${pageContext.request.contextPath}/DispatcherServlet?command=wishBookList&id=${fvo.id}"><img alt="" src="${pageContext.request.contextPath}/images/wishcount.png"></a>
+			<a href="${pageContext.request.contextPath}/DispatcherServlet?command=wishBookList&id=${fvo.id}">
+			<img alt="" src="${pageContext.request.contextPath}/images/wishcount.png"></a>
   			<div align="center" class="text">  			
  			${requestScope.WishTotal}
   			</div></div>
@@ -189,17 +192,20 @@ function carousel() {
   			<br><br>
   			<div class="col-3" align="center">
   			<div style="padding:50px" class="image">  
-  			<a href="${pageContext.request.contextPath}/DispatcherServlet?command=bookingList&id=${mvo.id}"><img alt="" src="${pageContext.request.contextPath}/images/bookingcount.png"></a>
+  			<a href="${pageContext.request.contextPath}/DispatcherServlet?command=bookingList&id=${mvo.id}">
+  			<img alt="" src="${pageContext.request.contextPath}/images/bookingcount.png"></a>
   			<div align="center" class="text">  			
  			${sessionScope.bookingcount}
   			</div></div> 
   			<div style="padding:50px" class="image">  
-  			<a href="${pageContext.request.contextPath}/DispatcherServlet?command=sawBookList"><img alt="" src="${pageContext.request.contextPath}/images/sawcount.png"></a>
+  			<a href="${pageContext.request.contextPath}/DispatcherServlet?command=sawBookList">
+  			<img alt="" src="${pageContext.request.contextPath}/images/sawcount.png"></a>
   			<div align="center" class="text">  			
  			${sessionScope.SawTotalContent}
   			</div></div>
   			<div style="padding:50px" class="image">  
-			<a href="${pageContext.request.contextPath}/DispatcherServlet?command=wishBookList"><img alt="" src="${pageContext.request.contextPath}/images/wishcount.png"></a>
+			<a href="${pageContext.request.contextPath}/DispatcherServlet?command=wishBookList">
+			<img alt="" src="${pageContext.request.contextPath}/images/wishcount.png"></a>
   			<div align="center" class="text">  			
  			${sessionScope.WishTotalContent}
   			</div></div>
@@ -218,7 +224,7 @@ function carousel() {
  			</div>
  			</c:if>
 
-<script>
+<script> 
 var myIndex = 0;
 carousel();
 
