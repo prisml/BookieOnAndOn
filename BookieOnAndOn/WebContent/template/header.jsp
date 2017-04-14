@@ -55,41 +55,8 @@
 			$("#bookSearchForm").submit();
 		}
 	}
-<<<<<<< HEAD
+
 	
-=======
-
->>>>>>> branch 'master' of https://github.com/prisml/BookieOnAndOn.git
-	$(function() {
-		$("#tags")
-				.autocomplete(
-						{
-							source : function(request, response) {
-								$
-										.ajax({
-											type : "get",
-											url : "${pageContext.request.contextPath}/DispatcherServlet?command=bookAutoComplete",
-											dataType : "json",
-											data : {
-												"title" : request.term
-											},
-											success : function(data) {
-												var bookAutoCompleteList = [];
-												var temp = JSON.parse(JSON
-														.stringify(data));
-
-												for (var i = 0; i < temp.length; i++) {
-													bookAutoCompleteList
-															.push(temp[i].title);
-												}
-
-												return response(bookAutoCompleteList);
-											}
-										});
-							}
-						});
-	});
-
 	$(function() {
 		$("#tags")
 				.autocomplete(
