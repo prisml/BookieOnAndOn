@@ -118,7 +118,7 @@ public class BookingDAO {
 		}
 	}
 	
-	// 송희송희 booking 체크 메서드
+	
 	public boolean BookingCheck(String senderid, String receiverid) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -141,7 +141,6 @@ public class BookingDAO {
 		return flag;
 	}
 	 	
-	// 송희 부킹하는 메서드
 	public void addBooking(String senderid, String receiverid) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
