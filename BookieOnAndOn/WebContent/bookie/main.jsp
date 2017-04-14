@@ -142,12 +142,9 @@
 						alt="">
 							<div class='overlay'><div class='overlaytext'>
 								<h4>${listVo.list[i*4+j].title}</h4>
-								저자&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								${listVo.list[i*4+j].author}<br>
-								출판사&nbsp;&nbsp;&nbsp;
-								${listVo.list[i*4+j].pub}<br>
-								출판일&nbsp;&nbsp;&nbsp;
-								${listVo.list[i*4+j].pubdate}
+								저자&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${listVo.list[i*4+j].author}<br>
+								출판사&nbsp;&nbsp;&nbsp;${listVo.list[i*4+j].pub}<br>
+								출판일&nbsp;&nbsp;&nbsp;${listVo.list[i*4+j].pubdate}
 							</div></div><!-- overlay -->
 					</div><br>
 					<div style="text-align: center">
@@ -158,42 +155,45 @@
 				</a>		 
 			</div>
 			</c:otherwise>
-			</c:choose>		
+		</c:choose>		
 		</c:forEach><!-- j -->
 		</div>
 	</c:forEach><!-- i -->	
   	</div><!-- showBookList -->			
 	<!---------------- 페이징 ------------------>
 	<div class="row text-center">
-			<div class="col-lg-12">
+		<div class="col-lg-12">
 			<div class="page"><!-- 전체 리스트의 페이징 -->
-			<ul class="pagination">
-			<c:if test="${listVo.pagingBean.previousPageGroup}">
-							<li><a
-								href="${pageContext.request.contextPath}/DispatcherServlet?command=main&pageNo=${listVo.pagingBean.startPageOfPageGroup-1}">◀</a></li>
-						</c:if>
-						<c:forEach var="num"
-							begin="${listVo.pagingBean.startPageOfPageGroup}"
-							end="${listVo.pagingBean.endPageOfPageGroup}">
-							<c:choose>
-								<c:when test="${num!=listVo.pagingBean.nowPage }">
-									<li><a id="pagelink"
-										href="${pageContext.request.contextPath}/DispatcherServlet?command=main&pageNo=${num}">${num}</a></li>
-								</c:when>
-								<c:otherwise>
-									<li class='active'><a>${num }</a></li>
-								</c:otherwise>
-							</c:choose>
-						</c:forEach>
-						<c:if test="${listVo.pagingBean.nextPageGroup}">
-							<li><a 
-								href="${pageContext.request.contextPath}/DispatcherServlet?command=main&pageNo=${listVo.pagingBean.endPageOfPageGroup+1}">▶
-							</a></li>
-						</c:if>
-			</ul></div>
+				<ul class="pagination">
+					<c:if test="${listVo.pagingBean.previousPageGroup}">
+						<li>
+							<a href="${pageContext.request.contextPath}/DispatcherServlet?command=main&pageNo=${listVo.pagingBean.startPageOfPageGroup-1}">◀</a>
+						</li>
+					</c:if>
+					<c:forEach var="num" begin="${listVo.pagingBean.startPageOfPageGroup}" end="${listVo.pagingBean.endPageOfPageGroup}">
+						<c:choose>
+							<c:when test="${num!=listVo.pagingBean.nowPage }">
+								<li>
+									<a id="pagelink" href="${pageContext.request.contextPath}/DispatcherServlet?command=main&pageNo=${num}">${num}</a>
+								</li>
+							</c:when>
+							<c:otherwise>
+								<li class='active'>
+									<a>${num }</a>
+								</li>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+					<c:if test="${listVo.pagingBean.nextPageGroup}">
+						<li>
+							<a href="${pageContext.request.contextPath}/DispatcherServlet?command=main&pageNo=${listVo.pagingBean.endPageOfPageGroup+1}">▶</a>
+						</li>
+					</c:if>
+				</ul>
+			</div>
 			<div class="genregage"><!-- 장르 리스트의 페이징 :ajax에서 --><ul class="pagination"></ul></div>
 		</div><!-- col-lg-12 -->  	
-		</div><!-- row text-center -->
+	</div><!-- row text-center -->
 
 			</div>
 		</div>
