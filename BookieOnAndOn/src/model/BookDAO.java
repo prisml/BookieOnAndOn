@@ -129,12 +129,14 @@ public class BookDAO {
 		BookVO result = null;
 		try{
 			con=dataSource.getConnection();
-			String sql="select title,author,pub,to_char(pubdate,'yyyy-mm-dd'),genre,summary,rate from book where bookno=?";
+			String sql="select title,author,pub,to_char(pubdate,'yyyy-mm-dd')"
+					+ ",genre,summary,rate from book where bookno=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, no);
 			rs=pstmt.executeQuery();
 			if(rs.next()){
-				result = new BookVO(no,rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getDouble(7));
+				result = new BookVO(no,rs.getString(1),rs.getString(2),rs.getString(3)
+						,rs.getString(4),rs.getString(5),rs.getString(6),rs.getDouble(7));
 			}
 		}finally{
 			closeAll(rs, pstmt,con);
@@ -157,7 +159,7 @@ public class BookDAO {
 			StringBuilder sql = new StringBuilder();
 			sql.append("select A.* from (SELECT row_number() over(order by rate desc, bookno) ");
 			sql.append("as rnum,bookno,title,author,pub,to_char(pubdate,'yyyy-mm-dd') as pubdatee,genre,rate,bookphoto ");
-			sql.append(" from book order by bookno) A where rnum between ? and ?");
+			sql.append(" from book order by rate desc) A where rnum between ? and ?");
 			pstmt=con.prepareStatement(sql.toString());	
 			pstmt.setInt(1, pb.getStartRowNumber());
 			pstmt.setInt(2, pb.getEndRowNumber());
