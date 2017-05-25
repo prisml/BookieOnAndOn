@@ -26,7 +26,7 @@
 			});
 		});
 		$("#loginBtn").click(function(){
-			location.href="${pageContext.request.contextPath}/bookieOnAndOn/login.jsp";
+			location.href="${pageContext.request.contextPath}/bookie/login.jsp";
 		});
 		$("#findIdbtn").click(function(){
 			

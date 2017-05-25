@@ -9,19 +9,17 @@
 <!-- 부킹삭제 ajax -->
 <script type="text/javascript">
 	$(document).ready(function(){
-		$("#receiverid").click(function(){
+		$("button").click(function(){
+			var id = $(this).val();
 			$.ajax({
 				type: "post",
 				url: "${pageContext.request.contextPath}/DispatcherServlet",
-				data:{"command":"bookingMemberDelete", "receiverid":$(this).val()},
+				data:{"command":"bookingMemberDelete", "receiverid":id},
 				success:function(){
 		               location.href=document.location.href;
 		            }//success
 			});//ajax
 		});//click
-	});//ready
-	/* 스크롤 탑버튼 ajax */
-	$(document).ready(function() {
 		$("#toTop").bind("click", function() {
 			$("body").animate({scrollTop : 0}, 200);
 			});
@@ -32,7 +30,7 @@
 					$('#toTop').fadeOut();
 					}
 			});
-		});//ready
+	});//ready
 </script>
 </head>
 <body class="homepage">
@@ -61,12 +59,13 @@
 							<tr id="${mvo.receiverid }">
 								<!-- 부킹 상대 아이디 -->
 								<td align="center"><a style="text-decoration:none"
-								href="${pageContext.request.contextPath}/DispatcherServlet?command=mypage&id=${mvo.receiverid }">${mvo.receiverid }</a></td>
+								href="${pageContext.request.contextPath}/DispatcherServlet?command=mypage&id=${mvo.receiverid }">
+								${mvo.receiverid }</a></td>
 								<!-- 상대 아이디별 부킹 수 -->
 								<td align="center">${mvo.receiveridcount }</td>
 								<!-- 부킹 취소 버튼 -->
 								<c:if test="${requestScope.myId.name == sessionScope.mvo.name}">
-								<td align="center"><button id="receiverid" class="btn-danger btn-sm" value="${mvo.receiverid }">Cancel</button></td>
+								<td align="center"><button class="btn-danger btn-sm" value="${mvo.receiverid }">Cancel</button></td>
 								</c:if>
 							</tr>
 						</c:forEach>
@@ -108,5 +107,6 @@
 			<!-- /.row -->
 		</div>
 		<jsp:include page="/template/footer.jsp"></jsp:include>
+	</div>
 </body>
 </html>
